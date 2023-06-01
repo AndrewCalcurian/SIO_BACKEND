@@ -22,6 +22,131 @@ app.get('/api/despacho', (req,res)=>{
     })
 });
 
+app.get('/api/despachos-cliente/:cliente/:desde/:hasta', (req, res)=>{
+
+    let desde = req.params.desde
+    let hasta = req.params.hasta
+    let cliente = req.params.cliente
+    let Despachos__ = []
+
+    desde = moment(desde,"yyyy-MM-DD").format('DD-MM-yyyy')
+    hasta = moment(hasta,"yyyy-MM-DD").format('DD-MM-yyyy')
+
+    Despacho.find({}, (err, Despachado)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        for(let i=0;i<Despachado.length;i++){
+            let date = moment(Despachado[i].fecha, 'DD-MM-yyyy').format('DD-MM-yyyy')
+            
+            for(let x=0;x<Despachado[i].despacho.length;x++){
+                
+                Orden.find({sort:Despachado[i].despacho[x].op}, (err, OrdenDB)=>{
+                    if( err ){
+                        return res.status(400).json({
+                            ok:false,
+                            err
+                        });
+                    }
+                    
+                    if(moment(date, "DD-MM-yyyy") > moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") < moment(hasta, "DD-MM-yyyy")){
+                        
+                        if(OrdenDB[0].cliente == cliente){
+                            Despachos__.push(Despachado[i])
+                            console.log(Despachos__)
+                        }
+                        
+                    }
+
+                    if(i === Despachado.length -1 && x === Despachado[i].despacho.length -1){
+                        console.log(Despachos__)
+                        res.json(Despachos__)
+                    }
+                    })
+            }
+            
+
+
+        }
+
+
+    })
+})
+
+app.get('/api/despachados', (req, res)=>{
+    Despacho.find({estado:'despachado'}, (err, Depachados)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        let despachados = []
+        for(let i=0;i<Depachados.length;i++){
+            for(let x=0;x<Depachados[i].despacho.length;x++){
+                despachados.push(Depachados[i].despacho[x].op)
+            }
+        }
+
+        res.json(despachados)
+    })
+})
+
+app.get('/api/despacho-fechas/:desde/:hasta', (req, res)=>{
+
+    let desde = req.params.desde
+    let hasta = req.params.hasta
+
+    
+    desde = moment(desde,"yyyy-MM-DD").format('DD-MM-yyyy')
+    hasta = moment(hasta,"yyyy-MM-DD").format('DD-MM-yyyy')
+
+    Despacho.find({}, (err, Despachado)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+        
+        let Despachos = []
+        for(let i=0;i<Despachado.length;i++){
+            let date = moment(Despachado[i].fecha, 'DD-MM-yyyy').format('DD-MM-yyyy')
+            
+            if(moment(date, "DD-MM-yyyy") > moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") < moment(hasta, "DD-MM-yyyy")){
+                Despachos.push(Despachado[i])
+            }
+
+            if(i === Despachado.length -1){
+
+                res.json(Despachos)
+            }
+
+        }
+
+
+    })
+})
+
+app.get('/api/despachados-todos', (req, res)=>{
+    Despacho.find({estado:'despachado'}, (err, Despachado)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json(Despachado)
+
+    })
+})
+
 app.get('/api/despachos-pendientes/:orden',(req, res)=>{
     let orden = req.params.orden
     Despacho.find({"despacho.op":orden}, (err, DespachoDB)=>{

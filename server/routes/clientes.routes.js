@@ -186,12 +186,15 @@ app.post('/api/prints', (req, res)=>{
                             ]).layout('noBorders').end 
                         ).end,
                     ]
-                ]).widths(['25%','20%','20%']).end
+                ]).widths(['25%','21%','19%']).end
             )
     
             doc.add(
                 new Table([
                     [
+                        new Cell(
+                            new Txt(' ').end
+                        ).fillColor('#000000').color('#FFFFFF').end,
                         new Cell(
                             new Table([
                                 [
@@ -201,7 +204,10 @@ app.post('/api/prints', (req, res)=>{
                                     new Txt('unidades').font('BarlowCondensed').bold().alignment('center').fontSize(38).margin([0,-8]).end,
                                 ]
                             ]).width("100%").end 
-                        ).fillColor('#000000').color('#FFFFFF').end
+                        ).fillColor('#000000').color('#FFFFFF').end,
+                        new Cell(
+                            new Txt(' ').end
+                        ).fillColor('#000000').color('#FFFFFF').end,
                     ]
                 ]).margin([575,-85]).end
             )
@@ -210,8 +216,8 @@ app.post('/api/prints', (req, res)=>{
                 new Table([
                     [
                         new Cell(
-                            new Txt(`\n\nSe recomienda el uso de este producto dentro de un lapso no mayor a 6 meses
-                            Para mas información lea detenidamente nuestra "Politica de devoluciones o Reclamos (DD-005)"`).font('BarlowCondensed').fontSize(16).end,
+                            new Txt(`\n\nSe recomienda el uso de este producto dentro de un lapso no mayor a 6 meses.
+                            Para mas información lea detenidamente nuestra "Política de devoluciones o reclamos (DDE-005)"`).font('BarlowCondensed').fontSize(16).end,
     
                         ).alignment('center').end
                     ]
@@ -222,7 +228,7 @@ app.post('/api/prints', (req, res)=>{
                 new Table([
                     [
                         new Cell(
-                            new Txt(`FPR-018`).font('BarlowCondensed').fontSize(16).margin([755,3]).end,
+                            new Txt(`FPR-018`).font('BarlowCondensed').fontSize(16).margin([755,0]).end,
                         ).end
                     ]
                 ]).layout('noBorders').end
@@ -232,10 +238,8 @@ app.post('/api/prints', (req, res)=>{
         
             pdf.pipe(fs.createWriteStream('documento_test.pdf'));
             pdf.end();
-    
         }
         ImprimirPDF();
-    
     
         // print("C:/Users/administrador.POLINDUSTRIAL/Downloads/Label.pdf").then(console.log);
         const options = {
@@ -246,8 +250,7 @@ app.post('/api/prints', (req, res)=>{
             copies:body.copias
         };
     
-    
-        console.log(body.copias)
+        
         // console.log(printer.getDefaultPrinterName())
         // getDefaultPrinter().then(console.log)
         print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", options).then(console.log);
@@ -257,6 +260,21 @@ app.post('/api/prints', (req, res)=>{
 
    
 
+})
+
+app.get('/api/copy/:orden/:cantidad', (req, res)=>{
+    let orden = req.params.orden;
+    let cantidad = req.params.cantidad;
+    let nombre = `${orden}-${cantidad}.pdf`
+    var path = `\\\\POLIGPCDC01/Poligrafica_Archivos/DEPARTAMENTO DE OPERACIONES/Etiquetas SIO/${nombre}`;
+    setTimeout(() => {
+        fs.copyFile("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", path, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+    }, 1000);
+    console.log('aja que pasa ps')
+    res.json('ok')
 })
 
 app.get('/api/clientes', (req, res)=>{

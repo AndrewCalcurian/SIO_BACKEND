@@ -4,6 +4,8 @@ let Schema = mongoose.Schema;
 
 var LoteSchema = new mongoose.Schema({
     orden: {type: String, required:true},
+    asignacion:{type: String, required:true},
+    cerrado:{type:Boolean},
     material: [
         {
             material:{

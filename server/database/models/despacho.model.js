@@ -49,6 +49,9 @@ let DespachoSchema = new Schema(
             },
             precio:{
                 type:Number,
+            },
+            fecha_prefacturacion:{
+                type:String
             }
         }]
     }

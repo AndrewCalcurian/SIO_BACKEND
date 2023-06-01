@@ -10,6 +10,8 @@ const Grupo = require('../database/models/grupos.model')
 const Cancelacion = require('../database/models/cancelaciones.model')
 const {NuevaOrden } = require('../middlewares/emails/nuevo.email');
 const {SolicitudMateria} = require('../middlewares/emails/solicitudMaterial.email')
+const ordendecompra = require('../database/models/ordendecompra.model');
+
 
 const app = express();
 
@@ -23,10 +25,85 @@ app.get('/api/orden-cerrar/:id', (req, res)=>{
                 err
             });
         }
+        Lotes.find({orden:cerrada.sort}, (err, lotes)=>{
+            for(let i=0;i<lotes.length;i++){
+                Lotes.findByIdAndUpdate(lotes[i]._id, {cerrado:true}, (err, Lote)=>{
+                    if( err ){
+                        return res.status(400).json({
+                            ok:false,
+                            err
+                        });
+                    }
 
-        res.json(cerrada)
+
+                })
+
+            if(i == lotes.length -1){
+
+                res.json(cerrada)
+            }
+            
+            
+            }
+        })
     })
 })
+
+app.post('/api/orden-compra', (req, res)=>{
+    let body = req.body
+
+
+    let orden = new ordendecompra(body).save((err, EscalaDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        console.log(body)
+        res.json(EscalaDB)
+    })
+
+})
+
+app.get('/api/orden-compra', (req, res)=>{
+
+
+    ordendecompra.find({})
+    .populate('cliente') 
+    .populate('productos.producto') 
+    .exec((err, ordenesDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json(ordenesDB)
+    })
+
+})
+
+app.put('/api/orden-compra/:id', (req, res)=>{
+    
+    let id = req.params.id
+    let body = req.body
+
+    ordendecompra.findByIdAndUpdate(id, body, (err, OrdenDeCompraDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json(OrdenDeCompraDB)
+    })
+
+})
+
 
 app.post('/api/orden', (req, res)=>{
 
@@ -83,18 +160,47 @@ app.post('/api/orden', (req, res)=>{
                                                             ok:false,
                                                             err
                                                         });
-                                                    }          
+                                                    } 
+                                                    
+                                                    ordendecompra.findById(body.ordencompra._id, (err, Ordendecomprasbd)=>{
+                                                        if( err ){
+                                                            return res.status(400).json({
+                                                                ok:false,
+                                                                err
+                                                            });
+                                                        } 
+
+                                                        if(!Ordendecomprasbd.productos[body.ProductodeProductos].status){
+                                                            Ordendecomprasbd.productos[body.ProductodeProductos].status = ''
+                                                        }
+
+                                                        let cantidad___ = new Intl.NumberFormat('de-DE').format(resp.cantidad)
+                                                        Ordendecomprasbd.productos[body.ProductodeProductos].status = Ordendecomprasbd.productos[body.ProductodeProductos].status + `${resp.sort} por ${cantidad___} Unds. \n`
+
+                                                        console.log(body.ProductodeProductos)
+                                                        ordendecompra.findByIdAndUpdate(Ordendecomprasbd._id, Ordendecomprasbd, (err, done)=>{
+                                                            if( err ){
+                                                                return res.status(400).json({
+                                                                    ok:false,
+                                                                    err
+                                                                });
+                                                            } 
+
+
+                                                            res.json(resp._id)
+                                                        })
+
+                                                    })
                                                                 
-                                                            NuevaOrden(resp.sort,'Andres','calcurianandres@gmail.com')
-                                                            SolicitudMateria(resp.sort,'test')
-                                                            NuevaOrden(resp.sort,'Luis','luis.malave@poligraficaindustrial.com')
-                                                            NuevaOrden(resp.sort,'Raul', 'raul.diaz@poligraficaindustrial.com')
-                                                            NuevaOrden(resp.sort,'Carlos','carlos.mejias@poligraficaindustrial.com')
-                                                            NuevaOrden(resp.sort,'Enida', 'enida.aponte@poligraficaindustrial.com')
-                                                            NuevaOrden(resp.sort,'Freddy', 'freddy.burgos@poligraficaindustrial.com')
+                                                             NuevaOrden(resp.sort,'Andres','calcurianandres@gmail.com')
+                                                             SolicitudMateria(resp.sort,'test')
+                                                             NuevaOrden(resp.sort,'Luis','luis.malave@poligraficaindustrial.com')
+                                                             NuevaOrden(resp.sort,'Raul', 'raul.diaz@poligraficaindustrial.com')
+                                                             NuevaOrden(resp.sort,'Carlos','carlos.mejias@poligraficaindustrial.com')
+                                                             NuevaOrden(resp.sort,'Enida', 'enida.aponte@poligraficaindustrial.com')
+                                                             NuevaOrden(resp.sort,'Freddy', 'freddy.burgos@poligraficaindustrial.com')
             
                                             
-                                                    res.json(resp._id)
                                                 })
 
 
@@ -106,6 +212,13 @@ app.post('/api/orden', (req, res)=>{
     
 
 });
+
+app.get('/api/reenvio-solicitus/:op', (req, res)=>{
+    let op = req.params.op
+
+    SolicitudMateria(op, 'test')
+    res.json('ok')
+})
 
 app.get('/api/orden-cliente/:cliente', (req, res)=>{
     let cliente = req.params.cliente

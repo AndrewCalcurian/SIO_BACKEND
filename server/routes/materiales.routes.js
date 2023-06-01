@@ -47,7 +47,8 @@ app.post('/api/almacenado', (req, res)=>{
                     codigo:body.codigo,
                     lote:body.lote,
                     cantidad:body.cantidad,
-                    pedido:body.pedido
+                    pedido:body.pedido,
+                    precio:body.precio
                 }
             )
         
@@ -607,7 +608,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,594, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,671, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)
@@ -795,7 +796,18 @@ app.post('/api/material/descuento', (req, res)=>{
                                     // let nulos = materiales.find(null)
                                     if(x == final){
                                         // console.log(solicitados)
+                                        let solicitud__
+                                        if(body.solicitud >= 10){
+                                            solicitud__ = `00${body.solicitud}`
+                                        }
+                                        else if(body.solicitud >= 100){
+                                            solicitud__ = `0${body.solicitud}`
+                                        }
+                                        else if(body.solicitud < 10){
+                                            solicitud__ = `000${body.solicitud}`
+                                        }
                                         const data = new Lote({
+                                            asignacion:solicitud__,
                                             orden:body.orden,
                                             material:material__
                                         }).save();
@@ -855,7 +867,7 @@ app.post('/api/materiales/:id', (req, res)=>{
 })
 
 app.get('/api/devoluciones', (req, res)=>{
-    Lote .find({})
+    Lote .find({ cerrado: { $ne: true } })
          .populate('material.material')
          .exec((err, lotes)=>{
             if( err ){
@@ -867,6 +879,19 @@ app.get('/api/devoluciones', (req, res)=>{
 
             res.json(lotes)
          })
+})
+
+app.put('/api/devoluciones', (req, res)=>{
+    let Body = req.body
+    Lote.findByIdAndUpdate(Body.id, {cerrado:true}, (err, LoteDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+        res.json(LoteDB)
+    })
 })
 
 app.post('/api/materialess/reporte', (req, res)=>{

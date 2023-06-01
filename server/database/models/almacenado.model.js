@@ -23,6 +23,9 @@ let AlmacenadoSchema = new Schema([{
     pedido:{
         type:String,
     },
+    precio:{
+        type:Number
+    },
     fecha:{
         type:Date,
         default:Date.now

@@ -132,8 +132,16 @@ app.post('/api/cotizacion/intervalo/producto/:producto', (req, res)=>{
             
             
             consultaDolar.$monitor().then($=>{
+
+                if(!$){
+                    console.log('err')
+                }
                 
                 MonitorBCV = $['$bcv']
+                res.json({Escala,MonitorBCV})
+            }, error =>{
+                console.log('mensaje de prueba')
+                MonitorBCV = 0,00
                 res.json({Escala,MonitorBCV})
             })
 
