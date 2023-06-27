@@ -3,6 +3,7 @@ const app = express();
 
 const Devolucion = require('../database/models/devolucion.model');
 const Almacenado = require('../database/models/almacenado.model');
+const Lote = require('../database/models/lotes.model')
 
 app.get('/api/devolucion', (req, res)=>{
 
@@ -99,5 +100,40 @@ app.put('/api/devoluciones/:id', (req, res)=>{
     })
 
 });
+
+
+app.get('/devolucion/:id', (req, res)=>{
+    let id = req.params.id
+    Lote.find({_id:id}, (err, Lote)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+
+        for(let i=0;i<Lote[0].material.length;i++){
+
+            let mat_ = Lote[0].material[i]
+
+            Almacenado.findOneAndUpdate({lote:mat_.lote, codigo:mat_.codigo}, {cantidad:mat_.EA_Cantidad}, (err, almacenDB)=>{
+                if( err ){
+                    return res.status(400).json({
+                        ok:false,
+                        err
+                    });
+                }
+
+                console.log(almacenDB.cantidad, mat_.EA_Cantidad)
+            })
+
+            // console.log(i+1, mat_.lote, mat_.codigo, mat_.EA_Cantidad)
+        }
+
+        res.json({ok:true})
+
+    })
+})
 
 module.exports = app;

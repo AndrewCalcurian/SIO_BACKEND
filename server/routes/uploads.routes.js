@@ -26,7 +26,7 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
     }
 
     //validad tipo
-    let tipoValido = ['errors', 'usuarios','producto'];
+    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo'];
     if( tipoValido.indexOf( tipo ) < 0 ){
         return res.status( 400 ).json({
             ok:false,
@@ -66,18 +66,142 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
 
         if(tipo === 'producto'){
             ImagenProducto(id, res, nombreArchivo);
-        }else{
-            ImagenProducto(id, res, nombreArchivo);
+        }else if(tipo === 'despacho'){
+            ImagenDespacho(id, res, nombreArchivo);
+        }else if(tipo === 'distribucion'){
+            ImagenDistribucion(id, res, nombreArchivo);
+        }else if(tipo === 'aereo'){
+            ImagenAereo(id, res, nombreArchivo);
         }
 
     });
 
 });
 
+function ImagenAereo(id, res,nombreArchivo){
+
+    Producto.findById(id,(err,usuarioDB)=>{
+        if( err ){
+            borrarArchivo(nombreArchivo, 'aereo')
+            return res.status(500).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            borrarArchivo(nombreArchivo, 'aereo')
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message: 'usuario no existe'
+                }
+            });
+        }
+        
+        borrarArchivo(usuarioDB.aereo, 'aereo')
+
+        usuarioDB.aereo = nombreArchivo;
+
+        usuarioDB.save((err, imageUpdated)=>{
+
+            res.json({
+                ok:true,
+                usuario:usuarioDB,
+                img:nombreArchivo
+            })
+
+
+        });
+
+    });
+
+}
+
+function ImagenDistribucion(id, res,nombreArchivo){
+
+    Producto.findById(id,(err,usuarioDB)=>{
+        if( err ){
+            borrarArchivo(nombreArchivo, 'distribucion')
+            return res.status(500).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            borrarArchivo(nombreArchivo, 'distribucion')
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message: 'usuario no existe'
+                }
+            });
+        }
+        
+        borrarArchivo(usuarioDB.distribucion, 'distribucion')
+
+        usuarioDB.distribucion = nombreArchivo;
+
+        usuarioDB.save((err, imageUpdated)=>{
+
+            res.json({
+                ok:true,
+                usuario:usuarioDB,
+                img:nombreArchivo
+            })
+
+
+        });
+
+    });
+
+}
+
+function ImagenDespacho(id, res,nombreArchivo){
+
+    Producto.findById(id,(err,usuarioDB)=>{
+        if( err ){
+            borrarArchivo(nombreArchivo, 'despacho')
+            return res.status(500).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            borrarArchivo(nombreArchivo, 'despacho')
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message: 'usuario no existe'
+                }
+            });
+        }
+        
+        borrarArchivo(usuarioDB.paletizado, 'despacho')
+
+        usuarioDB.paletizado = nombreArchivo;
+
+        usuarioDB.save((err, imageUpdated)=>{
+
+            res.json({
+                ok:true,
+                usuario:usuarioDB,
+                img:nombreArchivo
+            })
+
+
+        });
+
+    });
+
+}
+
 
 function ImagenProducto(id, res,nombreArchivo){
 
-    Producto.findById(id,(err,usuarioDB)=>{
+    Producto.findById(id,(err,productoDB)=>{
         if( err ){
             borrarArchivo(nombreArchivo, 'producto')
             return res.status(500).json({
@@ -86,7 +210,7 @@ function ImagenProducto(id, res,nombreArchivo){
             });
         }
 
-        if(!usuarioDB){
+        if(!productoDB){
             borrarArchivo(nombreArchivo, 'producto')
             return res.status(400).json({
                 ok:false,
@@ -96,15 +220,15 @@ function ImagenProducto(id, res,nombreArchivo){
             });
         }
         
-        borrarArchivo(usuarioDB.img, 'producto')
+        borrarArchivo(productoDB.img, 'producto')
 
-        usuarioDB.img = nombreArchivo;
+        productoDB.img = nombreArchivo;
 
-        usuarioDB.save((err, imageUpdated)=>{
+        productoDB.save((err, imageUpdated)=>{
 
             res.json({
                 ok:true,
-                usuario:usuarioDB,
+                usuario:productoDB,
                 img:nombreArchivo
             })
 

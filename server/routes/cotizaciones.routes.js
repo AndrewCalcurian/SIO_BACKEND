@@ -141,7 +141,7 @@ app.post('/api/cotizacion/intervalo/producto/:producto', (req, res)=>{
                 res.json({Escala,MonitorBCV})
             }, error =>{
                 console.log('mensaje de prueba')
-                MonitorBCV = 0,00
+                // MonitorBCV = 0,00
                 res.json({Escala,MonitorBCV})
             })
 
@@ -173,7 +173,6 @@ app.put('/api/facturado', (req, res)=>{
 app.post('/api/incremento/pre', (req, res)=>{
     
     let body = req.body
-    // console.log(body)
 
     Despacho.findOne({"despacho._id":body._id}, (err, DespachoDB)=>{
 
@@ -186,6 +185,7 @@ app.post('/api/incremento/pre', (req, res)=>{
                 DespachoDB.despacho[i].tasa = body.tasa
                 DespachoDB.despacho[i].precio = body.precio
                 DespachoDB.despacho[i].escala = body.escala
+                DespachoDB.despacho[i].cantidad = body.cantidad
 
                 Despacho.findOneAndUpdate({_id:DespachoDB._id}, DespachoDB, (err, DespachoDBS)=>{
                     console.log(DespachoDBS)

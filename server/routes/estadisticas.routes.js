@@ -429,6 +429,7 @@ Lotes.find(orden__)
                 }else{
                     cantidad = adcionalesDB[n].material[n_i].cantidad
                 }
+                if(material_adicional){
                 if(material_adicional.grupo == '61fd54e2d9115415a4416f17'){
                     if(orden === '#'){
                         switch(material_adicional.color){
@@ -589,7 +590,7 @@ Lotes.find(orden__)
                                              Cantidad:Number(cantidad)})
                         }
 
-                }
+                }}
             }
         // if(adcionalesDB[n].material.material.grupo == '61fd54e2d9115415a4416f17'){
         //         console.log('yes')

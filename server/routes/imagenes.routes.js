@@ -15,7 +15,7 @@ app.get('/api/imagen/:tipo/:img', (req, res)=>{
     if(fs.existsSync(pathImg)){
         res.sendFile(pathImg)
     }else{
-        let noImage = path.resolve(__dirname, '../assets/no-image.png');
+        let noImage = path.resolve(__dirname, '../assets/no-image.jpg');
         res.sendFile(noImage);
     }
 

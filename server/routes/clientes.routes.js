@@ -58,7 +58,7 @@ app.post('/api/prints', (req, res)=>{
                         new Cell(
                             await new Img(__dirname + '/images/Logo-etiquetas.png', true).width(250).build()
                         ).end,
-                        new Cell(new QR(`${body.value}`).fit(120).alignment('center').end).end,
+                        new Cell(new QR(`${body.value}`).fit(130).alignment('center').end).end,
                         new Cell(
                             new Table([
                                 [
@@ -161,7 +161,7 @@ app.post('/api/prints', (req, res)=>{
                                     new Txt('COD. ESPECIFICACIÓN:').font('BarlowCondensed').fontSize(17).end,
                                 ],
                                 [
-                                    new Txt(`E-${body.orden.cliente.codigo}-${body.orden.producto.codigo}-${body.orden.producto.edicion}-${body.orden.producto.version}`).font('BarlowCondensed').fontSize(38).end,
+                                    new Txt(`E-${body.orden.cliente.codigo}-${body.orden.producto.codigo}-${body.orden.producto.version}-${body.orden.producto.edicion}`).font('BarlowCondensed').fontSize(38).end,
                                 ]
                             ]).layout('noBorders').end 
                         ).end,
@@ -248,13 +248,17 @@ app.post('/api/prints', (req, res)=>{
             paperSize:'USER',
             orientation : 'portrait',
             copies:body.copias
+            // copies:23
         };
     
         
         // console.log(printer.getDefaultPrinterName())
         // getDefaultPrinter().then(console.log)
-        print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", options).then(console.log);
-        res.json('ok')
+        setTimeout(() => {
+            print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", options).then(console.log);
+            console.log('aja')
+            res.json('ok')
+        },2000);
     })
     
 

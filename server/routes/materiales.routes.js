@@ -223,7 +223,7 @@ app.get('/api/almacenado', (req, res)=>{
 
     const options = { sort: ['material.nombre'] };
 
-    Almacenado.find({cantidad:{ $gt:0}})
+    Almacenado.find({$and:[{cantidad:{ $gt:0}}, {cantidad:{$ne:'0.00'}}]})
                 .populate({
                     path: 'material',
                     populate: {
@@ -406,6 +406,23 @@ app.put('/api/material/:id', (req, res)=>{
     let body = req.body;
 
     Material.findByIdAndUpdate(id, body, (err, materialDB) =>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json('exito')
+    })
+})
+
+app.put('/api/materiales/:id', (req, res)=>{
+
+    const id = req.params.id;
+    let body = req.body;
+
+    Material.updateMany(body.info, body.data, (err, materialDB) =>{
         if( err ){
             return res.status(400).json({
                 ok:false,
@@ -831,6 +848,22 @@ app.post('/api/material/descuento', (req, res)=>{
         // //console.log(i)
     }
 
+})
+
+app.put('/api/agregar-formula/:id', (req, res)=>{
+    let id = req.params.id;
+    const body = req.body
+
+    Material.findByIdAndUpdate(id, {preparacion:body}, (err, MaterialDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json(MaterialDB)
+    })
 })
 
 app.post('/api/materiales/:id', (req, res)=>{
