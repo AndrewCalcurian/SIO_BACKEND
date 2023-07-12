@@ -87,34 +87,43 @@ app.get('/api/almacenados/:id', (req, res)=>{
     Material.findById(id, (err, materialDBB)=>{
         if(materialDBB.presentacion === 'Caja'){
             Material.find({presentacion:'Caja', nombre:materialDBB.nombre}, (err, cajas)=>{
-                for(let i=0;i<cajas.length;i++){
-                    Almacenado.find({material:cajas[i]._id})
-                         .populate({
-                           path: 'material',
-                           populate: {
-                           path: 'grupo'
-                             }
-                         })
-                        .exec((err, Almacen)=>{
                 if( err ){
                     return res.status(400).json({
                         ok:false,
                         err
                     });
                 }
+        
+                console.log(cajas)
+                res.json(cajas)
+            //     for(let i=0;i<cajas.length;i++){
+            //         Almacenado.find({material:cajas[i]._id})
+            //              .populate({
+            //                path: 'material',
+            //                populate: {
+            //                path: 'grupo'
+            //                  }
+            //              })
+            //             .exec((err, Almacen)=>{
+            //     if( err ){
+            //         return res.status(400).json({
+            //             ok:false,
+            //             err
+            //         });
+            //     }
                 
-                if(Almacen[0]){
-                    almacenado.push(Almacen[0])
-                    console.log(almacenado)
-                }
-                if(i == cajas.length -1){
-                    console.log(almacenado)
-                    res.json(almacenado)
-                }
-            })
+            //     if(Almacen[0]){
+            //         almacenado.push(Almacen[0])
+            //         console.log(almacenado)
+            //     }
+            //     if(i == cajas.length -1){
+            //         console.log(almacenado)
+            //         res.json(almacenado)
+            //     }
+            // })
 
 
-                }
+            //     }
 
             })
         }else{
@@ -625,7 +634,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,671, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,824, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)

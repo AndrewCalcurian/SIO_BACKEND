@@ -8,7 +8,8 @@ const Gestiones = require('../database/models/gestiones.model')
 const Requisicion = require('../database/models/requisicion.model')
 const Devolucion = require('../database/models/devolucion.model')
 const Lotes = require('../database/models/lotes.model')
-const moment = require('moment')
+const moment = require('moment');
+const Almacenado = require('../database/models/almacenado.model');
 
 app.get('/api/estadisticas/maquinas', (req,res)=>{
 
@@ -96,8 +97,8 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
         orden__ = {orden:body.op}
 
     }else{
-        sort = {fecha:{$gte:desde,$lt:hasta}}
-        orden__ = {fecha:{$gte:desde,$lt:hasta}}
+        sort = {fecha:{$gte:desde,$lte:hasta}}
+        orden__ = {fecha:{$gte:desde,$lte:hasta}}
         // Orden.find({fecha:{
     //     $gte:desde,
     //     $lt: hasta
@@ -815,5 +816,203 @@ res.json(data)
     // })
 
 })
+
+
+app.post('/api/reporte-inventario', (req, res)=>{
+    let body = req.body
+
+    let desde = moment(body.desde)
+    let hasta = moment(body.hasta).add(1, 'days');
+    let grupo = body.grupo
+    let muestras = []
+
+    Almacenado.find({fecha:{$gte:desde, $lte:hasta}})
+        .populate('material')
+        .exec((err, almacenDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        
+        for(let i=0; i<almacenDB.length;i++){
+                Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
+                .populate('material.material')
+                .exec((err, loteDB)=>{
+                        if(loteDB[0]){
+                            for(let n=0;n<loteDB[0].material.length;n++){
+                                if(loteDB[0].material[n].lote === almacenDB[i].lote){
+                                    // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
+                                    if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
+                                    // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
+                                        if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
+                                        // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
+                                        // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
+                                            muestras.push({nombre:`${loteDB[0].material[n].material.nombre}`,gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
+                                        }
+                                    }
+                                }             
+                            }
+                        }else{
+                            muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+                        }
+                })
+
+            if(i === almacenDB.length -1 ){
+                setTimeout(() => {
+                    res.json(muestras)
+                  }, 2000);
+            }
+        
+        }
+    })
+
+
+})
+
+app.post('/api/reporte-salidas', (req, res)=>{
+    let body = req.body
+
+    let desde = moment(body.desde)
+    let hasta = moment(body.hasta).add(1, 'days');
+    let muestras = []
+
+    Lotes.find({fecha:{$gte:desde, $lte:hasta}})
+        .populate('material.material')
+        .exec((err, salidas)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        console.log(salidas)
+        res.json(salidas)
+    })
+})
+
+app.post('/api/reporte-devoluciones', (req, res)=>{
+    let body = req.body
+
+    let desde = moment(body.desde)
+    let hasta = moment(body.hasta).add(1, 'days');
+    let muestras = []
+
+    Devolucion.find({fecha:{$gte:desde, $lte:hasta}})
+        .populate('filtrado.material')
+        .exec((err, devoluciones)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        console.log(devoluciones)
+        res.json(devoluciones)
+    })
+})
+
+app.post('/api/corte-de-fecha', (req, res)=>{
+    let body = req.body
+
+    let desde = moment(body.desde)
+    let hasta = moment(body.hasta).add(1, 'days');
+
+    let muestras = []
+
+    Almacenado.find({fecha:{$gte:desde}})
+        .populate('material')
+        .exec((err, almacenDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        
+        for(let i=0; i<almacenDB.length;i++){
+                Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
+                .populate('material.material')
+                .exec((err, loteDB)=>{
+                        if(loteDB[0]){
+                            for(let n=0;n<loteDB[0].material.length;n++){
+                                if(loteDB[0].material[n].lote === almacenDB[i].lote){
+                                    // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
+                                    if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
+                                    // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
+                                        if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
+                                        // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
+                                        // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
+                                            muestras.push({nombre:loteDB[0].material[n].material.nombre, gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
+                                        }
+                                    }
+                                }             
+                            }
+                        }else{
+                            muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+                        }
+                })
+
+            if(i === almacenDB.length -1 ){
+                setTimeout(() => {
+                    res.json(muestras)
+                  }, 4000);
+            }
+        
+        }
+    })
+    
+})
+
+app.post('/api/corte-salida', (req, res)=>{
+    let body = req.body
+
+    let desde = moment(body.desde)
+    let hasta = moment(body.hasta).add(1, 'days');
+    let muestras = []
+
+    Lotes.find({fecha:{$gte:desde}})
+        .populate('material.material')
+        .exec((err, salidas)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        console.log(salidas)
+        res.json(salidas)
+    })
+})
+
+app.post('/api/corte-devolucion', (req, res)=>{
+    let body = req.body
+
+    let desde = moment(body.desde)
+    let hasta = moment(body.hasta).add(1, 'days');
+    let muestras = []
+
+    Devolucion.find({fecha:{$gte:desde}})
+        .populate('filtrado.material')
+        .exec((err, devoluciones)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        console.log(devoluciones)
+        res.json(devoluciones)
+    })
+})
+
+
 
 module.exports = app;
