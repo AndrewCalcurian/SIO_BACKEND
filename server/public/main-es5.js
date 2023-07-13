@@ -6813,19 +6813,19 @@
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @angular/forms */
-      "3Pt+");
+      var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @angular/common */
-      "ofXK");
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/forms */
+      "3Pt+");
 
-      function ReportesComponent_option_21_Template(rf, ctx) {
+      function ReportesComponent_div_17_option_4_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 25);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 24);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -6833,29 +6833,147 @@
         }
 
         if (rf & 2) {
-          var grupo_r5 = ctx.$implicit;
+          var grupo_r9 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", grupo_r5._id);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", grupo_r9._id);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](grupo_r5.nombre);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](grupo_r9.nombre);
         }
       }
 
-      function ReportesComponent_div_48_Template(rf, ctx) {
+      function ReportesComponent_div_17_Template(rf, ctx) {
+        if (rf & 1) {
+          var _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "select", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ReportesComponent_div_17_Template_select_ngModelChange_1_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11);
+
+            var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+            return ctx_r10.grupo = $event;
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "option", 22);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Seleccione Grupo");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, ReportesComponent_div_17_option_4_Template, 2, 2, "option", 23);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r0.grupo);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.grupos);
+        }
+      }
+
+      function ReportesComponent_div_37_Template(rf, ctx) {
+        if (rf & 1) {
+          var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 25);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReportesComponent_div_37_Template_button_click_1_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13);
+
+            var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+            var _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](25);
+
+            var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](32);
+
+            return ctx_r12.realizarBusqueda(_r1.value, _r2.value);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 26);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "i", 27);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Buscar ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+      }
+
+      function ReportesComponent_div_38_Template(rf, ctx) {
+        if (rf & 1) {
+          var _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 25);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReportesComponent_div_38_Template_button_click_1_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15);
+
+            var ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+            var _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](25);
+
+            var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](32);
+
+            return ctx_r14.getDespachosFacturados(_r1.value, _r2.value);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 26);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "i", 27);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Buscar ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+      }
+
+      function ReportesComponent_div_40_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 26);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 28);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Cargando...");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "progress", 27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "progress", 29);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "1%");
 
@@ -6867,7 +6985,7 @@
         }
       }
 
-      function ReportesComponent_div_49_tr_20_ng_container_3_Template(rf, ctx) {
+      function ReportesComponent_div_41_tr_20_ng_container_3_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
@@ -6877,15 +6995,15 @@
         }
 
         if (rf & 2) {
-          var material_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+          var material_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate4"](" (", material_r7.ancho, "x", material_r7.largo, ") ", material_r7.gramaje, "g, cal:", material_r7.calibre, " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate4"](" (", material_r17.ancho, "x", material_r17.largo, ") ", material_r17.gramaje, "g, cal:", material_r17.calibre, " ");
         }
       }
 
-      function ReportesComponent_div_49_tr_20_ng_container_5_Template(rf, ctx) {
+      function ReportesComponent_div_41_tr_20_ng_container_5_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
@@ -6895,17 +7013,17 @@
         }
 
         if (rf & 2) {
-          var i_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index;
+          var i_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index;
 
-          var ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", ctx_r10.puntoYcoma(ctx_r10.saldos_iniciales[i_r8]), " ", ctx_r10.unidades[i_r8], " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", ctx_r20.puntoYcoma(ctx_r20.saldos_iniciales[i_r18]), " ", ctx_r20.unidades[i_r18], " ");
         }
       }
 
-      function ReportesComponent_div_49_tr_20_ng_container_6_Template(rf, ctx) {
+      function ReportesComponent_div_41_tr_20_ng_container_6_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
@@ -6915,17 +7033,17 @@
         }
 
         if (rf & 2) {
-          var i_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index;
+          var i_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index;
 
-          var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" 0 ", ctx_r11.unidades[i_r8], " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" 0 ", ctx_r21.unidades[i_r18], " ");
         }
       }
 
-      function ReportesComponent_div_49_tr_20_Template(rf, ctx) {
+      function ReportesComponent_div_41_tr_20_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
 
@@ -6933,15 +7051,15 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ReportesComponent_div_49_tr_20_ng_container_3_Template, 2, 4, "ng-container", 32);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ReportesComponent_div_41_tr_20_ng_container_3_Template, 2, 4, "ng-container", 34);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, ReportesComponent_div_49_tr_20_ng_container_5_Template, 2, 2, "ng-container", 32);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, ReportesComponent_div_41_tr_20_ng_container_5_Template, 2, 2, "ng-container", 34);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, ReportesComponent_div_49_tr_20_ng_container_6_Template, 2, 1, "ng-container", 32);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, ReportesComponent_div_41_tr_20_ng_container_6_Template, 2, 1, "ng-container", 34);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6973,52 +7091,52 @@
         }
 
         if (rf & 2) {
-          var material_r7 = ctx.$implicit;
-          var i_r8 = ctx.index;
+          var material_r17 = ctx.$implicit;
+          var i_r18 = ctx.index;
 
-          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", material_r7.nombre, " (", material_r7.marca, ") ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", material_r17.nombre, " (", material_r17.marca, ") ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.grupo == "61f92a1f2126d717f004cca6");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.grupo == "61f92a1f2126d717f004cca6");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.saldos_iniciales[i_r8] > 0);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.saldos_iniciales[i_r18] > 0);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.saldos_iniciales[i_r8] <= 0);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.saldos_iniciales[i_r18] <= 0);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r6.puntoYcoma(material_r7.cantidad), " ", ctx_r6.unidades[i_r8], "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r16.puntoYcoma(material_r17.cantidad), " ", ctx_r16.unidades[i_r18], "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r6.puntoYcoma(material_r7.salida), " ", ctx_r6.unidades[i_r8], "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r16.puntoYcoma(material_r17.salida), " ", ctx_r16.unidades[i_r18], "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r6.puntoYcoma(material_r7.devoluciones), " ", ctx_r6.unidades[i_r8], "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r16.puntoYcoma(material_r17.devoluciones), " ", ctx_r16.unidades[i_r18], "");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", ctx_r6.puntoYcoma(ctx_r6.saldos_finales[i_r8]), " ", ctx_r6.unidades[i_r8], " ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", ctx_r16.puntoYcoma(ctx_r16.saldos_finales[i_r18]), " ", ctx_r16.unidades[i_r18], " ");
         }
       }
 
-      function ReportesComponent_div_49_Template(rf, ctx) {
+      function ReportesComponent_div_41_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 28);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 30);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
 
@@ -7028,41 +7146,41 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "table", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "table", 31);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "tr");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "th", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "th", 32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Material");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "th", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "th", 32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Saldo inicial");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "th", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "th", 32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Entradas");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "th", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "th", 32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Salidas");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "th", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "th", 32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Devoluciones");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "th", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "th", 32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Saldo total");
 
@@ -7070,7 +7188,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, ReportesComponent_div_49_tr_20_Template, 15, 13, "tr", 31);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, ReportesComponent_div_41_tr_20_Template, 15, 13, "tr", 33);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -7080,11 +7198,11 @@
         }
 
         if (rf & 2) {
-          var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          var _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](29);
+          var _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](25);
 
-          var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](36);
+          var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](32);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
@@ -7092,7 +7210,336 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r4.materiales);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r6.materiales);
+        }
+      }
+
+      function ReportesComponent_div_42_div_2_ng_container_23_ng_container_1_ng_container_4_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+        }
+
+        if (rf & 2) {
+          var asignacion_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" (", asignacion_r30.material.ancho, "x", asignacion_r30.material.largo, ") ");
+        }
+      }
+
+      function ReportesComponent_div_42_div_2_ng_container_23_ng_container_1_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, ReportesComponent_div_42_div_2_ng_container_23_ng_container_1_ng_container_4_Template, 2, 2, "ng-container", 34);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+        }
+
+        if (rf & 2) {
+          var asignacion_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+          var ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", asignacion_r30.material.nombre, " ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", asignacion_r30.material.ancho);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r31.puntoYcoma(asignacion_r30.cantidad), "", asignacion_r30.material.unidad, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r31.puntoYcoma(asignacion_r30.devolucion), "", asignacion_r30.material.unidad, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r31.puntoYcoma((asignacion_r30.cantidad - asignacion_r30.devolucion).toFixed(2)), "", asignacion_r30.material.unidad, "");
+        }
+      }
+
+      function ReportesComponent_div_42_div_2_ng_container_23_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ReportesComponent_div_42_div_2_ng_container_23_ng_container_1_Template, 11, 8, "ng-container", 34);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+        }
+
+        if (rf & 2) {
+          var asignacion_r30 = ctx.$implicit;
+
+          var factura_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", asignacion_r30.orden === factura_r27.op);
+        }
+      }
+
+      function ReportesComponent_div_42_div_2_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 30);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "b");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Documento:");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fecha: ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "table", 31);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "thead");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "tr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "th", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Materiales");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "th", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Asignaci\xF3nes");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "th", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Devoluciones");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "th", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Total");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "tbody");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](23, ReportesComponent_div_42_div_2_ng_container_23_Template, 2, 1, "ng-container", 33);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var factura_r27 = ctx.$implicit;
+          var i_r28 = ctx.index;
+
+          var ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("OP: ", factura_r27.op, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", factura_r27.documento, " ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r25.fechas[i_r28], " ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r25.asignaciones);
+        }
+      }
+
+      function ReportesComponent_div_42_tr_15_ng_container_3_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+        }
+
+        if (rf & 2) {
+          var general_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" (", general_r36.material.ancho, "x", general_r36.material.largo, ") ");
+        }
+      }
+
+      function ReportesComponent_div_42_tr_15_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ReportesComponent_div_42_tr_15_ng_container_3_Template, 2, 2, "ng-container", 34);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var general_r36 = ctx.$implicit;
+
+          var ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", general_r36.material.nombre, " ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", general_r36.material.ancho);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx_r26.puntoYcoma(general_r36.total), " ", general_r36.material.unidad, "");
+        }
+      }
+
+      function ReportesComponent_div_42_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ReportesComponent_div_42_div_2_Template, 25, 4, "div", 33);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 30);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Total");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "table", 31);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "thead");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "tr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "th", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Material");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "th", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Total");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "tbody");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, ReportesComponent_div_42_tr_15_Template, 6, 4, "tr", 33);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r7.facturados);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r7.general);
         }
       }
 
@@ -7111,6 +7558,11 @@
           this.saldos_iniciales = [];
           this.saldos_finales = [];
           this.unidades = [];
+          this.facturados = [];
+          this.asignaciones = [];
+          this.devoluciones = [];
+          this.general = [];
+          this.fechas = [];
         }
 
         _createClass(ReportesComponent, [{
@@ -7179,9 +7631,105 @@
             return n = new Intl.NumberFormat('de-DE').format(n);
           }
         }, {
+          key: "Devoluciones",
+          value: function Devoluciones(ordenes) {
+            var _this19 = this;
+
+            this.api.postBuscarDevolucionesPorFecha(ordenes).subscribe(function (resp) {
+              _this19.devoluciones = resp;
+            });
+          }
+        }, {
+          key: "getDespachosFacturados",
+          value: function getDespachosFacturados(desde, hasta) {
+            var _this20 = this;
+
+            this.asignaciones = [];
+            this.cargando = true;
+            this.facturados = [];
+            var ordenes = [];
+            this.general = [];
+            this.fechas = [];
+            this.api.getDespachoFechas_(desde, hasta).subscribe(function (resp) {
+              for (var i = 0; i < resp.length; i++) {
+                for (var n = 0; n < resp[i].despacho.length; n++) {
+                  _this20.facturados.push(resp[i].despacho[n]);
+
+                  _this20.fechas.push(resp[i].fecha);
+
+                  ordenes.push(resp[i].despacho[n].op);
+
+                  if (i === resp.length - 1) {
+                    if (n === resp[i].despacho.length - 1) {
+                      _this20.api.postBuscarLoteporFecha(ordenes).subscribe(function (resp) {
+                        if (_this20.asignaciones.length < 1) {
+                          _this20.asignaciones = resp;
+                        }
+
+                        console.log(_this20.asignaciones);
+
+                        _this20.api.postBuscarDevolucionesPorFecha(ordenes).subscribe(function (resp) {
+                          _this20.devoluciones = resp;
+
+                          var _loop2 = function _loop2(_n) {
+                            var index = _this20.asignaciones.findIndex(function (x) {
+                              return x.orden === _this20.devoluciones[_n].orden && x.material._id === _this20.devoluciones[_n].material._id;
+                            });
+
+                            if (index >= 0) {
+                              console.log(_this20.devoluciones[_n].cantidad);
+                              console.log(_this20.asignaciones[index].devolucion);
+                              _this20.asignaciones[index].devolucion = Number(_this20.asignaciones[index].devolucion) + Number(_this20.devoluciones[_n].cantidad);
+                              console.log(_this20.asignaciones[index]);
+                            }
+
+                            if (_n === _this20.devoluciones.length - 1) {
+                              var _loop3 = function _loop3(iterator) {
+                                var index__ = _this20.general.findIndex(function (x) {
+                                  return x.material._id === _this20.asignaciones[iterator].material._id;
+                                });
+
+                                if (index__ < 0) {
+                                  _this20.general.push({
+                                    material: _this20.asignaciones[iterator].material,
+                                    total: (_this20.asignaciones[iterator].cantidad - _this20.asignaciones[iterator].devolucion).toFixed(2)
+                                  });
+
+                                  console.log(_this20.general);
+                                } else {
+                                  _this20.general[index__].total = Number(_this20.general[index__].total) + Number((_this20.asignaciones[iterator].cantidad - _this20.asignaciones[iterator].devolucion).toFixed(2));
+                                  _this20.general[index__].total = _this20.general[index__].total.toFixed(2);
+                                }
+
+                                _this20.general = _this20.general.sort(function (a, b) {
+                                  if (a.material.nombre.toLowerCase() < b.material.nombre.toLowerCase()) return -1;
+                                  if (a.material.nombre.toLowerCase() > b.material.nombre.toLowerCase()) return 1;
+                                  return 0;
+                                });
+                                _this20.cargando = false;
+                              };
+
+                              for (var iterator = 0; iterator < _this20.asignaciones.length; iterator++) {
+                                _loop3(iterator);
+                              }
+                            }
+                          };
+
+                          for (var _n = 0; _n < _this20.devoluciones.length; _n++) {
+                            _loop2(_n);
+                          }
+                        });
+                      });
+                    }
+                  }
+                }
+              }
+            });
+          }
+        }, {
           key: "realizarBusqueda",
           value: function realizarBusqueda(desde, hasta) {
-            var _this19 = this;
+            var _this21 = this;
 
             this.materiales = [];
 
@@ -7231,14 +7779,14 @@
               var materials__ = resp;
               console.log(materials__);
 
-              var _loop2 = function _loop2(i) {
-                if (materials__[i].grupo === _this19.grupo) {
-                  var index = _this19.materiales.findIndex(function (x) {
+              var _loop4 = function _loop4(i) {
+                if (materials__[i].grupo === _this21.grupo) {
+                  var index = _this21.materiales.findIndex(function (x) {
                     return x.nombre === materials__[i].nombre && x.marca === materials__[i].marca && x.ancho === materials__[i].ancho && x.largo === materials__[i].largo && x.calibre === materials__[i].calibre && x.gramaje === materials__[i].gramaje;
                   });
 
                   if (index < 0) {
-                    _this19.materiales.push({
+                    _this21.materiales.push({
                       nombre: materials__[i].nombre,
                       ancho: materials__[i].ancho,
                       largo: materials__[i].largo,
@@ -7250,26 +7798,26 @@
                       devoluciones: 0
                     });
                   } else {
-                    _this19.materiales[index].cantidad = Number(_this19.materiales[index].cantidad) + Number(materials__[i].cantidad);
-                    _this19.materiales[index].cantidad = _this19.materiales[index].cantidad.toFixed(2);
+                    _this21.materiales[index].cantidad = Number(_this21.materiales[index].cantidad) + Number(materials__[i].cantidad);
+                    _this21.materiales[index].cantidad = _this21.materiales[index].cantidad.toFixed(2);
                   }
                 }
               };
 
               for (var i = 0; i < materials__.length; i++) {
-                _loop2(i);
+                _loop4(i);
               }
 
-              _this19.api.postSalidas(data).subscribe(function (resp) {
-                var _loop3 = function _loop3(_i2) {
-                  var _loop12 = function _loop12(n) {
-                    if (resp[_i2].material[n].material.grupo === _this19.grupo) {
-                      var index = _this19.materiales.findIndex(function (x) {
+              _this21.api.postSalidas(data).subscribe(function (resp) {
+                var _loop5 = function _loop5(_i2) {
+                  var _loop14 = function _loop14(n) {
+                    if (resp[_i2].material[n].material.grupo === _this21.grupo) {
+                      var index = _this21.materiales.findIndex(function (x) {
                         return x.nombre === resp[_i2].material[n].material.nombre && x.marca === resp[_i2].material[n].material.marca && x.ancho === resp[_i2].material[n].material.ancho && x.largo === resp[_i2].material[n].material.largo && x.calibre === resp[_i2].material[n].material.calibre && x.gramaje === resp[_i2].material[n].material.gramaje;
                       });
 
                       if (index < 0) {
-                        _this19.materiales.push({
+                        _this21.materiales.push({
                           nombre: resp[_i2].material[n].material.nombre,
                           ancho: resp[_i2].material[n].material.ancho,
                           largo: resp[_i2].material[n].material.largo,
@@ -7281,31 +7829,31 @@
                           devoluciones: 0
                         });
                       } else {
-                        _this19.materiales[index].salida = Number(_this19.materiales[index].salida) + Number(resp[_i2].material[n].cantidad);
-                        _this19.materiales[index].salida = _this19.materiales[index].salida.toFixed(2);
+                        _this21.materiales[index].salida = Number(_this21.materiales[index].salida) + Number(resp[_i2].material[n].cantidad);
+                        _this21.materiales[index].salida = _this21.materiales[index].salida.toFixed(2);
                       }
                     }
                   };
 
                   for (var n = 0; n < resp[_i2].material.length; n++) {
-                    _loop12(n);
+                    _loop14(n);
                   }
                 };
 
                 for (var _i2 = 0; _i2 < resp.length; _i2++) {
-                  _loop3(_i2);
+                  _loop5(_i2);
                 }
 
-                _this19.api.postDevoluciones(data).subscribe(function (resp) {
-                  var _loop4 = function _loop4(_i3) {
-                    var _loop11 = function _loop11(n) {
-                      if (resp[_i3].filtrado[n].material.grupo === _this19.grupo) {
-                        var index = _this19.materiales.findIndex(function (x) {
+                _this21.api.postDevoluciones(data).subscribe(function (resp) {
+                  var _loop6 = function _loop6(_i3) {
+                    var _loop13 = function _loop13(n) {
+                      if (resp[_i3].filtrado[n].material.grupo === _this21.grupo) {
+                        var index = _this21.materiales.findIndex(function (x) {
                           return x.nombre === resp[_i3].filtrado[n].material.nombre && x.marca === resp[_i3].filtrado[n].material.marca && x.ancho === resp[_i3].filtrado[n].material.ancho && x.largo === resp[_i3].filtrado[n].material.largo && x.calibre === resp[_i3].filtrado[n].material.calibre && x.gramaje === resp[_i3].filtrado[n].material.gramaje;
                         });
 
                         if (index < 0) {
-                          _this19.materiales.push({
+                          _this21.materiales.push({
                             nombre: resp[_i3].filtrado[n].material.nombre,
                             ancho: resp[_i3].filtrado[n].material.ancho,
                             largo: resp[_i3].filtrado[n].material.largo,
@@ -7317,33 +7865,33 @@
                             devoluciones: resp[_i3].filtrado[n].cantidad
                           });
                         } else {
-                          _this19.materiales[index].devoluciones = Number(_this19.materiales[index].devoluciones) + Number(resp[_i3].filtrado[n].cantidad);
-                          _this19.materiales[index].devoluciones = _this19.materiales[index].devoluciones.toFixed(2);
+                          _this21.materiales[index].devoluciones = Number(_this21.materiales[index].devoluciones) + Number(resp[_i3].filtrado[n].cantidad);
+                          _this21.materiales[index].devoluciones = _this21.materiales[index].devoluciones.toFixed(2);
                         }
                       }
                     };
 
                     for (var n = 0; n < resp[_i3].filtrado.length; n++) {
-                      _loop11(n);
+                      _loop13(n);
                     }
                   };
 
                   for (var _i3 = 0; _i3 < resp.length; _i3++) {
-                    _loop4(_i3);
+                    _loop6(_i3);
                   }
 
-                  _this19.api.postentradashastahoy(data).subscribe(function (resp) {
-                    _this19.entradas_hasta_hoy = [];
+                  _this21.api.postentradashastahoy(data).subscribe(function (resp) {
+                    _this21.entradas_hasta_hoy = [];
                     var materials__ = resp;
 
-                    var _loop5 = function _loop5(_i4) {
-                      if (materials__[_i4].grupo === _this19.grupo) {
-                        var index = _this19.entradas_hasta_hoy.findIndex(function (x) {
+                    var _loop7 = function _loop7(_i4) {
+                      if (materials__[_i4].grupo === _this21.grupo) {
+                        var index = _this21.entradas_hasta_hoy.findIndex(function (x) {
                           return x.nombre === materials__[_i4].nombre && x.marca === materials__[_i4].marca && x.ancho === materials__[_i4].ancho && x.largo === materials__[_i4].largo && x.gramaje === materials__[_i4].gramaje && x.calibre === materials__[_i4].calibre;
                         });
 
                         if (index < 0) {
-                          _this19.entradas_hasta_hoy.push({
+                          _this21.entradas_hasta_hoy.push({
                             nombre: materials__[_i4].nombre,
                             marca: materials__[_i4].marca,
                             ancho: materials__[_i4].ancho,
@@ -7355,26 +7903,26 @@
                             devoluciones: 0
                           });
                         } else {
-                          _this19.entradas_hasta_hoy[index].cantidad = Number(_this19.entradas_hasta_hoy[index].cantidad) + Number(materials__[_i4].cantidad);
-                          _this19.entradas_hasta_hoy[index].cantidad = _this19.entradas_hasta_hoy[index].cantidad.toFixed(2);
+                          _this21.entradas_hasta_hoy[index].cantidad = Number(_this21.entradas_hasta_hoy[index].cantidad) + Number(materials__[_i4].cantidad);
+                          _this21.entradas_hasta_hoy[index].cantidad = _this21.entradas_hasta_hoy[index].cantidad.toFixed(2);
                         }
                       }
                     };
 
                     for (var _i4 = 0; _i4 < materials__.length; _i4++) {
-                      _loop5(_i4);
+                      _loop7(_i4);
                     }
 
-                    _this19.api.postsalidashastahoy(data).subscribe(function (resp) {
-                      var _loop6 = function _loop6(_i5) {
-                        var _loop10 = function _loop10(n) {
-                          if (resp[_i5].material[n].material.grupo === _this19.grupo) {
-                            var index = _this19.entradas_hasta_hoy.findIndex(function (x) {
+                    _this21.api.postsalidashastahoy(data).subscribe(function (resp) {
+                      var _loop8 = function _loop8(_i5) {
+                        var _loop12 = function _loop12(n) {
+                          if (resp[_i5].material[n].material.grupo === _this21.grupo) {
+                            var index = _this21.entradas_hasta_hoy.findIndex(function (x) {
                               return x.nombre === resp[_i5].material[n].material.nombre && x.marca === resp[_i5].material[n].material.marca && x.ancho === resp[_i5].material[n].material.ancho && x.largo === resp[_i5].material[n].material.largo && x.calibre === resp[_i5].material[n].material.calibre && x.gramaje === resp[_i5].material[n].material.gramaje;
                             });
 
                             if (index < 0) {
-                              _this19.entradas_hasta_hoy.push({
+                              _this21.entradas_hasta_hoy.push({
                                 nombre: resp[_i5].material[n].material.nombre,
                                 ancho: resp[_i5].material[n].material.ancho,
                                 largo: resp[_i5].material[n].material.largo,
@@ -7386,31 +7934,31 @@
                                 devoluciones: 0
                               });
                             } else {
-                              _this19.entradas_hasta_hoy[index].salida = Number(_this19.entradas_hasta_hoy[index].salida) + Number(resp[_i5].material[n].cantidad);
-                              _this19.entradas_hasta_hoy[index].salida = _this19.entradas_hasta_hoy[index].salida.toFixed(2);
+                              _this21.entradas_hasta_hoy[index].salida = Number(_this21.entradas_hasta_hoy[index].salida) + Number(resp[_i5].material[n].cantidad);
+                              _this21.entradas_hasta_hoy[index].salida = _this21.entradas_hasta_hoy[index].salida.toFixed(2);
                             }
                           }
                         };
 
                         for (var n = 0; n < resp[_i5].material.length; n++) {
-                          _loop10(n);
+                          _loop12(n);
                         }
                       };
 
                       for (var _i5 = 0; _i5 < resp.length; _i5++) {
-                        _loop6(_i5);
+                        _loop8(_i5);
                       }
 
-                      _this19.api.postdevolucioneshastahoy(data).subscribe(function (resp) {
-                        var _loop7 = function _loop7(_i6) {
-                          var _loop9 = function _loop9(n) {
-                            if (resp[_i6].filtrado[n].material.grupo === _this19.grupo) {
-                              var index = _this19.entradas_hasta_hoy.findIndex(function (x) {
+                      _this21.api.postdevolucioneshastahoy(data).subscribe(function (resp) {
+                        var _loop9 = function _loop9(_i6) {
+                          var _loop11 = function _loop11(n) {
+                            if (resp[_i6].filtrado[n].material.grupo === _this21.grupo) {
+                              var index = _this21.entradas_hasta_hoy.findIndex(function (x) {
                                 return x.nombre === resp[_i6].filtrado[n].material.nombre && x.marca === resp[_i6].filtrado[n].material.marca && x.ancho === resp[_i6].filtrado[n].material.ancho && x.largo === resp[_i6].filtrado[n].material.largo && x.calibre === resp[_i6].filtrado[n].material.calibre && x.gramaje === resp[_i6].filtrado[n].material.gramaje;
                               });
 
                               if (index < 0) {
-                                _this19.entradas_hasta_hoy.push({
+                                _this21.entradas_hasta_hoy.push({
                                   nombre: resp[_i6].filtrado[n].material.nombre,
                                   ancho: resp[_i6].filtrado[n].material.ancho,
                                   largo: resp[_i6].filtrado[n].material.largo,
@@ -7422,64 +7970,70 @@
                                   devoluciones: resp[_i6].filtrado[n].cantidad
                                 });
                               } else {
-                                _this19.entradas_hasta_hoy[index].devoluciones = Number(_this19.entradas_hasta_hoy[index].devoluciones) + Number(resp[_i6].filtrado[n].cantidad);
-                                _this19.entradas_hasta_hoy[index].devoluciones = _this19.entradas_hasta_hoy[index].devoluciones.toFixed(2);
+                                _this21.entradas_hasta_hoy[index].devoluciones = Number(_this21.entradas_hasta_hoy[index].devoluciones) + Number(resp[_i6].filtrado[n].cantidad);
+                                _this21.entradas_hasta_hoy[index].devoluciones = _this21.entradas_hasta_hoy[index].devoluciones.toFixed(2);
                               }
                             }
                           };
 
                           for (var n = 0; n < resp[_i6].filtrado.length; n++) {
-                            _loop9(n);
+                            _loop11(n);
                           }
                         };
 
                         for (var _i6 = 0; _i6 < resp.length; _i6++) {
-                          _loop7(_i6);
+                          _loop9(_i6);
                         } // console.log(this.entradas_hasta_hoy)
 
 
-                        var _loop8 = function _loop8(_i7) {
+                        _this21.materiales = _this21.materiales.sort(function (a, b) {
+                          if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) return -1;
+                          if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) return 1;
+                          return 0;
+                        });
+
+                        var _loop10 = function _loop10(_i7) {
                           var almacenado = void 0;
                           var iHasta_hoy = void 0;
-                          almacenado = _this19.almacen_detallado.find(function (x) {
-                            return x.nombre === _this19.materiales[_i7].nombre && x.marca === _this19.materiales[_i7].marca && x.ancho === _this19.materiales[_i7].ancho && x.largo === _this19.materiales[_i7].largo && x.gramaje === _this19.materiales[_i7].gramaje && x.calibre === _this19.materiales[_i7].calibre;
+                          almacenado = _this21.almacen_detallado.find(function (x) {
+                            return x.nombre === _this21.materiales[_i7].nombre && x.marca === _this21.materiales[_i7].marca && x.ancho === _this21.materiales[_i7].ancho && x.largo === _this21.materiales[_i7].largo && x.gramaje === _this21.materiales[_i7].gramaje && x.calibre === _this21.materiales[_i7].calibre;
                           });
-                          iHasta_hoy = _this19.entradas_hasta_hoy.findIndex(function (x) {
-                            return x.nombre === _this19.materiales[_i7].nombre && x.marca === _this19.materiales[_i7].marca && x.ancho === _this19.materiales[_i7].ancho && x.largo === _this19.materiales[_i7].largo && x.gramaje === _this19.materiales[_i7].gramaje && x.calibre === _this19.materiales[_i7].calibre;
+                          iHasta_hoy = _this21.entradas_hasta_hoy.findIndex(function (x) {
+                            return x.nombre === _this21.materiales[_i7].nombre && x.marca === _this21.materiales[_i7].marca && x.ancho === _this21.materiales[_i7].ancho && x.largo === _this21.materiales[_i7].largo && x.gramaje === _this21.materiales[_i7].gramaje && x.calibre === _this21.materiales[_i7].calibre;
                           });
                           console.log(iHasta_hoy);
 
                           if (iHasta_hoy < 0) {
-                            console.log(_this19.materiales[_i7].nombre, '_-_', _this19.materiales[_i7].marca);
-                            console.log(_this19.entradas_hasta_hoy);
+                            console.log(_this21.materiales[_i7].nombre, '_-_', _this21.materiales[_i7].marca);
+                            console.log(_this21.entradas_hasta_hoy);
                           }
 
                           if (!almacenado) {
-                            _this19.saldos_iniciales[_i7] = 0 + Number(_this19.entradas_hasta_hoy[iHasta_hoy].salida) - (Number(_this19.entradas_hasta_hoy[iHasta_hoy].cantidad) + Number(_this19.entradas_hasta_hoy[iHasta_hoy].devoluciones));
-                            _this19.saldos_iniciales[_i7] = _this19.saldos_iniciales[_i7].toFixed(2);
-                            _this19.saldos_finales[_i7] = Number(_this19.saldos_iniciales[_i7]) + Number(_this19.materiales[_i7].cantidad);
-                            _this19.saldos_finales[_i7] = _this19.saldos_finales[_i7] + Number(_this19.materiales[_i7].devoluciones);
-                            _this19.saldos_finales[_i7] = _this19.saldos_finales[_i7] - Number(_this19.materiales[_i7].salida);
-                            _this19.saldos_finales[_i7] = _this19.saldos_finales[_i7].toFixed(2);
+                            _this21.saldos_iniciales[_i7] = 0 + Number(_this21.entradas_hasta_hoy[iHasta_hoy].salida) - (Number(_this21.entradas_hasta_hoy[iHasta_hoy].cantidad) + Number(_this21.entradas_hasta_hoy[iHasta_hoy].devoluciones));
+                            _this21.saldos_iniciales[_i7] = _this21.saldos_iniciales[_i7].toFixed(2);
+                            _this21.saldos_finales[_i7] = Number(_this21.saldos_iniciales[_i7]) + Number(_this21.materiales[_i7].cantidad);
+                            _this21.saldos_finales[_i7] = _this21.saldos_finales[_i7] + Number(_this21.materiales[_i7].devoluciones);
+                            _this21.saldos_finales[_i7] = _this21.saldos_finales[_i7] - Number(_this21.materiales[_i7].salida);
+                            _this21.saldos_finales[_i7] = _this21.saldos_finales[_i7].toFixed(2);
                           } else {
-                            _this19.saldos_iniciales[_i7] = Number(almacenado.cantidad) + Number(_this19.entradas_hasta_hoy[iHasta_hoy].salida) - (Number(_this19.entradas_hasta_hoy[iHasta_hoy].cantidad) + Number(_this19.entradas_hasta_hoy[iHasta_hoy].devoluciones));
-                            _this19.saldos_iniciales[_i7] = _this19.saldos_iniciales[_i7].toFixed(2);
-                            _this19.saldos_finales[_i7] = Number(_this19.saldos_iniciales[_i7]) + Number(_this19.materiales[_i7].cantidad);
-                            _this19.saldos_finales[_i7] = _this19.saldos_finales[_i7] + Number(_this19.materiales[_i7].devoluciones);
-                            _this19.saldos_finales[_i7] = _this19.saldos_finales[_i7] - Number(_this19.materiales[_i7].salida);
-                            _this19.saldos_finales[_i7] = _this19.saldos_finales[_i7].toFixed(2);
-                            _this19.unidades[_i7] = almacenado.unidad;
+                            _this21.saldos_iniciales[_i7] = Number(almacenado.cantidad) + Number(_this21.entradas_hasta_hoy[iHasta_hoy].salida) - (Number(_this21.entradas_hasta_hoy[iHasta_hoy].cantidad) + Number(_this21.entradas_hasta_hoy[iHasta_hoy].devoluciones));
+                            _this21.saldos_iniciales[_i7] = _this21.saldos_iniciales[_i7].toFixed(2);
+                            _this21.saldos_finales[_i7] = Number(_this21.saldos_iniciales[_i7]) + Number(_this21.materiales[_i7].cantidad);
+                            _this21.saldos_finales[_i7] = _this21.saldos_finales[_i7] + Number(_this21.materiales[_i7].devoluciones);
+                            _this21.saldos_finales[_i7] = _this21.saldos_finales[_i7] - Number(_this21.materiales[_i7].salida);
+                            _this21.saldos_finales[_i7] = _this21.saldos_finales[_i7].toFixed(2);
+                            _this21.unidades[_i7] = almacenado.unidad;
                           } // console.log(this.saldos_iniciales[i],'i:',i)
 
                         };
 
-                        for (var _i7 = 0; _i7 < _this19.materiales.length; _i7++) {
-                          _loop8(_i7);
+                        for (var _i7 = 0; _i7 < _this21.materiales.length; _i7++) {
+                          _loop10(_i7);
                         }
 
-                        console.log(_this19.materiales);
-                        console.log(_this19.entradas_hasta_hoy);
-                        _this19.cargando = false;
+                        console.log(_this21.materiales);
+                        console.log(_this21.entradas_hasta_hoy);
+                        _this21.cargando = false;
                       });
                     });
                   });
@@ -7499,13 +8053,11 @@
       ReportesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
         type: ReportesComponent,
         selectors: [["app-reportes"]],
-        decls: 50,
-        vars: 4,
-        consts: [[1, "container"], [1, "titulo"], [1, "card"], [1, "card-content"], [1, "columns"], [1, "column", "is-2"], [1, "control"], [1, "radio"], ["type", "radio", "name", "tipo", "value", "general", "checked", "", 3, "change"], ["type", "radio", "name", "tipo", "value", "facturado", 3, "change"], [1, "column"], [1, "select"], ["name", "", "id", "", 3, "ngModel", "ngModelChange"], ["value", "#"], [3, "value", 4, "ngFor", "ngForOf"], [1, "field"], [1, "label"], ["type", "date", 1, "input", "is-small"], ["desde", ""], ["hasta", ""], ["for", "", 1, "label"], [1, "button", "is-primary", "is-small", 3, "click"], [1, "icon"], [1, "fas", "fa-search"], ["class", "card", 4, "ngIf"], [3, "value"], [1, "load"], ["max", "100", 1, "progress", "is-small", "is-success"], [1, "subtitulo"], [1, "table", "is-fullwidth"], [1, "is-selected"], [4, "ngFor", "ngForOf"], [4, "ngIf"]],
+        decls: 43,
+        vars: 6,
+        consts: [[1, "container"], [1, "titulo"], [1, "card"], [1, "card-content"], [1, "columns"], [1, "column", "is-2"], [1, "control"], [1, "radio"], ["type", "radio", "name", "tipo", "value", "general", "checked", "", 3, "change"], ["type", "radio", "name", "tipo", "value", "facturado", 3, "change"], [1, "column"], ["class", "select", 4, "ngIf"], [1, "field"], [1, "label"], ["type", "date", 1, "input", "is-small"], ["desde", ""], ["hasta", ""], ["for", "", 1, "label"], ["class", "control", 4, "ngIf"], ["class", "card", 4, "ngIf"], [1, "select"], ["name", "", "id", "", 3, "ngModel", "ngModelChange"], ["value", "#"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "button", "is-primary", "is-small", 3, "click"], [1, "icon"], [1, "fas", "fa-search"], [1, "load"], ["max", "100", 1, "progress", "is-small", "is-success"], [1, "subtitulo"], [1, "table", "is-fullwidth"], [1, "is-selected"], [4, "ngFor", "ngForOf"], [4, "ngIf"]],
         template: function ReportesComponent_Template(rf, ctx) {
           if (rf & 1) {
-            var _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -7562,45 +8114,27 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 10);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 11);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "select", 12);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ReportesComponent_Template_select_ngModelChange_18_listener($event) {
-              return ctx.grupo = $event;
-            });
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "option", 13);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Seleccione Grupo");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, ReportesComponent_option_21_Template, 2, 2, "option", 14);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, ReportesComponent_div_17_Template, 5, 2, "div", 11);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 4);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 5);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 12);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "label", 13);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Desde:");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 5);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 15);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "label", 16);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Desde:");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 6);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "input", 17, 18);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "input", 14, 15);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -7608,59 +8142,39 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 15);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 12);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "label", 16);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33, "Hasta:");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 6);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "input", 17, 19);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "Hasta:");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 6);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "input", 14, 16);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 5);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div", 15);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 12);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "label", 20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label", 17);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, "\xA0");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 6);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "button", 21);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReportesComponent_Template_button_click_42_listener() {
-              _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15);
-
-              var _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](29);
-
-              var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](36);
-
-              return ctx.realizarBusqueda(_r1.value, _r2.value);
-            });
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 22);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "i", 23);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "\xA0");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "span");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](37, ReportesComponent_div_37_Template, 6, 0, "div", 18);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, " Buscar ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, ReportesComponent_div_38_Template, 6, 0, "div", 18);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -7674,39 +8188,43 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "br");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, ReportesComponent_div_40_Template, 6, 0, "div", 19);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](41, ReportesComponent_div_41_Template, 21, 11, "div", 19);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "br");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, ReportesComponent_div_48_Template, 6, 0, "div", 24);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, ReportesComponent_div_49_Template, 21, 11, "div", 24);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, ReportesComponent_div_42_Template, 16, 2, "div", 19);
           }
 
           if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](18);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.grupo);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.tipo_ === "general");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](20);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.grupos);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.tipo_ === "general");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.tipo_ != "general");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cargando);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.cargando);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.cargando && ctx.tipo_ === "general");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.cargando && ctx.general.length > 0);
           }
         },
-        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"]],
-        pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"]],
+        directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]],
+        pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["DatePipe"]],
         styles: ["@font-face {\r\n    font-family: Roboto;\r\n    src: url('Roboto-Black.ttf');\r\n}\r\n\r\n@-webkit-keyframes animate {\r\n    0%{\r\n        transform: rotate(0deg);\r\n        filter: hue-rotate(0deg)\r\n    }\r\n    100%{\r\n        transform: rotate(360deg);\r\n        filter: hue-rotate(360deg)\r\n    }\r\n}\r\n\r\n@keyframes animate {\r\n    0%{\r\n        transform: rotate(0deg);\r\n        filter: hue-rotate(0deg)\r\n    }\r\n    100%{\r\n        transform: rotate(360deg);\r\n        filter: hue-rotate(360deg)\r\n    }\r\n}\r\n\r\n.titulo[_ngcontent-%COMP%]{\r\n    font-size: 50px;\r\n    font-family: Roboto;\r\n}\r\n\r\n.subtitulo[_ngcontent-%COMP%]{\r\n    font-size: 30px;\r\n    font-family: Roboto;\r\n}\r\n\r\n.loader[_ngcontent-%COMP%]{\r\n    position: relative;\r\n    width: 300px;\r\n    height: 300px;\r\n\r\n}\r\n\r\n.loader[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    top:0;\r\n    left:0;\r\n    width: 100%;\r\n    height: 100%;\r\n    transform: rotate(calc(36deg * var(--i)));\r\n}\r\n\r\n.loader[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]:before{\r\n    content:'';\r\n    position:absolute;\r\n    top:0;\r\n    left: 0;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: transparent;\r\n    border:4px solid #00efff;\r\n    box-sizing: border-box;\r\n    box-shadow: 0 0 20px #00efff,\r\n    -30px -30px 0 #00efff,\r\n    -30px -30px 0 #00efff,\r\n    30px -30px 0 #00efff,\r\n    30px -30px 0 #00efff,\r\n    -30px 30px 0 #00efff,\r\n    -30px 30px 0 #00efff,\r\n    30px 30px 0 #00efff,\r\n    30px 30px 0 #00efff;\r\n    -webkit-animation: animate 5s linear infinite;\r\n            animation: animate 5s linear infinite;\r\n    -webkit-animation-delay: calc(-0.25s * var(--i));\r\n            animation-delay: calc(-0.25s * var(--i));\r\n    transform-origin: 20px;\r\n    transition: 2s;\r\n}\r\n\r\n.loader[_ngcontent-%COMP%]:hover   span[_ngcontent-%COMP%]:before{\r\n    box-shadow: 0 0 20px #00efff,\r\n    -300px -300px 0 #00efff,\r\n    -300px -300px 0 #00efff,\r\n    300px -300px 0 #00efff,\r\n    300px -300px 0 #00efff,\r\n    -300px 300px 0 #00efff,\r\n    -300px 300px 0 #00efff,\r\n    300px 300px 0 #00efff,\r\n    300px 300px 0 #00efff;\r\n    transform-origin: 200px;\r\n}\r\n\r\n.text[_ngcontent-%COMP%]{\r\n    top: 250;\r\n    position: absolute;\r\n    color: black;\r\n}\r\n\r\n.carga_[_ngcontent-%COMP%]{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    min-height: 100vh;\r\n    overflow: hidden;\r\n}\r\n\r\n.load[_ngcontent-%COMP%]{\r\n    font-size: x-large;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxtYWNlbi9yZXBvcnRlcy9yZXBvcnRlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0lBQ25CLDRCQUFpRDtBQUNyRDs7QUFFQTtJQUNJO1FBQ0ksdUJBQXVCO1FBQ3ZCO0lBQ0o7SUFDQTtRQUNJLHlCQUF5QjtRQUN6QjtJQUNKO0FBQ0o7O0FBVEE7SUFDSTtRQUNJLHVCQUF1QjtRQUN2QjtJQUNKO0lBQ0E7UUFDSSx5QkFBeUI7UUFDekI7SUFDSjtBQUNKOztBQUVBO0lBQ0ksZUFBZTtJQUNmLG1CQUFtQjtBQUN2Qjs7QUFDQTtJQUNJLGVBQWU7SUFDZixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLGFBQWE7O0FBRWpCOztBQUNBO0lBQ0ksa0JBQWtCO0lBQ2xCLEtBQUs7SUFDTCxNQUFNO0lBQ04sV0FBVztJQUNYLFlBQVk7SUFDWix5Q0FBeUM7QUFDN0M7O0FBQ0E7SUFDSSxVQUFVO0lBQ1YsaUJBQWlCO0lBQ2pCLEtBQUs7SUFDTCxPQUFPO0lBQ1AsV0FBVztJQUNYLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsdUJBQXVCO0lBQ3ZCLHdCQUF3QjtJQUN4QixzQkFBc0I7SUFDdEI7Ozs7Ozs7O3VCQVFtQjtJQUNuQiw2Q0FBcUM7WUFBckMscUNBQXFDO0lBQ3JDLGdEQUF3QztZQUF4Qyx3Q0FBd0M7SUFDeEMsc0JBQXNCO0lBQ3RCLGNBQWM7QUFDbEI7O0FBRUE7SUFDSTs7Ozs7Ozs7eUJBUXFCO0lBQ3JCLHVCQUF1QjtBQUMzQjs7QUFDQTtJQUNJLFFBQVE7SUFDUixrQkFBa0I7SUFDbEIsWUFBWTtBQUNoQjs7QUFDQTtJQUNJLFNBQVM7SUFDVCxVQUFVO0lBQ1Ysc0JBQXNCO0lBQ3RCLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixnQkFBZ0I7QUFDcEI7O0FBQ0E7SUFDSSxrQkFBa0I7QUFDdEIiLCJmaWxlIjoic3JjL2FwcC9hbG1hY2VuL3JlcG9ydGVzL3JlcG9ydGVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAZm9udC1mYWNlIHtcclxuICAgIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbiAgICBzcmM6IHVybCguLi8uLi8uLi9hc3NldHMvUm9ib3RvL1JvYm90by1CbGFjay50dGYpO1xyXG59XHJcblxyXG5Aa2V5ZnJhbWVzIGFuaW1hdGUge1xyXG4gICAgMCV7XHJcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XHJcbiAgICAgICAgZmlsdGVyOiBodWUtcm90YXRlKDBkZWcpXHJcbiAgICB9XHJcbiAgICAxMDAle1xyXG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XHJcbiAgICAgICAgZmlsdGVyOiBodWUtcm90YXRlKDM2MGRlZylcclxuICAgIH1cclxufVxyXG5cclxuLnRpdHVsb3tcclxuICAgIGZvbnQtc2l6ZTogNTBweDtcclxuICAgIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbn1cclxuLnN1YnRpdHVsb3tcclxuICAgIGZvbnQtc2l6ZTogMzBweDtcclxuICAgIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbn1cclxuXHJcbi5sb2FkZXJ7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB3aWR0aDogMzAwcHg7XHJcbiAgICBoZWlnaHQ6IDMwMHB4O1xyXG5cclxufVxyXG4ubG9hZGVyIHNwYW57XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6MDtcclxuICAgIGxlZnQ6MDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgdHJhbnNmb3JtOiByb3RhdGUoY2FsYygzNmRlZyAqIHZhcigtLWkpKSk7XHJcbn1cclxuLmxvYWRlciBzcGFuOmJlZm9yZXtcclxuICAgIGNvbnRlbnQ6Jyc7XHJcbiAgICBwb3NpdGlvbjphYnNvbHV0ZTtcclxuICAgIHRvcDowO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHdpZHRoOiAyNXB4O1xyXG4gICAgaGVpZ2h0OiAyNXB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XHJcbiAgICBib3JkZXI6NHB4IHNvbGlkICMwMGVmZmY7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDIwcHggIzAwZWZmZixcclxuICAgIC0zMHB4IC0zMHB4IDAgIzAwZWZmZixcclxuICAgIC0zMHB4IC0zMHB4IDAgIzAwZWZmZixcclxuICAgIDMwcHggLTMwcHggMCAjMDBlZmZmLFxyXG4gICAgMzBweCAtMzBweCAwICMwMGVmZmYsXHJcbiAgICAtMzBweCAzMHB4IDAgIzAwZWZmZixcclxuICAgIC0zMHB4IDMwcHggMCAjMDBlZmZmLFxyXG4gICAgMzBweCAzMHB4IDAgIzAwZWZmZixcclxuICAgIDMwcHggMzBweCAwICMwMGVmZmY7XHJcbiAgICBhbmltYXRpb246IGFuaW1hdGUgNXMgbGluZWFyIGluZmluaXRlO1xyXG4gICAgYW5pbWF0aW9uLWRlbGF5OiBjYWxjKC0wLjI1cyAqIHZhcigtLWkpKTtcclxuICAgIHRyYW5zZm9ybS1vcmlnaW46IDIwcHg7XHJcbiAgICB0cmFuc2l0aW9uOiAycztcclxufVxyXG5cclxuLmxvYWRlcjpob3ZlciBzcGFuOmJlZm9yZXtcclxuICAgIGJveC1zaGFkb3c6IDAgMCAyMHB4ICMwMGVmZmYsXHJcbiAgICAtMzAwcHggLTMwMHB4IDAgIzAwZWZmZixcclxuICAgIC0zMDBweCAtMzAwcHggMCAjMDBlZmZmLFxyXG4gICAgMzAwcHggLTMwMHB4IDAgIzAwZWZmZixcclxuICAgIDMwMHB4IC0zMDBweCAwICMwMGVmZmYsXHJcbiAgICAtMzAwcHggMzAwcHggMCAjMDBlZmZmLFxyXG4gICAgLTMwMHB4IDMwMHB4IDAgIzAwZWZmZixcclxuICAgIDMwMHB4IDMwMHB4IDAgIzAwZWZmZixcclxuICAgIDMwMHB4IDMwMHB4IDAgIzAwZWZmZjtcclxuICAgIHRyYW5zZm9ybS1vcmlnaW46IDIwMHB4O1xyXG59XHJcbi50ZXh0e1xyXG4gICAgdG9wOiAyNTA7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuLmNhcmdhX3tcclxuICAgIG1hcmdpbjogMDtcclxuICAgIHBhZGRpbmc6IDA7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIG1pbi1oZWlnaHQ6IDEwMHZoO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG4ubG9hZHtcclxuICAgIGZvbnQtc2l6ZTogeC1sYXJnZTtcclxufSJdfQ== */"]
       });
       /*@__PURE__*/
@@ -8344,23 +8862,23 @@
         }, {
           key: "EditarMaquina",
           value: function EditarMaquina(id) {
-            var _this20 = this;
+            var _this22 = this;
 
             this.Edicion_Modal_Maquina();
             this.api.getMaquinaID(id).subscribe(function (resp) {
-              _this20.MaquinaID = resp;
+              _this22.MaquinaID = resp;
             });
           }
         }, {
           key: "Finalizar_Edicion_M",
           value: function Finalizar_Edicion_M() {
-            var _this21 = this;
+            var _this23 = this;
 
             this.MaquinaID.tipo = this.MaquinaID.tipo.toUpperCase();
             this.api.putMaquina(this.MaquinaID._id, this.MaquinaID).subscribe(function (resp) {
-              _this21.ObtenerMaquinas();
+              _this23.ObtenerMaquinas();
 
-              _this21.Edicion_Modal_Maquina();
+              _this23.Edicion_Modal_Maquina();
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                 position: 'center',
@@ -8374,31 +8892,31 @@
         }, {
           key: "nuevaMaquina",
           value: function nuevaMaquina() {
-            var _this22 = this;
+            var _this24 = this;
 
             this.api.PostMaquinas(this.maquinaForm.value).subscribe(function (resp) {
-              _this22.maquinaForm.reset();
+              _this24.maquinaForm.reset();
 
-              _this22.NUEVA_MAQUINA = false;
+              _this24.NUEVA_MAQUINA = false;
 
-              _this22.ObtenerMaquinas();
+              _this24.ObtenerMaquinas();
             });
           }
         }, {
           key: "ObtenerMaquinas",
           value: function ObtenerMaquinas() {
-            var _this23 = this;
+            var _this25 = this;
 
             this.api.GetMaquinas().subscribe(function (maquinas) {
-              _this23.MAQUINAS = maquinas;
+              _this25.MAQUINAS = maquinas;
 
-              _this23.obtenerTipos();
+              _this25.obtenerTipos();
             });
           }
         }, {
           key: "BorrarMaquina_",
           value: function BorrarMaquina_(id) {
-            var _this24 = this;
+            var _this26 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
               title: '¿Estas Seguro?',
@@ -8411,7 +8929,7 @@
               confirmButtonText: 'Si, Eliminar!'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this24.BorrarMaquina(id);
+                _this26.BorrarMaquina(id);
 
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                   position: 'center',
@@ -8426,7 +8944,7 @@
         }, {
           key: "EliminarGrupo_",
           value: function EliminarGrupo_(id) {
-            var _this25 = this;
+            var _this27 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
               title: '¿Estas Seguro?',
@@ -8439,7 +8957,7 @@
               confirmButtonText: 'Si, Eliminar!'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this25.EliminarGrupo(id);
+                _this27.EliminarGrupo(id);
 
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                   position: 'center',
@@ -8454,19 +8972,19 @@
         }, {
           key: "EliminarGrupo",
           value: function EliminarGrupo(id) {
-            var _this26 = this;
+            var _this28 = this;
 
             this.api.deleteGrupo(id).subscribe(function (resp) {
-              _this26.obtenerGrupos();
+              _this28.obtenerGrupos();
             });
           }
         }, {
           key: "BorrarMaquina",
           value: function BorrarMaquina(id) {
-            var _this27 = this;
+            var _this29 = this;
 
             this.api.DeleteMaquinas(id).subscribe(function (resp) {
-              _this27.ObtenerMaquinas();
+              _this29.ObtenerMaquinas();
             });
           } // ----------------------GRUPOS -------------
 
@@ -8505,16 +9023,16 @@
         }, {
           key: "obtenerGrupos",
           value: function obtenerGrupos() {
-            var _this28 = this;
+            var _this30 = this;
 
             this.api.getGrupos().subscribe(function (resp) {
-              _this28.GRUPOS = resp.grupos;
+              _this30.GRUPOS = resp.grupos;
             });
           }
         }, {
           key: "nuevoTipo",
           value: function nuevoTipo() {
-            var _this29 = this;
+            var _this31 = this;
 
             var name = document.getElementById('name').value;
             var nuevoTipo = {
@@ -8523,9 +9041,9 @@
             }; // AGREGAR A LA BASE DE DATOS****************
 
             this.api.PostGrupos(nuevoTipo).subscribe(function (resp) {
-              _this29.obtenerGrupos();
+              _this31.obtenerGrupos();
 
-              _this29.NUEVO_GRUPO = false;
+              _this31.NUEVO_GRUPO = false;
             });
           }
         }]);
@@ -9786,10 +10304,10 @@
         }, {
           key: "getGRupos",
           value: function getGRupos() {
-            var _this30 = this;
+            var _this32 = this;
 
             this.api.GetGrupoMp().subscribe(function (resp) {
-              _this30.grupos = resp; // console.log(this.grupos)
+              _this32.grupos = resp; // console.log(this.grupos)
             });
           }
         }, {
@@ -9821,38 +10339,38 @@
         }, {
           key: "mostrarMaterial",
           value: function mostrarMaterial(e) {
-            var _this31 = this;
+            var _this33 = this;
 
             if (e === "#") {
               document.getElementById('_material_').disabled = true;
             } else {
               this.api.getAlmacenado().subscribe(function (resp) {
                 document.getElementById('_material_').disabled = false;
-                _this31.almacenado = resp.filter(function (x) {
+                _this33.almacenado = resp.filter(function (x) {
                   return x.material.grupo._id === e;
                 });
-                var bs_ = _this31.almacenado;
+                var bs_ = _this33.almacenado;
 
                 if (e != '61f92a1f2126d717f004cca6') {
-                  _this31.almacenado = _toConsumableArray(_this31.almacenado.reduce(function (map, obj) {
+                  _this33.almacenado = _toConsumableArray(_this33.almacenado.reduce(function (map, obj) {
                     return map.set(obj.material.nombre, obj);
                   }, new Map()).values());
 
-                  var _loop13 = function _loop13(i) {
-                    var index = _this31.almacenado.find(function (x) {
+                  var _loop15 = function _loop15(i) {
+                    var index = _this33.almacenado.find(function (x) {
                       return x.material.nombre === bs_[i].material.nombre && x.material.marca === bs_[i].material.marca;
                     });
 
                     if (!index) {
-                      _this31.almacenado.push(bs_[i]);
+                      _this33.almacenado.push(bs_[i]);
                     }
                   };
 
                   for (var i = 0; i < bs_.length; i++) {
-                    _loop13(i);
+                    _loop15(i);
                   }
 
-                  _this31.almacenado.sort(function (a, b) {
+                  _this33.almacenado.sort(function (a, b) {
                     if (a.material.nombre.toLowerCase() < b.material.nombre.toLowerCase()) return -1;
                     if (a.material.nombre.toLowerCase() > b.material.nombre.toLowerCase()) return 1;
                     return 0;
@@ -9897,7 +10415,7 @@
         }, {
           key: "FinalizarSolicitu",
           value: function FinalizarSolicitu() {
-            var _this32 = this;
+            var _this34 = this;
 
             var requisicion = {
               sort: '#',
@@ -9911,16 +10429,16 @@
             requisicion.producto.materiales[0] = this._materiales;
             var aprobado = true;
 
-            var _loop14 = function _loop14(_i8) {
-              _this32.api.getAlmacenadoID2(_this32._materiales[_i8].producto).subscribe(function (resp) {
+            var _loop16 = function _loop16(_i8) {
+              _this34.api.getAlmacenadoID2(_this34._materiales[_i8].producto).subscribe(function (resp) {
                 var cantidad = 0;
-                console.log(resp, '---------------------------------------------', _this32._materiales[_i8].producto);
+                console.log(resp, '---------------------------------------------', _this34._materiales[_i8].producto);
 
                 for (var _i9 = 0; _i9 < resp.length; _i9++) {
                   cantidad = cantidad + Number(resp[_i9].cantidad);
                 }
 
-                if (cantidad < Number(_this32._materiales[_i8].cantidad)) {
+                if (cantidad < Number(_this34._materiales[_i8].cantidad)) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                     title: 'Cantidad excedida',
                     text: "la cantidad solicitada de ".concat(resp[0].material.nombre, " es mayor a la cantidad de producto en el almacen,\n              existe en almacen: ").concat(cantidad.toFixed(2)),
@@ -9928,8 +10446,8 @@
                     showConfirmButton: false
                   });
                   _i8 = 1000;
-                } else if (_i8 === _this32._materiales.length - 1) {
-                  _this32.api.postReq(requisicion).subscribe(function (resp) {
+                } else if (_i8 === _this34._materiales.length - 1) {
+                  _this34.api.postReq(requisicion).subscribe(function (resp) {
                     sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                       showConfirmButton: false,
                       title: 'Hecho!',
@@ -9937,9 +10455,9 @@
                       icon: 'success',
                       timer: 5000
                     });
-                    _this32._materiales = [];
+                    _this34._materiales = [];
 
-                    _this32.onClose();
+                    _this34.onClose();
                   });
                 }
               }); // if(i === this._materiales.length -1){
@@ -9966,13 +10484,13 @@
             };
 
             for (var i = 0; i < this._materiales.length; i++) {
-              _loop14(i);
+              _loop16(i);
             }
           }
         }, {
           key: "FinalizarSolicitud",
           value: function FinalizarSolicitud() {
-            var _this33 = this;
+            var _this35 = this;
 
             var iteration = 0;
             var requisicion = {
@@ -10019,10 +10537,10 @@
               (function () {
                 var materiales_fr = requisicion.producto.materiales[0]; //test
 
-                var _loop15 = function _loop15(_i12) {
+                var _loop17 = function _loop17(_i12) {
                   console.log(materiales_fr[_i12], 'aqui');
 
-                  _this33.api.getAlmacenadoID2(materiales_fr[_i12].producto).subscribe(function (resp) {
+                  _this35.api.getAlmacenadoID2(materiales_fr[_i12].producto).subscribe(function (resp) {
                     var cantidad = 0;
                     console.log(resp, 'HABLAME DE TIII');
 
@@ -10039,7 +10557,7 @@
                       });
                       _i12 = 1000;
                     } else if (_i12 === materiales_fr.length - 1) {
-                      _this33.api.postReq(requisicion).subscribe(function (resp) {
+                      _this35.api.postReq(requisicion).subscribe(function (resp) {
                         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                           showConfirmButton: false,
                           title: 'Hecho!',
@@ -10049,7 +10567,7 @@
                         });
                         materiales_fr = [];
 
-                        _this33.onClose();
+                        _this35.onClose();
                       });
                     }
                   }); // if(i === this._materiales.length -1){
@@ -10076,7 +10594,7 @@
                 };
 
                 for (var _i11 = 0; _i11 < materiales_fr.length; _i11++) {
-                  _loop15(_i11);
+                  _loop17(_i11);
                 } //test
 
               })();
@@ -10424,11 +10942,11 @@
         _createClass(TwoStep, [{
           key: "canActivate",
           value: function canActivate(route, state) {
-            var _this34 = this;
+            var _this36 = this;
 
             return this.api.ValidarVerificacion().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (isAuth) {
               if (!isAuth) {
-                _this34.router.navigateByUrl('/ventas/verificacion');
+                _this36.router.navigateByUrl('/ventas/verificacion');
               }
             }));
           }
@@ -11921,12 +12439,12 @@
         _createClass(GestionComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this35 = this;
+            var _this37 = this;
 
             this.api.GetClientes().subscribe(function (resp) {
-              _this35.clientes = resp.clientes;
-              console.log(_this35.clientes);
-              _this35.carga_clientes = false;
+              _this37.clientes = resp.clientes;
+              console.log(_this37.clientes);
+              _this37.carga_clientes = false;
             });
           }
         }, {
@@ -11946,7 +12464,7 @@
         }, {
           key: "Delete",
           value: function Delete(i, n) {
-            var _this36 = this;
+            var _this38 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
               title: '¿Quieres eliminar este intervalo?',
@@ -11958,9 +12476,9 @@
             }).then(function (result) {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
-                _this36.intervalos[n].escalas.splice(i, 1);
+                _this38.intervalos[n].escalas.splice(i, 1);
 
-                _this36.api.putIntervalo(_this36.intervalos[n]).subscribe(function (resp) {
+                _this38.api.putIntervalo(_this38.intervalos[n]).subscribe(function (resp) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                     title: 'Eliminado',
                     icon: 'success',
@@ -11984,10 +12502,10 @@
         }, {
           key: "FindDescripcion",
           value: function FindDescripcion(e) {
-            var _this37 = this;
+            var _this39 = this;
 
             var El_producto = this.productos.find(function (x) {
-              return x._id == _this37.producto;
+              return x._id == _this39.producto;
             });
             this.Descripcion = false;
 
@@ -12067,13 +12585,13 @@
         }, {
           key: "select_producto",
           value: function select_producto(e) {
-            var _this38 = this;
+            var _this40 = this;
 
             if (e != '#') {
               if (e === 'all') {
                 this.producto_seleccionado = false;
                 this.api.GetEscalaByCliente(this.Cliente_selected).subscribe(function (resp) {
-                  _this38.intervalos = resp;
+                  _this40.intervalos = resp;
                 });
               } else {
                 this.producto = e;
@@ -12088,7 +12606,7 @@
                 }
 
                 this.api.getEscala(e).subscribe(function (resp) {
-                  _this38.intervalos = resp;
+                  _this40.intervalos = resp;
                 });
               }
             } else {
@@ -12118,7 +12636,7 @@
         }, {
           key: "new_escala_vesion",
           value: function new_escala_vesion() {
-            var _this39 = this;
+            var _this41 = this;
 
             var data = {
               descripcion: this.desc,
@@ -12129,12 +12647,12 @@
             };
             this.intervalos.push(data);
             this.api.postEscala(data).subscribe(function (resp) {
-              _this39.desc = 'Debes seleccionar un montaje';
-              _this39.montaj = [], _this39.escala = [], _this39.producto = '';
+              _this41.desc = 'Debes seleccionar un montaje';
+              _this41.montaj = [], _this41.escala = [], _this41.producto = '';
               document.getElementById('count').value = '';
               document.getElementById('price').value = '';
-              _this39.newTable = false;
-              _this39.Descripcion = false;
+              _this41.newTable = false;
+              _this41.Descripcion = false;
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                 title: 'Hecho',
                 text: 'Se creó nueva tabla en este producto',
@@ -12186,21 +12704,21 @@
         }, {
           key: "select_cliente",
           value: function select_cliente(e) {
-            var _this40 = this;
+            var _this42 = this;
 
             if (e != '#') {
               this.Cliente_selected = e;
               console.log(this.Cliente_selected);
               this.api.getById(e).subscribe(function (resp) {
-                _this40.productos = resp.productos;
-                _this40.carga_ordenes = false;
+                _this42.productos = resp.productos;
+                _this42.carga_ordenes = false;
               });
             }
           }
         }, {
           key: "select_orden",
           value: function select_orden(e) {
-            var _this41 = this;
+            var _this43 = this;
 
             this.Despachos = [];
 
@@ -12209,7 +12727,7 @@
                 for (var _i16 = 0; _i16 < resp.length; _i16++) {
                   for (var x = 0; x < resp[_i16].despacho.length; x++) {
                     if (resp[_i16].despacho[x].op === e) {
-                      _this41.Despachos.push({
+                      _this43.Despachos.push({
                         producto: resp[_i16].despacho[x].producto,
                         cantidad: resp[_i16].despacho[x].cantidad
                       });
@@ -12217,15 +12735,15 @@
                   }
                 }
 
-                console.log(_this41.Despachos);
-                _this41.cargar_despachos = false;
+                console.log(_this43.Despachos);
+                _this43.cargar_despachos = false;
               });
             }
           }
         }, {
           key: "Select_Despacho",
           value: function Select_Despacho(e) {
-            var _this42 = this;
+            var _this44 = this;
 
             if (e != '#') {
               var separado = e.split('*');
@@ -12237,11 +12755,11 @@
               this.api.GetOneEscala(producto, {
                 cantidad: cantidad
               }).subscribe(function (resp) {
-                _this42.Escala = resp.Escala[resp.Escala.length - 1].cantidad;
-                _this42.PrecioXunidad = resp.Escala[resp.Escala.length - 1].precio;
+                _this44.Escala = resp.Escala[resp.Escala.length - 1].cantidad;
+                _this44.PrecioXunidad = resp.Escala[resp.Escala.length - 1].precio;
                 resp.MonitorBCV;
                 var split_dolar = resp.MonitorBCV.split(' ');
-                _this42.tasa = Number(split_dolar[1]);
+                _this44.tasa = Number(split_dolar[1]);
               });
             } else {
               this.cargar_previo = true;
@@ -12250,19 +12768,19 @@
         }, {
           key: "escalas_modal",
           value: function escalas_modal() {
-            var _this43 = this;
+            var _this45 = this;
 
             if (!this.escalas) {
               this.productos = [];
               this.Escalas = [];
               this.escalas = true;
               this.api.getById(this.Cliente_selected).subscribe(function (resp) {
-                _this43.productos = resp.productos;
-                console.log(_this43.productos);
-                _this43.cargo_productos = false;
+                _this45.productos = resp.productos;
+                console.log(_this45.productos);
+                _this45.cargo_productos = false;
 
-                _this43.api.getEscala(_this43.Cliente_selected).subscribe(function (resp) {
-                  _this43.Escalas = resp;
+                _this45.api.getEscala(_this45.Cliente_selected).subscribe(function (resp) {
+                  _this45.Escalas = resp;
                 });
               });
             } else {
@@ -12286,7 +12804,7 @@
         }, {
           key: "NuevoIntervalo",
           value: function NuevoIntervalo(cantidad, precio, producto, i) {
-            var _this44 = this;
+            var _this46 = this;
 
             var data = {
               producto: producto,
@@ -12295,17 +12813,17 @@
               cliente: this.Cliente_selected
             };
             this.api.postEscala(data).subscribe(function (resp) {
-              _this44.escalas_modal();
+              _this46.escalas_modal();
 
-              _this44.escalas_modal();
+              _this46.escalas_modal();
 
-              _this44.cancelar_intervalo(i);
+              _this46.cancelar_intervalo(i);
             });
           }
         }, {
           key: "delete_escala",
           value: function delete_escala(escala) {
-            var _this45 = this;
+            var _this47 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
               title: '¿Quieres eliminar este intervalo de la escala?',
@@ -12318,10 +12836,10 @@
             }).then(function (result) {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
-                _this45.api.DeleteEscala(escala).subscribe(function (resp) {
-                  _this45.escalas_modal();
+                _this47.api.DeleteEscala(escala).subscribe(function (resp) {
+                  _this47.escalas_modal();
 
-                  _this45.escalas_modal();
+                  _this47.escalas_modal();
 
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                     title: 'Eliminado',
@@ -17676,10 +18194,10 @@
         }, {
           key: "BuscarGruposEnAlmacen",
           value: function BuscarGruposEnAlmacen() {
-            var _this46 = this;
+            var _this48 = this;
 
             this.api.GetGrupoMp().subscribe(function (resp) {
-              _this46.SECCIONES = resp;
+              _this48.SECCIONES = resp;
             });
           }
         }, {
@@ -17694,77 +18212,77 @@
         }, {
           key: "buscarAlmacen",
           value: function buscarAlmacen() {
-            var _this47 = this;
+            var _this49 = this;
 
             this.api.getAlmacen().subscribe(function (resp) {
-              _this47.Materiales = resp.materiales;
+              _this49.Materiales = resp.materiales;
 
-              var _loop16 = function _loop16(_i17) {
-                if (_this47.Materiales[_i17].grupo.nombre === 'Sustrato') {
-                  var existe = _this47.Sustrato.find(function (x) {
-                    return x.nombre === _this47.Materiales[_i17].nombre && x.marca === _this47.Materiales[_i17].marca && x.calibre === _this47.Materiales[_i17].calibre && x.gramaje === _this47.Materiales[_i17].gramaje;
+              var _loop18 = function _loop18(_i17) {
+                if (_this49.Materiales[_i17].grupo.nombre === 'Sustrato') {
+                  var existe = _this49.Sustrato.find(function (x) {
+                    return x.nombre === _this49.Materiales[_i17].nombre && x.marca === _this49.Materiales[_i17].marca && x.calibre === _this49.Materiales[_i17].calibre && x.gramaje === _this49.Materiales[_i17].gramaje;
                   });
 
                   if (!existe) {
-                    _this47.Sustrato.push(_this47.Materiales[_i17]);
+                    _this49.Sustrato.push(_this49.Materiales[_i17]);
                   }
                 }
 
-                if (_this47.Materiales[_i17].grupo.nombre === 'Tinta') {
-                  var _existe2 = _this47.Tintas.find(function (x) {
-                    return x.nombre === _this47.Materiales[_i17].nombre && x.marca === _this47.Materiales[_i17].marca;
+                if (_this49.Materiales[_i17].grupo.nombre === 'Tinta') {
+                  var _existe2 = _this49.Tintas.find(function (x) {
+                    return x.nombre === _this49.Materiales[_i17].nombre && x.marca === _this49.Materiales[_i17].marca;
                   });
 
                   if (!_existe2) {
-                    _this47.Tintas.push(_this47.Materiales[_i17]);
+                    _this49.Tintas.push(_this49.Materiales[_i17]);
                   }
                 }
 
-                if (_this47.Materiales[_i17].grupo.nombre === 'Quimicos') {
-                  var _existe3 = _this47.Quimicos.find(function (x) {
-                    return x.nombre === _this47.Materiales[_i17].nombre && x.marca === _this47.Materiales[_i17].marca;
+                if (_this49.Materiales[_i17].grupo.nombre === 'Quimicos') {
+                  var _existe3 = _this49.Quimicos.find(function (x) {
+                    return x.nombre === _this49.Materiales[_i17].nombre && x.marca === _this49.Materiales[_i17].marca;
                   });
 
                   console.log(_existe3);
 
                   if (!_existe3) {
-                    _this47.Quimicos.push(_this47.Materiales[_i17]);
+                    _this49.Quimicos.push(_this49.Materiales[_i17]);
 
-                    console.log(_this47.Quimicos);
+                    console.log(_this49.Quimicos);
                   }
                 }
 
-                if (_this47.Materiales[_i17].grupo.nombre === 'Cajas Corrugadas') {
-                  var _existe4 = _this47.Cajas.find(function (x) {
-                    return x.nombre === _this47.Materiales[_i17].nombre;
+                if (_this49.Materiales[_i17].grupo.nombre === 'Cajas Corrugadas') {
+                  var _existe4 = _this49.Cajas.find(function (x) {
+                    return x.nombre === _this49.Materiales[_i17].nombre;
                   });
 
                   console.log(_existe4);
 
                   if (!_existe4) {
-                    _this47.Cajas.push(_this47.Materiales[_i17]);
+                    _this49.Cajas.push(_this49.Materiales[_i17]);
 
-                    console.log(_this47.Cajas);
+                    console.log(_this49.Cajas);
                   }
                 }
 
-                if (_this47.Materiales[_i17].grupo.nombre === 'Otros materiales') {
-                  var _existe5 = _this47.Planchas.find(function (x) {
-                    return x.nombre === _this47.Materiales[_i17].nombre;
+                if (_this49.Materiales[_i17].grupo.nombre === 'Otros materiales') {
+                  var _existe5 = _this49.Planchas.find(function (x) {
+                    return x.nombre === _this49.Materiales[_i17].nombre;
                   });
 
                   console.log(_existe5);
 
                   if (!_existe5) {
-                    _this47.Planchas.push(_this47.Materiales[_i17]);
+                    _this49.Planchas.push(_this49.Materiales[_i17]);
 
-                    console.log(_this47.Cajas);
+                    console.log(_this49.Cajas);
                   }
                 }
               };
 
-              for (var _i17 = 0; _i17 < _this47.Materiales.length; _i17++) {
-                _loop16(_i17);
+              for (var _i17 = 0; _i17 < _this49.Materiales.length; _i17++) {
+                _loop18(_i17);
               }
             });
           }
@@ -17799,7 +18317,7 @@
         }, {
           key: "Almacenar",
           value: function Almacenar() {
-            var _this48 = this;
+            var _this50 = this;
 
             var grupo;
 
@@ -17833,11 +18351,11 @@
             }
 
             this.api.PostAlmacen(data).subscribe(function (resp) {
-              _this48.InventarioForm.reset();
+              _this50.InventarioForm.reset();
 
-              _this48.buscarAlmacen();
+              _this50.buscarAlmacen();
 
-              _this48.Modal_Almacen();
+              _this50.Modal_Almacen();
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                 title: 'Nueva materia prima registrada',
@@ -18053,7 +18571,7 @@
         }, {
           key: "Finalizar_formula",
           value: function Finalizar_formula(id) {
-            var _this49 = this;
+            var _this51 = this;
 
             var preparacion = this.preparacion_pendiente;
             this.preparacion_pendiente = [];
@@ -18069,7 +18587,7 @@
                 timerProgressBar: true
               });
 
-              _this49.modal_tintas_('x');
+              _this51.modal_tintas_('x');
             });
           }
         }]);
@@ -19115,7 +19633,7 @@
         }, {
           key: "cambiarPass",
           value: function cambiarPass() {
-            var _this50 = this;
+            var _this52 = this;
 
             var data = {
               correo: this.usuario.Correo,
@@ -19128,10 +19646,10 @@
                 icon: 'success',
                 showConfirmButton: false
               });
-              _this50.pass1 = '';
-              _this50.pass2 = '';
+              _this52.pass1 = '';
+              _this52.pass2 = '';
 
-              _this50.cambiar();
+              _this52.cambiar();
             });
           }
         }]);
@@ -19717,11 +20235,11 @@
         _createClass(AuthGuard, [{
           key: "canActivate",
           value: function canActivate(route, state) {
-            var _this51 = this;
+            var _this53 = this;
 
             return this.api.validarToken().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (isAuth) {
               if (!isAuth) {
-                _this51.router.navigateByUrl('login');
+                _this53.router.navigateByUrl('login');
               }
             }));
           }
@@ -21753,7 +22271,7 @@
         _createClass(GestionComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this52 = this;
+            var _this54 = this;
 
             this.Tarea();
             this.getMaquinas();
@@ -21761,7 +22279,7 @@
             this.getOrdenes();
             this.getDespachos();
             this.api.getGrupos().subscribe(function (resp) {
-              _this52.GRUPOS = resp.grupos; // console.log(this.GRUPOS,'___________________________________________*')
+              _this54.GRUPOS = resp.grupos; // console.log(this.GRUPOS,'___________________________________________*')
             });
           }
         }, {
@@ -21778,14 +22296,14 @@
         }, {
           key: "BuscarAlmacen",
           value: function BuscarAlmacen(producto) {
-            var _this53 = this;
+            var _this55 = this;
 
             console.log(producto);
             this.api.BuscarAlmacenes(producto).subscribe(function (resp) {
               // console.log(resp)
-              _this53.Almacenes_edicion.push(resp);
+              _this55.Almacenes_edicion.push(resp);
 
-              _this53.almacen__ = true;
+              _this55.almacen__ = true;
               return resp;
             });
           }
@@ -21813,7 +22331,7 @@
         }, {
           key: "despachar",
           value: function despachar(x, y, op) {
-            var _this54 = this;
+            var _this56 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
               title: 'Cuidado',
@@ -21826,7 +22344,7 @@
               confirmButtonText: 'Si, despachar'
             }).then(function (result) {
               if (result.isConfirmed) {
-                if (_this54.Despachos[x].despacho[y].documento == "" || _this54.Despachos[x].despacho[y].certificado == "") {
+                if (_this56.Despachos[x].despacho[y].documento == "" || _this56.Despachos[x].despacho[y].certificado == "") {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
                     icon: 'error',
                     title: 'Debes llenar todos los campos',
@@ -21837,27 +22355,27 @@
                 }
 
                 var hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('DD-MM-yyyy');
-                _this54.Despachos[x].despacho[y].parcial = hoy;
+                _this56.Despachos[x].despacho[y].parcial = hoy;
 
-                _this54.api.PutDespachos(_this54.Despachos[x]._id, _this54.Despachos[x]).subscribe(function (resp) {
+                _this56.api.PutDespachos(_this56.Despachos[x]._id, _this56.Despachos[x]).subscribe(function (resp) {
                   // console.log('done')
                   var iterator = 0;
 
-                  for (var _i18 = 0; _i18 < _this54.Despachos[x].despacho.length; _i18++) {
+                  for (var _i18 = 0; _i18 < _this56.Despachos[x].despacho.length; _i18++) {
                     // console.log(i,'iterator', this.Despachos[x].despacho.length)
-                    console.log(_this54.Despachos[x].despacho[_i18].parcial);
+                    console.log(_this56.Despachos[x].despacho[_i18].parcial);
 
-                    if (!_this54.Despachos[x].despacho[_i18].parcial) {
+                    if (!_this56.Despachos[x].despacho[_i18].parcial) {
                       iterator++;
                     }
 
-                    if (_i18 == _this54.Despachos[x].despacho.length - 1) {
+                    if (_i18 == _this56.Despachos[x].despacho.length - 1) {
                       if (iterator < 1) {
-                        _this54.Despachos[x].fecha = hoy;
-                        _this54.Despachos[x].estado = 'despachado';
+                        _this56.Despachos[x].fecha = hoy;
+                        _this56.Despachos[x].estado = 'despachado';
 
-                        _this54.api.PutDespachos(_this54.Despachos[x]._id, _this54.Despachos[x]).subscribe(function (resp) {
-                          _this54.getDespachos();
+                        _this56.api.PutDespachos(_this56.Despachos[x]._id, _this56.Despachos[x]).subscribe(function (resp) {
+                          _this56.getDespachos();
                         });
                       }
                     }
@@ -21913,7 +22431,7 @@
         }, {
           key: "Despachado_",
           value: function Despachado_(id, x) {
-            var _this55 = this;
+            var _this57 = this;
 
             for (var _i20 = 0; _i20 < this.Despachos[x].despacho.length; _i20++) {
               if (this.Despachos[x].despacho[_i20].certificado == "" || this.Despachos[x].despacho[_i20].documento == "") {
@@ -21945,16 +22463,16 @@
                 });
               }
 
-              _this55.getDespachos();
+              _this57.getDespachos();
             });
           }
         }, {
           key: "getDespachos",
           value: function getDespachos() {
-            var _this56 = this;
+            var _this58 = this;
 
             this.api.GetDespacho().subscribe(function (resp) {
-              _this56.Despachos = resp; // console.log(this.Despachos)
+              _this58.Despachos = resp; // console.log(this.Despachos)
             });
           }
         }, {
@@ -21969,10 +22487,10 @@
         }, {
           key: "getOrdenes",
           value: function getOrdenes() {
-            var _this57 = this;
+            var _this59 = this;
 
             this.api.getOrden().subscribe(function (resp) {
-              _this57.orden = resp;
+              _this59.orden = resp;
             });
           }
         }, {
@@ -22016,12 +22534,12 @@
         }, {
           key: "getMaquinas",
           value: function getMaquinas() {
-            var _this58 = this;
+            var _this60 = this;
 
             this.api.GetMaquinas().subscribe(function (resp) {
-              _this58.MAQUINAS = resp;
+              _this60.MAQUINAS = resp;
 
-              _this58.obtenerTipos();
+              _this60.obtenerTipos();
             });
           }
         }, {
@@ -22068,7 +22586,7 @@
         }, {
           key: "retrasar",
           value: function retrasar(orden, maquina, fecha, trabajo, dias) {
-            var _this59 = this;
+            var _this61 = this;
 
             var data = {
               orden: orden,
@@ -22085,13 +22603,13 @@
                 text: 'se agregó 1 dia mas a esta gestión y a todas las ordenes que utilicen estos mismos equipos',
                 showConfirmButton: false
               });
-              _this59.TRABAJOS = [];
+              _this61.TRABAJOS = [];
 
-              _this59.Tarea();
+              _this61.Tarea();
 
-              _this59.getMaquinas();
+              _this61.getMaquinas();
 
-              _this59.getGestiones();
+              _this61.getGestiones();
             });
           }
         }, {
@@ -22102,7 +22620,7 @@
         }, {
           key: "acelerar",
           value: function acelerar(orden, maquina, fecha, trabajo, fechaI, dias) {
-            var _this60 = this;
+            var _this62 = this;
 
             var fecha_lapsos = moment__WEBPACK_IMPORTED_MODULE_1__(fecha);
             var fechaI_lapso = moment__WEBPACK_IMPORTED_MODULE_1__(fechaI);
@@ -22131,13 +22649,13 @@
                 text: 'se adelantó 1 dia mas a esta gestión y a todas las ordenes que utilizen estos mismos equipos',
                 showConfirmButton: false
               });
-              _this60.TRABAJOS = [];
+              _this62.TRABAJOS = [];
 
-              _this60.Tarea();
+              _this62.Tarea();
 
-              _this60.getMaquinas();
+              _this62.getMaquinas();
 
-              _this60.getGestiones();
+              _this62.getGestiones();
             });
           }
         }, {
@@ -22179,7 +22697,7 @@
         }, {
           key: "finalizar",
           value: function finalizar() {
-            var _this61 = this;
+            var _this63 = this;
 
             var hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('yyyy-MM-DD');
             var orden = '';
@@ -22236,75 +22754,23 @@
               document.getElementById('productos_input').value = '';
               document.getElementById('hojas_input').value = '';
 
-              _this61.modal_nueva_gestion();
+              _this63.modal_nueva_gestion();
 
-              _this61.getGestiones();
+              _this63.getGestiones();
             });
           }
         }, {
           key: "getGestiones",
           value: function getGestiones() {
-            var _this62 = this;
+            var _this64 = this;
 
             this.api.getGestiones().subscribe(function (resp) {
-              _this62.GESTIONES = resp; // console.log('all gestions', resp)
+              _this64.GESTIONES = resp; // console.log('all gestions', resp)
             });
           }
         }, {
           key: "Tarea",
           value: function Tarea() {
-            var _this63 = this;
-
-            var hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('yyyy-MM-DD');
-            this.TRABAJOS = [];
-            this.api.getTrabajos().subscribe(function (resp) {
-              var nuevo = resp.filter(function (x) {
-                return x.maquina.tipo === _this63.FASE;
-              });
-
-              if (nuevo) {
-                var Long = nuevo.length;
-
-                for (var _i23 = 0; _i23 < Long; _i23++) {
-                  if (hoy >= nuevo[_i23].fechaI) {
-                    if (hoy <= nuevo[_i23].fecha) {
-                      _this63.TRABAJOS.push(nuevo[_i23]);
-                    }
-                  }
-                }
-              }
-            });
-          }
-        }, {
-          key: "finalizar_gestion",
-          value: function finalizar_gestion(id) {
-            var _this64 = this;
-
-            var data = {
-              id: id
-            };
-            this.api.finalizarTrabajo(data).subscribe(function (resp) {
-              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
-                title: 'Gestion finalizada',
-                text: 'La gestion fue finalizada con exito',
-                showConfirmButton: false
-              });
-
-              _this64.getGestiones();
-
-              _this64.getMaquinas();
-
-              _this64.Tarea();
-            });
-          }
-        }, {
-          key: "calcularHojas",
-          value: function calcularHojas(x, y) {
-            return Math.ceil(x / y);
-          }
-        }, {
-          key: "TraerTareasFueraDeFecha",
-          value: function TraerTareasFueraDeFecha() {
             var _this65 = this;
 
             var hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('yyyy-MM-DD');
@@ -22317,12 +22783,64 @@
               if (nuevo) {
                 var Long = nuevo.length;
 
+                for (var _i23 = 0; _i23 < Long; _i23++) {
+                  if (hoy >= nuevo[_i23].fechaI) {
+                    if (hoy <= nuevo[_i23].fecha) {
+                      _this65.TRABAJOS.push(nuevo[_i23]);
+                    }
+                  }
+                }
+              }
+            });
+          }
+        }, {
+          key: "finalizar_gestion",
+          value: function finalizar_gestion(id) {
+            var _this66 = this;
+
+            var data = {
+              id: id
+            };
+            this.api.finalizarTrabajo(data).subscribe(function (resp) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                title: 'Gestion finalizada',
+                text: 'La gestion fue finalizada con exito',
+                showConfirmButton: false
+              });
+
+              _this66.getGestiones();
+
+              _this66.getMaquinas();
+
+              _this66.Tarea();
+            });
+          }
+        }, {
+          key: "calcularHojas",
+          value: function calcularHojas(x, y) {
+            return Math.ceil(x / y);
+          }
+        }, {
+          key: "TraerTareasFueraDeFecha",
+          value: function TraerTareasFueraDeFecha() {
+            var _this67 = this;
+
+            var hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('yyyy-MM-DD');
+            this.TRABAJOS = [];
+            this.api.getTrabajos().subscribe(function (resp) {
+              var nuevo = resp.filter(function (x) {
+                return x.maquina.tipo === _this67.FASE;
+              });
+
+              if (nuevo) {
+                var Long = nuevo.length;
+
                 for (var _i24 = 0; _i24 < Long; _i24++) {
                   // if(hoy >= nuevo[i].fechaI){
                   //   if(hoy <= nuevo[i].fecha){
                   //   }
                   // }
-                  _this65.TRABAJOS.push(nuevo[_i24]); // // console.log(this.GRUPOS)
+                  _this67.TRABAJOS.push(nuevo[_i24]); // // console.log(this.GRUPOS)
 
                 }
               }
@@ -23998,11 +24516,11 @@
         _createClass(ConsultaOrdenComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this66 = this;
+            var _this68 = this;
 
             this.api.getOrdenesDeCompra().subscribe(function (resp) {
-              _this66.Ordenes = resp;
-              console.log(_this66.Ordenes);
+              _this68.Ordenes = resp;
+              console.log(_this68.Ordenes);
             });
           }
         }, {
@@ -24030,7 +24548,7 @@
         }, {
           key: "Edicion",
           value: function Edicion(i) {
-            var _this67 = this;
+            var _this69 = this;
 
             document.getElementById("status_".concat(i)).style.width = '1px';
             document.getElementById("cantidad_".concat(i)).style.display = 'none';
@@ -24043,8 +24561,8 @@
             document.getElementById("producto__".concat(i)).style.display = 'block';
             document.getElementById("listo_".concat(i)).style.display = 'block';
             this.api.getById(this.Orden.cliente._id).subscribe(function (resp) {
-              _this67.PRODUCTOS = resp.productos;
-              console.log(_this67.PRODUCTOS);
+              _this69.PRODUCTOS = resp.productos;
+              console.log(_this69.PRODUCTOS);
             });
           }
         }, {
@@ -24654,11 +25172,11 @@
         }, {
           key: "getOrdenes",
           value: function getOrdenes() {
-            var _this68 = this;
+            var _this70 = this;
 
             this.api.getOrden().subscribe(function (resp) {
-              _this68.ORDENES = resp;
-              _this68.ORDENES = _this68.ORDENES.reverse();
+              _this70.ORDENES = resp;
+              _this70.ORDENES = _this70.ORDENES.reverse();
             });
           }
         }, {
@@ -24710,12 +25228,12 @@
         }, {
           key: "obtenerTrabajos",
           value: function obtenerTrabajos() {
-            var _this69 = this;
+            var _this71 = this;
 
             this.api.getTrabajos().subscribe(function (resp) {
-              _this69.TRABAJOS = resp; // console.log(this.TRABAJOS)
+              _this71.TRABAJOS = resp; // console.log(this.TRABAJOS)
 
-              _this69.loading = false;
+              _this71.loading = false;
             });
           }
         }]);
@@ -25246,22 +25764,22 @@
         _createClass(DevolucionComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this70 = this;
+            var _this72 = this;
 
             this.api.getLotes().subscribe(function (resp) {
-              _this70.devoluciones = resp;
+              _this72.devoluciones = resp;
 
               for (var _i25 = 0; _i25 < resp.length; _i25++) {
-                _this70.repeticion.push(resp[_i25].orden);
+                _this72.repeticion.push(resp[_i25].orden);
 
                 var _final = resp.length - 1;
 
                 if (_i25 == _final) {
-                  var dataArr = new Set(_this70.repeticion);
+                  var dataArr = new Set(_this72.repeticion);
 
                   var result = _toConsumableArray(dataArr);
 
-                  _this70.repeticion = result.reverse();
+                  _this72.repeticion = result.reverse();
                 }
               }
             });
@@ -25310,7 +25828,7 @@
         }, {
           key: "finalizarDevolucion",
           value: function finalizarDevolucion(id, motivo) {
-            var _this71 = this;
+            var _this73 = this;
 
             if (motivo.value.length < 1) {
               var id_ = String(id);
@@ -25334,7 +25852,7 @@
               return x._id == data.id;
             });
 
-            var _loop17 = function _loop17(iter) {
+            var _loop19 = function _loop19(iter) {
               var material = data.filtrado[iter].material;
               var _lote = data.filtrado[iter].lote;
               var _codigo = data.filtrado[iter].codigo;
@@ -25357,7 +25875,7 @@
             };
 
             for (var iter = 0; iter < data.filtrado.length; iter++) {
-              var _ret = _loop17(iter);
+              var _ret = _loop19(iter);
 
               if (typeof _ret === "object") return _ret.v;
             }
@@ -25371,7 +25889,7 @@
                 showConfirmButton: false
               }), document.getElementById('ordens').value = "·";
 
-              _this71.onClose();
+              _this73.onClose();
             });
           }
         }, {
@@ -25413,29 +25931,29 @@
         }, {
           key: "CerrarDevolucion",
           value: function CerrarDevolucion(id) {
-            var _this72 = this;
+            var _this74 = this;
 
             this.api.putCerrarLotes({
               id: id
             }).subscribe(function (resp) {
-              _this72.api.getLotes().subscribe(function (resp) {
-                _this72.devoluciones = resp;
+              _this74.api.getLotes().subscribe(function (resp) {
+                _this74.devoluciones = resp;
 
                 for (var _i27 = 0; _i27 < resp.length; _i27++) {
-                  _this72.repeticion.push(resp[_i27].orden);
+                  _this74.repeticion.push(resp[_i27].orden);
 
                   var _final2 = resp.length - 1;
 
                   if (_i27 == _final2) {
-                    var dataArr = new Set(_this72.repeticion);
+                    var dataArr = new Set(_this74.repeticion);
 
                     var result = _toConsumableArray(dataArr);
 
-                    _this72.repeticion = result;
+                    _this74.repeticion = result;
                   }
                 }
 
-                _this72.seleccionarMateriales();
+                _this74.seleccionarMateriales();
 
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                   icon: 'info',
@@ -25807,20 +26325,20 @@
         }, {
           key: "getClientes",
           value: function getClientes() {
-            var _this73 = this;
+            var _this75 = this;
 
             this.api.GetClientes().subscribe(function (resp) {
-              _this73.clientes = resp.clientes;
+              _this75.clientes = resp.clientes;
             });
           }
         }, {
           key: "buscar_productos",
           value: function buscar_productos(e) {
-            var _this74 = this;
+            var _this76 = this;
 
             this.api.getById(e).subscribe(function (resp) {
-              _this74.productos = resp.productos;
-              console.log(_this74.productos);
+              _this76.productos = resp.productos;
+              console.log(_this76.productos);
             });
           }
         }]);
@@ -28965,31 +29483,31 @@
         _createClass(OrdenComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this75 = this;
+            var _this77 = this;
 
             this.api.getOrdenById(this.id).subscribe(function (resp) {
-              _this75.loading = true;
-              _this75.PRODUCTO = resp;
+              _this77.loading = true;
+              _this77.PRODUCTO = resp;
 
-              _this75.getMaquinas(_this75.PRODUCTO._id);
+              _this77.getMaquinas(_this77.PRODUCTO._id);
 
-              _this75.cantidad = new Intl.NumberFormat('de-DE').format(_this75.PRODUCTO.cantidad);
-              _this75.demasia = Math.ceil(_this75.PRODUCTO.demasia * 100 / _this75.PRODUCTO.paginas);
-              var ejemplares_montados = _this75.PRODUCTO.producto.ejemplares[_this75.PRODUCTO.montaje];
-              var paginas_sin_demasia = _this75.PRODUCTO.cantidad / ejemplares_montados;
-              _this75.hojas_imprimir = Math.ceil(_this75.PRODUCTO.cantidad / _this75.PRODUCTO.producto.ejemplares[_this75.PRODUCTO.montaje]);
-              _this75.hojas_demasia = Math.ceil(_this75.PRODUCTO.demasia * _this75.hojas_imprimir / 100); // this.PRODUCTO.demasia = Math.ceil(this.demasia * paginas_sin_demasia / 100);
+              _this77.cantidad = new Intl.NumberFormat('de-DE').format(_this77.PRODUCTO.cantidad);
+              _this77.demasia = Math.ceil(_this77.PRODUCTO.demasia * 100 / _this77.PRODUCTO.paginas);
+              var ejemplares_montados = _this77.PRODUCTO.producto.ejemplares[_this77.PRODUCTO.montaje];
+              var paginas_sin_demasia = _this77.PRODUCTO.cantidad / ejemplares_montados;
+              _this77.hojas_imprimir = Math.ceil(_this77.PRODUCTO.cantidad / _this77.PRODUCTO.producto.ejemplares[_this77.PRODUCTO.montaje]);
+              _this77.hojas_demasia = Math.ceil(_this77.PRODUCTO.demasia * _this77.hojas_imprimir / 100); // this.PRODUCTO.demasia = Math.ceil(this.demasia * paginas_sin_demasia / 100);
               // this.PRODUCTO.demasia = this.PRODUCTO.producto.ejemplares[this.PRODUCTO.montaje]
               // console.log(this.PRODUCTO, 'este es el Producto');
 
-              _this75.loading = false;
-              console.log(_this75.PRODUCTO);
+              _this77.loading = false;
+              console.log(_this77.PRODUCTO);
             });
           }
         }, {
           key: "cancelarOrden",
           value: function cancelarOrden() {
-            var _this76 = this;
+            var _this78 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
               icon: 'info',
@@ -29006,7 +29524,7 @@
               cancelButtonColor: '#f14668',
               confirmButtonColor: '#48c78e',
               preConfirm: function preConfirm(login) {
-                return fetch("//localhost:8080/api/orden/cancelar/".concat(_this76.PRODUCTO._id, "/").concat(login)).then(function (response) {
+                return fetch("//localhost:8080/api/orden/cancelar/".concat(_this78.PRODUCTO._id, "/").concat(login)).then(function (response) {
                   if (!response.ok) {
                     console.log(response);
                     throw new Error('Debes indicar un motivo');
@@ -29024,7 +29542,7 @@
               if (result.isConfirmed) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
                   title: "".concat(result.value),
-                  text: "La orden ".concat(_this76.PRODUCTO.sort, " fu\xE9 cancelada"),
+                  text: "La orden ".concat(_this78.PRODUCTO.sort, " fu\xE9 cancelada"),
                   icon: 'success',
                   showConfirmButton: false
                 });
@@ -29034,19 +29552,19 @@
         }, {
           key: "getMaquinas",
           value: function getMaquinas(orden) {
-            var _this77 = this;
+            var _this79 = this;
 
             this.api.getMaquinasByOrdens(orden).subscribe(function (resp) {
-              _this77.Maquinas = resp;
+              _this79.Maquinas = resp;
             });
           }
         }, {
           key: "FinalizarEdicion",
           value: function FinalizarEdicion() {
-            var _this78 = this;
+            var _this80 = this;
 
             this.api.putOrden(this.PRODUCTO, this.PRODUCTO._id).subscribe(function (resp) {
-              _this78.EditarOrden();
+              _this80.EditarOrden();
             });
           }
         }, {
@@ -30942,11 +31460,11 @@
         }, {
           key: "OrdenesdeCompra",
           value: function OrdenesdeCompra() {
-            var _this79 = this;
+            var _this81 = this;
 
             this.api.getOrdenesDeCompra().subscribe(function (resp) {
-              _this79.OrdenesDeCompra = resp;
-              console.log(_this79.OrdenesDeCompra);
+              _this81.OrdenesDeCompra = resp;
+              console.log(_this81.OrdenesDeCompra);
             });
           }
         }, {
@@ -31006,10 +31524,10 @@
         }, {
           key: "obtenerClientes",
           value: function obtenerClientes() {
-            var _this80 = this;
+            var _this82 = this;
 
             this.api.GetClientes().subscribe(function (resp) {
-              _this80.CLIENTES = resp.clientes;
+              _this82.CLIENTES = resp.clientes;
             });
           }
         }, {
@@ -31023,7 +31541,7 @@
         }, {
           key: "cliente_selected",
           value: function cliente_selected(e) {
-            var _this81 = this;
+            var _this83 = this;
 
             this.ordenesFiltered = this.OrdenesDeCompra.filter(function (x) {
               return x.cliente._id === e;
@@ -31044,18 +31562,18 @@
             }
 
             this.api.getById(e).subscribe(function (resp) {
-              _this81.PRODUCTOS = resp.productos; // // console.log(this.PRODUCTOS)
+              _this83.PRODUCTOS = resp.productos; // // console.log(this.PRODUCTOS)
             });
           }
         }, {
           key: "Almacenado",
           value: function Almacenado() {
-            var _this82 = this;
+            var _this84 = this;
 
             this.api.getAlmacenado().subscribe(function (resp) {
-              _this82._CANTIDAD = resp;
+              _this84._CANTIDAD = resp;
 
-              _this82.totalizar_materiales();
+              _this84.totalizar_materiales();
             });
           }
         }, {
@@ -31068,7 +31586,7 @@
         }, {
           key: "producto_selected",
           value: function producto_selected(e) {
-            var _this83 = this;
+            var _this85 = this;
 
             var indexOF = this.OrdenSelected.productos.findIndex(function (x) {
               return x.producto._id == e.target.value;
@@ -31088,38 +31606,38 @@
             }
 
             this.api.getOneById(e.target.value).subscribe(function (resp) {
-              _this83.PRODUCTO = resp.producto; // // console.log(this.PRODUCTO,'PRODUCTO')
+              _this85.PRODUCTO = resp.producto; // // console.log(this.PRODUCTO,'PRODUCTO')
 
-              _this83.montajes = _this83.PRODUCTO.montajes;
-              _this83.Ejemplares_montados = _this83.PRODUCTO.ejemplares[_this83.i_montajes];
+              _this85.montajes = _this85.PRODUCTO.montajes;
+              _this85.Ejemplares_montados = _this85.PRODUCTO.ejemplares[_this85.i_montajes];
 
-              _this83.Ejemplares(_this83.Ejemplares_montados);
+              _this85.Ejemplares(_this85.Ejemplares_montados);
 
-              _this83.MAQUINAS = resp.maquinas; //   this.modal_nueva_orden()
+              _this85.MAQUINAS = resp.maquinas; //   this.modal_nueva_orden()
 
-              var x = _this83.PRODUCTO.materiales.length;
-              _this83.CANTIDAD = [];
+              var x = _this85.PRODUCTO.materiales.length;
+              _this85.CANTIDAD = [];
 
-              var _loop18 = function _loop18(_i30) {
-                var respuesta = _this83._CANTIDAD.find(function (x) {
-                  return x.material.nombre == _this83.PRODUCTO[_this83.i_montajes].materiales[_i30].producto.nombre && x.material.marca == _this83.PRODUCTO.materiales[_i30].producto.marca && x.material.grupo.nombre;
+              var _loop20 = function _loop20(_i30) {
+                var respuesta = _this85._CANTIDAD.find(function (x) {
+                  return x.material.nombre == _this85.PRODUCTO[_this85.i_montajes].materiales[_i30].producto.nombre && x.material.marca == _this85.PRODUCTO.materiales[_i30].producto.marca && x.material.grupo.nombre;
                 }); // // console.log(this.PRODUCTO)
 
 
                 if (!respuesta) {
-                  _this83.SinMaterial = true;
+                  _this85.SinMaterial = true;
                   return {
                     v: void 0
                   };
                 } else {
-                  _this83.SinMaterial = false;
+                  _this85.SinMaterial = false;
                 }
 
-                _this83.CANTIDAD.push(respuesta);
+                _this85.CANTIDAD.push(respuesta);
               };
 
               for (var _i30 = 0; _i30 < x; _i30++) {
-                var _ret2 = _loop18(_i30);
+                var _ret2 = _loop20(_i30);
 
                 if (typeof _ret2 === "object") return _ret2.v;
               }
@@ -31138,12 +31656,12 @@
         }, {
           key: "BuscarAlmacen",
           value: function BuscarAlmacen() {
-            var _this84 = this;
+            var _this86 = this;
 
             this.api.getAlmacen().subscribe(function (resp) {
-              _this84.ALMACEN = resp.materiales;
+              _this86.ALMACEN = resp.materiales;
 
-              _this84.totalizar_materiales();
+              _this86.totalizar_materiales();
             });
           }
         }, {
@@ -31250,40 +31768,40 @@
         }, {
           key: "totalizar_materiales",
           value: function totalizar_materiales() {
-            var _this85 = this;
+            var _this87 = this;
 
-            var _loop19 = function _loop19(_i33) {
-              var existe = _this85.TOTALES.find(function (x) {
-                return x.material == _this85._CANTIDAD[_i33].material.nombre && x.marca == _this85._CANTIDAD[_i33].material.marca;
+            var _loop21 = function _loop21(_i33) {
+              var existe = _this87.TOTALES.find(function (x) {
+                return x.material == _this87._CANTIDAD[_i33].material.nombre && x.marca == _this87._CANTIDAD[_i33].material.marca;
               });
 
               if (existe) {
-                var x = _this85.TOTALES.findIndex(function (x) {
-                  return x.material == _this85._CANTIDAD[_i33].material.nombre && x.marca == _this85._CANTIDAD[_i33].material.marca;
+                var x = _this87.TOTALES.findIndex(function (x) {
+                  return x.material == _this87._CANTIDAD[_i33].material.nombre && x.marca == _this87._CANTIDAD[_i33].material.marca;
                 });
 
-                _this85.TOTALES[x].total = Number(_this85.TOTALES[x].total);
-                _this85._CANTIDAD[_i33].cantidad = Number(_this85._CANTIDAD[_i33].cantidad);
-                _this85._CANTIDAD[_i33].neto = Number(_this85._CANTIDAD[_i33].material.neto);
-                var def = _this85._CANTIDAD[_i33].neto * _this85._CANTIDAD[_i33].cantidad / _this85.TOTALES[x].neto;
-                _this85.TOTALES[x].total = _this85.TOTALES[x].total + def;
+                _this87.TOTALES[x].total = Number(_this87.TOTALES[x].total);
+                _this87._CANTIDAD[_i33].cantidad = Number(_this87._CANTIDAD[_i33].cantidad);
+                _this87._CANTIDAD[_i33].neto = Number(_this87._CANTIDAD[_i33].material.neto);
+                var def = _this87._CANTIDAD[_i33].neto * _this87._CANTIDAD[_i33].cantidad / _this87.TOTALES[x].neto;
+                _this87.TOTALES[x].total = _this87.TOTALES[x].total + def;
               } else {
-                _this85.TOTALES.push({
-                  material: _this85._CANTIDAD[_i33].material.nombre,
-                  marca: _this85._CANTIDAD[_i33].material.marca,
-                  grupo: _this85._CANTIDAD[_i33].material.grupo.nombre,
-                  presentacion: _this85._CANTIDAD[_i33].material.presentacion,
-                  neto: _this85._CANTIDAD[_i33].material.neto,
-                  unidad: _this85._CANTIDAD[_i33].material.unidad,
-                  ancho: _this85._CANTIDAD[_i33].material.ancho,
-                  largo: _this85._CANTIDAD[_i33].material.largo,
-                  total: _this85._CANTIDAD[_i33].cantidad
+                _this87.TOTALES.push({
+                  material: _this87._CANTIDAD[_i33].material.nombre,
+                  marca: _this87._CANTIDAD[_i33].material.marca,
+                  grupo: _this87._CANTIDAD[_i33].material.grupo.nombre,
+                  presentacion: _this87._CANTIDAD[_i33].material.presentacion,
+                  neto: _this87._CANTIDAD[_i33].material.neto,
+                  unidad: _this87._CANTIDAD[_i33].material.unidad,
+                  ancho: _this87._CANTIDAD[_i33].material.ancho,
+                  largo: _this87._CANTIDAD[_i33].material.largo,
+                  total: _this87._CANTIDAD[_i33].cantidad
                 });
               }
             };
 
             for (var _i33 = 0; _i33 < this._CANTIDAD.length; _i33++) {
-              _loop19(_i33);
+              _loop21(_i33);
             }
           }
         }, {
@@ -31354,7 +31872,7 @@
         }, {
           key: "colocarFecha",
           value: function colocarFecha(e, fase, i) {
-            var _this86 = this;
+            var _this88 = this;
 
             // CPH = CANTIDAD POR HOJAS
             this.api.getFechas(e.target.value).subscribe(function (resp) {
@@ -31384,14 +31902,14 @@
               document.getElementById(fase).value = fecha;
 
               if (cph > 0) {
-                HorasAgregadas = _this86.paginas / cph;
+                HorasAgregadas = _this88.paginas / cph;
               } else {
-                var MaquinaSelected2 = _this86.MAQUINAS.find(function (x) {
+                var MaquinaSelected2 = _this88.MAQUINAS.find(function (x) {
                   return x._id == e.target.value;
                 });
 
                 cph = MaquinaSelected2.cph;
-                HorasAgregadas = _this86.paginas / cph;
+                HorasAgregadas = _this88.paginas / cph;
               }
 
               var dias = HorasAgregadas / 7;
@@ -31418,7 +31936,7 @@
         }, {
           key: "finalizar",
           value: function finalizar(cantidad) {
-            var _this87 = this;
+            var _this89 = this;
 
             var data = {
               usuario: "".concat(this.usuario.Nombre, " ").concat(this.usuario.Apellido),
@@ -31440,10 +31958,10 @@
               ProductodeProductos: this.ProductodeProductos
             };
             this.api.postOrden(data).subscribe(function (resp) {
-              var fases = _this87.PRODUCTO.grupo.tipos.length;
+              var fases = _this89.PRODUCTO.grupo.tipos.length;
 
               for (var x = 0; x < fases; x++) {
-                var fase = _this87.PRODUCTO.grupo.tipos[x]; // // console.log(this.PRODUCTO.grupo.tipos[x])
+                var fase = _this89.PRODUCTO.grupo.tipos[x]; // // console.log(this.PRODUCTO.grupo.tipos[x])
 
                 var maquina = document.getElementById("".concat(fase, "-maquina")).value;
                 var fechaI = document.getElementById("".concat(fase)).value;
@@ -31456,11 +31974,11 @@
                   pos: x
                 };
 
-                _this87.api.postOrden2(Data).subscribe(function (respuesta) {// // console.log(respuesta)
+                _this89.api.postOrden2(Data).subscribe(function (respuesta) {// // console.log(respuesta)
                 });
               }
 
-              _this87.router.navigate(["/orden-produccion/".concat(resp)]);
+              _this89.router.navigate(["/orden-produccion/".concat(resp)]);
             });
           }
         }]);
@@ -32710,23 +33228,23 @@
         }, {
           key: "ObtenerMaquinas",
           value: function ObtenerMaquinas() {
-            var _this88 = this;
+            var _this90 = this;
 
             this.api.GetMaquinas().subscribe(function (maquinas) {
-              _this88.MAQUINAS = maquinas;
+              _this90.MAQUINAS = maquinas;
 
-              _this88.obtenerTipos();
+              _this90.obtenerTipos();
 
-              _this88.cargado = true;
+              _this90.cargado = true;
             });
           }
         }, {
           key: "ObtenerDespachos",
           value: function ObtenerDespachos() {
-            var _this89 = this;
+            var _this91 = this;
 
             this.api.GetDespacho().subscribe(function (resp) {
-              _this89.Despachos = resp;
+              _this91.Despachos = resp;
             });
           }
         }, {
@@ -32860,13 +33378,13 @@
         }, {
           key: "obtenerTrabajos",
           value: function obtenerTrabajos() {
-            var _this90 = this;
+            var _this92 = this;
 
             this.api.getTrabajos().subscribe(function (resp) {
-              _this90.cargado = false;
-              _this90.TRABAJOS = resp; // console.log(this.TRABAJOS)
+              _this92.cargado = false;
+              _this92.TRABAJOS = resp; // console.log(this.TRABAJOS)
 
-              _this90.cargado = true;
+              _this92.cargado = true;
             });
           }
         }]);
@@ -33790,13 +34308,13 @@
         _createClass(EtiquetaComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this91 = this;
+            var _this93 = this;
 
             this.api.getOrden().subscribe(function (resp) {
-              _this91.ordenes = resp.reverse();
+              _this93.ordenes = resp.reverse();
             });
             this.api.getDespachados().subscribe(function (resp) {
-              _this91.Despachados = resp;
+              _this93.Despachados = resp;
             });
           }
         }, {
@@ -33807,7 +34325,7 @@
         }, {
           key: "seleccionar_orden",
           value: function seleccionar_orden(e) {
-            var _this92 = this;
+            var _this94 = this;
 
             console.log(e, '<- e');
             this.__orden__ = e;
@@ -33821,30 +34339,30 @@
               this.visto = false;
               this.loaded = false;
               this.api.getOrdenById2(e).subscribe(function (resp) {
-                _this92.__Cajas = null;
-                _this92.__orden = resp.ordenes;
-                _this92.__gestiones = resp.gestiones;
-                _this92.fecha = resp.trabajos;
-                _this92.hoy = moment__WEBPACK_IMPORTED_MODULE_1__["utc"]().format('DD/MM/yyyy');
-                console.log(_this92.__orden);
-                _this92.orden = e;
-                console.log(_this92.orden, '<-- this.orden'); // this.__orden = this.ordenes.find(x=> x._id === e)
+                _this94.__Cajas = null;
+                _this94.__orden = resp.ordenes;
+                _this94.__gestiones = resp.gestiones;
+                _this94.fecha = resp.trabajos;
+                _this94.hoy = moment__WEBPACK_IMPORTED_MODULE_1__["utc"]().format('DD/MM/yyyy');
+                console.log(_this94.__orden);
+                _this94.orden = e;
+                console.log(_this94.orden, '<-- this.orden'); // this.__orden = this.ordenes.find(x=> x._id === e)
 
-                for (var _i38 = 0; _i38 < _this92.__orden.producto.materiales[_this92.__orden.montaje].length; _i38++) {
-                  var material = _this92.__orden.producto.materiales[_this92.__orden.montaje][_i38];
+                for (var _i38 = 0; _i38 < _this94.__orden.producto.materiales[_this94.__orden.montaje].length; _i38++) {
+                  var material = _this94.__orden.producto.materiales[_this94.__orden.montaje][_i38];
 
                   if (material.producto.presentacion === 'Caja') {
-                    _this92.__producto_por_caja = material.cantidad;
-                    _this92.__Cajas = Math.ceil(_this92.__orden.cantidad_o / material.cantidad);
+                    _this94.__producto_por_caja = material.cantidad;
+                    _this94.__Cajas = Math.ceil(_this94.__orden.cantidad_o / material.cantidad);
                   }
 
-                  if (_this92.__orden.producto.materiales[_this92.__orden.montaje][_i38].producto.ancho) {
-                    _this92.sustrato = "".concat(_this92.__orden.producto.materiales[_this92.__orden.montaje][_i38].producto.nombre, ", Cal ").concat(_this92.__orden.producto.materiales[_this92.__orden.montaje][_i38].producto.calibre, ", Gramaje ").concat(_this92.__orden.producto.materiales[_this92.__orden.montaje][_i38].producto.gramaje);
+                  if (_this94.__orden.producto.materiales[_this94.__orden.montaje][_i38].producto.ancho) {
+                    _this94.sustrato = "".concat(_this94.__orden.producto.materiales[_this94.__orden.montaje][_i38].producto.nombre, ", Cal ").concat(_this94.__orden.producto.materiales[_this94.__orden.montaje][_i38].producto.calibre, ", Gramaje ").concat(_this94.__orden.producto.materiales[_this94.__orden.montaje][_i38].producto.gramaje);
                   }
 
-                  if (_i38 === _this92.__orden.producto.materiales[_this92.__orden.montaje].length - 1) {
-                    _this92.loaded = true;
-                    _this92.valido = true;
+                  if (_i38 === _this94.__orden.producto.materiales[_this94.__orden.montaje].length - 1) {
+                    _this94.loaded = true;
+                    _this94.valido = true;
                   }
                 }
               });
@@ -33884,7 +34402,7 @@
         }, {
           key: "generarpdf",
           value: function generarpdf() {
-            var _this93 = this;
+            var _this95 = this;
 
             this.cargando = true;
             var data = {
@@ -33900,14 +34418,14 @@
             };
             this.api.ImprimirPDF(data).subscribe(function (resp) {
               console.log(resp);
-              console.log('---> ', _this93.orden);
+              console.log('---> ', _this95.orden);
 
-              _this93.seleccionar_orden(_this93.__orden__);
+              _this95.seleccionar_orden(_this95.__orden__);
 
-              _this93.visto = false;
+              _this95.visto = false;
 
-              _this93.api.copyTags(_this93.__orden.sort, _this93.unidades__).subscribe(function (resp) {
-                _this93.cargando = false;
+              _this95.api.copyTags(_this95.__orden.sort, _this95.unidades__).subscribe(function (resp) {
+                _this95.cargando = false;
                 console.log('done');
               });
             });
@@ -35423,22 +35941,22 @@
         }, {
           key: "obtenerClientes",
           value: function obtenerClientes() {
-            var _this94 = this;
+            var _this96 = this;
 
             this.api.GetClientes().subscribe(function (resp) {
-              _this94.CLIENTES = resp.clientes;
+              _this96.CLIENTES = resp.clientes;
             });
           }
         }, {
           key: "cliente_selected",
           value: function cliente_selected(e) {
-            var _this95 = this;
+            var _this97 = this;
 
             this.CLIENTE = e.target.value;
 
             if (e.target.value != '#') {
               this.api.getById(e.target.value).subscribe(function (resp) {
-                _this95.PRODUCTOS = resp.productos; // // console.log(this.PRODUCTOS)
+                _this97.PRODUCTOS = resp.productos; // // console.log(this.PRODUCTOS)
               });
             } else {
               this.PRODUCTOS = [];
@@ -35543,7 +36061,7 @@
         }, {
           key: "nueva_oc",
           value: function nueva_oc() {
-            var _this96 = this;
+            var _this98 = this;
 
             var data = {
               cliente: this.CLIENTE,
@@ -35553,13 +36071,13 @@
               productos: this.DATOS
             };
             this.api.postOrdenDeCompra(data).subscribe(function (resp) {
-              _this96.Loaded = false;
-              _this96.DATOS = [];
-              _this96.CLIENTE = '';
-              _this96.ORDEN_COMPRA = '';
-              _this96.Fecha_entrega = '';
-              _this96._Fecha_entrega = '';
-              _this96.PRODUCTOS = [];
+              _this98.Loaded = false;
+              _this98.DATOS = [];
+              _this98.CLIENTE = '';
+              _this98.ORDEN_COMPRA = '';
+              _this98.Fecha_entrega = '';
+              _this98._Fecha_entrega = '';
+              _this98.PRODUCTOS = [];
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                 icon: 'success',
                 title: 'Hecho',
@@ -36544,15 +37062,15 @@
         _createClass(PreFacturacionComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this97 = this;
+            var _this99 = this;
 
             this.api.getDespachosYOrdenes().subscribe(function (resp) {
-              _this97.Despachos = resp.preFacuracion;
-              console.log(_this97.Despachos, 'AQUIIIIIIIIIIIIIIIII');
-              _this97.Tasa = resp.MonitorBCV;
+              _this99.Despachos = resp.preFacuracion;
+              console.log(_this99.Despachos, 'AQUIIIIIIIIIIIIIIIII');
+              _this99.Tasa = resp.MonitorBCV;
               var split_dolar = resp.MonitorBCV.split(' ');
-              _this97.Tasa = Number(split_dolar[1]);
-              console.log(_this97.Tasa);
+              _this99.Tasa = Number(split_dolar[1]);
+              console.log(_this99.Tasa);
             });
           }
         }, {
@@ -36686,7 +37204,7 @@
         }, {
           key: "confirmar_todo",
           value: function confirmar_todo() {
-            var _this98 = this;
+            var _this100 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
               icon: 'warning',
@@ -36700,10 +37218,10 @@
             }).then(function (result) {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
-                _this98.Despachos[_this98.INDEX].despacho.documento = "".concat(_this98.tipo_documento).concat(_this98.n_documento);
-                _this98.n_documento = '';
-                _this98.tipo_documento = 'F - ';
-                _this98.Facturacion = false;
+                _this100.Despachos[_this100.INDEX].despacho.documento = "".concat(_this100.tipo_documento).concat(_this100.n_documento);
+                _this100.n_documento = '';
+                _this100.tipo_documento = 'F - ';
+                _this100.Facturacion = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                   title: 'Listo.',
                   text: 'Se realizó el registro de facturación correctamente.',
@@ -36711,7 +37229,7 @@
                   showConfirmButton: false
                 });
 
-                _this98.api.facturado(_this98.Despachos[_this98.INDEX].despacho).subscribe(function (resp) {
+                _this100.api.facturado(_this100.Despachos[_this100.INDEX].despacho).subscribe(function (resp) {
                   console.log('donde');
                 });
               } else if (result.isDenied) {
@@ -36749,7 +37267,7 @@
         }, {
           key: "descargarPDF",
           value: function descargarPDF() {
-            var _this99 = this;
+            var _this101 = this;
 
             this.Despachos[this.INDEX].despacho.tasa = this.Tasa;
             this.Despachos[this.INDEX].despacho.precio = this.Escala.precio;
@@ -36847,9 +37365,9 @@
             var pre;
             this.api.aumentoPre(this.Despachos[this.INDEX].despacho).subscribe(function (resp) {
               pre = resp;
-              _this99.Validacion = false;
-              _this99.resumen = true;
-              _this99.resumido = false;
+              _this101.Validacion = false;
+              _this101.resumen = true;
+              _this101.resumido = false;
               generarPDF(); // if(pre < 10){
               //   pre = `000${pre}`
               // }
@@ -40079,16 +40597,16 @@
         }, {
           key: "despachos_porcentaje",
           value: function despachos_porcentaje(op, montaje) {
-            var _this100 = this;
+            var _this102 = this;
 
             this.Ej_montados = montaje;
             this.consumos('0', op);
             this.modal_consumos = false;
             this.modal_despacho = true;
             this.api.GetDespachoByOrden(op).subscribe(function (resp) {
-              _this100.despachos_filtrado = resp;
-              _this100.despachos_orden = op;
-              console.log(_this100.despachos_filtrado);
+              _this102.despachos_filtrado = resp;
+              _this102.despachos_orden = op;
+              console.log(_this102.despachos_filtrado);
             });
           }
         }, {
@@ -40099,13 +40617,13 @@
         }, {
           key: "Producto_Selected",
           value: function Producto_Selected(e) {
-            var _this101 = this;
+            var _this103 = this;
 
             if (e === '#') {
               this.Producto_select = undefined;
             } else {
               this.api.getOneById(e).subscribe(function (resp) {
-                _this101.Producto_select = resp.producto.producto;
+                _this103.Producto_select = resp.producto.producto;
                 return;
               });
             }
@@ -40314,23 +40832,23 @@
         }, {
           key: "Cliente_Selected",
           value: function Cliente_Selected(e) {
-            var _this102 = this;
+            var _this104 = this;
 
             this.api.getById(e).subscribe(function (resp) {
               console.log(resp);
-              _this102.producto_form = true;
-              _this102.Productos_by_client = resp;
+              _this104.producto_form = true;
+              _this104.Productos_by_client = resp;
             });
           }
         }, {
           key: "busquedaInteligente",
           value: function busquedaInteligente(e) {
-            var _this103 = this;
+            var _this105 = this;
 
             if (e === 'cliente') {
               this.api.GetClientes().subscribe(function (resp) {
-                _this103.busqueda_clientes = resp;
-                _this103.clientes_form = true;
+                _this105.busqueda_clientes = resp;
+                _this105.clientes_form = true;
               });
             } else {
               this.clientes_form = false;
@@ -40438,7 +40956,7 @@
         }, {
           key: "sumaSustrato",
           value: function sumaSustrato() {
-            var _this104 = this;
+            var _this106 = this;
 
             this.peso_hojas = 0;
             this.peso_carton = 0;
@@ -40451,24 +40969,24 @@
                 if (this.Lotes[_i45].material[x].material.grupo === '61f92a1f2126d717f004cca6') {
                   (function () {
                     var data = {
-                      Nombre: _this104.Lotes[_i45].material[x].material.nombre,
-                      Marca: _this104.Lotes[_i45].material[x].material.marca,
-                      Ancho: _this104.Lotes[_i45].material[x].material.ancho,
-                      Largo: _this104.Lotes[_i45].material[x].material.largo,
-                      Calibre: _this104.Lotes[_i45].material[x].material.calibre,
-                      Gramaje: _this104.Lotes[_i45].material[x].material.gramaje,
-                      Cantidad: _this104.Lotes[_i45].material[x].cantidad
+                      Nombre: _this106.Lotes[_i45].material[x].material.nombre,
+                      Marca: _this106.Lotes[_i45].material[x].material.marca,
+                      Ancho: _this106.Lotes[_i45].material[x].material.ancho,
+                      Largo: _this106.Lotes[_i45].material[x].material.largo,
+                      Calibre: _this106.Lotes[_i45].material[x].material.calibre,
+                      Gramaje: _this106.Lotes[_i45].material[x].material.gramaje,
+                      Cantidad: _this106.Lotes[_i45].material[x].cantidad
                     };
 
-                    var existe = _this104.Sustratos_suma.findIndex(function (x) {
+                    var existe = _this106.Sustratos_suma.findIndex(function (x) {
                       return x.Nombre === data.Nombre && x.Marca === data.Marca && x.Ancho === data.Ancho && x.Largo === data.Largo && x.Calibre === data.Calibre && x.Gramaje === data.Gramaje;
                     });
 
                     if (existe < 0) {
-                      _this104.Sustratos_suma.push(data); // console.log(this.Sustratos_suma)
+                      _this106.Sustratos_suma.push(data); // console.log(this.Sustratos_suma)
 
                     } else {
-                      _this104.Sustratos_suma[existe].Cantidad = Number(_this104.Sustratos_suma[existe].Cantidad) + Number(data.Cantidad);
+                      _this106.Sustratos_suma[existe].Cantidad = Number(_this106.Sustratos_suma[existe].Cantidad) + Number(data.Cantidad);
                     }
                   })();
                 }
@@ -40534,7 +41052,7 @@
         }, {
           key: "sumaTinta",
           value: function sumaTinta() {
-            var _this105 = this;
+            var _this107 = this;
 
             this.Tinta = 0;
             this.Suma_Tintas = [];
@@ -40548,45 +41066,45 @@
               for (var x = 0; x < this.data.Lotes[_i46].material.length; x++) {
                 if (this.data.Lotes[_i46].material[x].material.grupo === '61fd54e2d9115415a4416f17') {
                   (function () {
-                    _this105.Tinta = _this105.Tinta + _this105.data.Lotes[_i46].material[x].EA_Cantidad;
+                    _this107.Tinta = _this107.Tinta + _this107.data.Lotes[_i46].material[x].EA_Cantidad;
 
-                    switch (_this105.Lotes[_i46].material[x].material.color) {
+                    switch (_this107.Lotes[_i46].material[x].material.color) {
                       case 'Amarillo':
-                        _this105.Amarillo = _this105.Amarillo + _this105.data.Lotes[_i46].material[x].EA_Cantidad;
+                        _this107.Amarillo = _this107.Amarillo + _this107.data.Lotes[_i46].material[x].EA_Cantidad;
                         break;
 
                       case 'Cyan':
-                        _this105.Cyan = _this105.Cyan + _this105.data.Lotes[_i46].material[x].EA_Cantidad;
+                        _this107.Cyan = _this107.Cyan + _this107.data.Lotes[_i46].material[x].EA_Cantidad;
                         break;
 
                       case 'Magenta':
-                        _this105.Magenta = _this105.Magenta + _this105.data.Lotes[_i46].material[x].EA_Cantidad;
+                        _this107.Magenta = _this107.Magenta + _this107.data.Lotes[_i46].material[x].EA_Cantidad;
                         break;
 
                       case 'Negro':
-                        _this105.Negro = _this105.Negro + _this105.data.Lotes[_i46].material[x].EA_Cantidad;
+                        _this107.Negro = _this107.Negro + _this107.data.Lotes[_i46].material[x].EA_Cantidad;
                         break;
 
                       default:
-                        _this105.Otros_c = _this105.Otros_c + _this105.data.Lotes[_i46].material[x].EA_Cantidad;
+                        _this107.Otros_c = _this107.Otros_c + _this107.data.Lotes[_i46].material[x].EA_Cantidad;
                         break;
                     } // console.log(this.Lotes[i].material[x].material.color)
 
 
                     var data = {
-                      Nombre: _this105.Lotes[_i46].material[x].material.nombre,
-                      Marca: _this105.Lotes[_i46].material[x].material.marca,
-                      Cantidad: _this105.Lotes[_i46].material[x].EA_Cantidad
+                      Nombre: _this107.Lotes[_i46].material[x].material.nombre,
+                      Marca: _this107.Lotes[_i46].material[x].material.marca,
+                      Cantidad: _this107.Lotes[_i46].material[x].EA_Cantidad
                     };
 
-                    var existe = _this105.Suma_Tintas.findIndex(function (x) {
+                    var existe = _this107.Suma_Tintas.findIndex(function (x) {
                       return x.Nombre === data.Nombre && x.Marca === data.Marca;
                     });
 
                     if (existe < 0) {
-                      _this105.Suma_Tintas.push(data);
+                      _this107.Suma_Tintas.push(data);
                     } else {
-                      _this105.Suma_Tintas[existe].Cantidad = Number(_this105.Suma_Tintas[existe].Cantidad) + Number(data.Cantidad);
+                      _this107.Suma_Tintas[existe].Cantidad = Number(_this107.Suma_Tintas[existe].Cantidad) + Number(data.Cantidad);
                     }
                   })();
                 }
@@ -40630,7 +41148,7 @@
         }, {
           key: "consumos",
           value: function consumos(id, op) {
-            var _this106 = this;
+            var _this108 = this;
 
             this.lote_mayor = [];
             this.c_devoluciones = [];
@@ -40642,29 +41160,29 @@
               return x.orden === op;
             });
 
-            var _loop20 = function _loop20(_i48) {
-              var _loop21 = function _loop21(n) {
+            var _loop22 = function _loop22(_i48) {
+              var _loop23 = function _loop23(n) {
                 // console.log(this.c_lotes[i].material[n].material.calibre)
-                var index = _this106.lote_mayor.find(function (x) {
-                  return x.nombre === _this106.c_lotes[_i48].material[n].material.nombre && x.ancho === _this106.c_lotes[_i48].material[n].material.ancho && x.largo === _this106.c_lotes[_i48].material[n].material.largo && x.calibre === _this106.c_lotes[_i48].material[n].material.calibre && x.gramaje === _this106.c_lotes[_i48].material[n].material.gramaje;
+                var index = _this108.lote_mayor.find(function (x) {
+                  return x.nombre === _this108.c_lotes[_i48].material[n].material.nombre && x.ancho === _this108.c_lotes[_i48].material[n].material.ancho && x.largo === _this108.c_lotes[_i48].material[n].material.largo && x.calibre === _this108.c_lotes[_i48].material[n].material.calibre && x.gramaje === _this108.c_lotes[_i48].material[n].material.gramaje;
                 });
 
                 if (!index) {
-                  var marca = _this106.c_lotes[_i48].material[n].material.marca;
-                  var _id2 = _this106.c_lotes[_i48].material[n].material._id;
-                  var cant = _this106.c_lotes[_i48].material[n].cantidad; // cant = cant.toFixed(2)
+                  var marca = _this108.c_lotes[_i48].material[n].material.marca;
+                  var _id2 = _this108.c_lotes[_i48].material[n].material._id;
+                  var cant = _this108.c_lotes[_i48].material[n].cantidad; // cant = cant.toFixed(2)
 
-                  if (_this106.c_lotes[_i48].material[n].material.ancho) {
-                    var ancho = _this106.c_lotes[_i48].material[n].material.ancho;
-                    var largo = _this106.c_lotes[_i48].material[n].material.largo;
-                    var calibre = _this106.c_lotes[_i48].material[n].material.calibre;
-                    var gramaje = _this106.c_lotes[_i48].material[n].material.gramaje;
+                  if (_this108.c_lotes[_i48].material[n].material.ancho) {
+                    var ancho = _this108.c_lotes[_i48].material[n].material.ancho;
+                    var largo = _this108.c_lotes[_i48].material[n].material.largo;
+                    var calibre = _this108.c_lotes[_i48].material[n].material.calibre;
+                    var gramaje = _this108.c_lotes[_i48].material[n].material.gramaje;
 
-                    _this106.lote_mayor.push({
+                    _this108.lote_mayor.push({
                       op: op,
                       id: _id2,
                       marca: marca,
-                      nombre: _this106.c_lotes[_i48].material[n].material.nombre,
+                      nombre: _this108.c_lotes[_i48].material[n].material.nombre,
                       cantidad: cant,
                       ancho: ancho,
                       largo: largo,
@@ -40672,11 +41190,11 @@
                       gramaje: gramaje
                     });
                   } else {
-                    _this106.lote_mayor.push({
+                    _this108.lote_mayor.push({
                       op: op,
                       id: _id2,
                       marca: marca,
-                      nombre: _this106.c_lotes[_i48].material[n].material.nombre,
+                      nombre: _this108.c_lotes[_i48].material[n].material.nombre,
                       cantidad: cant,
                       ancho: null,
                       largo: null,
@@ -40685,21 +41203,21 @@
                     });
                   }
                 } else {
-                  var b = _this106.lote_mayor.findIndex(function (x) {
-                    return x.nombre === _this106.c_lotes[_i48].material[n].material.nombre;
+                  var b = _this108.lote_mayor.findIndex(function (x) {
+                    return x.nombre === _this108.c_lotes[_i48].material[n].material.nombre;
                   });
 
-                  _this106.lote_mayor[b].cantidad = Number(_this106.lote_mayor[b].cantidad) + Number(_this106.c_lotes[_i48].material[n].cantidad);
+                  _this108.lote_mayor[b].cantidad = Number(_this108.lote_mayor[b].cantidad) + Number(_this108.c_lotes[_i48].material[n].cantidad);
                 }
               };
 
-              for (var n = 0; n < _this106.c_lotes[_i48].material.length; n++) {
-                _loop21(n);
+              for (var n = 0; n < _this108.c_lotes[_i48].material.length; n++) {
+                _loop23(n);
               }
             };
 
             for (var _i48 = 0; _i48 < this.c_lotes.length; _i48++) {
-              _loop20(_i48);
+              _loop22(_i48);
             }
 
             this.modal_consumos = true;
@@ -40725,7 +41243,7 @@
         }, {
           key: "Buscar_estadisticas",
           value: function Buscar_estadisticas(desde, hasta) {
-            var _this107 = this;
+            var _this109 = this;
 
             this.vacio = false;
             this.sinBusqueda = false;
@@ -40748,7 +41266,7 @@
                 op: op
               }).subscribe(function (resp) {
                 if (resp.length < 1) {
-                  _this107.vacio = true;
+                  _this109.vacio = true;
                 }
 
                 if (resp.mensaje) {
@@ -40761,35 +41279,35 @@
                   return;
                 }
 
-                _this107.data = resp;
-                _this107.Tinta_load = false;
-                _this107.Ordenes = resp.orden;
-                _this107.Despachos = resp.despachos;
-                _this107.devoluciones = resp.devoluciones;
-                _this107.gestiones = resp.gestiones;
-                _this107.Lotes = resp.lotes;
-                _this107.requisiciones = resp.requisiciones;
-                _this107.trabajos = resp.trabajos;
-                _this107.adicionales = resp.Adicionales; // console.log(resp)
+                _this109.data = resp;
+                _this109.Tinta_load = false;
+                _this109.Ordenes = resp.orden;
+                _this109.Despachos = resp.despachos;
+                _this109.devoluciones = resp.devoluciones;
+                _this109.gestiones = resp.gestiones;
+                _this109.Lotes = resp.lotes;
+                _this109.requisiciones = resp.requisiciones;
+                _this109.trabajos = resp.trabajos;
+                _this109.adicionales = resp.Adicionales; // console.log(resp)
 
-                _this107.cargando = false;
-                _this107.Sustrato_load = false;
-                _this107.Barniz_load = false;
-                _this107.Cajas_loading = false;
-                _this107.Pega_loading = false; // this.sumaTinta();
+                _this109.cargando = false;
+                _this109.Sustrato_load = false;
+                _this109.Barniz_load = false;
+                _this109.Cajas_loading = false;
+                _this109.Pega_loading = false; // this.sumaTinta();
                 // this.sumaSustrato();
 
-                _this107.sumaDevoluciones(_this107.devoluciones);
+                _this109.sumaDevoluciones(_this109.devoluciones);
 
-                _this107.createChart();
+                _this109.createChart();
 
-                _this107.SustratoChar();
+                _this109.SustratoChar();
 
-                _this107.BarnizChart();
+                _this109.BarnizChart();
 
-                _this107.CajasChart();
+                _this109.CajasChart();
 
-                _this107.PegaChart();
+                _this109.PegaChart();
               });
               return;
             }
@@ -40844,7 +41362,7 @@
 
                 this.api.EstadisticasOrden(data).subscribe(function (resp) {
                   if (resp.length < 1) {
-                    _this107.vacio = true;
+                    _this109.vacio = true;
                   }
 
                   if (resp.mensaje) {
@@ -40857,35 +41375,35 @@
                     return;
                   }
 
-                  _this107.data = resp;
-                  _this107.Tinta_load = false;
-                  _this107.Ordenes = resp.orden;
-                  _this107.Despachos = resp.despachos;
-                  _this107.devoluciones = resp.devoluciones;
-                  _this107.gestiones = resp.gestiones;
-                  _this107.Lotes = resp.lotes;
-                  _this107.requisiciones = resp.requisiciones;
-                  _this107.trabajos = resp.trabajos;
-                  _this107.adicionales = resp.Adicionales;
+                  _this109.data = resp;
+                  _this109.Tinta_load = false;
+                  _this109.Ordenes = resp.orden;
+                  _this109.Despachos = resp.despachos;
+                  _this109.devoluciones = resp.devoluciones;
+                  _this109.gestiones = resp.gestiones;
+                  _this109.Lotes = resp.lotes;
+                  _this109.requisiciones = resp.requisiciones;
+                  _this109.trabajos = resp.trabajos;
+                  _this109.adicionales = resp.Adicionales;
                   console.log(resp);
-                  _this107.cargando = false;
-                  _this107.Sustrato_load = false;
-                  _this107.Barniz_load = false;
-                  _this107.Cajas_loading = false;
-                  _this107.Pega_loading = false; // this.sumaTinta();
+                  _this109.cargando = false;
+                  _this109.Sustrato_load = false;
+                  _this109.Barniz_load = false;
+                  _this109.Cajas_loading = false;
+                  _this109.Pega_loading = false; // this.sumaTinta();
                   // this.sumaSustrato();
 
-                  _this107.sumaDevoluciones(_this107.devoluciones);
+                  _this109.sumaDevoluciones(_this109.devoluciones);
 
-                  _this107.createChart();
+                  _this109.createChart();
 
-                  _this107.SustratoChar();
+                  _this109.SustratoChar();
 
-                  _this107.BarnizChart();
+                  _this109.BarnizChart();
 
-                  _this107.CajasChart();
+                  _this109.CajasChart();
 
-                  _this107.PegaChart();
+                  _this109.PegaChart();
                 });
                 return; // TEST
               }
@@ -40920,38 +41438,38 @@
               hasta: hasta
             }).subscribe(function (resp) {
               if (resp.length < 1) {
-                _this107.vacio = true;
+                _this109.vacio = true;
               }
 
-              _this107.data = resp;
-              _this107.Tinta_load = false;
-              _this107.Ordenes = resp.orden;
-              _this107.Despachos = resp.despachos;
-              _this107.devoluciones = resp.devoluciones;
-              _this107.gestiones = resp.gestiones;
-              _this107.Lotes = resp.lotes;
-              _this107.requisiciones = resp.requisiciones;
-              _this107.trabajos = resp.trabajos;
-              _this107.adicionales = resp.Adicionales;
-              _this107.cargando = false;
-              _this107.Sustrato_load = false;
-              _this107.Barniz_load = false;
-              _this107.Cajas_loading = false;
-              _this107.Pega_loading = false;
-              console.log(_this107.data); // this.sumaTinta();
+              _this109.data = resp;
+              _this109.Tinta_load = false;
+              _this109.Ordenes = resp.orden;
+              _this109.Despachos = resp.despachos;
+              _this109.devoluciones = resp.devoluciones;
+              _this109.gestiones = resp.gestiones;
+              _this109.Lotes = resp.lotes;
+              _this109.requisiciones = resp.requisiciones;
+              _this109.trabajos = resp.trabajos;
+              _this109.adicionales = resp.Adicionales;
+              _this109.cargando = false;
+              _this109.Sustrato_load = false;
+              _this109.Barniz_load = false;
+              _this109.Cajas_loading = false;
+              _this109.Pega_loading = false;
+              console.log(_this109.data); // this.sumaTinta();
               // this.sumaSustrato();
 
-              _this107.sumaDevoluciones(_this107.devoluciones);
+              _this109.sumaDevoluciones(_this109.devoluciones);
 
-              _this107.createChart();
+              _this109.createChart();
 
-              _this107.SustratoChar();
+              _this109.SustratoChar();
 
-              _this107.BarnizChart();
+              _this109.BarnizChart();
 
-              _this107.CajasChart();
+              _this109.CajasChart();
 
-              _this107.PegaChart();
+              _this109.PegaChart();
             }, function (err) {
               alert(err);
               console.log(err);
@@ -40960,7 +41478,7 @@
         }, {
           key: "sumaDevoluciones",
           value: function sumaDevoluciones(dev) {
-            var _this108 = this;
+            var _this110 = this;
 
             this.D_Negro = 0;
             this.D_Amarillo = 0;
@@ -40970,7 +41488,7 @@
             this.D_Tintas = [];
 
             for (var _i49 = 0; _i49 < dev.length; _i49++) {
-              var _loop22 = function _loop22(x) {
+              var _loop24 = function _loop24(x) {
                 var material = dev[_i49].filtrado[x];
                 var color = material.material.color;
                 var grupo = material.material.grupo;
@@ -40978,51 +41496,51 @@
                 if (color && grupo == "61fd54e2d9115415a4416f17") {
                   switch (color) {
                     case 'Amarillo':
-                      _this108.D_Amarillo = _this108.D_Amarillo + Number(material.cantidad);
+                      _this110.D_Amarillo = _this110.D_Amarillo + Number(material.cantidad);
                       break;
 
                     case 'Cyan':
-                      _this108.D_Cyan = _this108.D_Cyan + Number(material.cantidad);
+                      _this110.D_Cyan = _this110.D_Cyan + Number(material.cantidad);
                       break;
 
                     case 'Magenta':
-                      _this108.D_Magenta = _this108.D_Magenta + Number(material.cantidad);
+                      _this110.D_Magenta = _this110.D_Magenta + Number(material.cantidad);
                       break;
 
                     case 'Negro':
-                      _this108.D_Negro = _this108.D_Negro + Number(material.cantidad);
+                      _this110.D_Negro = _this110.D_Negro + Number(material.cantidad);
                       break;
 
                     default:
-                      _this108.D_Pantone = _this108.D_Pantone + Number(material.cantidad);
+                      _this110.D_Pantone = _this110.D_Pantone + Number(material.cantidad);
                       break;
                   }
                 }
 
-                var index = _this108.D_Tintas.findIndex(function (x) {
+                var index = _this110.D_Tintas.findIndex(function (x) {
                   return x.color == material.material.nombre && x.marca == material.marca;
                 });
 
                 if (index == -1) {
-                  _this108.D_Tintas.push({
+                  _this110.D_Tintas.push({
                     color: material.nombre,
                     marca: material.marca,
                     cantidad: material.cantidad
                   }); // alert(index)
 
                 } else {
-                  _this108.D_Tintas[index].cantidad = _this108.D_Tintas[index].cantidad + Number(material.cantidad); // alert('aja')
+                  _this110.D_Tintas[index].cantidad = _this110.D_Tintas[index].cantidad + Number(material.cantidad); // alert('aja')
                 }
               };
 
               for (var x = 0; x < dev[_i49].filtrado.length; x++) {
-                _loop22(x);
+                _loop24(x);
               }
             }
           }
         }, {
           key: "devoluciones_",
-          value: function devoluciones_(id, op) {
+          value: function devoluciones_(id) {
             var data = 0;
             var x = 0;
             var y = 0;
@@ -41083,8 +41601,8 @@
         type: MainComponent,
         selectors: [["app-main"]],
         decls: 112,
-        vars: 44,
-        consts: [[3, "modal_gestiones", "g_trabajos", "g_gestiones", "onCloseModal"], [3, "modal_consumos", "c_lotes", "lote_mayor", "c_devoluciones", "onCloseModal"], [3, "modal_despacho", "despachos_filtrado", "despachos_orden", "lote_mayor", "Ej_montados", "onCloseModal"], ["class", "ordenes_button", 4, "ngIf"], [1, "containe", "mt-5"], [1, "titulo"], [1, "card"], [1, "card-content", "is-primary"], [1, "columns"], [1, "column", "is-2"], [1, "control"], [1, "select", "is-small"], ["id", "", 3, "change"], ["value", "fecha"], ["value", "cliente"], ["value", "orden"], ["value", "maquina"], ["class", "column is-2", 4, "ngIf"], ["class", "columns", 4, "ngIf"], [1, "card-content"], ["class", "carga", 4, "ngIf"], ["class", "carga_", 4, "ngIf"], ["class", "empty", 4, "ngIf"], [1, "column"], [1, "column", "is-half"], ["class", "xlarge", 4, "ngIf"], ["class", "table is-fullwidth", 4, "ngIf"], ["class", " table is-fullwidth", 4, "ngIf"], [1, "column", "is-one-third"], [1, "chart-container"], ["id", "Sustrato_chart", "width", "100", "height", "100"], [3, "click", 4, "ngIf"], ["class", "modal is-active", 3, "ngClass", 4, "ngIf"], ["id", "MyChart"], ["id", "Barniz_chart", "width", "100", "height", "100"], [1, "chart-container_cajas"], ["id", "Caja_chart", "width", "100", "height", "100"], [1, "space"], ["id", "Pega_chart", "width", "100", "height", "100"], ["id", "orders", 1, "columns"], ["class", "info", 4, "ngIf"], [1, "ordenes_button"], [1, "is-primary", "button", 3, "click"], ["value", "#", "id", "cliente_select", 3, "change"], ["value", "#"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "producto_select", 3, "change"], ["type", "text", "placeholder", "Orden de Producci\xF3n", "id", "OP", 1, "input", "is-small"], [1, "label"], [1, "button", "is-primary", "is-small", 3, "click"], ["type", "date", 1, "input", "is-small"], ["desde", ""], ["hasta", ""], [1, "carga"], [1, "far", "fa-clock"], [1, "carga_"], [1, "loader"], [2, "--i", "2"], [2, "--i", "3"], [2, "--i", "1"], [2, "--i", "4"], [2, "--i", "5"], [2, "--i", "6"], [2, "--i", "7"], [2, "--i", "8"], [2, "--i", "9"], [2, "--i", "10"], [1, "text"], [1, "empty"], [1, "fas", "fa-folder-open"], [1, "xlarge"], [1, "fas", "fa-sticky-note"], [1, "table", "is-fullwidth"], [4, "ngFor", "ngForOf", "ngForAs"], [1, "is-selected"], ["colspan", "2"], [1, "titulo_sustrato"], [1, "icono", 3, "click"], [4, "ngIf"], [1, "titulo_sustrato", "xlarge"], [1, "fas", "fa-plus"], [1, "fas", "fa-minus"], [1, "fas", "fa-palette"], [3, "click"], [1, "modal", "is-active", 3, "ngClass"], [1, "modal-background", 3, "click"], [1, "modal-card", "detalles"], [1, "modal-card-body"], [1, "column", "columna_izquierda"], [1, "subtitulo"], [1, "fas", "fa-air-freshener"], [4, "ngFor", "ngForOf"], ["colspan", "2", 1, "titulo_sustrato"], [1, "fas", "fa-boxes"], ["colspan", "11", 1, "is-selected", "titulo_sustrato"], [1, "fas", "fa-tint"], [1, "info"], [1, "subtitulos", "xlarge"], [1, "orden"], ["class", "table is-fullwidth", 3, "ngClass", 4, "ngFor", "ngForOf"], [1, "table", "is-fullwidth", 3, "ngClass"], ["colspan", "3"], ["target", "_blank", 1, "link", 3, "href"], [1, "fas", "fa-eye", "link"], [1, "fas", "fa-question-circle", "link", 3, "click"], [1, "fas", "fa-chart-bar", "link", 3, "click"], [1, "fas", "fa-chart-line", "link", 3, "click"], [1, "card-content", "adicionales"], [1, "subtitulos"], [1, "fas", "fa-comments-dollar"]],
+        vars: 45,
+        consts: [[3, "modal_gestiones", "g_trabajos", "g_gestiones", "onCloseModal"], [3, "modal_consumos", "c_lotes", "lote_mayor", "c_devoluciones", "onCloseModal"], [3, "modal_despacho", "despachos_filtrado", "despachos_orden", "c_devoluciones", "lote_mayor", "Ej_montados", "onCloseModal"], ["class", "ordenes_button", 4, "ngIf"], [1, "containe", "mt-5"], [1, "titulo"], [1, "card"], [1, "card-content", "is-primary"], [1, "columns"], [1, "column", "is-2"], [1, "control"], [1, "select", "is-small"], ["id", "", 3, "change"], ["value", "fecha"], ["value", "cliente"], ["value", "orden"], ["value", "maquina"], ["class", "column is-2", 4, "ngIf"], ["class", "columns", 4, "ngIf"], [1, "card-content"], ["class", "carga", 4, "ngIf"], ["class", "carga_", 4, "ngIf"], ["class", "empty", 4, "ngIf"], [1, "column"], [1, "column", "is-half"], ["class", "xlarge", 4, "ngIf"], ["class", "table is-fullwidth", 4, "ngIf"], ["class", " table is-fullwidth", 4, "ngIf"], [1, "column", "is-one-third"], [1, "chart-container"], ["id", "Sustrato_chart", "width", "100", "height", "100"], [3, "click", 4, "ngIf"], ["class", "modal is-active", 3, "ngClass", 4, "ngIf"], ["id", "MyChart"], ["id", "Barniz_chart", "width", "100", "height", "100"], [1, "chart-container_cajas"], ["id", "Caja_chart", "width", "100", "height", "100"], [1, "space"], ["id", "Pega_chart", "width", "100", "height", "100"], ["id", "orders", 1, "columns"], ["class", "info", 4, "ngIf"], [1, "ordenes_button"], [1, "is-primary", "button", 3, "click"], ["value", "#", "id", "cliente_select", 3, "change"], ["value", "#"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "producto_select", 3, "change"], ["type", "text", "placeholder", "Orden de Producci\xF3n", "id", "OP", 1, "input", "is-small"], [1, "label"], [1, "button", "is-primary", "is-small", 3, "click"], ["type", "date", 1, "input", "is-small"], ["desde", ""], ["hasta", ""], [1, "carga"], [1, "far", "fa-clock"], [1, "carga_"], [1, "loader"], [2, "--i", "2"], [2, "--i", "3"], [2, "--i", "1"], [2, "--i", "4"], [2, "--i", "5"], [2, "--i", "6"], [2, "--i", "7"], [2, "--i", "8"], [2, "--i", "9"], [2, "--i", "10"], [1, "text"], [1, "empty"], [1, "fas", "fa-folder-open"], [1, "xlarge"], [1, "fas", "fa-sticky-note"], [1, "table", "is-fullwidth"], [4, "ngFor", "ngForOf", "ngForAs"], [1, "is-selected"], ["colspan", "2"], [1, "titulo_sustrato"], [1, "icono", 3, "click"], [4, "ngIf"], [1, "titulo_sustrato", "xlarge"], [1, "fas", "fa-plus"], [1, "fas", "fa-minus"], [1, "fas", "fa-palette"], [3, "click"], [1, "modal", "is-active", 3, "ngClass"], [1, "modal-background", 3, "click"], [1, "modal-card", "detalles"], [1, "modal-card-body"], [1, "column", "columna_izquierda"], [1, "subtitulo"], [1, "fas", "fa-air-freshener"], [4, "ngFor", "ngForOf"], ["colspan", "2", 1, "titulo_sustrato"], [1, "fas", "fa-boxes"], ["colspan", "11", 1, "is-selected", "titulo_sustrato"], [1, "fas", "fa-tint"], [1, "info"], [1, "subtitulos", "xlarge"], [1, "orden"], ["class", "table is-fullwidth", 3, "ngClass", 4, "ngFor", "ngForOf"], [1, "table", "is-fullwidth", 3, "ngClass"], ["colspan", "3"], ["target", "_blank", 1, "link", 3, "href"], [1, "fas", "fa-eye", "link"], [1, "fas", "fa-question-circle", "link", 3, "click"], [1, "fas", "fa-chart-bar", "link", 3, "click"], [1, "fas", "fa-chart-line", "link", 3, "click"], [1, "card-content", "adicionales"], [1, "subtitulos"], [1, "fas", "fa-comments-dollar"]],
         template: function MainComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-gestiones", 0);
@@ -41471,7 +41989,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("modal_despacho", ctx.modal_despacho)("despachos_filtrado", ctx.despachos_filtrado)("despachos_orden", ctx.despachos_orden)("lote_mayor", ctx.lote_mayor)("Ej_montados", ctx.Ej_montados);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("modal_despacho", ctx.modal_despacho)("despachos_filtrado", ctx.despachos_filtrado)("despachos_orden", ctx.despachos_orden)("c_devoluciones", ctx.c_devoluciones)("lote_mayor", ctx.lote_mayor)("Ej_montados", ctx.Ej_montados);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -42270,7 +42788,7 @@
         }, {
           key: "Crear_pin",
           value: function Crear_pin() {
-            var _this109 = this;
+            var _this111 = this;
 
             var data = {
               pin: this.pin2,
@@ -42283,14 +42801,14 @@
                 icon: 'success',
                 showConfirmButton: true
               });
-              _this109.usuario.pin = '0';
-              _this109.nuevo_pin = false;
+              _this111.usuario.pin = '0';
+              _this111.nuevo_pin = false;
             });
           }
         }, {
           key: "Verificar",
           value: function Verificar(pin) {
-            var _this110 = this;
+            var _this112 = this;
 
             var data = {
               correo: this.usuario.Correo,
@@ -42299,7 +42817,7 @@
             this.api.TwoStepsValidation(data).subscribe(function (resp) {
               localStorage.setItem('token_two', resp.token_two);
 
-              _this110.router.navigateByUrl('/ventas');
+              _this112.router.navigateByUrl('/ventas');
             }, function (err) {
               // console.log(err)
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -45987,7 +46505,7 @@
         }, {
           key: "buscarLote",
           value: function buscarLote(e) {
-            var _this111 = this;
+            var _this113 = this;
 
             this.api.getAlmacenadoPorLote(e).subscribe(function (resp) {
               if (resp.length < 1) {
@@ -46001,18 +46519,18 @@
                 });
               }
 
-              _this111.material = resp;
+              _this113.material = resp;
 
-              for (var _i74 = 0; _i74 < _this111.material.length; _i74++) {
-                var index = _this111.cantidades.indexOf(_this111.material[_i74].cantidad);
+              for (var _i74 = 0; _i74 < _this113.material.length; _i74++) {
+                var index = _this113.cantidades.indexOf(_this113.material[_i74].cantidad);
 
                 if (index < 0) {
-                  _this111.cantidades.push(_this111.material[_i74].cantidad);
+                  _this113.cantidades.push(_this113.material[_i74].cantidad);
                 } else {
-                  if (!_this111.paletas[index]) {
-                    _this111.paletas[index] = 1;
+                  if (!_this113.paletas[index]) {
+                    _this113.paletas[index] = 1;
                   } else {
-                    _this111.paletas[index] = _this111.paletas[index] + 1;
+                    _this113.paletas[index] = _this113.paletas[index] + 1;
                   }
                 }
               }
@@ -46710,10 +47228,10 @@
         }, {
           key: "buscarPendientes",
           value: function buscarPendientes() {
-            var _this112 = this;
+            var _this114 = this;
 
             this.api.getRequiEspera().subscribe(function (resp) {
-              _this112.Pendiente = resp;
+              _this114.Pendiente = resp;
             });
           }
         }, {
@@ -46730,7 +47248,7 @@
         }, {
           key: "aprobar",
           value: function aprobar(id) {
-            var _this113 = this;
+            var _this115 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
               title: '¿Aprobar Solicitud?',
@@ -46743,10 +47261,10 @@
               cancelButtonText: 'Cancelar'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this113.api.UpdateRequi(id).subscribe(function (resp) {
-                  _this113.buscarPendientes();
+                _this115.api.UpdateRequi(id).subscribe(function (resp) {
+                  _this115.buscarPendientes();
 
-                  _this113.onReset.emit();
+                  _this115.onReset.emit();
                 });
 
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -46761,7 +47279,7 @@
         }, {
           key: "rechazar",
           value: function rechazar(id) {
-            var _this114 = this;
+            var _this116 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
               title: '¿Rechazar Solicitud?',
@@ -46774,10 +47292,10 @@
               cancelButtonText: 'Cancelar'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this114.api.DeleteRequi(id).subscribe(function (resp) {
-                  _this114.buscarPendientes();
+                _this116.api.DeleteRequi(id).subscribe(function (resp) {
+                  _this116.buscarPendientes();
 
-                  _this114.onReset.emit();
+                  _this116.onReset.emit();
                 });
 
                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -52377,10 +52895,10 @@
         }, {
           key: "filterList",
           value: function filterList() {
-            var _this115 = this;
+            var _this117 = this;
 
             this.searchTerm$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["debounceTime"])(400), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this.OnDestroy$)).subscribe(function (term) {
-              _this115.listFiltered = _this115.Almacenado.filter(function (item) {
+              _this117.listFiltered = _this117.Almacenado.filter(function (item) {
                 return item.material.nombre.toLowerCase().indexOf(term.toLowerCase()) >= 0;
               });
             });
@@ -52388,7 +52906,7 @@
         }, {
           key: "CancelarDevolucion",
           value: function CancelarDevolucion(id) {
-            var _this116 = this;
+            var _this118 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
               title: 'Cuidado!',
@@ -52403,7 +52921,7 @@
             }).then(function (result) {
               if (result.isConfirmed) {
                 // // console.log(id);
-                _this116.api.DeleteDevolucion(id).subscribe(function (resp) {
+                _this118.api.DeleteDevolucion(id).subscribe(function (resp) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
                     title: 'Cancelado!',
                     text: 'Esta devolución fué cancelada, el almacén no sufrio ningun cambio.',
@@ -52411,11 +52929,11 @@
                     showConfirmButton: false
                   });
 
-                  _this116.getDevolucion();
+                  _this118.getDevolucion();
 
-                  _this116.Modal_Devolucion();
+                  _this118.Modal_Devolucion();
 
-                  _this116.getAalmacenado();
+                  _this118.getAalmacenado();
                 });
               }
             });
@@ -52432,7 +52950,7 @@
         }, {
           key: "confirmarDevolucion",
           value: function confirmarDevolucion(data, id) {
-            var _this117 = this;
+            var _this119 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
               title: 'Cuidado!',
@@ -52448,7 +52966,7 @@
               if (result.isConfirmed) {
                 // // console.log(data);
                 // // console.log(id);
-                _this117.api.putDevolucion(id, data).subscribe(function (resp) {
+                _this119.api.putDevolucion(id, data).subscribe(function (resp) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
                     title: 'Confirmado!',
                     text: 'El material fué agregado al almacén.',
@@ -52456,11 +52974,11 @@
                     showConfirmButton: false
                   });
 
-                  _this117.getDevolucion();
+                  _this119.getDevolucion();
 
-                  _this117.Modal_Devolucion();
+                  _this119.Modal_Devolucion();
 
-                  _this117.getAalmacenado();
+                  _this119.getAalmacenado();
                 });
               }
             });
@@ -52468,28 +52986,28 @@
         }, {
           key: "getDevolucion",
           value: function getDevolucion() {
-            var _this118 = this;
+            var _this120 = this;
 
             this.api.getDevolucion().subscribe(function (resp) {
-              _this118.Devoluciones = resp;
+              _this120.Devoluciones = resp;
             });
           }
         }, {
           key: "getOrdenes",
           value: function getOrdenes() {
-            var _this119 = this;
+            var _this121 = this;
 
             this.api.getOrden().subscribe(function (resp) {
-              _this119.orden = resp;
+              _this121.orden = resp;
             });
           }
         }, {
           key: "buscarPendientes",
           value: function buscarPendientes() {
-            var _this120 = this;
+            var _this122 = this;
 
             this.api.getRequiEspera().subscribe(function (resp) {
-              _this120.Pendiente = resp;
+              _this122.Pendiente = resp;
             });
           }
         }, {
@@ -52509,10 +53027,10 @@
         }, {
           key: "porConfirmar",
           value: function porConfirmar() {
-            var _this121 = this;
+            var _this123 = this;
 
             this.api.getMaterialesPorConfirmar().subscribe(function (resp) {
-              _this121.necesario = resp; // // console.log( this.necesario ,'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+              _this123.necesario = resp; // // console.log( this.necesario ,'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
             });
           }
         }, {
@@ -52569,22 +53087,22 @@
         }, {
           key: "buscarSustratos",
           value: function buscarSustratos() {
-            var _this122 = this;
+            var _this124 = this;
 
             var x = 0;
             var sustratos = this.ALMACEN.filter(function (x) {
               return x.grupo.nombre == 'Sustrato';
             });
 
-            var _loop23 = function _loop23(_i75) {
-              var sustrato = _this122._sustratos_.find(function (x) {
+            var _loop25 = function _loop25(_i75) {
+              var sustrato = _this124._sustratos_.find(function (x) {
                 return x == sustratos[_i75].nombre;
               });
 
               x++;
 
               if (!sustrato) {
-                _this122._sustratos_.push({
+                _this124._sustratos_.push({
                   Marca: "".concat(sustratos[_i75].nombre, " (").concat(sustratos[_i75].marca, ")"),
                   Nombre: "".concat(sustratos[_i75].nombre)
                 });
@@ -52592,9 +53110,9 @@
 
               if (x == sustratos.length) {
                 var newArray_test;
-                newArray_test = _this122._sustratos_;
+                newArray_test = _this124._sustratos_;
 
-                var UniqueArrayforMarca = _toConsumableArray(new Map(_this122._sustratos_.map(function (item) {
+                var UniqueArrayforMarca = _toConsumableArray(new Map(_this124._sustratos_.map(function (item) {
                   return [item["Marca"], item];
                 })).values());
 
@@ -52604,19 +53122,19 @@
                 var Test_UniqueObjectNewMap = new Map(Test_UniqueObject);
                 var Test_UniqueObjectNewMap_keys = Test_UniqueObjectNewMap.keys();
                 var Test_UniqueObjectNewMap_values = Test_UniqueObjectNewMap.values();
-                _this122.Test_UniqueObjectNewMap_valuesAsArr = _toConsumableArray(Test_UniqueObjectNewMap_values); // console.log(this.Test_UniqueObjectNewMap_valuesAsArr)
+                _this124.Test_UniqueObjectNewMap_valuesAsArr = _toConsumableArray(Test_UniqueObjectNewMap_values); // console.log(this.Test_UniqueObjectNewMap_valuesAsArr)
                 // console.log(this._sustratos_)
               }
             };
 
             for (var _i75 = 0; _i75 < sustratos.length; _i75++) {
-              _loop23(_i75);
+              _loop25(_i75);
             }
           }
         }, {
           key: "buscarCalibre",
           value: function buscarCalibre(e) {
-            var _this123 = this;
+            var _this125 = this;
 
             var material = document.getElementById('Material_Seleccionado').value;
             var splitted = material.split('_');
@@ -52626,24 +53144,24 @@
               return x.nombre == e1 && x.marca == marca[1].slice(0, -1) && x.gramaje == e;
             }); // // console.log(sustratos,'15515151515151515151515151515151')
 
-            var _loop24 = function _loop24(_i76) {
-              var calibre = _this123._calibre_.find(function (x) {
+            var _loop26 = function _loop26(_i76) {
+              var calibre = _this125._calibre_.find(function (x) {
                 return x.calibre == sustratos[_i76].calibre;
               });
 
               if (!calibre) {
-                _this123._calibre_.push(sustratos[_i76]);
+                _this125._calibre_.push(sustratos[_i76]);
               }
             };
 
             for (var _i76 = 0; _i76 < sustratos.length; _i76++) {
-              _loop24(_i76);
+              _loop26(_i76);
             }
           }
         }, {
           key: "buscarGramaje",
           value: function buscarGramaje(e) {
-            var _this124 = this;
+            var _this126 = this;
 
             var splitted = e.split('_');
             var e1 = splitted[0];
@@ -52653,25 +53171,25 @@
               return x.nombre == e1 && x.marca == marca[1].slice(0, -1);
             });
 
-            var _loop25 = function _loop25(_i77) {
-              var gramaje = _this124._gramajes_.find(function (x) {
+            var _loop27 = function _loop27(_i77) {
+              var gramaje = _this126._gramajes_.find(function (x) {
                 return x.gramaje == sustratos[_i77].gramaje;
               });
 
               if (!gramaje) {
-                _this124._gramajes_.push(sustratos[_i77]);
+                _this126._gramajes_.push(sustratos[_i77]);
               }
             };
 
             for (var _i77 = 0; _i77 < sustratos.length; _i77++) {
-              _loop25(_i77);
+              _loop27(_i77);
             } // // console.log(this._gramajes_,'GRAMAGRAMAGRAMA')
 
           }
         }, {
           key: "buscarAncho",
           value: function buscarAncho(e) {
-            var _this125 = this;
+            var _this127 = this;
 
             var material = document.getElementById('Material_Seleccionado').value;
             var splitted = material.split('_');
@@ -52683,18 +53201,18 @@
               return x.calibre == e && x.nombre == e1 && x.marca == marca[1].slice(0, -1) && x.gramaje == gramaje;
             });
 
-            var _loop26 = function _loop26(_i78) {
-              var ancho = _this125._ancho_.find(function (x) {
+            var _loop28 = function _loop28(_i78) {
+              var ancho = _this127._ancho_.find(function (x) {
                 return x.ancho == sustratos[_i78].ancho;
               });
 
               if (!ancho) {
-                _this125._ancho_.push(sustratos[_i78]);
+                _this127._ancho_.push(sustratos[_i78]);
               }
             };
 
             for (var _i78 = 0; _i78 < sustratos.length; _i78++) {
-              _loop26(_i78);
+              _loop28(_i78);
             }
           }
         }, {
@@ -52710,18 +53228,18 @@
         }, {
           key: "Editar_2",
           value: function Editar_2(id) {
-            var _this126 = this;
+            var _this128 = this;
 
             this.Modal_Almacen_ep();
             this.api.getMaterialesID(id).subscribe(function (resp) {
-              _this126.MaterialID = resp;
+              _this128.MaterialID = resp;
 
               if (resp.grupo.nombre === 'Tinta') {
-                _this126.New_color = true;
+                _this128.New_color = true;
               }
 
               if (resp.grupo.nombre === 'Cajas Corrugadas') {
-                _this126.caja_ = true;
+                _this128.caja_ = true;
               } // // console.log(this.MaterialID,'ok')
 
             });
@@ -52729,19 +53247,19 @@
         }, {
           key: "Editar_Material_F",
           value: function Editar_Material_F() {
-            var _this127 = this;
+            var _this129 = this;
 
             var grupo = this.MaterialID.grupo._id;
             this.MaterialID.grupo = grupo; // // console.log(this.MaterialID)
 
             this.api.putMaterialID(this.MaterialID._id, this.MaterialID).subscribe(function (resp) {
-              _this127.Modal_Almacen_ep();
+              _this129.Modal_Almacen_ep();
 
-              _this127.getAalmacenado();
+              _this129.getAalmacenado();
 
-              _this127.BuscarAlmacen();
+              _this129.BuscarAlmacen();
 
-              _this127.totalizar_materiales();
+              _this129.totalizar_materiales();
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
                 position: 'center',
@@ -52755,25 +53273,25 @@
         }, {
           key: "Editar",
           value: function Editar(id) {
-            var _this128 = this;
+            var _this130 = this;
 
             this.edit_almacen();
             this.api.getAlmacenadoID(id).subscribe(function (resp) {
-              _this128.AlmacenadoId = resp;
-              console.log(_this128.AlmacenadoId);
+              _this130.AlmacenadoId = resp;
+              console.log(_this130.AlmacenadoId);
 
-              _this128.selecciona_producto(_this128.AlmacenadoId.material.grupo.nombre);
+              _this130.selecciona_producto(_this130.AlmacenadoId.material.grupo.nombre);
 
-              _this128.codigoID = _this128.AlmacenadoId.codigo;
-              _this128.loteID = _this128.AlmacenadoId.lote;
-              _this128.cantidadID = _this128.AlmacenadoId.cantidad;
-              _this128.precioID = _this128.AlmacenadoId.precio;
+              _this130.codigoID = _this130.AlmacenadoId.codigo;
+              _this130.loteID = _this130.AlmacenadoId.lote;
+              _this130.cantidadID = _this130.AlmacenadoId.cantidad;
+              _this130.precioID = _this130.AlmacenadoId.precio;
             });
           }
         }, {
           key: "_Editar",
           value: function _Editar(producto) {
-            var _this129 = this;
+            var _this131 = this;
 
             var body = {
               material: this.AlmacenadoId.material._id,
@@ -52784,7 +53302,7 @@
               precio: this.precioID
             };
             this.api.putAlmacenadoID(this.AlmacenadoId._id, body).subscribe(function (resp) {
-              _this129.edit_almacen();
+              _this131.edit_almacen();
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
                 position: 'center',
@@ -52794,16 +53312,16 @@
                 timer: 1500
               });
 
-              _this129.getAalmacenado();
+              _this131.getAalmacenado();
 
-              _this129.BuscarAlmacen();
+              _this131.BuscarAlmacen();
 
-              _this129.totalizar_materiales();
+              _this131.totalizar_materiales();
 
-              _this129.codigoID = '';
-              _this129.loteID = '';
-              _this129.cantidadID = '';
-              _this129.AlmacenadoId = '';
+              _this131.codigoID = '';
+              _this131.loteID = '';
+              _this131.cantidadID = '';
+              _this131.AlmacenadoId = '';
             });
           }
         }, {
@@ -52843,20 +53361,20 @@
         }, {
           key: "getAalmacenado",
           value: function getAalmacenado() {
-            var _this130 = this;
+            var _this132 = this;
 
             this.api.getAlmacenado().subscribe(function (resp) {
-              _this130.Almacenado = resp;
-              _this130.Almacenado = _this130.Almacenado.sort(function (a, b) {
+              _this132.Almacenado = resp;
+              _this132.Almacenado = _this132.Almacenado.sort(function (a, b) {
                 if (a.material.nombre.toLowerCase() < b.material.nombre.toLowerCase()) return -1;
                 if (a.material.nombre.toLowerCase() > b.material.nombre.toLowerCase()) return 1;
                 return 0;
               }); // // console.log(this.Almacenado)
               // this.listFiltered = this.Almacenado
 
-              _this130.filterList();
+              _this132.filterList();
 
-              _this130.totalizar_materiales();
+              _this132.totalizar_materiales();
             });
           }
         }, {
@@ -52960,7 +53478,7 @@
         }, {
           key: "descontar_bobina_",
           value: function descontar_bobina_(numero) {
-            var _this131 = this;
+            var _this133 = this;
 
             var data = {
               bobina: this.bobina__,
@@ -52973,39 +53491,39 @@
                 showConfirmButton: false
               });
 
-              _this131.getbobinas();
+              _this133.getbobinas();
 
-              _this131.descontar_bobina();
+              _this133.descontar_bobina();
 
-              _this131.Buscar_conversiones();
+              _this133.Buscar_conversiones();
             });
           }
         }, {
           key: "BuscarGruposEnAlmacen",
           value: function BuscarGruposEnAlmacen() {
-            var _this132 = this;
+            var _this134 = this;
 
             this.loading = true;
             this.api.GetGrupoMp().subscribe(function (resp) {
-              _this132.SECCIONES = resp;
-              _this132.loading = false;
+              _this134.SECCIONES = resp;
+              _this134.loading = false;
             });
           }
         }, {
           key: "BuscarAlmacen",
           value: function BuscarAlmacen() {
-            var _this133 = this;
+            var _this135 = this;
 
             this.loading = true;
             this.api.getAlmacen().subscribe(function (resp) {
-              _this133.ALMACEN = resp.materiales;
-              console.log('666666666666666666666666', _this133.ALMACEN);
+              _this135.ALMACEN = resp.materiales;
+              console.log('666666666666666666666666', _this135.ALMACEN);
 
-              _this133.filterList();
+              _this135.filterList();
 
-              _this133.totalizar_materiales();
+              _this135.totalizar_materiales();
 
-              _this133.loading = false;
+              _this135.loading = false;
             });
           }
         }, {
@@ -53066,7 +53584,7 @@
         }, {
           key: "almacenar",
           value: function almacenar(producto) {
-            var _this134 = this;
+            var _this136 = this;
 
             var data = {
               material: producto.value,
@@ -53085,17 +53603,17 @@
                 timer: 1500
               });
 
-              _this134.Nuevo_producto();
+              _this136.Nuevo_producto();
 
-              _this134.BuscarAlmacen();
+              _this136.BuscarAlmacen();
 
-              _this134.getAalmacenado();
+              _this136.getAalmacenado();
 
-              _this134.codigo = '';
-              _this134.lote = '';
-              _this134.cantidad = '';
-              _this134.precio = 0;
-              _this134.pedido = '';
+              _this136.codigo = '';
+              _this136.lote = '';
+              _this136.cantidad = '';
+              _this136.precio = 0;
+              _this136.pedido = '';
               document.getElementById('Nuevoproducto').value = "0";
             }, function (err) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
@@ -53122,7 +53640,7 @@
         }, {
           key: "Almacenar",
           value: function Almacenar() {
-            var _this135 = this;
+            var _this137 = this;
 
             var grupo;
 
@@ -53156,13 +53674,13 @@
             }
 
             this.api.PostAlmacen(data).subscribe(function (resp) {
-              _this135.InventarioForm.reset();
+              _this137.InventarioForm.reset();
 
-              _this135.BuscarAlmacen();
+              _this137.BuscarAlmacen();
 
-              _this135.BuscarGruposEnAlmacen();
+              _this137.BuscarGruposEnAlmacen();
 
-              _this135.Modal_Almacen(); // this.getSustratos();
+              _this137.Modal_Almacen(); // this.getSustratos();
 
             });
           }
@@ -53235,7 +53753,7 @@
         }, {
           key: "nuevaBobina",
           value: function nuevaBobina() {
-            var _this136 = this;
+            var _this138 = this;
 
             var splited = this.BobinaForm.get('material').value;
             splited = splited.split('_');
@@ -53243,11 +53761,11 @@
             this.BobinaForm.get('material').setValue(splited[0]);
             this.BobinaForm.get('marca').setValue(marca[1].slice(0, -1));
             this.api.postNuevaBobina(this.BobinaForm.value).subscribe(function (resp) {
-              _this136.BobinaForm.reset();
+              _this138.BobinaForm.reset();
 
-              _this136.Modal_bobinas();
+              _this138.Modal_bobinas();
 
-              _this136.getbobinas();
+              _this138.getbobinas();
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
                 title: 'Nueva Bobina Agregada!',
@@ -53260,7 +53778,7 @@
         }, {
           key: "seleccionar_material",
           value: function seleccionar_material(e) {
-            var _this137 = this;
+            var _this139 = this;
 
             document.getElementById('bobina_selected').disabled = false;
             this.SUSTRATO_CONVERSION = [];
@@ -53269,92 +53787,92 @@
               return x.convertidora === e;
             }); // console.log(BobinasEnConvertidora)
 
-            var _loop27 = function _loop27(_i79) {
+            var _loop29 = function _loop29(_i79) {
               var bobina = BobinasEnConvertidora[_i79]; // console.log(bobina)
 
-              var sustrato = _this137.ALMACEN.filter(function (x) {
+              var sustrato = _this139.ALMACEN.filter(function (x) {
                 return x.nombre == bobina.material && x.marca == bobina.marca && x.ancho == bobina.ancho && x.gramaje == bobina.gramaje && x.calibre == bobina.calibre;
               }); // console.log(sustrato,'aja')
 
 
               if (sustrato) {
-                var _loop28 = function _loop28(_i80) {
-                  var existe = _this137.SUSTRATO_CONVERSION.find(function (x) {
+                var _loop30 = function _loop30(_i80) {
+                  var existe = _this139.SUSTRATO_CONVERSION.find(function (x) {
                     return x._id == sustrato[_i80]._id;
                   });
 
                   if (!existe) {
-                    _this137.SUSTRATO_CONVERSION.push(sustrato[_i80]);
+                    _this139.SUSTRATO_CONVERSION.push(sustrato[_i80]);
                   }
                 };
 
                 for (var _i80 = 0; _i80 < sustrato.length; _i80++) {
-                  _loop28(_i80);
+                  _loop30(_i80);
                 }
               }
             };
 
             for (var _i79 = 0; _i79 < BobinasEnConvertidora.length; _i79++) {
-              _loop27(_i79);
+              _loop29(_i79);
             }
           }
         }, {
           key: "getbobinas",
           value: function getbobinas() {
-            var _this138 = this;
+            var _this140 = this;
 
             this.I_f = 0;
             this.I_r = 0;
             this.BobinasSencillas = [];
             this.api.getBobina().subscribe(function (resp) {
-              _this138.BOBINAS_ = resp;
-              var Almacen = _this138.ALMACEN;
+              _this140.BOBINAS_ = resp;
+              var Almacen = _this140.ALMACEN;
 
-              var _loop29 = function _loop29(_i81) {
-                var bobina = _this138.BOBINAS_[_i81];
+              var _loop31 = function _loop31(_i81) {
+                var bobina = _this140.BOBINAS_[_i81];
 
                 if (bobina.convertidora === 'Convertidora Finlandia, C.A.') {
-                  _this138.I_f++;
+                  _this140.I_f++;
                 } else {
-                  _this138.I_r++;
+                  _this140.I_r++;
                 }
 
-                var sumada = _this138.BobinasSencillas.findIndex(function (x) {
-                  return x.material === _this138.BOBINAS_[_i81].material && x.marca === _this138.BOBINAS_[_i81].marca && x.ancho === _this138.BOBINAS_[_i81].ancho && x.gramaje === _this138.BOBINAS_[_i81].gramaje && x.calibre === _this138.BOBINAS_[_i81].calibre && x.convertidora === _this138.BOBINAS_[_i81].convertidora;
+                var sumada = _this140.BobinasSencillas.findIndex(function (x) {
+                  return x.material === _this140.BOBINAS_[_i81].material && x.marca === _this140.BOBINAS_[_i81].marca && x.ancho === _this140.BOBINAS_[_i81].ancho && x.gramaje === _this140.BOBINAS_[_i81].gramaje && x.calibre === _this140.BOBINAS_[_i81].calibre && x.convertidora === _this140.BOBINAS_[_i81].convertidora;
                 });
 
                 if (sumada < 0) {
                   var data = {
-                    material: _this138.BOBINAS_[_i81].material,
-                    marca: _this138.BOBINAS_[_i81].marca,
-                    calibre: _this138.BOBINAS_[_i81].calibre,
-                    gramaje: _this138.BOBINAS_[_i81].gramaje,
-                    ancho: _this138.BOBINAS_[_i81].ancho,
-                    convertidora: _this138.BOBINAS_[_i81].convertidora,
-                    peso: _this138.BOBINAS_[_i81].peso
+                    material: _this140.BOBINAS_[_i81].material,
+                    marca: _this140.BOBINAS_[_i81].marca,
+                    calibre: _this140.BOBINAS_[_i81].calibre,
+                    gramaje: _this140.BOBINAS_[_i81].gramaje,
+                    ancho: _this140.BOBINAS_[_i81].ancho,
+                    convertidora: _this140.BOBINAS_[_i81].convertidora,
+                    peso: _this140.BOBINAS_[_i81].peso
                   };
 
-                  _this138.BobinasSencillas.push(data);
+                  _this140.BobinasSencillas.push(data);
                 } else {
-                  var peso = Number(_this138.BobinasSencillas[sumada].peso) + Number(_this138.BOBINAS_[_i81].peso);
-                  _this138.BobinasSencillas[sumada].peso = peso;
+                  var peso = Number(_this140.BobinasSencillas[sumada].peso) + Number(_this140.BOBINAS_[_i81].peso);
+                  _this140.BobinasSencillas[sumada].peso = peso;
                 }
 
-                console.log(_this138.BobinasSencillas);
+                console.log(_this140.BobinasSencillas);
 
-                var sustrato = _this138.ALMACEN.find(function (x) {
+                var sustrato = _this140.ALMACEN.find(function (x) {
                   return x.nombre == bobina.material && x.marca == bobina.marca && x.ancho == bobina.ancho && x.gramaje == bobina.gramaje;
                 });
 
                 console.log(sustrato);
 
                 if (sustrato) {
-                  var existe = _this138.SUSTRATO_CONVERSION.find(function (x) {
+                  var existe = _this140.SUSTRATO_CONVERSION.find(function (x) {
                     return x._id == sustrato._id;
                   });
 
                   if (!existe) {
-                    _this138.SUSTRATO_CONVERSION.push(sustrato);
+                    _this140.SUSTRATO_CONVERSION.push(sustrato);
                   }
                 } // let sustrato = this.ALMACEN.find(x => x.nombre == bobina.material && x.gramaje == bobina.gramaje && x.ancho == bobina.ancho)
                 // console.log(sustrato, 'bobina')
@@ -53364,18 +53882,18 @@
 
               };
 
-              for (var _i81 = 0; _i81 < _this138.BOBINAS_.length; _i81++) {
-                _loop29(_i81);
+              for (var _i81 = 0; _i81 < _this140.BOBINAS_.length; _i81++) {
+                _loop31(_i81);
               }
             });
           }
         }, {
           key: "Buscar_conversiones",
           value: function Buscar_conversiones() {
-            var _this139 = this;
+            var _this141 = this;
 
             this.api.getConversiones().subscribe(function (resp) {
-              _this139.conversiones = resp;
+              _this141.conversiones = resp;
             });
           }
         }, {
@@ -53404,7 +53922,7 @@
         }, {
           key: "Generar_Conversion",
           value: function Generar_Conversion() {
-            var _this140 = this;
+            var _this142 = this;
 
             var sustrato = document.getElementById('bobina_selected').value;
             var peso = document.getElementById('_peso').value;
@@ -53428,7 +53946,7 @@
             var hojas = data.hojas.toString();
             var hoy = moment__WEBPACK_IMPORTED_MODULE_5__().format('DD/MM/YYYY');
             this.api.postNuevoSustrato(data).subscribe(function (resp) {
-              _this140.modal_Conversion();
+              _this142.modal_Conversion();
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire({
                 title: 'Nueva Solicitud de Conversion Creada',
@@ -53573,43 +54091,43 @@
         }, {
           key: "confirmar_eliminacion",
           value: function confirmar_eliminacion(motivo) {
-            var _this141 = this;
+            var _this143 = this;
 
             motivo = motivo.value;
 
             if (this.eliminar_sustrato) {
               this.api.eliminarSustrato(this.id_p_e, motivo).subscribe(function (resp) {
-                _this141.BuscarAlmacen();
+                _this143.BuscarAlmacen();
 
-                _this141.porConfirmar();
+                _this143.porConfirmar();
 
-                _this141.modal_eliminacion();
+                _this143.modal_eliminacion();
 
-                _this141.BuscarAlmacen();
+                _this143.BuscarAlmacen();
 
-                _this141.BuscarGruposEnAlmacen();
+                _this143.BuscarGruposEnAlmacen();
 
-                _this141.getbobinas(); // this.getSustratos();
+                _this143.getbobinas(); // this.getSustratos();
 
 
-                _this141.porConfirmar(); // // console.log(resp)
+                _this143.porConfirmar(); // // console.log(resp)
 
               });
             } else {
               this.api.eliminarMaterial(this.id_p_e, motivo).subscribe(function (resp) {
                 // // console.log(resp)
-                _this141.BuscarAlmacen();
+                _this143.BuscarAlmacen();
 
-                _this141.porConfirmar();
+                _this143.porConfirmar();
 
-                _this141.modal_eliminacion();
+                _this143.modal_eliminacion();
               });
             }
           }
         }, {
           key: "descargarInventario",
           value: function descargarInventario(desde, hasta) {
-            var _this142 = this;
+            var _this144 = this;
 
             var data = {
               desde: desde.value,
@@ -53669,51 +54187,51 @@
 
               generarPDF();
 
-              _this142.modal_reporte();
+              _this144.modal_reporte();
             });
           }
         }, {
           key: "totalizar_materiales",
           value: function totalizar_materiales() {
-            var _this143 = this;
+            var _this145 = this;
 
-            var _loop30 = function _loop30(_i85) {
-              var existe = _this143.TOTALES.find(function (x) {
-                return x.material == _this143.Almacenado[_i85].material.nombre && x.marca == _this143.Almacenado[_i85].material.marca && x.ancho == _this143.Almacenado[_i85].material.ancho && x.largo == _this143.Almacenado[_i85].material.largo && x.calibre == _this143.Almacenado[_i85].material.calibre && x.gramaje == _this143.Almacenado[_i85].material.gramaje;
+            var _loop32 = function _loop32(_i85) {
+              var existe = _this145.TOTALES.find(function (x) {
+                return x.material == _this145.Almacenado[_i85].material.nombre && x.marca == _this145.Almacenado[_i85].material.marca && x.ancho == _this145.Almacenado[_i85].material.ancho && x.largo == _this145.Almacenado[_i85].material.largo && x.calibre == _this145.Almacenado[_i85].material.calibre && x.gramaje == _this145.Almacenado[_i85].material.gramaje;
               });
 
               if (existe) {
-                var x = _this143.TOTALES.findIndex(function (x) {
-                  return x.material == _this143.Almacenado[_i85].material.nombre && x.marca == _this143.Almacenado[_i85].material.marca && x.ancho == _this143.Almacenado[_i85].material.ancho && x.largo == _this143.Almacenado[_i85].material.largo && x.calibre == _this143.Almacenado[_i85].material.calibre && x.gramaje == _this143.Almacenado[_i85].material.gramaje;
+                var x = _this145.TOTALES.findIndex(function (x) {
+                  return x.material == _this145.Almacenado[_i85].material.nombre && x.marca == _this145.Almacenado[_i85].material.marca && x.ancho == _this145.Almacenado[_i85].material.ancho && x.largo == _this145.Almacenado[_i85].material.largo && x.calibre == _this145.Almacenado[_i85].material.calibre && x.gramaje == _this145.Almacenado[_i85].material.gramaje;
                 });
 
-                _this143.TOTALES[x].total = Number(_this143.TOTALES[x].total);
-                _this143.Almacenado[_i85].cantidad = Number(_this143.Almacenado[_i85].cantidad);
-                _this143.Almacenado[_i85].neto = Number(_this143.Almacenado[_i85].material.neto);
-                var def = _this143.Almacenado[_i85].neto * _this143.Almacenado[_i85].cantidad / _this143.TOTALES[x].neto;
-                _this143.TOTALES[x].total = _this143.TOTALES[x].total + def;
+                _this145.TOTALES[x].total = Number(_this145.TOTALES[x].total);
+                _this145.Almacenado[_i85].cantidad = Number(_this145.Almacenado[_i85].cantidad);
+                _this145.Almacenado[_i85].neto = Number(_this145.Almacenado[_i85].material.neto);
+                var def = _this145.Almacenado[_i85].neto * _this145.Almacenado[_i85].cantidad / _this145.TOTALES[x].neto;
+                _this145.TOTALES[x].total = _this145.TOTALES[x].total + def;
               } else {
-                _this143.TOTALES.push({
-                  material: _this143.Almacenado[_i85].material.nombre,
-                  marca: _this143.Almacenado[_i85].material.marca,
-                  calibre: _this143.Almacenado[_i85].material.calibre,
-                  gramaje: _this143.Almacenado[_i85].material.gramaje,
-                  grupo: _this143.Almacenado[_i85].material.grupo.nombre,
-                  presentacion: _this143.Almacenado[_i85].material.presentacion,
-                  neto: _this143.Almacenado[_i85].material.neto,
-                  unidad: _this143.Almacenado[_i85].material.unidad,
-                  ancho: _this143.Almacenado[_i85].material.ancho,
-                  largo: _this143.Almacenado[_i85].material.largo,
-                  total: _this143.Almacenado[_i85].cantidad
+                _this145.TOTALES.push({
+                  material: _this145.Almacenado[_i85].material.nombre,
+                  marca: _this145.Almacenado[_i85].material.marca,
+                  calibre: _this145.Almacenado[_i85].material.calibre,
+                  gramaje: _this145.Almacenado[_i85].material.gramaje,
+                  grupo: _this145.Almacenado[_i85].material.grupo.nombre,
+                  presentacion: _this145.Almacenado[_i85].material.presentacion,
+                  neto: _this145.Almacenado[_i85].material.neto,
+                  unidad: _this145.Almacenado[_i85].material.unidad,
+                  ancho: _this145.Almacenado[_i85].material.ancho,
+                  largo: _this145.Almacenado[_i85].material.largo,
+                  total: _this145.Almacenado[_i85].cantidad
                 });
               }
 
-              if (_i85 === _this143.Almacenado.length - 1) {// console.log(this.TOTALES)
+              if (_i85 === _this145.Almacenado.length - 1) {// console.log(this.TOTALES)
               }
             };
 
             for (var _i85 = 0; _i85 < this.Almacenado.length; _i85++) {
-              _loop30(_i85);
+              _loop32(_i85);
             }
           }
         }, {
@@ -55636,7 +56154,7 @@
         }, {
           key: "validarToken",
           value: function validarToken() {
-            var _this144 = this;
+            var _this146 = this;
 
             return this.http.get("".concat(this.api_url, "/renew"), {
               headers: this.headers
@@ -55659,7 +56177,7 @@
                   Estadisticas = _resp$usuario.Estadisticas,
                   Precios = _resp$usuario.Precios,
                   pin = _resp$usuario.pin;
-              _this144.usuario = new _models_usuario_model__WEBPACK_IMPORTED_MODULE_4__["Usuario"](estado, _id, Nombre, Apellido, Correo, Departamento, Role, Nueva_orden, Consulta, Almacen, Maquinaria, Planificacion, Gestiones, Despacho, Estadisticas, Precios, pin);
+              _this146.usuario = new _models_usuario_model__WEBPACK_IMPORTED_MODULE_4__["Usuario"](estado, _id, Nombre, Apellido, Correo, Departamento, Role, Nueva_orden, Consulta, Almacen, Maquinaria, Planificacion, Gestiones, Despacho, Estadisticas, Precios, pin);
               localStorage.setItem('token', resp.token);
               localStorage.setItem('menu', JSON.stringify(resp.menu));
             }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (resp) {
@@ -56166,6 +56684,24 @@
           value: function postdevolucioneshastahoy(data) {
             var url = "".concat(this.api_url, "/corte-devolucion");
             return this.http.post(url, data);
+          }
+        }, {
+          key: "getDespachoFechas_",
+          value: function getDespachoFechas_(desde, hasta) {
+            var url = "".concat(this.api_url, "/gastos/").concat(desde, "/").concat(hasta);
+            return this.http.get(url);
+          }
+        }, {
+          key: "postBuscarLoteporFecha",
+          value: function postBuscarLoteporFecha(ordenes) {
+            var url = "".concat(this.api_url, "/lote-fecha");
+            return this.http.post(url, ordenes);
+          }
+        }, {
+          key: "postBuscarDevolucionesPorFecha",
+          value: function postBuscarDevolucionesPorFecha(ordenes) {
+            var url = "".concat(this.api_url, "/devoluciones-fecha");
+            return this.http.post(url, ordenes);
           }
         }]);
 
@@ -57055,7 +57591,7 @@
         }, {
           key: "cerrarOrden",
           value: function cerrarOrden() {
-            var _this145 = this;
+            var _this147 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
               title: '¿Cerrar orden de producción?',
@@ -57066,10 +57602,10 @@
             }).then(function (result) {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
-                _this145.api.CerrarOrden(_this145.orden_id).subscribe(function (resp) {
-                  _this145.CargarOrdenes.emit();
+                _this147.api.CerrarOrden(_this147.orden_id).subscribe(function (resp) {
+                  _this147.CargarOrdenes.emit();
 
-                  _this145.onClose();
+                  _this147.onClose();
 
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('¡Cerrada!', '', 'success');
                 });
@@ -57081,19 +57617,19 @@
         }, {
           key: "buscarDespachos",
           value: function buscarDespachos() {
-            var _this146 = this;
+            var _this148 = this;
 
             this.api.GetDespachoByOrden(this.orden_detalle).subscribe(function (resp) {
               for (var _i87 = 0; _i87 < resp.length; _i87++) {
                 for (var y = 0; y < resp[_i87].despacho.length; y++) {
-                  if (resp[_i87].despacho[y].op === _this146.orden_detalle) {
-                    _this146.despachos.push(resp[_i87].despacho[y]);
+                  if (resp[_i87].despacho[y].op === _this148.orden_detalle) {
+                    _this148.despachos.push(resp[_i87].despacho[y]);
 
-                    _this146.despachos.push({
+                    _this148.despachos.push({
                       fecha: resp[_i87].fecha
                     });
 
-                    _this146.despacho = _this146.despacho + resp[_i87].despacho[y].cantidad; // console.log(this.despachos)
+                    _this148.despacho = _this148.despacho + resp[_i87].despacho[y].cantidad; // console.log(this.despachos)
                   }
                 }
               }
@@ -57102,10 +57638,10 @@
         }, {
           key: "buscarGestiones",
           value: function buscarGestiones() {
-            var _this147 = this;
+            var _this149 = this;
 
             this.api.getGestiones().subscribe(function (resp) {
-              _this147.gestiones_ = resp;
+              _this149.gestiones_ = resp;
             });
           }
         }, {
@@ -57116,20 +57652,20 @@
         }, {
           key: "buscarTrabajos",
           value: function buscarTrabajos() {
-            var _this148 = this;
+            var _this150 = this;
 
             this.api.getMaquinasByOrdens(this.orden_id).subscribe(function (resp) {
-              _this148.trabajos = resp.maquinasDB; // this.trabajos = this.trabajos.sort(x => x.fechaI)
+              _this150.trabajos = resp.maquinasDB; // this.trabajos = this.trabajos.sort(x => x.fechaI)
             });
           }
         }, {
           key: "BuscarMaquinas",
           value: function BuscarMaquinas() {
-            var _this149 = this;
+            var _this151 = this;
 
             this.api.GetMaquinas().subscribe(function (resp) {
-              _this149.Maquinas = resp;
-              console.log(_this149.Maquinas);
+              _this151.Maquinas = resp;
+              console.log(_this151.Maquinas);
             });
           }
         }, {
@@ -58214,14 +58750,29 @@
           key: "showPercent",
           value: function showPercent() {
             var hojas = 0;
+            var descuentos = 0;
+            console.log(this.c_devoluciones);
 
             for (var _i89 = 0; _i89 < this.lote_mayor.length; _i89++) {
               if (this.lote_mayor[_i89].ancho) {
                 hojas = Number(hojas) + this.lote_mayor[_i89].cantidad;
               }
+
+              if (_i89 === this.lote_mayor.length - 1) {
+                for (var x = 0; x < this.c_devoluciones.length; x++) {
+                  for (var y = 0; y < this.c_devoluciones[x].filtrado.length; y++) {
+                    var _material_ = this.c_devoluciones[x].filtrado[y].material;
+
+                    if (_material_.ancho) {
+                      descuentos = Number(descuentos) + Number(this.c_devoluciones[x].filtrado[y].cantidad);
+                      console.log(this.c_devoluciones[x].filtrado[y]);
+                    }
+                  }
+                }
+              }
             }
 
-            this.asignadas = hojas;
+            this.asignadas = hojas - descuentos;
             this.sumaCantidades();
             this.showChart();
             this.ready = true;
@@ -58259,7 +58810,8 @@
           despachos_filtrado: "despachos_filtrado",
           despachos_orden: "despachos_orden",
           lote_mayor: "lote_mayor",
-          Ej_montados: "Ej_montados"
+          Ej_montados: "Ej_montados",
+          c_devoluciones: "c_devoluciones"
         },
         outputs: {
           onCloseModal: "onCloseModal"
@@ -58443,6 +58995,9 @@
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
           }],
           Ej_montados: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+          }],
+          c_devoluciones: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
           }],
           onCloseModal: [{
@@ -59701,11 +60256,11 @@
         }, {
           key: "buscarRequisicion",
           value: function buscarRequisicion() {
-            var _this150 = this;
+            var _this152 = this;
 
             this.api.getRequi().subscribe(function (resp) {
               for (var _i90 = 0; _i90 < resp.length; _i90++) {
-                _this150.necesario.push(resp[_i90]); // console.log(this.Almacenado, 'almacenado')
+                _this152.necesario.push(resp[_i90]); // console.log(this.Almacenado, 'almacenado')
 
               } // this.onAgregarRequisicioes.emit(resp)
 
@@ -59784,7 +60339,7 @@
         }, {
           key: "Lote",
           value: function Lote(e, index, orden, material, i, hojas, grupo, cantidad, m_cantidad, unidad, cinta) {
-            var _this151 = this;
+            var _this153 = this;
 
             // alert(index)
             // // console.log({
@@ -59952,7 +60507,7 @@
               cantidad_solicitada = EnAlmacen.cantidad;
 
               check.onclick = function () {
-                return _this151.fijalote(Mname, EA_Cantidad, e, codigo, 0, i, EnAlmacen.cantidad * EnAlmacen.material.neto, restante, cantidad_solicitada, unidad, _cantidad, material);
+                return _this153.fijalote(Mname, EA_Cantidad, e, codigo, 0, i, EnAlmacen.cantidad * EnAlmacen.material.neto, restante, cantidad_solicitada, unidad, _cantidad, material);
               };
             } else {
               document.getElementById("fijar_lote-".concat(index, "-").concat(i)).style.display = "none";
@@ -60058,7 +60613,7 @@
         }, {
           key: "Restar",
           value: function Restar(orden, solicitud, index, n, requi) {
-            var _this152 = this;
+            var _this154 = this;
 
             var largo = solicitud.length;
 
@@ -60078,8 +60633,8 @@
 
             var Cargados = this.LOTES.length;
 
-            var _loop31 = function _loop31(_i93) {
-              var existe = _this152.LOTES.find(function (x) {
+            var _loop33 = function _loop33(_i93) {
+              var existe = _this154.LOTES.find(function (x) {
                 return x.i === _i93;
               }); // // console.log(En_Almacen.length,'/-',i)
 
@@ -60101,7 +60656,7 @@
                 // alert('2')
                 // // console.log(En_Almacen[0][i],'i')
                 if (En_Almacen[_i93].producto.grupo.nombre === 'Cajas Corrugadas' && !requi) {
-                  var _existe = _this152.LOTES.find(function (x) {
+                  var _existe = _this154.LOTES.find(function (x) {
                     return x.i === 100;
                   });
 
@@ -60123,7 +60678,7 @@
             };
 
             for (var _i93 = 0; _i93 < En_Almacen.length; _i93++) {
-              var _ret3 = _loop31(_i93);
+              var _ret3 = _loop33(_i93);
 
               if (typeof _ret3 === "object") return _ret3.v;
             }
@@ -60146,9 +60701,9 @@
                 timer: 1500
               });
 
-              _this152.onCloseModal.emit();
+              _this154.onCloseModal.emit();
 
-              _this152.onFinalizarAsignacion.emit();
+              _this154.onFinalizarAsignacion.emit();
             });
           }
         }]);
@@ -60570,7 +61125,7 @@
         }, {
           key: "login",
           value: function login() {
-            var _this153 = this;
+            var _this155 = this;
 
             var _a, _b; //Agregar clase de cargar a boton
 
@@ -60587,9 +61142,9 @@
             this.api.Login(this.loginForm.value).subscribe(function (resp) {
               localStorage.setItem('token', resp.token);
 
-              _this153.router.navigateByUrl('/');
+              _this155.router.navigateByUrl('/');
             }, function (err) {
-              _this153.cargando = false; // console.log(err)
+              _this155.cargando = false; // console.log(err)
 
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Error', err.error.err.message, 'error');
             }); // // console.log(this.loginForm.value)
@@ -61695,10 +62250,10 @@
         _createClass(ConsultaFacturacionComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this154 = this;
+            var _this156 = this;
 
             this.api.getDespachadoTodos().subscribe(function (resp) {
-              _this154.Despachos = resp;
+              _this156.Despachos = resp;
             });
           }
         }, {
@@ -61722,11 +62277,11 @@
         }, {
           key: "ObtenerClientes",
           value: function ObtenerClientes() {
-            var _this155 = this;
+            var _this157 = this;
 
             console.log('work');
             this.api.GetClientes().subscribe(function (resp) {
-              _this155.Clientes = resp.clientes;
+              _this157.Clientes = resp.clientes;
             });
           }
         }, {
@@ -61759,7 +62314,7 @@
         }, {
           key: "Buscar_op",
           value: function Buscar_op(op) {
-            var _this156 = this;
+            var _this158 = this;
 
             this.ORDENES = [];
             this.NOTAS = [];
@@ -61771,12 +62326,12 @@
               for (var _i94 = 0; _i94 < resp[0].despacho.length; _i94++) {
                 if (resp[0].despacho[_i94].op === op) {
                   resp[0].despacho[_i94].fecha = resp[0].fecha;
-                  _this156.INDEX = _i94;
+                  _this158.INDEX = _i94;
 
-                  _this156.ORDENES.push(resp[0].despacho[_i94]);
+                  _this158.ORDENES.push(resp[0].despacho[_i94]);
 
-                  _this156.Total_USD = _this156.Total_USD + resp[0].despacho[_i94].cantidad / 1000 * resp[0].despacho[_i94].precio;
-                  _this156.Total_Bs = _this156.Total_Bs + resp[0].despacho[_i94].cantidad / 1000 * resp[0].despacho[_i94].precio * resp[0].despacho[_i94].tasa;
+                  _this158.Total_USD = _this158.Total_USD + resp[0].despacho[_i94].cantidad / 1000 * resp[0].despacho[_i94].precio;
+                  _this158.Total_Bs = _this158.Total_Bs + resp[0].despacho[_i94].cantidad / 1000 * resp[0].despacho[_i94].precio * resp[0].despacho[_i94].tasa;
                 }
               }
             });
@@ -61784,7 +62339,7 @@
         }, {
           key: "buscar_fecha",
           value: function buscar_fecha(desde, hasta) {
-            var _this157 = this;
+            var _this159 = this;
 
             if (!desde.value || !hasta.value) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -61809,12 +62364,12 @@
             }
 
             this.api.getDespachoFechas(desde.value, hasta.value).subscribe(function (resp) {
-              _this157.ORDENES = [];
-              _this157.NOTAS = [];
-              _this157.Total_Bs = 0;
-              _this157.Total_USD = 0;
-              _this157.Total_Bs_N = 0;
-              _this157.Total_USD_N = 0;
+              _this159.ORDENES = [];
+              _this159.NOTAS = [];
+              _this159.Total_Bs = 0;
+              _this159.Total_USD = 0;
+              _this159.Total_Bs_N = 0;
+              _this159.Total_USD_N = 0;
 
               for (var _i95 = 0; _i95 < resp.length; _i95++) {
                 for (var x = 0; x < resp[_i95].despacho.length; x++) {
@@ -61822,17 +62377,17 @@
                     if (resp[_i95].despacho[x].documento.charAt(0) === 'F') {
                       resp[_i95].despacho[x].fecha = resp[_i95].fecha;
 
-                      _this157.ORDENES.push(resp[_i95].despacho[x]);
+                      _this159.ORDENES.push(resp[_i95].despacho[x]);
 
-                      _this157.Total_USD = _this157.Total_USD + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio;
-                      _this157.Total_Bs = _this157.Total_Bs + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio * resp[_i95].despacho[x].tasa;
+                      _this159.Total_USD = _this159.Total_USD + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio;
+                      _this159.Total_Bs = _this159.Total_Bs + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio * resp[_i95].despacho[x].tasa;
                     } else {
                       resp[_i95].despacho[x].fecha = resp[_i95].fecha;
 
-                      _this157.NOTAS.push(resp[_i95].despacho[x]);
+                      _this159.NOTAS.push(resp[_i95].despacho[x]);
 
-                      _this157.Total_USD_N = _this157.Total_USD_N + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio;
-                      _this157.Total_Bs_N = _this157.Total_Bs_N + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio * resp[_i95].despacho[x].tasa;
+                      _this159.Total_USD_N = _this159.Total_USD_N + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio;
+                      _this159.Total_Bs_N = _this159.Total_Bs_N + resp[_i95].despacho[x].cantidad / 1000 * resp[_i95].despacho[x].precio * resp[_i95].despacho[x].tasa;
                     }
                   }
                 }
@@ -61842,7 +62397,7 @@
         }, {
           key: "BuscarCliente",
           value: function BuscarCliente(cliente, desde, hasta) {
-            var _this158 = this;
+            var _this160 = this;
 
             console.log(cliente, '*', desde, '*', hasta);
 
@@ -61869,9 +62424,9 @@
             }
 
             this.api.getDespachoCliente(cliente, desde, hasta).subscribe(function (resp) {
-              _this158.ORDENES = [];
-              _this158.Total_Bs = 0;
-              _this158.Total_USD = 0;
+              _this160.ORDENES = [];
+              _this160.Total_Bs = 0;
+              _this160.Total_USD = 0;
 
               for (var _i96 = 0; _i96 < resp.length; _i96++) {
                 for (var x = 0; x < resp[_i96].despacho.length; x++) {
@@ -61879,17 +62434,17 @@
                     if (resp[_i96].despacho[x].documento.charAt(0) === 'F') {
                       resp[_i96].despacho[x].fecha = resp[_i96].fecha;
 
-                      _this158.ORDENES.push(resp[_i96].despacho[x]);
+                      _this160.ORDENES.push(resp[_i96].despacho[x]);
 
-                      _this158.Total_USD = _this158.Total_USD + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio;
-                      _this158.Total_Bs = _this158.Total_Bs + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio * resp[_i96].despacho[x].tasa;
+                      _this160.Total_USD = _this160.Total_USD + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio;
+                      _this160.Total_Bs = _this160.Total_Bs + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio * resp[_i96].despacho[x].tasa;
                     } else {
                       resp[_i96].despacho[x].fecha = resp[_i96].fecha;
 
-                      _this158.NOTAS.push(resp[_i96].despacho[x]);
+                      _this160.NOTAS.push(resp[_i96].despacho[x]);
 
-                      _this158.Total_USD_N = _this158.Total_USD_N + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio;
-                      _this158.Total_Bs_N = _this158.Total_Bs_N + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio * resp[_i96].despacho[x].tasa;
+                      _this160.Total_USD_N = _this160.Total_USD_N + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio;
+                      _this160.Total_Bs_N = _this160.Total_Bs_N + resp[_i96].despacho[x].cantidad / 1000 * resp[_i96].despacho[x].precio * resp[_i96].despacho[x].tasa;
                     }
                   }
                 }
@@ -66875,43 +67430,43 @@
         }, {
           key: "GetOneProducto",
           value: function GetOneProducto(id) {
-            var _this159 = this;
+            var _this161 = this;
 
             this.api.getOneById(id).subscribe(function (resp) {
-              _this159.productos = resp;
-              _this159.montajes = _this159.productos.producto.montajes;
-              console.log(_this159.productos);
-              _this159.Ejemplares = _this159.productos.producto.ejemplares[_this159.i_montajes];
+              _this161.productos = resp;
+              _this161.montajes = _this161.productos.producto.montajes;
+              console.log(_this161.productos);
+              _this161.Ejemplares = _this161.productos.producto.ejemplares[_this161.i_montajes];
 
-              for (var _i97 = 0; _i97 < resp.producto.materiales[_this159.i_montajes].length; _i97++) {
-                var grupo = resp.producto.materiales[_this159.i_montajes][_i97].producto.grupo.nombre;
+              for (var _i97 = 0; _i97 < resp.producto.materiales[_this161.i_montajes].length; _i97++) {
+                var grupo = resp.producto.materiales[_this161.i_montajes][_i97].producto.grupo.nombre;
 
                 if (grupo === 'Sustrato') {
-                  _this159.Sustrato = resp.producto.materiales[_this159.i_montajes][_i97].producto; // this.tonelada();
+                  _this161.Sustrato = resp.producto.materiales[_this161.i_montajes][_i97].producto; // this.tonelada();
                 }
 
                 if (grupo === 'Tinta') {
-                  _this159.colores.push(resp.producto.materiales[_this159.i_montajes][_i97].producto);
+                  _this161.colores.push(resp.producto.materiales[_this161.i_montajes][_i97].producto);
                 }
 
                 if (grupo === 'Barniz' || grupo === 'Barniz Acuoso') {
-                  _this159.barniz.push(resp.producto.materiales[_this159.i_montajes][_i97].producto.nombre);
+                  _this161.barniz.push(resp.producto.materiales[_this161.i_montajes][_i97].producto.nombre);
 
-                  console.log(_this159.barniz);
+                  console.log(_this161.barniz);
                 }
 
                 if (grupo === 'Pega') {
-                  _this159.pega.push(resp.producto.materiales[_this159.i_montajes][_i97].producto.nombre);
+                  _this161.pega.push(resp.producto.materiales[_this161.i_montajes][_i97].producto.nombre);
 
-                  console.log(_this159.pega);
+                  console.log(_this161.pega);
                 }
 
                 if (grupo === 'Cajas Corrugadas') {
-                  _this159.caja = resp.producto.materiales[_this159.i_montajes][_i97];
+                  _this161.caja = resp.producto.materiales[_this161.i_montajes][_i97];
                 }
               }
 
-              console.log(_this159.productos);
+              console.log(_this161.productos);
             });
           }
         }, {
@@ -67057,12 +67612,12 @@
         }, {
           key: "Finalizar_edicion",
           value: function Finalizar_edicion() {
-            var _this160 = this;
+            var _this162 = this;
 
             console.log(this.producto);
             console.log(this.productos.producto);
             this.api.updateProducto(this.productos.producto, this.producto).subscribe(function (resp) {
-              _this160.Edicion = false;
+              _this162.Edicion = false;
               sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                 title: 'Editado',
                 text: 'Se realizarón los cambios de manera exitosa',
@@ -67144,82 +67699,82 @@
         }, {
           key: "buscarAlmacen",
           value: function buscarAlmacen() {
-            var _this161 = this;
+            var _this163 = this;
 
             this.api.getAlmacen().subscribe(function (resp) {
-              _this161.Materiales = resp.materiales;
+              _this163.Materiales = resp.materiales;
 
-              var _loop32 = function _loop32(_i98) {
+              var _loop34 = function _loop34(_i98) {
                 // console.log(i)
-                if (_this161.Materiales[_i98].grupo.nombre === 'Sustrato') {
-                  var existe = _this161.Sustrato__.find(function (x) {
-                    return x.nombre === _this161.Materiales[_i98].nombre && x.marca === _this161.Materiales[_i98].marca && x.calibre === _this161.Materiales[_i98].calibre && x.gramaje === _this161.Materiales[_i98].gramaje;
+                if (_this163.Materiales[_i98].grupo.nombre === 'Sustrato') {
+                  var existe = _this163.Sustrato__.find(function (x) {
+                    return x.nombre === _this163.Materiales[_i98].nombre && x.marca === _this163.Materiales[_i98].marca && x.calibre === _this163.Materiales[_i98].calibre && x.gramaje === _this163.Materiales[_i98].gramaje;
                   });
 
                   if (!existe) {
-                    _this161.Sustrato__.push(_this161.Materiales[_i98]);
+                    _this163.Sustrato__.push(_this163.Materiales[_i98]);
                   }
                 }
 
-                if (_this161.Materiales[_i98].grupo.nombre === 'Tinta') {
-                  var _existe6 = _this161.Tintas.find(function (x) {
-                    return x.nombre === _this161.Materiales[_i98].nombre && x.marca === _this161.Materiales[_i98].marca;
+                if (_this163.Materiales[_i98].grupo.nombre === 'Tinta') {
+                  var _existe6 = _this163.Tintas.find(function (x) {
+                    return x.nombre === _this163.Materiales[_i98].nombre && x.marca === _this163.Materiales[_i98].marca;
                   });
 
                   if (!_existe6) {
-                    _this161.Tintas.push(_this161.Materiales[_i98]);
+                    _this163.Tintas.push(_this163.Materiales[_i98]);
                   }
                 }
 
-                if (_this161.Materiales[_i98].grupo.nombre === 'Quimicos') {
-                  var _existe7 = _this161.Quimicos.find(function (x) {
-                    return x.nombre === _this161.Materiales[_i98].nombre && x.marca === _this161.Materiales[_i98].marca;
+                if (_this163.Materiales[_i98].grupo.nombre === 'Quimicos') {
+                  var _existe7 = _this163.Quimicos.find(function (x) {
+                    return x.nombre === _this163.Materiales[_i98].nombre && x.marca === _this163.Materiales[_i98].marca;
                   });
 
                   console.log(_existe7);
 
                   if (!_existe7) {
-                    _this161.Quimicos.push(_this161.Materiales[_i98]); // console.log(this.Quimicos)
+                    _this163.Quimicos.push(_this163.Materiales[_i98]); // console.log(this.Quimicos)
 
                   }
                 }
 
-                if (_this161.Materiales[_i98].grupo.nombre === 'Cajas Corrugadas') {
-                  var _existe8 = _this161.Cajas.find(function (x) {
-                    return x.nombre === _this161.Materiales[_i98].nombre;
+                if (_this163.Materiales[_i98].grupo.nombre === 'Cajas Corrugadas') {
+                  var _existe8 = _this163.Cajas.find(function (x) {
+                    return x.nombre === _this163.Materiales[_i98].nombre;
                   });
 
                   console.log(_existe8);
 
                   if (!_existe8) {
-                    _this161.Cajas.push(_this161.Materiales[_i98]); // console.log(this.Cajas)
+                    _this163.Cajas.push(_this163.Materiales[_i98]); // console.log(this.Cajas)
 
                   }
                 }
 
-                if (_this161.Materiales[_i98].grupo.nombre === 'Otros materiales') {
-                  var _existe9 = _this161.Planchas.find(function (x) {
-                    return x.nombre === _this161.Materiales[_i98].nombre;
+                if (_this163.Materiales[_i98].grupo.nombre === 'Otros materiales') {
+                  var _existe9 = _this163.Planchas.find(function (x) {
+                    return x.nombre === _this163.Materiales[_i98].nombre;
                   });
 
                   console.log(_existe9);
 
                   if (!_existe9) {
-                    _this161.Planchas.push(_this161.Materiales[_i98]); // console.log(this.Planchas)
+                    _this163.Planchas.push(_this163.Materiales[_i98]); // console.log(this.Planchas)
 
                   }
                 }
               };
 
-              for (var _i98 = 0; _i98 < _this161.Materiales.length; _i98++) {
-                _loop32(_i98);
+              for (var _i98 = 0; _i98 < _this163.Materiales.length; _i98++) {
+                _loop34(_i98);
               }
             });
           }
         }, {
           key: "firmar",
           value: function firmar(n) {
-            var _this162 = this;
+            var _this164 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
               title: '¿Seguro que quieres firmar este documento?',
@@ -67235,31 +67790,31 @@
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
                 if (n === 0) {
-                  _this162.productos.producto.firmas[0] = "".concat(_this162.usuario.Nombre, " ").concat(_this162.usuario.Apellido);
-                  _this162.productos.producto.firmas[1] = "".concat(_this162.usuario.Departamento);
-                  _this162.productos.producto.firmas[2] = "".concat(_this162.usuario._id);
-                  _this162.productos.producto.firmas[12] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
+                  _this164.productos.producto.firmas[0] = "".concat(_this164.usuario.Nombre, " ").concat(_this164.usuario.Apellido);
+                  _this164.productos.producto.firmas[1] = "".concat(_this164.usuario.Departamento);
+                  _this164.productos.producto.firmas[2] = "".concat(_this164.usuario._id);
+                  _this164.productos.producto.firmas[12] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
                 }
 
                 if (n === 1) {
-                  _this162.productos.producto.firmas[3] = "".concat(_this162.usuario.Nombre, " ").concat(_this162.usuario.Apellido);
-                  _this162.productos.producto.firmas[4] = "".concat(_this162.usuario.Departamento);
-                  _this162.productos.producto.firmas[5] = "".concat(_this162.usuario._id);
-                  _this162.productos.producto.firmas[13] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
+                  _this164.productos.producto.firmas[3] = "".concat(_this164.usuario.Nombre, " ").concat(_this164.usuario.Apellido);
+                  _this164.productos.producto.firmas[4] = "".concat(_this164.usuario.Departamento);
+                  _this164.productos.producto.firmas[5] = "".concat(_this164.usuario._id);
+                  _this164.productos.producto.firmas[13] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
                 }
 
                 if (n === 2) {
-                  _this162.productos.producto.firmas[6] = "".concat(_this162.usuario.Nombre, " ").concat(_this162.usuario.Apellido);
-                  _this162.productos.producto.firmas[7] = "".concat(_this162.usuario.Departamento);
-                  _this162.productos.producto.firmas[8] = "".concat(_this162.usuario._id);
-                  _this162.productos.producto.firmas[14] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
+                  _this164.productos.producto.firmas[6] = "".concat(_this164.usuario.Nombre, " ").concat(_this164.usuario.Apellido);
+                  _this164.productos.producto.firmas[7] = "".concat(_this164.usuario.Departamento);
+                  _this164.productos.producto.firmas[8] = "".concat(_this164.usuario._id);
+                  _this164.productos.producto.firmas[14] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
                 }
 
                 if (n === 3) {
-                  _this162.productos.producto.firmas[9] = "".concat(_this162.usuario.Nombre, " ").concat(_this162.usuario.Apellido);
-                  _this162.productos.producto.firmas[10] = "".concat(_this162.usuario.Departamento);
-                  _this162.productos.producto.firmas[11] = "".concat(_this162.usuario._id);
-                  _this162.productos.producto.firmas[15] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
+                  _this164.productos.producto.firmas[9] = "".concat(_this164.usuario.Nombre, " ").concat(_this164.usuario.Apellido);
+                  _this164.productos.producto.firmas[10] = "".concat(_this164.usuario.Departamento);
+                  _this164.productos.producto.firmas[11] = "".concat(_this164.usuario._id);
+                  _this164.productos.producto.firmas[15] = moment__WEBPACK_IMPORTED_MODULE_6__().format('DD/MM/YYYY');
                 }
 
                 sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
@@ -67271,7 +67826,7 @@
                 });
               } else if (result.isDenied) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-                  title: "Documento aun sin firmar por ".concat(_this162.usuario.Departamento),
+                  title: "Documento aun sin firmar por ".concat(_this164.usuario.Departamento),
                   icon: 'info',
                   timer: 2000,
                   timerProgressBar: true,
@@ -67295,16 +67850,16 @@
         }, {
           key: "subirImagen",
           value: function subirImagen() {
-            var _this163 = this;
+            var _this165 = this;
 
             // this.cargando = true;
             this.subirArchivo.actualizarFoto(this.ImgSubir, 'despacho', this.producto).then(function (img) {
               if (img) {
                 console.log(img);
-                _this163.productos.producto.paletizado = img; // this.usuario.img = img;
+                _this165.productos.producto.paletizado = img; // this.usuario.img = img;
 
                 document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                _this163.ImgSubir = null;
+                _this165.ImgSubir = null;
               } // this.GetOneProducto(this.producto)
               // this.verProducto(this.OneProduct._id)
               // this.verProducto(this.OneProduct._id)
@@ -67321,15 +67876,15 @@
         }, {
           key: "subirImagen_",
           value: function subirImagen_() {
-            var _this164 = this;
+            var _this166 = this;
 
             // this.cargando = true;
             this.subirArchivo.actualizarFoto(this.ImgSubir, 'distribucion', this.producto).then(function (img) {
               if (img) {
                 // this.usuario.img = img;
-                _this164.productos.producto.distribucion = img;
+                _this166.productos.producto.distribucion = img;
                 document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                _this164.ImgSubir = null;
+                _this166.ImgSubir = null;
               } // this.GetOneProducto(this.producto)
               // this.verProducto(this.OneProduct._id)
               // this.verProducto(this.OneProduct._id)
@@ -67346,15 +67901,15 @@
         }, {
           key: "subirImagen__",
           value: function subirImagen__() {
-            var _this165 = this;
+            var _this167 = this;
 
             // this.cargando = true;
             this.subirArchivo.actualizarFoto(this.ImgSubir, 'aereo', this.producto).then(function (img) {
               if (img) {
                 // this.usuario.img = img;
-                _this165.productos.producto.aereo = img;
+                _this167.productos.producto.aereo = img;
                 document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                _this165.ImgSubir = null;
+                _this167.ImgSubir = null;
               } // this.GetOneProducto(this.producto)
               // this.verProducto(this.OneProduct._id)
               // this.verProducto(this.OneProduct._id)

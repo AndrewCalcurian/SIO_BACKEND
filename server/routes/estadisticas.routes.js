@@ -828,6 +828,7 @@ app.post('/api/reporte-inventario', (req, res)=>{
 
     Almacenado.find({fecha:{$gte:desde, $lte:hasta}})
         .populate('material')
+        .sort('material.nombre')
         .exec((err, almacenDB)=>{
         if( err ){
             return res.status(400).json({

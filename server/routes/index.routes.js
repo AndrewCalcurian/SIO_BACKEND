@@ -23,6 +23,7 @@ app.use ( require('./despacho.routes'));
 app.use ( require('./estadisticas.routes'));
 app.use ( require('./cotizaciones.routes'));
 app.use ( require('./analisis.routes'));
+app.use ( require('./gastos.routes'));
 
 
 
