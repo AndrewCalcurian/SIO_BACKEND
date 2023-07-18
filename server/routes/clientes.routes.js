@@ -248,7 +248,7 @@ app.post('/api/prints', (req, res)=>{
             paperSize:'USER',
             orientation : 'portrait',
             copies:body.copias
-            // copies:23
+            // copies:445
         };
     
         

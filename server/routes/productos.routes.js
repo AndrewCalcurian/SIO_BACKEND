@@ -148,6 +148,22 @@ app.post('/api/producto/:id', (req, res)=>{
 
 });
 
+app.get('/api/productos-todos', (req, res)=>{
+    Producto.find({})
+    .populate('cliente')
+    .exec((err, productos)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json(productos)
+        // ESPECIFICACION-NOMBRE PRODUCTO
+    })
+})
+
 
 
 module.exports = app;

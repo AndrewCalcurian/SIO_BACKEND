@@ -3,6 +3,7 @@ const app = express();
 
 const almacenado = require('../database/models/almacenado.model')
 const Lote = require('../database/models/lotes.model')
+const asustrato = require('../database/models/analisis.sustrato.model')
 
 app.get('/api/analisis/:lote', (req, res)=>{
 
@@ -44,6 +45,56 @@ app.get('/api/verlote/:lote', (req, res)=>{
 
             res.json(materiales)
         })
+})
+
+app.post('/api/analisis-sustrato', (req, res)=>{
+
+    let body = req.body;
+
+    asustrato.findOne({lote:body.lote}, (err, asustratoDB)=>{
+        if(asustratoDB.length < 1){
+            let analisis = new asustrato(body).save((err, nuevoAnalisisDB)=>{
+                if( err ){
+                    return res.status(400).json({
+                        ok:false,
+                        err
+                    });
+                }
+            })
+        }else{
+            asustrato.findByIdAndUpdate(asustratoDB._id, body, (err, AnalisisDB)=>{
+                if( err ){
+                    return res.status(400).json({
+                        ok:false,
+                        err
+                    });
+                }
+
+            })
+        }
+    })
+
+    res.json('ok')
+})
+
+app.get('/api/analisis-sustrato/:lote', (req, res)=>{
+
+    let lote = req.params.lote;
+
+    asustrato.findOne({lote}, (err, analisisDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!analisisDB){
+            res.json({empty:true})
+        }else{
+            res.json(analisisDB)
+        }
+    })
 })
 
 module.exports = app;
