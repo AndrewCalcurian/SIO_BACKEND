@@ -52,7 +52,7 @@ app.post('/api/analisis-sustrato', (req, res)=>{
     let body = req.body;
 
     asustrato.findOne({lote:body.lote}, (err, asustratoDB)=>{
-        if(asustratoDB.length < 1){
+        if(!asustratoDB){
             let analisis = new asustrato(body).save((err, nuevoAnalisisDB)=>{
                 if( err ){
                     return res.status(400).json({

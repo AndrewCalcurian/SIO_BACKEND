@@ -82,5 +82,57 @@ app.get('/api/gestiones', (req, res)=>{
 
 });
 
+app.get('/api/gestiones/:id', (req, res)=>{
+
+    let op = req.params.id
+
+    // --CONSULTA A LA COLECCION DE GRUPOS--
+    Gestion.find({op})
+            .populate('maquina trabajos')
+            .exec((err, gestionDB)=>{
+
+        // --EN CASO DE ERROR--
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        // --MOSRAR LOS GRUPOS--
+        res.json(gestionDB)
+
+    })
+
+});
+
+app.post('/api/many-gestiones', (req, res)=>{
+    let body = req.body 
+
+    for(let i=0;i<body.length;i++){
+        let data = {
+            fecha:body[i].fecha,
+            productos:Number(body[i].productos),
+            hojas:Number(body[i].hojas),
+            Rproductos:Number(body[i].Rproductos),
+            Rhojas:Number(body[i].Rhojas),
+        }
+
+        Gestion.findByIdAndUpdate(body[i]._id, data, (err, GestionEdited)=>{
+            if( err ){
+                return res.status(400).json({
+                    ok:false,
+                    err
+                });
+            }
+        })
+    
+        if(i === body.length -1){
+            res.json('ok')
+        }
+    }
+
+})
+
 
 module.exports = app;

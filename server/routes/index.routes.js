@@ -24,6 +24,7 @@ app.use ( require('./estadisticas.routes'));
 app.use ( require('./cotizaciones.routes'));
 app.use ( require('./analisis.routes'));
 app.use ( require('./gastos.routes'));
+app.use ( require('./departamento.routes'));
 
 
 

@@ -17,6 +17,229 @@ const {DocumentDefinition, Table, Cell, Txt, Img, Stack, QR} = require('pdfmake-
 const Pdfmake = require('pdfmake');
 const { text } = require('body-parser');
 
+app.get('/api/createMark', (req, res)=>{
+    // async function  CrearPDF(){
+    //     const printer__ = new Pdfmake({
+    //         Roboto: {
+    //             normal: __dirname + '/fonts/Roboto/Roboto-Regular.ttf',
+    //             bold: __dirname + '/fonts/Roboto/Roboto-Medium.ttf',
+    //             italics: __dirname + '/fonts/Roboto/Roboto-Italic.ttf',
+    //             bolditalics: __dirname + '/fonts/Roboto/Roboto-MediumItalic.ttf'
+    //         },
+    //         BarlowCondensed: {
+    //             normal: __dirname + '/fonts/Etiquetas/BarlowCondensed-Regular.ttf',
+    //             bold: __dirname + '/fonts/Etiquetas/BarlowCondensed-Bold.ttf',
+    //             italics: __dirname + '/fonts/Etiquetas/BarlowCondensed-Ligth.ttf',
+    //         }
+    //     });
+
+    //     const doc = new DocumentDefinition();
+    //         doc.watermark( new Txt('NO VALIDA').color('black').end );
+    //         doc.pageOrientation('landscape');
+    //         doc.pageMargins([ 10, 10 ]);
+
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          await new Img(__dirname + '/images/Logo-etiquetas.png', true).width(250).build()
+    //                      ).end,
+    //                      new Cell(new QR(`http://poligraficaindustrial.com/premio-theobaldo-de-nigris/`).fit(130).alignment('center').end).end,
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('ORDEN DE PRODUCCIÓN').alignment('center').font('BarlowCondensed').bold().fontSize(30).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`2023000`).alignment('center').font('BarlowCondensed').margin([0,-18]).bold().fontSize(80).end,
+    //                              ]
+    //                          ]).alignment('center').end
+    //                      ).fillColor('#000000').color('#FFFFFF').end,
+    //                  ]
+    //              ]).widths(['40%','27%','33%']).layout('noBorders').end
+    //          )
+    //          doc.add(
+    //              '\n'
+    //          )
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('PRODUCTO:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`Poligrafica Industrial`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                  ]
+    //              ]).widths('100%').end
+    //          )
+    //          doc.add(
+    //              '\n'
+    //          )
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('CLIENTE:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`Poligrafica Industrial`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('ORDEN DE COMPRA N°:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`00000`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                  ]
+    //              ]).widths(['70%','30%']).end
+    //          )
+    //          doc.add(
+    //              '\n'
+    //          )
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('SUSTRATO:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`Poligrafica Industrial`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('CÓDIGO DE PRODUCTO:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`000000`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                  ]
+    //              ]).widths(['70%','30%']).end
+    //          )
+    //          doc.add(
+    //              '\n'
+    //          )
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('COD. ESPECIFICACIÓN:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`E-PI-000-0-00`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('FECHA DE FABRICACIÓN:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`01/2023`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt('FECHA DE ETIQ:').font('BarlowCondensed').fontSize(17).end,
+    //                              ],
+    //                              [
+    //                                  new Txt(`01/01/2023`).font('BarlowCondensed').fontSize(38).end,
+    //                              ]
+    //                          ]).layout('noBorders').end 
+    //                      ).end,
+    //                  ]
+    //              ]).widths(['25%','21%','19%']).end
+    //          )
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Txt(' ').end
+    //                      ).fillColor('#000000').color('#FFFFFF').end,
+    //                      new Cell(
+    //                          new Table([
+    //                              [
+    //                                  new Txt(`00.000`).font('BarlowCondensed').bold().alignment('center').fontSize(75).end,
+    //                              ],
+    //                              [
+    //                                  new Txt('unidades').font('BarlowCondensed').bold().alignment('center').fontSize(38).margin([0,-8]).end,
+    //                              ]
+    //                          ]).width("100%").end 
+    //                      ).fillColor('#000000').color('#FFFFFF').end,
+    //                      new Cell(
+    //                          new Txt(' ').end
+    //                      ).fillColor('#000000').color('#FFFFFF').end,
+    //                  ]
+    //              ]).margin([575,-85]).end
+    //          )
+    
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Txt(`\n\nSe recomienda el uso de este producto dentro de un lapso no mayor a 6 meses.
+    //                          Para mas información lea detenidamente nuestra "Política de devoluciones o reclamos (DDE-005)"`).font('BarlowCondensed').fontSize(16).end,
+    
+    //                      ).alignment('center').end
+    //                  ]
+    //              ]).layout('noBorders').widths('65%').end
+    //          )
+    
+    //          doc.add(
+    //              new Table([
+    //                  [
+    //                      new Cell(
+    //                          new Txt(`FPR-018`).font('BarlowCondensed').fontSize(16).margin([755,0]).end,
+    //                      ).end
+    //                  ]
+    //              ]).layout('noBorders').end
+    //          )
+
+    //          const pdf = printer__.createPdfKitDocument(doc.getDefinition());
+        
+    //          pdf.pipe(fs.createWriteStream('PRUEBA.pdf'));
+    //          pdf.end();
+    //  }
+
+    //  CrearPDF()
+    const options = {
+        printer: `${printer.getDefaultPrinterName()}`,
+        scale: "fit",
+        paperSize:'USER',
+        orientation : 'portrait',
+        copies:1
+        // copies:84
+    };
+
+
+        print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/PRUEBA.pdf", options).then(console.log);
+        console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA')
+    res.json('done')
+})
 
 app.post('/api/prints', (req, res)=>{
 
@@ -248,7 +471,7 @@ app.post('/api/prints', (req, res)=>{
             paperSize:'USER',
             orientation : 'portrait',
             copies:body.copias
-            // copies:445
+            // copies:84
         };
     
         
@@ -256,7 +479,7 @@ app.post('/api/prints', (req, res)=>{
         // getDefaultPrinter().then(console.log)
         setTimeout(() => {
             print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", options).then(console.log);
-            console.log('aja')
+            console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA')
             res.json('ok')
         },2000);
     })
@@ -274,10 +497,9 @@ app.get('/api/copy/:orden/:cantidad', (req, res)=>{
     setTimeout(() => {
         fs.copyFile("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", path, (err) => {
             if (err) throw err;
-            console.log('source.txt was copied to destination.txt');
+            console.log('SE REALIZÓ LA COPIA DE ETIQUETA A LOS SERVIDORES');
         });
     }, 1000);
-    console.log('aja que pasa ps')
     res.json('ok')
 })
 

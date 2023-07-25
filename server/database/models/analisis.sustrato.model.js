@@ -16,6 +16,24 @@ let asustratoSchema = new Schema([{
     muestras:{
         type:Number
     },
+    observacion:{
+        type:String
+    },
+    resultado:{
+        type:String
+    },
+    validado:{
+        type:String
+    },
+    validacion:{
+        type:String
+    },
+    realizado:{
+        type:String
+    },
+    realizacion:{
+        type:String
+    },
     gramaje:{
         promedio:{type:String},
         desviacion:{type:String},
@@ -30,6 +48,10 @@ let asustratoSchema = new Schema([{
         promedio_back:{type:String},
         desviacion_back:{type:String},
         cobb:{type:Array},
+        max_top:{type:String},
+        min_top:{type:String},
+        max_back:{type:String},
+        min_back:{type:String},
         nf:{type:String}
     },
     calibre:{
@@ -48,6 +70,12 @@ let asustratoSchema = new Schema([{
     },
     curling:{
         curling:{type:Array},
+        promedio:{type:String},
+        desviacion:{type:String},
+        nf:{type:String}
+    },
+    blancura:{
+        blancura:{type:Array},
         promedio:{type:String},
         desviacion:{type:String},
         nf:{type:String}
