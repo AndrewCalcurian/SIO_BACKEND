@@ -82,7 +82,7 @@ app.get('/api/almacenados/:id', (req, res)=>{
     const id = req.params.id;
     let almacenado = []
 
-    console.log(id,'ooook')
+    // console.log(id,'ooook')
 
     Material.findById(id, (err, materialDBB)=>{
         if(materialDBB.presentacion === 'Caja'){
@@ -634,7 +634,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,824, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,918, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)

@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const Producto = require('../database/models/producto.model');
+const atinta = require('../database/models/analisis.tinta.model')
 
 
 
@@ -26,7 +27,7 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
     }
 
     //validad tipo
-    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo'];
+    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo','analisis'];
     if( tipoValido.indexOf( tipo ) < 0 ){
         return res.status( 400 ).json({
             ok:false,
@@ -72,11 +73,51 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
             ImagenDistribucion(id, res, nombreArchivo);
         }else if(tipo === 'aereo'){
             ImagenAereo(id, res, nombreArchivo);
+        }else if(tipo === 'analisis'){
+            AnalisisTintas(id, res, nombreArchivo);
         }
 
     });
 
 });
+
+function AnalisisTintas(id, res, nombreArchivo){
+    atinta.findById(id,(err,usuarioDB)=>{
+        if( err ){
+            borrarArchivo(nombreArchivo, 'analisis')
+            return res.status(500).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            borrarArchivo(nombreArchivo, 'analisis')
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message: 'usuario no existe___'
+                }
+            });
+        }
+        
+        borrarArchivo(usuarioDB.img, 'analisis')
+
+        usuarioDB.img = nombreArchivo;
+
+        usuarioDB.save((err, imageUpdated)=>{
+
+            res.json({
+                ok:true,
+                usuario:usuarioDB,
+                img:nombreArchivo
+            })
+
+
+        });
+
+    });
+}
 
 function ImagenAereo(id, res,nombreArchivo){
 

@@ -4,6 +4,7 @@ const app = express();
 const almacenado = require('../database/models/almacenado.model')
 const Lote = require('../database/models/lotes.model')
 const asustrato = require('../database/models/analisis.sustrato.model')
+const atinta = require('../database/models/analisis.tinta.model')
 
 app.get('/api/analisis/:lote', (req, res)=>{
 
@@ -82,6 +83,65 @@ app.get('/api/analisis-sustrato/:lote', (req, res)=>{
     let lote = req.params.lote;
 
     asustrato.findOne({lote}, (err, analisisDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!analisisDB){
+            res.json({empty:true})
+        }else{
+            res.json(analisisDB)
+        }
+    })
+})
+
+
+app.post('/api/analisis-tinta', (req, res)=>{
+    
+    let body = req.body;
+    let final;
+    // console.log(body.lote)
+    atinta.findOne({lote:body.lote}, (err, atintaDB)=>{
+        if(err){
+            console.log(err)
+        }
+        if(!atintaDB){
+            let analisis = new atinta(body).save((err, nuevoAnalisisDB)=>{
+                if( err ){
+                    console.log(err)
+                    // return res.status(400).json({
+                    //     ok:false,
+                    //     err
+                    // });
+                }
+                
+                res.json(nuevoAnalisisDB)
+            })
+        }else{
+            atinta.findByIdAndUpdate(atintaDB._id, body, (err, AnalisisDB)=>{
+                if( err ){
+                    return res.status(400).json({
+                        ok:false,
+                        err
+                    });
+                }
+
+                res.json(AnalisisDB)
+
+            })
+        }
+    })
+
+})
+
+app.get('/api/analisis-tinta/:lote', (req, res)=>{
+
+    let lote = req.params.lote;
+
+    atinta.findOne({lote}, (err, analisisDB)=>{
         if( err ){
             return res.status(400).json({
                 ok:false,

@@ -320,7 +320,44 @@ app.get('/api/orden_material', (req, res)=>{
             });
         }
 
-        res.json(orden)
+    for(let x=0;x<orden.length;x++){
+        for(let i=0;i<orden[x].producto.materiales[orden[x].montaje].length;i++){
+            let material = orden[x].producto.materiales[orden[x].montaje][i]
+            if(material.producto.grupo.nombre != 'Sustrato' && material.cantidad === '0'){
+                // console.log(material,'/',i)
+                orden[x].producto.materiales[orden[x].montaje].splice(i,1)
+                
+            }
+            // console.log(orden[x].producto.materiales[orden[x].montaje][i])
+        
+            if(x === orden.length-1){
+                if(i === orden[x].producto.materiales[orden[x].montaje].length -1){    
+                    for(let x=0;x<orden.length;x++){
+                        for(let i=0;i<orden[x].producto.materiales[orden[x].montaje].length;i++){
+                            let material = orden[x].producto.materiales[orden[x].montaje][i]
+                            if(material.producto.grupo.nombre != 'Sustrato' && material.cantidad === '0'){
+                                // console.log(material,'/',i)
+                                orden[x].producto.materiales[orden[x].montaje].splice(i,1)
+                                
+                            }
+                            // console.log(orden[x].producto.materiales[orden[x].montaje][i])
+                        
+                            if(x === orden.length-1){
+                                if(i === orden[x].producto.materiales[orden[x].montaje].length -1){    
+                                    res.json(orden)
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
     });
 
 });
