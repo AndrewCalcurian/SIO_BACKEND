@@ -5,7 +5,7 @@ let AtintaSchema = new Schema([{
 
     producto:{type:String},
     marcar:{type:String},
-    presentacion:{type:Array},
+    presentacion:{type:String},
     f_fabricacion:{type:String},
     f_vencimiento:{type:String},
     estandar:{type:String},
@@ -13,6 +13,11 @@ let AtintaSchema = new Schema([{
     tipo:{type:Array},
     lote:{type:String},
     img:{type:String},
+    guardado:{type:String},
+    dia:{type:String},
+    sobre:{type:String},
+    prueba_:{type:String},
+    total:{type:String},
     carton:[
       // 1
       [

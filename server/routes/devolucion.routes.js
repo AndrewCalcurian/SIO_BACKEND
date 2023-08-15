@@ -4,6 +4,10 @@ const app = express();
 const Devolucion = require('../database/models/devolucion.model');
 const Almacenado = require('../database/models/almacenado.model');
 const Lote = require('../database/models/lotes.model')
+const Material = require('../database/models/material.model')
+const idevolucion = require('../database/models/idevolucion.model')
+
+const {FAL006} = require('../middlewares/docs/FAL-006.pdf');
 
 app.get('/api/devolucion', (req, res)=>{
 
@@ -47,7 +51,7 @@ app.put('/api/devoluciones/:id', (req, res)=>{
     const body = req.body;
     const id = req.params.id;
 
-    Devolucion.findByIdAndUpdate(id, {status:'Culminado'},(err, devolucion)=>{
+    Devolucion.findByIdAndUpdate(id, {status:'Culminado'},(err, devolucionDB)=>{
     // Devolucion.findByIdAndUpdate(id, {_id:id},(err, devolucion)=>{
         if( err ){
             return res.status(400).json({
@@ -56,17 +60,21 @@ app.put('/api/devoluciones/:id', (req, res)=>{
             });
         }
 
+        let lotes = []
+        let materiales = []
+        let cantidades = []
+        let tabla = '';
         for(let i = 0; i<body.length; i++){
             Almacenado.find({material:body[i].material._id,
                                         lote:body[i].lote,
                                         codigo:body[i].codigo},
                                         (error, almacenado)=>{
-                                            // if( error ){
-                                            //     return res.status(400).json({
-                                            //         ok:false,
-                                            //         error
-                                            //     });
-                                            // }
+                                            if( error ){
+                                                return res.status(400).json({
+                                                    ok:false,
+                                                    error
+                                                });
+                                            }
 
                                             // //console.log(almacenado[0].cantidad)
                                             let new_cantidad = 0;
@@ -92,8 +100,65 @@ app.put('/api/devoluciones/:id', (req, res)=>{
                                         })
         
         let final = body.length -1;
-        if(i === final ){   
-            res.json(devolucion)
+        if(i === final ){ 
+            
+            for(let i = 0; i<body.length; i++){
+                lotes.push(body[i].lote)
+                Material.findById(body[i].material, (err, material)=>{
+                    if( err ){
+                        return res.status(400).json({
+                            ok:false,
+                            err
+                        });
+                    }
+        
+                    // //console.log(material.nombre)
+                let data = '';
+                cantidades.push(`${body[i].cantidad} ${material.unidad}`)
+                if(!material.ancho){
+                    if(material.grupo == '61fd54e2d9115415a4416f17' || material.grupo == '61fd6300d9115415a4416f60'){
+                        materiales.push(`${material.nombre} (${material.marca}) - Lata:${body[i].codigo}`)
+                        data = `<tr><td>${material.nombre} (${material.marca}) - Lata:${body[i].codigo}</td>
+                        <td>${body[i].cantidad} ${material.unidad}</td></tr>`;
+                    }else{
+                        materiales.push(`${material.nombre} (${material.marca})`)
+                        data = `<tr><td>${material.nombre} (${material.marca})</td>
+                        <td>${body[i].cantidad} ${material.unidad}</td></tr>`;
+                    }
+                }else{
+                    materiales.push(`${material.nombre} ${material.ancho}x${material.largo} (${material.marca}) - Paleta:${body[i].codigo}`)
+                    data = `<tr><td>${material.nombre} ${material.ancho}x${material.largo} (${material.marca}) - Paleta:${body[i].codigo}</td>
+                    <td>${body[i].cantidad} ${material.unidad}</td></tr>`;
+                }
+        
+                tabla = tabla + data;
+                if(i === final){
+        
+                    idevolucion.findByIdAndUpdate({_id: 'test'}, {$inc: {seq: 1}}, {new: true, upset:true})
+                        .exec((err, devolucion)=>{
+                            if( err ){
+                                return res.status(400).json({
+                                    ok:false,
+                                    err
+                                });
+                            }
+        
+                            num_solicitud = devolucion.seq;
+                            // FAL006(body.orden,num_solicitud,materiales,lotes, cantidades, body.motivo, body.usuario,tabla)
+                            // let newDEvolucion = new Devolucion({
+                            //     orden:body.orden,
+                            //     filtrado:body.filtrado,
+                            //     motivo:body.motivo
+                            // }).save();
+                            FAL006(devolucionDB.orden,num_solicitud,materiales,lotes, cantidades, devolucionDB.motivo, devolucionDB.usuario,tabla)
+                            res.json('done');
+                        })
+                }
+        
+                })
+        
+            }
+            // res.json(devolucion)
         }
         }
 

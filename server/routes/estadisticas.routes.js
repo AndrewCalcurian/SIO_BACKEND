@@ -945,7 +945,7 @@ app.post('/api/reporte-devoluciones', (req, res)=>{
             });
         }
 
-        console.log(devoluciones)
+        // console.log(devoluciones)
         res.json(devoluciones)
     })
 })

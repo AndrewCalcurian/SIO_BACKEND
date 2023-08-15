@@ -32,6 +32,9 @@ let DevolucionSchema = new Schema([{
         type:Date,
         default:Date.now
     },
+    usuario:{
+        type:String
+    },
     status:{
         type:String,
         default:'Pendiente'

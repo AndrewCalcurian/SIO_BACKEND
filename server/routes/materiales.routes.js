@@ -506,24 +506,14 @@ app.post('/api/material/devolucion', (req, res)=>{
         tabla = tabla + data;
         if(i === final){
 
-            idevolucion.findByIdAndUpdate({_id: 'test'}, {$inc: {seq: 1}}, {new: true, upset:true})
-                .exec((err, devolucion)=>{
-                    if( err ){
-                        return res.status(400).json({
-                            ok:false,
-                            err
-                        });
-                    }
+            let newDEvolucion = new Devolucion({
+                orden:body.orden,
+                filtrado:body.filtrado,
+                motivo:body.motivo,
+                usuario:body.usuario
+            }).save();
+            res.json('done');
 
-                    num_solicitud = devolucion.seq;
-                    FAL006(body.orden,num_solicitud,materiales,lotes, cantidades, body.motivo, body.usuario,tabla)
-                    let newDEvolucion = new Devolucion({
-                        orden:body.orden,
-                        filtrado:body.filtrado,
-                        motivo:body.motivo
-                    }).save();
-                    res.json('done');
-                })
         }
 
         })
