@@ -5404,6 +5404,7 @@ class SolcitudComponent {
                             timer: 5000
                         });
                         this._materiales = [];
+                        this.por_confirmar = [];
                         this.onClose();
                     });
                 }
@@ -5496,6 +5497,7 @@ class SolcitudComponent {
                                 timer: 5000
                             });
                             materiales_fr = [];
+                            this.por_confirmar = [];
                             this.onClose();
                         });
                     }
@@ -17510,55 +17512,68 @@ class GestionComponent {
         }
     }
     finalizar() {
-        let hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('yyyy-MM-DD');
-        let orden = '';
-        let productos = '';
-        let hojas = '';
-        orden = document.getElementById('orden_selected').value;
-        let separator = orden.split('-');
-        // // console.log(separator[3]);
-        orden = separator[1];
-        // // console.log(separator[0],'<>',separator[1])
-        let Ejemplares = this.TRABAJOS.find(x => x._id == orden);
-        // console.log('EJEM',Ejemplares)
-        productos = document.getElementById('productos_input').value;
-        hojas = document.getElementById('hojas_input').value;
-        if (this.CompararTama(separator[0], separator[2], separator[3], hojas, productos) === 1) {
-            return;
-        }
-        let restante = this.GESTIONES.filter(x => x.orden == orden);
-        let long = restante.length;
-        let _productos = 0;
-        let _hojas = 0;
-        if (long <= 0) {
-            // // console.log(orden)
-            let Actual = this.TRABAJOS.find(x => x._id == orden);
-            // // console.log(Actual)
-            _productos = Actual.orden.cantidad - Number(productos);
-            _hojas = this.redondear(Ejemplares.orden.cantidad, Ejemplares.orden.producto.ejemplares[Ejemplares.orden.montaje]) - Number(hojas);
-            // // console.log(Actual.orden.paginas_o,'-',Number(hojas))
-        }
-        else {
-            _productos = restante[long - 1].Rproductos - Number(productos);
-            _hojas = restante[long - 1].Rhojas - Number(hojas);
-        }
-        // alert(_hojas)
-        let data = {
-            op: separator[0],
-            orden: orden,
-            fecha: hoy,
-            maquina: Ejemplares.maquina._id,
-            productos: productos,
-            hojas: hojas,
-            Rproductos: _productos,
-            Rhojas: _hojas
-        };
-        this.api.postGestion(data)
-            .subscribe((resp) => {
-            document.getElementById('productos_input').value = '';
-            document.getElementById('hojas_input').value = '';
-            this.modal_nueva_gestion();
-            this.getGestiones();
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+            title: 'Cuidado',
+            text: " Recuerda verificar que la cantidad suministrada sea la realizada en el momento y no la suma total de las mismas",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#48c78e',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Verificado',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let hoy = moment__WEBPACK_IMPORTED_MODULE_1__().format('yyyy-MM-DD');
+                let orden = '';
+                let productos = '';
+                let hojas = '';
+                orden = document.getElementById('orden_selected').value;
+                let separator = orden.split('-');
+                // // console.log(separator[3]);
+                orden = separator[1];
+                // // console.log(separator[0],'<>',separator[1])
+                let Ejemplares = this.TRABAJOS.find(x => x._id == orden);
+                // console.log('EJEM',Ejemplares)
+                productos = document.getElementById('productos_input').value;
+                hojas = document.getElementById('hojas_input').value;
+                if (this.CompararTama(separator[0], separator[2], separator[3], hojas, productos) === 1) {
+                    return;
+                }
+                let restante = this.GESTIONES.filter(x => x.orden == orden);
+                let long = restante.length;
+                let _productos = 0;
+                let _hojas = 0;
+                if (long <= 0) {
+                    // // console.log(orden)
+                    let Actual = this.TRABAJOS.find(x => x._id == orden);
+                    // // console.log(Actual)
+                    _productos = Actual.orden.cantidad - Number(productos);
+                    _hojas = this.redondear(Ejemplares.orden.cantidad, Ejemplares.orden.producto.ejemplares[Ejemplares.orden.montaje]) - Number(hojas);
+                    // // console.log(Actual.orden.paginas_o,'-',Number(hojas))
+                }
+                else {
+                    _productos = restante[long - 1].Rproductos - Number(productos);
+                    _hojas = restante[long - 1].Rhojas - Number(hojas);
+                }
+                // alert(_hojas)
+                let data = {
+                    op: separator[0],
+                    orden: orden,
+                    fecha: hoy,
+                    maquina: Ejemplares.maquina._id,
+                    productos: productos,
+                    hojas: hojas,
+                    Rproductos: _productos,
+                    Rhojas: _hojas
+                };
+                this.api.postGestion(data)
+                    .subscribe((resp) => {
+                    document.getElementById('productos_input').value = '';
+                    document.getElementById('hojas_input').value = '';
+                    this.modal_nueva_gestion();
+                    this.getGestiones();
+                });
+            }
         });
     }
     getGestiones() {
@@ -17666,7 +17681,7 @@ GestionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, " Gestion ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, " Gesti\u00F3n ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "hr");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 16);
@@ -36061,11 +36076,16 @@ function AsignacionComponent_div_5_ng_container_2_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
     const orden_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](orden_r3.sort);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](orden_r3.motivo);
 } }
 function AsignacionComponent_div_5_ng_container_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
@@ -36493,7 +36513,12 @@ function AsignacionComponent_div_5_ng_container_15_Template(rf, ctx) { if (rf & 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AsignacionComponent_div_5_ng_container_15_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r84); const ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const orden_r3 = ctx_r83.$implicit; const index_r4 = ctx_r83.index; const ctx_r82 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r82.Restar(orden_r3.sort, orden_r3.solicitud, index_r4, 0, orden_r3._id); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Confirmar");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Confirmar ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 } }
@@ -36502,14 +36527,19 @@ function AsignacionComponent_div_5_ng_container_16_Template(rf, ctx) { if (rf & 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AsignacionComponent_div_5_ng_container_16_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87); const ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const orden_r3 = ctx_r86.$implicit; const index_r4 = ctx_r86.index; const ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r85.Restar(orden_r3.sort, orden_r3.solicitud, index_r4, 1); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Confirmar");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Confirmar ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 } }
 function AsignacionComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AsignacionComponent_div_5_ng_container_1_Template, 3, 0, "ng-container", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AsignacionComponent_div_5_ng_container_2_Template, 3, 1, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AsignacionComponent_div_5_ng_container_2_Template, 5, 2, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AsignacionComponent_div_5_ng_container_3_Template, 5, 1, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "table", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "thead");
@@ -36528,8 +36558,9 @@ function AsignacionComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, AsignacionComponent_div_5_ng_container_15_Template, 3, 0, "ng-container", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, AsignacionComponent_div_5_ng_container_16_Template, 3, 0, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, AsignacionComponent_div_5_ng_container_15_Template, 6, 0, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, AsignacionComponent_div_5_ng_container_16_Template, 6, 0, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "hr");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const orden_r3 = ctx.$implicit;
@@ -36668,6 +36699,7 @@ class AsignacionComponent {
         //   .then(function(descuento){
         //     // console.log(descuento,'*/*')
         //   })
+        console.log(i);
         let splited = e.split('*');
         e = splited[1];
         let codigo = splited[0];
@@ -36810,10 +36842,10 @@ class AsignacionComponent {
             cantidad_solicitada = EnAlmacen.cantidad - restante;
             let existe = this.LOTES.find(x => x.lote === e);
             if (!existe) {
-                this.LOTES.push({ Mname, EA_Cantidad, lote: e, codigo: codigo, resta: restante, i, almacenado: EnAlmacen.cantidad, solicitado: cantidad_solicitada, unidad });
+                this.LOTES.push({ index, Mname, EA_Cantidad, lote: e, codigo: codigo, resta: restante, i, almacenado: EnAlmacen.cantidad, solicitado: cantidad_solicitada, unidad });
             }
             else {
-                this.LOTES.push({ Mname, EA_Cantidad, lote: e, codigo, resta: restante, i, almacenado: EnAlmacen.cantidad, solicitado: cantidad_solicitada, unidad });
+                this.LOTES.push({ index, Mname, EA_Cantidad, lote: e, codigo, resta: restante, i, almacenado: EnAlmacen.cantidad, solicitado: cantidad_solicitada, unidad });
             }
             console.log(this.LOTES);
         }
@@ -36903,8 +36935,9 @@ class AsignacionComponent {
                         }
                     }
                 }
+                let filtrado = this.LOTES.filter(x => x.index === index);
                 let data = {
-                    lotes: this.LOTES,
+                    lotes: filtrado,
                     orden,
                     solicitud,
                     n,
@@ -36924,6 +36957,7 @@ class AsignacionComponent {
                     });
                     this.onCloseModal.emit();
                     this.onFinalizarAsignacion.emit();
+                    this.LOTES = [];
                 });
             }
         }
@@ -36932,7 +36966,7 @@ class AsignacionComponent {
     }
 }
 AsignacionComponent.ɵfac = function AsignacionComponent_Factory(t) { return new (t || AsignacionComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_rest_api_service__WEBPACK_IMPORTED_MODULE_2__["RestApiService"])); };
-AsignacionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AsignacionComponent, selectors: [["app-asignacion"]], inputs: { necesario: "necesario", asignacion: "asignacion", ALMACEN: "ALMACEN", Almacenado: "Almacenado" }, outputs: { onCloseModal: "onCloseModal", onFinalizarAsignacion: "onFinalizarAsignacion", onAgregarRequisicioes: "onAgregarRequisicioes" }, decls: 6, vars: 5, consts: [[1, "modal", 3, "ngClass"], [1, "modal-background", 3, "click"], [1, "modal-card"], [1, "modal-card-body"], [4, "ngIf"], ["class", "materiales", 4, "ngFor", "ngForOf"], [1, "empty"], [1, "materiales"], [1, "table", "is-fullwidth", "is-striped"], [4, "ngFor", "ngForOf"], [1, "subtitulo"], [1, ""], [1, "material"], [1, "field"], [1, "label"], [1, "control"], [1, "select"], ["id", "", 3, "change"], ["value", "#"], [1, "resumen"], [1, "Inf_lotes"], [1, "informacion"], [3, "id"], [1, "fijar_lote", 3, "id"], ["id", "boton_add"], [3, "value", 4, "ngIf"], [3, "value"], [1, "icon", "has-text-danger", 3, "click"], [1, "fas", "fa-backspace"], [1, "button", "is-primary", 3, "click"]], template: function AsignacionComponent_Template(rf, ctx) { if (rf & 1) {
+AsignacionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AsignacionComponent, selectors: [["app-asignacion"]], inputs: { necesario: "necesario", asignacion: "asignacion", ALMACEN: "ALMACEN", Almacenado: "Almacenado" }, outputs: { onCloseModal: "onCloseModal", onFinalizarAsignacion: "onFinalizarAsignacion", onAgregarRequisicioes: "onAgregarRequisicioes" }, decls: 6, vars: 5, consts: [[1, "modal", 3, "ngClass"], [1, "modal-background", 3, "click"], [1, "modal-card"], [1, "modal-card-body"], [4, "ngIf"], ["class", "materiales", 4, "ngFor", "ngForOf"], [1, "empty"], [1, "materiales"], [1, "table", "is-fullwidth", "is-striped"], [4, "ngFor", "ngForOf"], [1, "subtitulo"], [1, ""], [1, "material"], [1, "field"], [1, "label"], [1, "control"], [1, "select"], ["id", "", 3, "change"], ["value", "#"], [1, "resumen"], [1, "Inf_lotes"], [1, "informacion"], [3, "id"], [1, "fijar_lote", 3, "id"], ["id", "boton_add"], [3, "value", 4, "ngIf"], [3, "value"], [1, "icon", "has-text-danger", 3, "click"], [1, "fas", "fa-backspace"], [1, "button", "is-primary", 3, "click"], [1, "icon"], [1, "fas", "fa-check"]], template: function AsignacionComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AsignacionComponent_Template_div_click_1_listener() { return ctx.onClose(); });
@@ -36940,7 +36974,7 @@ AsignacionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AsignacionComponent_ng_container_4_Template, 2, 1, "ng-container", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AsignacionComponent_div_5_Template, 17, 7, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AsignacionComponent_div_5_Template, 18, 7, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();

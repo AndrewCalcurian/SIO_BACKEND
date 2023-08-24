@@ -14,6 +14,8 @@ const Devolucion = require('../database/models/devolucion.model');
 
 const {FAL005} = require('../middlewares/docs/FAL-005.pdf');
 const {FAL006} = require('../middlewares/docs/FAL-006.pdf');
+
+const {SolicitarRequisicion} = require('../middlewares/emails/solicitudMaterial.email')
 const app = express();
 
 app.get('/api/lotes/:orden', (req, res)=>{
@@ -523,6 +525,13 @@ app.post('/api/material/devolucion', (req, res)=>{
 
 })
 
+app.get('/api/reenvio-requisicion/:id', (req, res)=>{
+    let id = req.params.id
+
+    SolicitarRequisicion(id)
+    res.json('ok')
+})
+
 
 app.get('/api/reenvio/:lote', (req,res)=>{
 
@@ -624,7 +633,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,918, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,999, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)
