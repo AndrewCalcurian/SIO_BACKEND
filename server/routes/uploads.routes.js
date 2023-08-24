@@ -4,7 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 const Producto = require('../database/models/producto.model');
-const atinta = require('../database/models/analisis.tinta.model')
+const atinta = require('../database/models/analisis.tinta.model');
+const fabricante = require('../database/models/fabricante.model');
+const proveedor = require('../database/models/proveedores.model')
 
 
 
@@ -27,7 +29,7 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
     }
 
     //validad tipo
-    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo','analisis'];
+    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo','analisis','fabricante','proveedor'];
     if( tipoValido.indexOf( tipo ) < 0 ){
         return res.status( 400 ).json({
             ok:false,
@@ -75,11 +77,91 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
             ImagenAereo(id, res, nombreArchivo);
         }else if(tipo === 'analisis'){
             AnalisisTintas(id, res, nombreArchivo);
+        }else if(tipo === 'fabricante'){
+            Fabricante(id, res, nombreArchivo)
+        }else if(tipo === 'proveedor'){
+            proveedor_(id, res, nombreArchivo)
         }
 
     });
 
 });
+
+function proveedor_(id, res, nombreArchivo){
+    proveedor.findById(id,(err,usuarioDB)=>{
+        if( err ){
+            borrarArchivo(nombreArchivo, 'proveedor')
+            return res.status(500).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            borrarArchivo(nombreArchivo, 'proveedor')
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message: 'proveedor'
+                }
+            });
+        }
+        
+        borrarArchivo(usuarioDB.logo, 'proveedor')
+
+        usuarioDB.logo = nombreArchivo;
+
+        usuarioDB.save((err, imageUpdated)=>{
+
+            res.json({
+                ok:true,
+                usuario:usuarioDB,
+                logo:nombreArchivo
+            })
+
+
+        });
+
+    });
+}
+
+function Fabricante(id, res, nombreArchivo){
+    fabricante.findById(id,(err,usuarioDB)=>{
+        if( err ){
+            borrarArchivo(nombreArchivo, 'fabricante')
+            return res.status(500).json({
+                ok:false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            borrarArchivo(nombreArchivo, 'fabricante')
+            return res.status(400).json({
+                ok:false,
+                err:{
+                    message: 'Fabricante'
+                }
+            });
+        }
+        
+        borrarArchivo(usuarioDB.logo, 'fabricante')
+
+        usuarioDB.logo = nombreArchivo;
+
+        usuarioDB.save((err, imageUpdated)=>{
+
+            res.json({
+                ok:true,
+                usuario:usuarioDB,
+                logo:nombreArchivo
+            })
+
+
+        });
+
+    });
+}
 
 function AnalisisTintas(id, res, nombreArchivo){
     atinta.findById(id,(err,usuarioDB)=>{

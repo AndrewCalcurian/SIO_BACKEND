@@ -25452,14 +25452,19 @@
                     case 9:
                       data = _context2.sent;
 
-                      if (!(data.ok && tipo != 'analisis')) {
-                        _context2.next = 15;
+                      if (!(data.ok && tipo != 'analisis' && tipo != 'fabricante')) {
+                        _context2.next = 16;
+                        break;
+                      }
+
+                      if (!(tipo != 'proveedor')) {
+                        _context2.next = 14;
                         break;
                       }
 
                       sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                         title: 'Excelente!',
-                        text: 'Se ha actualizado la imagen del producto',
+                        text: 'Se ha actualizado la imagen',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 2000,
@@ -25467,24 +25472,31 @@
                       });
                       return _context2.abrupt("return", data.img);
 
-                    case 15:
-                      sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire('Error', data.err.message, 'error');
+                    case 14:
+                      _context2.next = 18;
+                      break;
+
+                    case 16:
+                      if (tipo != 'fabricante') {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire('Error', data.err.message, 'error');
+                      }
+
                       return _context2.abrupt("return", false);
 
-                    case 17:
+                    case 18:
                       return _context2.abrupt("return", 'path image');
 
-                    case 20:
-                      _context2.prev = 20;
+                    case 21:
+                      _context2.prev = 21;
                       _context2.t0 = _context2["catch"](0);
                       return _context2.abrupt("return", false);
 
-                    case 23:
+                    case 24:
                     case "end":
                       return _context2.stop();
                   }
                 }
-              }, _callee2, this, [[0, 20]]);
+              }, _callee2, this, [[0, 21]]);
             }));
           }
         }]);
@@ -44838,6 +44850,12 @@
       var _desarrollo_desarrollo_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
       /*! ./desarrollo/desarrollo.component */
       "2NCz");
+      /* harmony import */
+
+
+      var _compras_compras_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
+      /*! ./compras/compras.component */
+      "uwei");
 
       Object(_angular_common__WEBPACK_IMPORTED_MODULE_22__["registerLocaleData"])(_angular_common_locales_es__WEBPACK_IMPORTED_MODULE_21___default.a, 'es');
 
@@ -44862,7 +44880,7 @@
 
       (function () {
         (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _index_index_component__WEBPACK_IMPORTED_MODULE_3__["IndexComponent"], _index_main_main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"], _nuevo_pedido_nuevo_pedido_component__WEBPACK_IMPORTED_MODULE_8__["NuevoPedidoComponent"], _producto_ymaquinaria_producto_ymaquinaria_component__WEBPACK_IMPORTED_MODULE_11__["ProductoYMaquinariaComponent"], _almacen_almacen_component__WEBPACK_IMPORTED_MODULE_13__["AlmacenComponent"], _orden_orden_component__WEBPACK_IMPORTED_MODULE_15__["OrdenComponent"], _ordenes_ordenes_component__WEBPACK_IMPORTED_MODULE_17__["OrdenesComponent"], _planificacion_planificacion_component__WEBPACK_IMPORTED_MODULE_18__["PlanificacionComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"], _pipe_unicos_pipe__WEBPACK_IMPORTED_MODULE_24__["UnicosPipe"], _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_25__["BarChartComponent"], _desarrollo_desarrollo_component__WEBPACK_IMPORTED_MODULE_29__["DesarrolloComponent"]],
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _index_index_component__WEBPACK_IMPORTED_MODULE_3__["IndexComponent"], _index_main_main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"], _nuevo_pedido_nuevo_pedido_component__WEBPACK_IMPORTED_MODULE_8__["NuevoPedidoComponent"], _producto_ymaquinaria_producto_ymaquinaria_component__WEBPACK_IMPORTED_MODULE_11__["ProductoYMaquinariaComponent"], _almacen_almacen_component__WEBPACK_IMPORTED_MODULE_13__["AlmacenComponent"], _orden_orden_component__WEBPACK_IMPORTED_MODULE_15__["OrdenComponent"], _ordenes_ordenes_component__WEBPACK_IMPORTED_MODULE_17__["OrdenesComponent"], _planificacion_planificacion_component__WEBPACK_IMPORTED_MODULE_18__["PlanificacionComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"], _pipe_unicos_pipe__WEBPACK_IMPORTED_MODULE_24__["UnicosPipe"], _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_25__["BarChartComponent"], _desarrollo_desarrollo_component__WEBPACK_IMPORTED_MODULE_29__["DesarrolloComponent"], _compras_compras_component__WEBPACK_IMPORTED_MODULE_30__["ComprasComponent"]],
           imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"], _estadisticas_estadisticas_module__WEBPACK_IMPORTED_MODULE_20__["EstadisticasModule"], _laboratorio_laboratorio_module__WEBPACK_IMPORTED_MODULE_28__["LaboratorioModule"], _index_index_module__WEBPACK_IMPORTED_MODULE_6__["IndexModule"], _nuevo_pedido_nuevo_pedido_module__WEBPACK_IMPORTED_MODULE_9__["NuevoPedidoModule"], _producto_ymaquinaria_producto_ymaquinaria_module__WEBPACK_IMPORTED_MODULE_12__["ProductoYMaquinariaModule"], _almacen_almacen_module__WEBPACK_IMPORTED_MODULE_14__["AlmacenModule"], _ordenes_ordenes_module__WEBPACK_IMPORTED_MODULE_16__["OrdenesModule"], _cotizacion_cotizacion_module__WEBPACK_IMPORTED_MODULE_26__["CotizacionModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_23__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_23__["FormsModule"], _techiediaries_ngx_qrcode__WEBPACK_IMPORTED_MODULE_27__["NgxQRCodeModule"]]
         });
       })();
@@ -44873,7 +44891,7 @@
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
           args: [{
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _index_index_component__WEBPACK_IMPORTED_MODULE_3__["IndexComponent"], _index_main_main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"], _nuevo_pedido_nuevo_pedido_component__WEBPACK_IMPORTED_MODULE_8__["NuevoPedidoComponent"], _producto_ymaquinaria_producto_ymaquinaria_component__WEBPACK_IMPORTED_MODULE_11__["ProductoYMaquinariaComponent"], _almacen_almacen_component__WEBPACK_IMPORTED_MODULE_13__["AlmacenComponent"], _orden_orden_component__WEBPACK_IMPORTED_MODULE_15__["OrdenComponent"], _ordenes_ordenes_component__WEBPACK_IMPORTED_MODULE_17__["OrdenesComponent"], _planificacion_planificacion_component__WEBPACK_IMPORTED_MODULE_18__["PlanificacionComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"], _pipe_unicos_pipe__WEBPACK_IMPORTED_MODULE_24__["UnicosPipe"], _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_25__["BarChartComponent"], _desarrollo_desarrollo_component__WEBPACK_IMPORTED_MODULE_29__["DesarrolloComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _index_index_component__WEBPACK_IMPORTED_MODULE_3__["IndexComponent"], _index_main_main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"], _nuevo_pedido_nuevo_pedido_component__WEBPACK_IMPORTED_MODULE_8__["NuevoPedidoComponent"], _producto_ymaquinaria_producto_ymaquinaria_component__WEBPACK_IMPORTED_MODULE_11__["ProductoYMaquinariaComponent"], _almacen_almacen_component__WEBPACK_IMPORTED_MODULE_13__["AlmacenComponent"], _orden_orden_component__WEBPACK_IMPORTED_MODULE_15__["OrdenComponent"], _ordenes_ordenes_component__WEBPACK_IMPORTED_MODULE_17__["OrdenesComponent"], _planificacion_planificacion_component__WEBPACK_IMPORTED_MODULE_18__["PlanificacionComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"], _pipe_unicos_pipe__WEBPACK_IMPORTED_MODULE_24__["UnicosPipe"], _bar_chart_bar_chart_component__WEBPACK_IMPORTED_MODULE_25__["BarChartComponent"], _desarrollo_desarrollo_component__WEBPACK_IMPORTED_MODULE_29__["DesarrolloComponent"], _compras_compras_component__WEBPACK_IMPORTED_MODULE_30__["ComprasComponent"]],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"], _estadisticas_estadisticas_module__WEBPACK_IMPORTED_MODULE_20__["EstadisticasModule"], _laboratorio_laboratorio_module__WEBPACK_IMPORTED_MODULE_28__["LaboratorioModule"], _index_index_module__WEBPACK_IMPORTED_MODULE_6__["IndexModule"], _nuevo_pedido_nuevo_pedido_module__WEBPACK_IMPORTED_MODULE_9__["NuevoPedidoModule"], _producto_ymaquinaria_producto_ymaquinaria_module__WEBPACK_IMPORTED_MODULE_12__["ProductoYMaquinariaModule"], _almacen_almacen_module__WEBPACK_IMPORTED_MODULE_14__["AlmacenModule"], _ordenes_ordenes_module__WEBPACK_IMPORTED_MODULE_16__["OrdenesModule"], _cotizacion_cotizacion_module__WEBPACK_IMPORTED_MODULE_26__["CotizacionModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_23__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_23__["FormsModule"], _techiediaries_ngx_qrcode__WEBPACK_IMPORTED_MODULE_27__["NgxQRCodeModule"]],
             providers: [{
               provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["LOCALE_ID"],
@@ -63228,6 +63246,42 @@
             var url = "".concat(this.api_url, "/analisis-tinta/").concat(lote);
             return this.http.get(url);
           }
+        }, {
+          key: "postFabricantes",
+          value: function postFabricantes(data) {
+            var url = "".concat(this.api_url, "/compras/fabricante");
+            return this.http.post(url, data);
+          }
+        }, {
+          key: "getFabricantes",
+          value: function getFabricantes() {
+            var url = "".concat(this.api_url, "/compras/fabricante");
+            return this.http.get(url);
+          }
+        }, {
+          key: "putFabricantes",
+          value: function putFabricantes(id, data) {
+            var url = "".concat(this.api_url, "/compras/fabricante/").concat(id);
+            return this.http.put(url, data);
+          }
+        }, {
+          key: "postProveedor",
+          value: function postProveedor(data) {
+            var url = "".concat(this.api_url, "/compras/proveedor");
+            return this.http.post(url, data);
+          }
+        }, {
+          key: "GetProveedores",
+          value: function GetProveedores() {
+            var url = "".concat(this.api_url, "/compras/proveedor");
+            return this.http.get(url);
+          }
+        }, {
+          key: "putProveedores",
+          value: function putProveedores(id, data) {
+            var url = "".concat(this.api_url, "/compras/proveedor/").concat(id);
+            return this.http.put(url, data);
+          }
         }]);
 
         return RestApiService;
@@ -65167,12 +65221,6 @@
 
       function MainComponent_div_4_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 4);
-        }
-      }
-
-      function MainComponent_div_5_Template(rf, ctx) {
-        if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 6);
@@ -65181,7 +65229,7 @@
         }
       }
 
-      function MainComponent_div_6_Template(rf, ctx) {
+      function MainComponent_div_5_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
@@ -65191,7 +65239,7 @@
         }
       }
 
-      function MainComponent_div_7_Template(rf, ctx) {
+      function MainComponent_div_6_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
@@ -65201,7 +65249,7 @@
         }
       }
 
-      function MainComponent_div_8_Template(rf, ctx) {
+      function MainComponent_div_7_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
@@ -65211,7 +65259,7 @@
         }
       }
 
-      function MainComponent_div_9_Template(rf, ctx) {
+      function MainComponent_div_8_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
@@ -65221,7 +65269,7 @@
         }
       }
 
-      function MainComponent_div_10_Template(rf, ctx) {
+      function MainComponent_div_9_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
@@ -65231,13 +65279,13 @@
         }
       }
 
-      function MainComponent_div_11_Template(rf, ctx) {
+      function MainComponent_div_10_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 4);
         }
       }
 
-      function MainComponent_div_12_Template(rf, ctx) {
+      function MainComponent_div_11_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
@@ -65247,11 +65295,21 @@
         }
       }
 
-      function MainComponent_div_13_Template(rf, ctx) {
+      function MainComponent_div_12_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+      }
+
+      function MainComponent_div_13_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 14);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -65286,7 +65344,7 @@
         selectors: [["app-main"]],
         decls: 14,
         vars: 11,
-        consts: [[1, "hero", "is-small", "is-primary"], [1, "container", "mt-5", "animate__animated", "animate__fadeIn"], [1, "columns", "menu"], ["class", "column", 4, "ngIf"], [1, "column"], ["src", "../../../assets/BANNER-ORDENES.png", "alt", "", "routerLink", "/orden"], ["src", "../../../assets/BANNER-ALMACEN.png", "routerLink", "/almacen"], ["src", "../../../assets/BANNER-PRODUCTOS-Y-MAQUINARIA.png", "routerLink", "/gestiones"], ["src", "../../../assets/BANNER-CONSULTA.png", "routerLink", "/ordenes"], ["src", "../../../assets/BANNER-GESTIONES.png", "routerLink", "/ordenes/gestion"], ["src", "../../../assets/BANNER-PLANIFICACION.png", "routerLink", "/planificacion"], ["src", "../../../assets/BANNER-ESTADISTICAS.png", "routerLink", "/estadisticas"], ["src", "../../../assets/BANNER-VENTAS.png", "routerLink", "/ventas"], ["src", "../../../assets/BANNER-LABORATORIO.png", "alt", "", "routerLink", "/laboratorio"]],
+        consts: [[1, "hero", "is-small", "is-primary"], [1, "container", "mt-5", "animate__animated", "animate__fadeIn"], [1, "columns", "menu"], ["class", "column", 4, "ngIf"], [1, "column"], ["src", "../../../assets/BANNER-ORDENES.png", "alt", "", "routerLink", "/orden"], ["src", "../../../assets/BANNER-ALMACEN.png", "routerLink", "/almacen"], ["src", "../../../assets/BANNER-PRODUCTOS-Y-MAQUINARIA.png", "routerLink", "/gestiones"], ["src", "../../../assets/BANNER-CONSULTA.png", "routerLink", "/ordenes"], ["src", "../../../assets/BANNER-GESTIONES.png", "routerLink", "/ordenes/gestion"], ["src", "../../../assets/BANNER-PLANIFICACION.png", "routerLink", "/planificacion"], ["src", "../../../assets/BANNER-ESTADISTICAS.png", "routerLink", "/estadisticas"], ["src", "../../../assets/BANNER-VENTAS.png", "routerLink", "/ventas"], ["src", "../../../assets/BANNER-LABORATORIO.png", "alt", "", "routerLink", "/laboratorio"], ["src", "../../../assets/BANNER-COMPRAS.png", "alt", "", "routerLink", "/compras"]],
         template: function MainComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "section", 0);
@@ -65297,7 +65355,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MainComponent_div_3_Template, 2, 0, "div", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MainComponent_div_4_Template, 1, 0, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MainComponent_div_4_Template, 2, 0, "div", 3);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, MainComponent_div_5_Template, 2, 0, "div", 3);
 
@@ -65309,9 +65367,9 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, MainComponent_div_9_Template, 2, 0, "div", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, MainComponent_div_10_Template, 2, 0, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, MainComponent_div_10_Template, 1, 0, "div", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, MainComponent_div_11_Template, 1, 0, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, MainComponent_div_11_Template, 2, 0, "div", 3);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, MainComponent_div_12_Template, 2, 0, "div", 3);
 
@@ -65326,10 +65384,6 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.usuario.Nueva_orden != 0);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.usuario.Nueva_orden === 0);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -65366,6 +65420,10 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.usuario.laboratorio == 1 || ctx.usuario.laboratorio == 2);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.usuario.Nueva_orden != 0);
           }
         },
         directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"]],
@@ -67882,6 +67940,94 @@
     },
 
     /***/
+    "uwei":
+    /*!**********************************************!*\
+      !*** ./src/app/compras/compras.component.ts ***!
+      \**********************************************/
+
+    /*! exports provided: ComprasComponent */
+
+    /***/
+    function uwei(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ComprasComponent", function () {
+        return ComprasComponent;
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+      /* harmony import */
+
+
+      var _shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ../shared/navbar/navbar.component */
+      "EtQq");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/router */
+      "tyNb");
+
+      var ComprasComponent = /*#__PURE__*/function () {
+        function ComprasComponent() {
+          _classCallCheck(this, ComprasComponent);
+        }
+
+        _createClass(ComprasComponent, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {}
+        }]);
+
+        return ComprasComponent;
+      }();
+
+      ComprasComponent.ɵfac = function ComprasComponent_Factory(t) {
+        return new (t || ComprasComponent)();
+      };
+
+      ComprasComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+        type: ComprasComponent,
+        selectors: [["app-compras"]],
+        decls: 2,
+        vars: 0,
+        template: function ComprasComponent_Template(rf, ctx) {
+          if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "router-outlet");
+          }
+        },
+        directives: [_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_1__["NavbarComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"]],
+        styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXByYXMvY29tcHJhcy5jb21wb25lbnQuY3NzIn0= */"]
+      });
+      /*@__PURE__*/
+
+      (function () {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ComprasComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+          args: [{
+            selector: 'app-compras',
+            templateUrl: './compras.component.html',
+            styleUrls: ['./compras.component.css']
+          }]
+        }], function () {
+          return [];
+        }, null);
+      })();
+      /***/
+
+    },
+
+    /***/
     "vY5A":
     /*!***************************************!*\
       !*** ./src/app/app-routing.module.ts ***!
@@ -68044,6 +68190,18 @@
           /*! ./laboratorio/laboratorio.module */
           "RRmY")).then(function (m) {
             return m.LaboratorioModule;
+          });
+        }
+      }, {
+        path: 'compras',
+        canActivate: [_Auth_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]],
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | compras-compras-module */
+          "compras-compras-module").then(__webpack_require__.bind(null,
+          /*! ./compras/compras.module */
+          "WhWH")).then(function (m) {
+            return m.ComprasModule;
           });
         }
       }, {
