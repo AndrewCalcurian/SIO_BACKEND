@@ -213,8 +213,7 @@ app.get('/api/despachos/pre-facturacion', (req,res)=>{
 
     let preFacuracion = [];
 
-    // Despacho.find({estado:'pendiente'}, (err, despachos)=>{
-    Despacho.find({'despacho.op':{$lte:'2023016'}}, (err, despachos)=>{
+    Despacho.find({estado:'pendiente'}, (err, despachos)=>{
         if( err ){
             return res.status(400).json({
                 ok:false,
@@ -256,26 +255,29 @@ app.get('/api/despachos/pre-facturacion', (req,res)=>{
                             console.log(ordensDB.producto.producto)
                             console.log(ProductoDB)
 
-                            if(ProductoDB){
-                                Escala.findOne({producto:ProductoDB._id})
-                                    .exec((err, EscalaDB)=>{
-                                        if( err ){
-                                            return res.status(400).json({
-                                                ok:false,
-                                                err
-                                            });
-                                        }
-                                        preFacuracion.push({fecha:despachos[i].fecha,despacho:despachos[i].despacho[x], orden:ordensDB, escala:EscalaDB})
-                                        if(i === despachos.length-1 && x === despachos[i].despacho.length-1){
-                                            
-                                            consultaDolar.$monitor().then($=>{
-                    
-                                                MonitorBCV = $['$bcv']
-                                                res.json({preFacuracion,MonitorBCV})
-                                            })
-                                        }
-                                    })
-                            }
+                            Escala.findOne({producto:ProductoDB._id})
+                                .exec((err, EscalaDB)=>{
+                                    if( err ){
+                                        return res.status(400).json({
+                                            ok:false,
+                                            err
+                                        });
+                                    }
+                                    preFacuracion.push({fecha:despachos[i].fecha,despacho:despachos[i].despacho[x], orden:ordensDB, escala:EscalaDB})
+                                    if(i === despachos.length-1 && x === despachos[i].despacho.length-1){
+                                        
+                                        consultaDolar.getMonitor("BCV", "price").then($ =>{
+                                            console.log($)
+                                            res.json({preFacuracion,MonitorBCV:$})
+                                        
+                                        });
+
+                                        // consultaDolar.$monitor().then($=>{
+                
+                                        //     MonitorBCV = $['$bcv']
+                                        // })
+                                    }
+                                })
                         })
                     
                 })

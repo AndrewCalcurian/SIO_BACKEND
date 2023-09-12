@@ -27,6 +27,7 @@ app.use ( require('./gastos.routes'));
 app.use ( require('./departamento.routes'));
 app.use ( require('./compras.routes'));
 app.use ( require('./materiaprima.routes'));
+app.use ( require('./facturacion.routes'));
 
 
 

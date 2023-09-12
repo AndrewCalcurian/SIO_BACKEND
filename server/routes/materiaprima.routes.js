@@ -85,7 +85,7 @@ app.post('/api/materia-prima', async (req, res)=>{
 
 app.get('/api/materia-prima', (req, res)=>{
     materiales.find()
-        .populate('proveedor')
+        // .populate('proveedor')
         .populate('grupo')
         .exec((err, MaterialesDB)=>{
         if(err) {
