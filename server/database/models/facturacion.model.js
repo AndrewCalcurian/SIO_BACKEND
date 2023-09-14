@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let FacturacionSchema = new Schema([{
+    status:{
+        type:String,
+        default:'Por notificar'
+    },
     factura:{
         type:String,
         required:true

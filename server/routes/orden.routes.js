@@ -295,7 +295,6 @@ app.get('/api/orden', (req, res)=>{
             });
         }
 
-        // console.log(orden)
         res.json(orden)
     });
 
@@ -324,35 +323,34 @@ app.get('/api/orden_material', (req, res)=>{
         for(let i=0;i<orden[x].producto.materiales[orden[x].montaje].length;i++){
             let material = orden[x].producto.materiales[orden[x].montaje][i]
             if(material.producto.grupo.nombre != 'Sustrato' && material.cantidad === '0'){
-                // console.log(material,'/',i)
                 orden[x].producto.materiales[orden[x].montaje].splice(i,1)
-                
+                i--
             }
             // console.log(orden[x].producto.materiales[orden[x].montaje][i])
         
-            if(x === orden.length-1){
-                if(i === orden[x].producto.materiales[orden[x].montaje].length -1){    
-                    for(let x=0;x<orden.length;x++){
-                        for(let i=0;i<orden[x].producto.materiales[orden[x].montaje].length;i++){
-                            let material = orden[x].producto.materiales[orden[x].montaje][i]
-                            if(material.producto.grupo.nombre != 'Sustrato' && material.cantidad === '0'){
-                                // console.log(material,'/',i)
-                                orden[x].producto.materiales[orden[x].montaje].splice(i,1)
+            // if(x === orden.length-1){
+                if(x === orden.length-1 && i === orden[x].producto.materiales[orden[x].montaje].length -1){
+                    res.json(orden)
+                    // for(let z=0;z<orden.length;z++){
+                    //     for(let n=0;n<orden[z].producto.materiales[orden[z].montaje].length;n++){
+                    //         let material = orden[z].producto.materiales[orden[z].montaje][n]
+                    //         if(material.producto.grupo.nombre != 'Sustrato' && material.cantidad === '0'){
+                    //             // console.log(material,'/',i)
+                    //             orden[z].producto.materiales[orden[x].montaje].splice(i,1)
                                 
-                            }
-                            // console.log(orden[x].producto.materiales[orden[x].montaje][i])
+                    //         }
+                    //         // console.log(orden[x].producto.materiales[orden[x].montaje][n])
                         
-                            if(x === orden.length-1){
-                                if(i === orden[x].producto.materiales[orden[x].montaje].length -1){    
-                                    res.json(orden)
-                                }
-                            }
+                    //         if(z === orden.length-1){
+                    //             if(n === orden[z].producto.materiales[orden[z].montaje].length -1){    
+                    //             }
+                    //         }
                             
-                        }
+                    //     }
                         
-                    }
+                    // }
                 }
-            }
+            // }
             
         }
         
