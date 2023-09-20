@@ -3,6 +3,7 @@ const app = express();
 
 
 const facturacion = require('../database/models/facturacion.model')
+const ifacturacion = require('../database/models/ifacturacion.model')
 
 const { reception, reception_, reception__ } = require('../middlewares/emails/nuevarecepcion.email')
 
@@ -25,6 +26,7 @@ app.get('/api/facturacion', (req, res)=>{
     
     facturacion.find({})
      .populate('proveedor')
+     .populate('productos.material')
      .exec((err, facturas)=>{
         if( err ){
             return res.status(400).json({
@@ -64,12 +66,28 @@ app.get('/api/notificacion-recepcion/:id', (req, res)=>{
     let id = req.params.id
 
     facturacion.findByIdAndUpdate(id, {status:'Notificado'}, (err, facturacion)=>{
-        for(let i=0;i<1;i++){
-            console.log(i)
-                let random = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000;
-                // reception('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com','motivo de prueba',random)
-                reception('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com','motivo de prueba',random)
+
+
+        let data = ''
+
+        for(let i=0;i<facturacion.totales.length;i++){
+
+            data = data + `
+            <tr>
+                <td>${facturacion.totales[i].producto} (${facturacion.totales[i].marca})</td>
+                <td>${facturacion.totales[i].lote}</td>
+                <td>${facturacion.totales[i].total}</td>
+            </tr>`
+
         }
+
+        reception('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
+
+        // for(let i=0;i<1;i++){
+        //     console.log(i)
+        //         let random = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000;
+        //         // reception('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com','motivo de prueba',random)
+        // }
         res.json('done')
     })
 
@@ -88,9 +106,7 @@ app.get('/api/recepcion-porconfirmar/:info/:id', (req, res)=>{
                 });
         }
 
-        console.log(info)
-        let random = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000;
-        reception_('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',random,info)
+        reception_('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',facturacion.factura,info)
         res.json('Se envió observación para su pronta correción')
     })
 
@@ -108,11 +124,47 @@ app.get('/api/recepcion-observacion/:id', (req, res)=>{
                 });
         }
 
-        let random = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000;
-        reception__('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com','motivo de prueba',random)
-        res.json('Se envió observación para su pronta correción')
+        let data = ''
+
+        for(let i=0;i<facturacion.totales.length;i++){
+
+            data = data + `
+            <tr>
+                <td>${facturacion.totales[i].producto} (${facturacion.totales[i].marca})</td>
+                <td>${facturacion.totales[i].lote}</td>
+                <td>${facturacion.totales[i].total}</td>
+            </tr>`
+
+        }
+
+        reception__('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
+        res.json('done')
     })
 
+})
+
+
+app.get('/api/ifacturacion/', (req, res)=>{
+     let id = 'factuacion'
+
+    let iterator = new ifacturacion({_id:id}).save((err, ifacturacion)=>{
+        console.log(ifacturacion)
+    })
+})
+
+app.get('/api/addifacturacion/', (req, res)=>{
+    let id = 'factuacion'
+
+    ifacturacion.findByIdAndUpdate({_id: 'factuacion'}, {$inc: {seq: 1}}, {new: true, upset:true}, (err, ifacturacion)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+                });
+        }
+
+        res.json(ifacturacion.seq)
+    })
 })
 
 

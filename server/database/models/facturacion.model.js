@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
 
+
 let FacturacionSchema = new Schema([{
     status:{
         type:String,
@@ -14,12 +15,23 @@ let FacturacionSchema = new Schema([{
     orden:{
         type:String,
     },
+    recepcion:{
+        type:String,
+    },
     transportista:{
         type:String,
     },
-    productos:{
-        type:Array,
-    },
+    productos:[
+            {
+                material:{type:Schema.Types.ObjectId,ref: 'materiales'},
+                nombre:{type:String,},
+                marca:{type:String,},
+                fabricacion:{type:String,},
+                capacidad:{type:String,},
+                lote:{type:String,},
+                numero:{type:String,}
+            }
+    ],
     totales:{
         type:Array,
     },
@@ -29,6 +41,9 @@ let FacturacionSchema = new Schema([{
     proveedor:{
         type:Schema.Types.ObjectId,
         ref: 'proveedor'
+    },
+    observacion:{
+        type:String,
     }
 
 }])
