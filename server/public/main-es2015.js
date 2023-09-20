@@ -5188,7 +5188,7 @@ function RecepcionComponent_table_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Factura");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "th");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "Orden");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "OC");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "th");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "Proveedor");
@@ -6618,6 +6618,9 @@ class RecepcionComponent {
                 console.log(data_);
             }
         }
+        if (!data.observacion) {
+            data.observacion = ' ';
+        }
         let certificado = [];
         for (let i = 0; i < data.totales.length; i++) {
             if (data.totales[i].grupo === 'Sustrato') {
@@ -6929,7 +6932,7 @@ class RecepcionComponent {
                                 new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Cell"](new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Txt"]('Realizado por:').end).alignment('center').color('#FFFFFF').fillColor('#000000').fontSize(9).end,
                             ],
                             [
-                                new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Cell"](new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Txt"](`Firma:\n\nFecha:`).end).fontSize(8).end,
+                                new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Cell"](new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Txt"](`Firma: ${data.usuario}\n\nFecha: ${data.creacion}`).end).fontSize(8).end,
                             ]
                         ]).widths(['100%']).end).fontSize(8).end,
                         new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Cell"](new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["Table"]([
@@ -6969,6 +6972,7 @@ class RecepcionComponent {
         });
     }
     finalizar() {
+        let hoy = moment__WEBPACK_IMPORTED_MODULE_2__().format('DD/MM/YYYY');
         document.getElementById('disabled_1').disabled = false;
         document.getElementById('disabled_2').disabled = false;
         document.getElementById('disabled_3').disabled = false;
@@ -6977,6 +6981,8 @@ class RecepcionComponent {
         this.N_OC = '';
         this.Transportista = '';
         document.getElementById('disabled_4').value = '#';
+        this.Factura.usuario = `${this.api.usuario.Nombre} ${this.api.usuario.Apellido}`;
+        this.Factura.creacion = hoy;
         this.api.postFacturacion(this.Factura)
             .subscribe((resp) => {
             this.NuevaRecepcion = false;
@@ -18152,6 +18158,7 @@ class AnalisisSustratoComponent {
         let ancho = this.ancho;
         let largo = this.largo;
         let hoy = moment__WEBPACK_IMPORTED_MODULE_2__().format('DD/MM/YYYY');
+        let fecha_hoy = moment__WEBPACK_IMPORTED_MODULE_2__().format('DDMMYYYY');
         let certificado = {
             lote: material.lote,
             ancho: ancho,
@@ -18279,6 +18286,8 @@ class AnalisisSustratoComponent {
         let ancho = this.ancho;
         let largo = this.largo;
         let hoy = moment__WEBPACK_IMPORTED_MODULE_2__().format('DD/MM/YYYY');
+        let fecha_hoy = moment__WEBPACK_IMPORTED_MODULE_2__().format('DDMMYYYY');
+        let name = `${this.material[0].material.nombre}(${this.material[0].material.marca})${this.material[0].material.ancho}x${this.material[0].material.largo}`;
         let realizado = this.realizado;
         let realizacion = this.realizacion;
         let certificado = {
@@ -18801,7 +18810,7 @@ class AnalisisSustratoComponent {
                         ]).widths(['10%', '38%', '2%', '10%', '38%']).end).alignment('center').border([false]).end
                     ]
                 ]).widths(['60%', '40%']).end);
-                pdf.create().download(`certificado`);
+                pdf.create().download(`${material.lote}_${name}_${fecha_hoy}`);
             });
         }
         GenerarCertificado();

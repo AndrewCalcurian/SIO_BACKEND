@@ -44,6 +44,12 @@ let FacturacionSchema = new Schema([{
     },
     observacion:{
         type:String,
+    },
+    usuario:{
+        type:String,
+    },
+    creacion:{
+        type:String,
     }
 
 }])
