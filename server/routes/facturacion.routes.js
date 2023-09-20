@@ -5,7 +5,7 @@ const app = express();
 const facturacion = require('../database/models/facturacion.model')
 const ifacturacion = require('../database/models/ifacturacion.model')
 
-const { reception, reception_, reception__ } = require('../middlewares/emails/nuevarecepcion.email')
+const { reception, reception_, reception__, reception___ } = require('../middlewares/emails/nuevarecepcion.email')
 
 app.post('/api/facturacion', (req, res)=>{
     let body = req.body;
@@ -24,7 +24,7 @@ app.post('/api/facturacion', (req, res)=>{
 
 app.get('/api/facturacion', (req, res)=>{
     
-    facturacion.find({})
+    facturacion.find({status:{$ne:'FINALIZADA'}})
      .populate('proveedor')
      .populate('productos.material')
      .exec((err, facturas)=>{
@@ -81,12 +81,12 @@ app.get('/api/notificacion-recepcion/:id', (req, res)=>{
 
         }
 
-        reception('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
+        reception('nada','calcurianandres@gmail.com,  zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
 
         // for(let i=0;i<1;i++){
         //     console.log(i)
         //         let random = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000;
-        //         // reception('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com','motivo de prueba',random)
+        //         // reception('nada','calcurianandres@gmail.com','motivo de prueba',random)
         // }
         res.json('done')
     })
@@ -106,7 +106,7 @@ app.get('/api/recepcion-porconfirmar/:info/:id', (req, res)=>{
                 });
         }
 
-        reception_('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',facturacion.factura,info)
+        reception_('nada','calcurianandres@gmail.com,  zuleima.vela@poligraficaindustrial.com',facturacion.factura,info)
         res.json('Se envió observación para su pronta correción')
     })
 
@@ -137,7 +137,7 @@ app.get('/api/recepcion-observacion/:id', (req, res)=>{
 
         }
 
-        reception__('nada','calcurianandres@gmail.com,zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
+        reception__('nada','calcurianandres@gmail.com,  zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
         res.json('done')
     })
 
@@ -165,6 +165,71 @@ app.get('/api/addifacturacion/', (req, res)=>{
 
         res.json(ifacturacion.seq)
     })
+})
+
+app.get('/api/por-analizar', (req, res)=>{
+    facturacion.find({status:'En Observacion'})
+     .populate('proveedor')
+     .populate('productos.material')
+     .exec((err, facturas)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+                });
+        }
+
+        res.json(facturas)
+    })
+})
+
+app.get('/api/cerrar-facturacion/:id', (req, res)=>{
+
+    let id = req.params.id;
+
+    facturacion.findOne({_id:id}, (err, FacturacionDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+                });
+        }
+
+        let finalizar = true;
+
+        for(let i=0;i<FacturacionDB.totales.length;i++){
+            if(!FacturacionDB.totales[i].resultado){
+                finalizar = false;
+            }
+            if(i === FacturacionDB.totales.length -1){
+                if(finalizar){
+                    facturacion.findByIdAndUpdate(id, {status:'FINALIZADA'}, (err, finalizacion)=>{
+                        
+                        if( err ){
+                            return res.status(400).json({
+                                ok:false,
+                                err
+                                });
+                        }
+                        
+                        res.json(finalizacion)
+                    })
+                }else{
+                    res.json('done')
+                }
+            }
+        }
+    })
+
+})
+
+app.post('/api/enviar-notificacion', (req, res)=>{
+
+    let body = req.body
+
+    reception___(body.resultado,body.correos,body.observacion,body.lote,body.tabla)
+    
+    res.json('ok')
 })
 
 

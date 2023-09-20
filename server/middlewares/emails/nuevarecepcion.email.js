@@ -16,7 +16,7 @@ function reception(orden,correo,motivo,random){
     });
 
 
-    let titulo = `<h1>Hola SABI!</h1>`
+    let titulo = `<h1>Hola Equipo!</h1>`
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
@@ -165,8 +165,76 @@ table, th, td {
 
 }
 
+
+function reception___(orden,correo,motivo,random,tabla){
+    var transporter = nodemailer.createTransport({
+        host: "mail.poligraficaindustrial.com",
+        port: 25,
+        secure: false,
+        auth: {
+            user: 'sio.soporte@poligraficaindustrial.com',
+            pass: 'P0l1ndc@'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+
+    let titulo = `<h1>Hola Equipo!</h1>`
+    let mensaje;
+    if(orden === 'APROBADO'){
+        mensaje = `Ya se encuentra etiquetado y disponible para su ubicación definitiva en el almacén.`
+    }else{
+        mensaje = `<b>Laboratorio de calidad:</b> Proceder a levantar la no conformidad.`
+    }   
+
+    var mailOptions = {
+        from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
+        to: correo,
+        subject: `Resultados de análisis lote: ${random}`,
+        html:`${header__('Recepción de material',titulo)}
+        <br>
+               Se ha completado el análisis del siguiente material: <br>
+               <br> <br>
+               <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+                <table align="center" border=".5" cellpading="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                    <tr>
+                        <th>Material</th>
+                        <th>Lote</th>
+                        <th>Cantidad</th>
+                        <th>Resultado</th>
+                    </tr>
+                    ${tabla}
+                </table>
+               <br>
+    El cual presenta la siguiente observación:<br>
+    ${motivo}
+    <br><br>
+    ${mensaje}
+
+            ${footer}`
+    };
+
+    transporter.sendMail(mailOptions, (err, info)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(info);
+        }
+    });
+
+
+}
+
 module.exports = {
     reception,
     reception_,
-    reception__
+    reception__,
+    reception___
 }

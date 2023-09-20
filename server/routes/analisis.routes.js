@@ -62,8 +62,10 @@ app.post('/api/analisis-sustrato', (req, res)=>{
                     });
                 }
             })
+            res.json('ok')
+            return
         }else{
-            asustrato.findByIdAndUpdate(asustratoDB._id, body, (err, AnalisisDB)=>{
+            asustrato.findByIdAndUpdate(asustratoDB._id, body, {new: true, upset:true}, (err, AnalisisDB)=>{
                 if( err ){
                     return res.status(400).json({
                         ok:false,
@@ -71,11 +73,14 @@ app.post('/api/analisis-sustrato', (req, res)=>{
                     });
                 }
 
+                res.json({resultado:AnalisisDB.resultado})
+                console.log({resultado:AnalisisDB.resultado})
+                return
+
             })
         }
     })
 
-    res.json('ok')
 })
 
 app.get('/api/analisis-sustrato/:lote', (req, res)=>{

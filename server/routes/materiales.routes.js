@@ -12,6 +12,10 @@ const Lote = require('../database/models/lotes.model');
 const idevolucion = require('../database/models/idevolucion.model');
 const Devolucion = require('../database/models/devolucion.model');
 
+
+// NUEVA BASE
+const Materiales = require('../database/models/materiales.model')
+
 const {FAL005} = require('../middlewares/docs/FAL-005.pdf');
 const {FAL006} = require('../middlewares/docs/FAL-006.pdf');
 
@@ -271,6 +275,32 @@ app.get('/api/tipo-materia-prima', (req, res)=>{
 app.get('/api/materiales', (req, res)=>{
 
     Material.find({eliminado:false})
+            .populate('grupo')
+            .sort('grupo.nombre')
+            .sort('nombre')
+            .exec((err, materialesDB)=>{
+
+                if( err ){
+                    return res.status(400).json({
+                        ok:false,
+                        err
+                    });
+                }
+
+                // let Sin_Grupo = materialesDB.filter(m => m.grupo.nombre == undefined)
+
+                res.json({
+                    ok:true,
+                    materiales:materialesDB
+                })
+            })
+
+});
+
+
+app.get('/api/materiales-new', (req, res)=>{
+
+    Materiales.find({eliminado:false})
             .populate('grupo')
             .sort('grupo.nombre')
             .sort('nombre')
@@ -633,7 +663,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,999, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,1114, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)

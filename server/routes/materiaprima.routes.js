@@ -99,4 +99,20 @@ app.get('/api/materia-prima', (req, res)=>{
     })
 })
 
+app.put('/api/materia-prima/:id', (req, res)=>{
+    const id = req.params.id;
+    let body = req.body;
+
+    materiales.updateMany(body.info, body.data, (err, materialDB) =>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        res.json('exito')
+    })
+})
+
 module.exports = app;

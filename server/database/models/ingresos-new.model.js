@@ -16,4 +16,4 @@ let IngresosNSchema = new Schema([{
 }]);
 
 
-module.exports = mongoose.model('ingresos-new', IngresosNSchema)
+module.exports = mongoose.model('ingresosNew', IngresosNSchema)
