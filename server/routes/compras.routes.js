@@ -54,7 +54,9 @@ app.put('/api/compras/proveedor/:id', (req, res)=>{
 
 app.post('/api/compras/fabricante', (req, res)=>{
 
+    
     let body = req.body;
+    console.log(body)
 
     let fabricante_ = new fabricante(body).save((err, nuevoFabricante)=>{
         if( err ){

@@ -7,6 +7,10 @@ let FabricanteSchema = new Schema([{
         type:String,
         required:true
     },
+    alias:{
+        type:String,
+        required:true
+    },
     origenes:{
         type:Array,
     },
