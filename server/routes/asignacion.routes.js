@@ -4,6 +4,8 @@ const app = express();
 const Orden = require('../database/models/orden.model');
 const Almacenado = require('../database/models/almacenado.model');
 
+const {FAL005} = require('../middlewares/docs/FAL-005-test.pdf')
+
 app.get('/api/orden-especifica', (req, res)=>{
 
     Orden.find({sort:'2023061'})
@@ -49,6 +51,78 @@ app.post('/api/buscar-en-almacen', (req, res)=>{
             res.json(almacen)
         })
 
+})
+
+app.get('/api/buscar-por-nombre', (req, res)=>{
+
+    Almacenado.find({cantidad: { '$gt': 0 }})
+        .populate({
+            path: 'material',
+            populate: {
+                path: 'grupo'
+            }
+        })
+        .exec((err, almacen)=>{
+
+            for(let i=0;i<almacen.length;i++){
+                if(!almacen[i].material){
+                    almacen.splice(i, 1)
+                    i--
+                }
+            
+            if(i == almacen.length -1){
+                res.json(almacen)   
+            }
+                
+            }
+
+
+
+        })
+})
+
+app.get('/api/buscar-cinta', (req, res)=>{
+
+    Almacenado.find( {cantidad: { '$gt': 0 }})
+        .populate({
+            path: 'material',
+            populate: {
+                path: 'grupo'
+            }
+        })
+        .exec((err, almacen)=>{
+
+            let cinta = []
+
+            for(let i=0;i<almacen.length;i++){
+                if(!almacen[i].material){
+                    almacen.splice(i, 1)
+                    i--
+                }else{
+
+                    if(almacen[i].material.grupo.nombre === 'Cinta de Embalaje'){
+                        cinta.push(almacen[i])
+                    }
+
+                }
+            
+            if(i == almacen.length -1){
+                res.json(cinta)   
+            }
+                
+            }
+
+
+
+        })
+})
+
+app.post('/api/descontar', (req, res)=>{
+    let body = req.body;
+
+    FAL005('2023061', '0000', body.tabla, body.materiales, body.lotes, body.cantidades)
+
+    res.json('done')
 })
 
 
