@@ -47,7 +47,7 @@ table, th, td {
                     <td>30Kg</td>
                     <tr>
                 </table>
-               Dirigete al sistema SIO para su verificación
+               Dirígete al sistema SIO para su verificación
             ${footer}`
     };
     transporter.sendMail(mailOptions, (err, info)=>{
@@ -105,7 +105,7 @@ table, th, td {
                     <td>30Kg</td>
                     <tr>
                 </table>
-               Dirigete al sistema SIO para su verificación
+               Dirígete al sistema SIO para su verificación
             ${footer}`
     };
     transporter.sendMail(mailOptions, (err, info)=>{

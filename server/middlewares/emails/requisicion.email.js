@@ -34,7 +34,7 @@ table, th, td {
 }
 </style>
     <b>Motivo:</b>${motivo}<br>
-    Dirigete al sistema SIO para ver detalles y aceptar o rechazar esta solicitud.
+    Dirígete al sistema SIO para ver detalles y aceptar o rechazar esta solicitud.
 
             ${footer}`
     };
@@ -83,7 +83,7 @@ table, th, td {
 }
 </style>
     <b>Motivo:</b>${motivo}<br>
-    Dirigete al sistema SIO para ver detalles y aceptar o rechazar esta solicitud.
+    Dirígete al sistema SIO para ver detalles y aceptar o rechazar esta solicitud.
 
             ${footer}`
     };

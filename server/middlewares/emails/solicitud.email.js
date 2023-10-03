@@ -44,7 +44,7 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
                    ${tabla}
                </table><br>
     <b>Motivo:</b>${motivo}<br>
-    Dirigete al sistema SIO para asignar lo lotes.
+    Dirígete al sistema SIO para asignar lo lotes.
 
             ${footer}`
     };
@@ -102,7 +102,7 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
                     ${tabla}
                 </table> <br>
     <b>Motivo:</b>${motivo}<br>
-    Dirigete al sistema SIO para asignar lo lotes.
+    Dirígete al sistema SIO para asignar lo lotes.
 
             ${footer}`
     };
@@ -160,7 +160,7 @@ function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
                    ${tabla}
                </table><br>
     <b>Motivo:</b>${motivo}<br>
-    Dirigete al sistema SIO para asignar lo lotes.
+    Dirígete al sistema SIO para asignar lo lotes.
 
             ${footer}`
     };

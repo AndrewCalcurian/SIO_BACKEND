@@ -180,7 +180,7 @@ app.get('/api/almacenado/:id', (req, res)=>{
             });
         }
 
-        console.log(Almacen)
+        // console.log(Almacen)
         res.json(Almacen)
     })
 
@@ -590,7 +590,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
             }
 
         for(let i= 0; i<LoteDB.material.length; i++){
-            console.log('x')
+            // console.log('x')
             Almacenado.findOne({material:LoteDB.material[i].material,LoteDB:LoteDB.material[i].LoteDB,codigo:LoteDB.material[i].codigo})
                 .populate({
                     path: 'material',
@@ -663,7 +663,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,1114, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,1243, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)
@@ -739,7 +739,7 @@ app.post('/api/material/descuento', (req, res)=>{
 
         body.lotes[i].solicitado = (Number(body.lotes[i].solicitado)).toFixed(2)
 
-        console.log(body.lotes[i].Mname,'-',body.lotes[i].lote,'-',body.lotes[i].codigo)
+        // console.log(body.lotes[i].Mname,'-',body.lotes[i].lote,'-',body.lotes[i].codigo)
         Almacenado.findOne({material:body.lotes[i].Mname,lote:body.lotes[i].lote,codigo:body.lotes[i].codigo,cantidad:{$gt:0}})
                 .populate({
                     path: 'material',

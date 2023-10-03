@@ -7,7 +7,7 @@ const Iasignacion = require('../database/models/iasignacion.modal')
 const Lotes = require('../database/models/lotes.model')
 const Requisicion = require('../database/models/requisicion.model')
 
-const {FAL005} = require('../middlewares/docs/FAL-005-test.pdf')
+const {FAL005} = require('../middlewares/docs/FAL-005.pdf')
 
 app.get('/api/orden-especifica', (req, res)=>{
 
@@ -19,6 +19,14 @@ app.get('/api/orden-especifica', (req, res)=>{
         .populate({path:'producto', populate:{path:'materiales.producto'}})
         .populate({path:'producto.materiales.producto', populate:{path:'grupo'}})
         .exec((err, orden)=>{
+            
+            if( err ){
+                return res.status(400).json({
+                    ok:false,
+                    err
+                });
+            }
+
             for(let x=0;x<orden.length;x++){
                 for(let i=0;i<orden[x].producto.materiales[orden[x].montaje].length;i++){
                     let material = orden[x].producto.materiales[orden[x].montaje][i]
@@ -58,7 +66,7 @@ app.post('/api/buscar-en-almacen', (req, res)=>{
 
 app.get('/api/buscar-por-nombre', (req, res)=>{
 
-    Almacenado.find({cantidad: { '$gt': 0 }})
+    Almacenado.find({$and:[{cantidad:{ $gt:0}}, {cantidad:{$ne:'0.00'}}]}) 
         .populate({
             path: 'material',
             populate: {
@@ -86,7 +94,7 @@ app.get('/api/buscar-por-nombre', (req, res)=>{
 
 app.get('/api/buscar-cinta', (req, res)=>{
 
-    Almacenado.find( {cantidad: { '$gt': 0 }})
+    Almacenado.find({$and:[{cantidad:{ $gt:0}}, {cantidad:{$ne:'0.00'}}]})
         .populate({
             path: 'material',
             populate: {
@@ -202,7 +210,7 @@ app.post('/api/descontar', (req, res)=>{
                     }
 
                     console.log(`se registro nuevo lote: ${loteDB}`)
-                    // FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
+                    FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
                     res.json('done')
                 })
             }

@@ -147,7 +147,7 @@ doc.add(
     new Table([
         [
             new Cell(new Txt('MOTIVO').end).fillColor('#dedede').fontSize(9).alignment('center').end,
-            new Cell(new Txt('SOCITADO POR:').end).fillColor('#dedede').fontSize(9).alignment('center').end,
+            new Cell(new Txt('SOLICITADO POR:').end).fillColor('#dedede').fontSize(9).alignment('center').end,
             new Cell(new Txt('RECIBIDO POR:').end).fillColor('#dedede').fontSize(9).alignment('center').end,
         ],
         [

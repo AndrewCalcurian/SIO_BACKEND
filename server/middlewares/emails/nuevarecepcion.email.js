@@ -43,7 +43,7 @@ table, th, td {
                <br>
 
     <br><br>
-    Dirigete al sistema SIO para su verificación.
+    Dirígete al sistema SIO para su verificación.
 
             ${footer}`
     };
@@ -91,7 +91,7 @@ table, th, td {
 }
 </style>
     <br><br>
-    Dirigete al sistema SIO para corroborar la información.
+    Dirígete al sistema SIO para corroborar la información.
 
             ${footer}`
     };
@@ -149,7 +149,7 @@ table, th, td {
                <br>
 
     <br><br>
-    Dirigete al sistema SIO y almacen de producto en observación para su verificación.
+    Dirígete al sistema SIO y almacen de producto en observación para su verificación.
 
             ${footer}`
     };

@@ -1583,7 +1583,6 @@
         }, {
           key: "origen_",
           value: function origen_(n) {
-            console.log(n);
           }
         }, {
           key: "nuevoProveedor_",

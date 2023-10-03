@@ -104,16 +104,16 @@ app.put('/api/requi/:id', (req,res)=>{
                     num_solicitud = solicitud.seq;
                 })
 
-    iasignacion.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true})
-                .exec((err, asignacion)=>{
-                    if( err ){
-                        return res.status(400).json({
-                            ok:false,
-                            err
-                        });
-                    }
+    // iasignacion.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true})
+    //             .exec((err, asignacion)=>{
+    //                 if( err ){
+    //                     return res.status(400).json({
+    //                         ok:false,
+    //                         err
+    //                     });
+    //                 }
 
-                    Requisicion.findByIdAndUpdate(id, {estado:'lista', solicitud:asignacion.seq})
+                    Requisicion.findByIdAndUpdate(id, {estado:'lista', solicitud:num_solicitud})
                     .populate('producto.materiales.producto')
                     .populate({path: 'producto', populate:{path:'materiales.producto', populate:{path:'grupo'}}})
                     .exec((err, requi)=>{
@@ -147,7 +147,6 @@ app.put('/api/requi/:id', (req,res)=>{
 
                         let final = producto_.length -1;
                         if(i == final){ 
-                            console.log(tabla)
                             FAL004(requi.producto.producto,requi.sort, num_solicitud,material,cantidad,requi.usuario,requi.motivo,tabla)
                         }
                     }
@@ -158,7 +157,7 @@ app.put('/api/requi/:id', (req,res)=>{
                         res.json(requi)
                     })
 
-                })
+                // })
 
     
 })
