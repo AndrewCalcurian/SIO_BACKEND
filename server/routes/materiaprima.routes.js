@@ -37,7 +37,7 @@ app.post('/api/materia-prima', async (req, res)=>{
 
     const material = new materiales({
         grupo:await definirGrupo(),
-        nombre:body.producto,
+        nombre:body.nombre,
         marca:body.marca,
         ancho:body.ancho,
         largo:body.largo,

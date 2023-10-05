@@ -113,7 +113,7 @@ app.put('/api/requi/:id', (req,res)=>{
     //                     });
     //                 }
 
-                    Requisicion.findByIdAndUpdate(id, {estado:'lista', solicitud:num_solicitud})
+                Requisicion.findByIdAndUpdate(id, {estado:'lista', solicitud:num_solicitud})
                     .populate('producto.materiales.producto')
                     .populate({path: 'producto', populate:{path:'materiales.producto', populate:{path:'grupo'}}})
                     .exec((err, requi)=>{

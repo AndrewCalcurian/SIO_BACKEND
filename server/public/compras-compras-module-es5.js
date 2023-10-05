@@ -1583,6 +1583,7 @@
         }, {
           key: "origen_",
           value: function origen_(n) {
+            console.log(n);
           }
         }, {
           key: "nuevoProveedor_",
@@ -7875,7 +7876,7 @@
             };
             this.api.putFabricantes(this.edicion, data).subscribe(function (resp) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
-                title: 'Se editó existosamente',
+                title: 'Se editó exitosamente',
                 icon: 'success',
                 timer: 1500,
                 showConfirmButton: false,
