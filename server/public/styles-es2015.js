@@ -59,8 +59,8 @@ ___CSS_LOADER_EXPORT___.push([module.i, "\n@charset \"UTF-8\";\n/*! @creativebul
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\administrador.POLINDUSTRIAL\Desktop\Desarrollo\SIO_FRONTEND\src\styles.css */"OmL/");
-module.exports = __webpack_require__(/*! C:\Users\administrador.POLINDUSTRIAL\Desktop\Desarrollo\SIO_FRONTEND\src\styles.scss */"+EN/");
+__webpack_require__(/*! C:\Users\Administrador\Desktop\SIO_FRONTEND\src\styles.css */"OmL/");
+module.exports = __webpack_require__(/*! C:\Users\Administrador\Desktop\SIO_FRONTEND\src\styles.scss */"+EN/");
 
 
 /***/ }),

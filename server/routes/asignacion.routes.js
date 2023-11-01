@@ -195,24 +195,26 @@ app.post('/api/descontar', (req, res)=>{
             console.log(`lote:${body.lotes[i]} codigo:${body.codigos[i]} - EA:${body.EA_cantidad[i]} updated to ${body.restantes[i]}`)
             
             if(i == body.ids.length - 1){
-                console.log('asignacion: ',N_asignacion)
-                let NewLote = {
-                    asignacion:N_asignacion,
-                    orden:body.orden,
-                    material:lotes
-                }
-                let lotes_ = new Lotes(NewLote).save((err, loteDB)=>{
-                    if( err ){
-                        return res.status(400).json({
-                            ok:false,
-                            err
-                        });
+                setTimeout(() => {
+                    console.log('asignacion: ',N_asignacion)
+                    let NewLote = {
+                        asignacion:N_asignacion,
+                        orden:body.orden,
+                        material:lotes
                     }
-
-                    console.log(`se registro nuevo lote: ${loteDB}`)
-                    FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
-                    res.json('done')
-                })
+                    let lotes_ = new Lotes(NewLote).save((err, loteDB)=>{
+                        if( err ){
+                            return res.status(400).json({
+                                ok:false,
+                                err
+                            });
+                        }
+    
+                        console.log(`se registro nuevo lote: ${loteDB}`)
+                        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
+                        res.json('done')
+                    })
+                  }, 1000);
             }
         })
     

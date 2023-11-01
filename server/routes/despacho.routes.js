@@ -217,10 +217,10 @@ app.put('/api/despacho/:id', (req, res)=>{
                         if(x === fin){
                             Orden.findOne({sort:body.despacho[i].op}, (err, ordenDB) =>{
                                 let porcentaje = cantidad * 100 / ordenDB.cantidad
-                                if(porcentaje > 110){
-                                    limite  = body.despacho[i].op
-                                    // //console.log(limite,'menor')
-                                }
+                                // if(porcentaje > 110){
+                                //     limite  = body.despacho[i].op
+                                //     // //console.log(limite,'menor')
+                                // }
                                 if(i === body.despacho.length-1){
                                     if(limite > 0){
                                         menor('menor')

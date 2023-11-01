@@ -236,8 +236,8 @@ app.get('/api/createMark', (req, res)=>{
     };
 
 
-        print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/PRUEBA.pdf", options).then(console.log);
-        console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA')
+        print("C:/Users/Administrador/Desktop/SIO_BACKEND/PRUEBA.pdf", options).then(console.log).catch(console.log);
+        console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA....')
     res.json('done')
 })
 
@@ -478,8 +478,8 @@ app.post('/api/prints', (req, res)=>{
         // console.log(printer.getDefaultPrinterName())
         // getDefaultPrinter().then(console.log)
         setTimeout(() => {
-            print("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", options).then(console.log);
-            console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA')
+            print("C:/Users/Administrador/Desktop/SIO_BACKEND/documento_test.pdf", options).then(console.log).catch(console.log);
+            console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA...')
             res.json('ok')
         },2000);
     })
@@ -495,7 +495,7 @@ app.get('/api/copy/:orden/:cantidad', (req, res)=>{
     let nombre = `${orden}-${cantidad}-${HOY}.pdf`
     var path = `\\\\POLIGPCDC01/Poligrafica_Archivos/DEPARTAMENTO DE OPERACIONES/Etiquetas SIO/${nombre}`;
     setTimeout(() => {
-        fs.copyFile("C:/Users/administrador.POLINDUSTRIAL/Desktop/Desarrollo/BK/documento_test.pdf", path, (err) => {
+        fs.copyFile("C:/Users/Administrador/Desktop/SIO_BACKEND/documento_test.pdf", path, (err) => {
             if (err) throw err;
             console.log('SE REALIZÓ LA COPIA DE ETIQUETA A LOS SERVIDORES');
         });
