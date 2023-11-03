@@ -128,100 +128,157 @@ app.get('/api/buscar-cinta', (req, res)=>{
         })
 })
 
-app.post('/api/descontar', (req, res)=>{
-    let body = req.body;
-
-    let N_asignacion;
-    let lotes = [];
-    let Requi = false;
-
-
-    if(body.requi){
-        Requi = true
-        Requisicion.findOneAndUpdate({_id:body.orden_id},{estado:'Finalizado'}, (err, requi)=>{
-            if( err ){
-                return res.status(400).json({
-                    ok:false,
-                    err
-                });
-            }
-        })
-
+app.post('/api/descontar', async (req, res) => {
+    try {
+      const body = req.body;
+      let N_asignacion;
+      const lotes = [];
+      let Requi = false;
+  
+      if (body.requi) {
+        Requi = true;
+        await Requisicion.findOneAndUpdate({ _id: body.orden_id }, { estado: 'Finalizado' });
+      }
+  
+      await Orden.findOneAndUpdate({ sort: body.orden }, { estado: 'activo' });
+  
+      const asig = await Iasignacion.findByIdAndUpdate(
+        { _id: 'iterator' },
+        { $inc: { seq: 1 } },
+        { new: true, upset: true }
+      );
+      N_asignacion = asig.seq;
+  
+      for (let i = 0; i < body.ids.length; i++) {
+        await Almacenado.updateOne({ _id: body.ids[i] }, { cantidad: body.restantes[i] });
+  
+        const lote = {
+          asignacion: N_asignacion,
+          material: body.producto[i],
+          lote: body.lotes[i],
+          codigo: body.codigos[i],
+          cantidad: body.cantidad[i],
+          EA_cantidad: body.EA_cantidad[i]
+        };
+        lotes.push(lote);
+  
+        console.log(`lote:${body.lotes[i]} codigo:${body.codigos[i]} - EA:${body.EA_cantidad[i]} updated to ${body.restantes[i]}`);
+      }
+  
+      setTimeout(async () => {
+        console.log('asignacion: ', N_asignacion);
+        const NewLote = {
+          asignacion: N_asignacion,
+          orden: body.orden,
+          material: lotes
+        };
+        const loteDB = await new Lotes(NewLote).save();
+        console.log(`se registro nuevo lote: ${loteDB}`);
+        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades, Requi);
+        res.json('done');
+      }, 1000);
+    } catch (err) {
+      res.status(400).json({
+        ok: false,
+        err
+      });
     }
+  });
+
+// app.post('/api/descontar', (req, res)=>{
+//     let body = req.body;
+
+//     let N_asignacion;
+//     let lotes = [];
+//     let Requi = false;
+
+
+//     if(body.requi){
+//         Requi = true
+//         Requisicion.findOneAndUpdate({_id:body.orden_id},{estado:'Finalizado'}, (err, requi)=>{
+//             if( err ){
+//                 return res.status(400).json({
+//                     ok:false,
+//                     err
+//                 });
+//             }
+//         })
+
+//     }
 
 
 
-    Orden.findOneAndUpdate({sort:body.orden}, {estado:'activo'}, (err, modificado)=>{
-        if( err ){
-            return res.status(400).json({
-                ok:false,
-                err
-            });
-    }
-    })
+//     Orden.findOneAndUpdate({sort:body.orden}, {estado:'activo'}, (err, modificado)=>{
+//         if( err ){
+//             return res.status(400).json({
+//                 ok:false,
+//                 err
+//             });
+//     }
+//     })
 
 
-    Iasignacion.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true}, (err, asig)=>{
-        if( err ){
-            return res.status(400).json({
-                ok:false,
-                err
-            });
-        }
-        N_asignacion = asig.seq
-    })
+//     Iasignacion.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true}, (err, asig)=>{
+//         if( err ){
+//             return res.status(400).json({
+//                 ok:false,
+//                 err
+//             });
+//         }
+//         N_asignacion = asig.seq
+//     })
     
-    for(let i=0;i<body.ids.length;i++){
+//     for(let i=0;i<body.ids.length;i++){
 
-        Almacenado.updateOne({_id:body.ids[i]}, {cantidad:body.restantes[i]}, (err, almacenadoDB) =>{
-            if( err ){
-                return res.status(400).json({
-                    ok:false,
-                    err
-                });
-            }
+//         Almacenado.updateOne({_id:body.ids[i]}, {cantidad:body.restantes[i]}, (err, almacenadoDB) =>{
+//             if( err ){
+//                 return res.status(400).json({
+//                     ok:false,
+//                     err
+//                 });
+//             }
 
-            let lote = {
-                asignacion:N_asignacion,
-                material:body.producto[i],
-                lote:body.lotes[i],
-                codigo:body.codigos[i],
-                cantidad:body.cantidad[i],
-                EA_cantidad:body.EA_cantidad[i]
-            }
+//             let lote = {
+//                 asignacion:N_asignacion,
+//                 material:body.producto[i],
+//                 lote:body.lotes[i],
+//                 codigo:body.codigos[i],
+//                 cantidad:body.cantidad[i],
+//                 EA_cantidad:body.EA_cantidad[i]
+//             }
 
-            lotes.push(lote)
+//             lotes.push(lote)
 
-            console.log(`lote:${body.lotes[i]} codigo:${body.codigos[i]} - EA:${body.EA_cantidad[i]} updated to ${body.restantes[i]}`)
+//             console.log(`lote:${body.lotes[i]} codigo:${body.codigos[i]} - EA:${body.EA_cantidad[i]} updated to ${body.restantes[i]}`)
             
-            if(i == body.ids.length - 1){
-                setTimeout(() => {
-                    console.log('asignacion: ',N_asignacion)
-                    let NewLote = {
-                        asignacion:N_asignacion,
-                        orden:body.orden,
-                        material:lotes
-                    }
-                    let lotes_ = new Lotes(NewLote).save((err, loteDB)=>{
-                        if( err ){
-                            return res.status(400).json({
-                                ok:false,
-                                err
-                            });
-                        }
+//             if(i == body.ids.length - 1){
+//                 setTimeout(() => {
+//                     console.log('asignacion: ',N_asignacion)
+//                     let NewLote = {
+//                         asignacion:N_asignacion,
+//                         orden:body.orden,
+//                         material:lotes
+//                     }
+//                     let lotes_ = new Lotes(NewLote).save((err, loteDB)=>{
+//                         if( err ){
+//                             return res.status(400).json({
+//                                 ok:false,
+//                                 err
+//                             });
+//                         }
     
-                        console.log(`se registro nuevo lote: ${loteDB}`)
-                        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
-                        res.json('done')
-                    })
-                  }, 1000);
-            }
-        })
+//                         console.log(`se registro nuevo lote: ${loteDB}`)
+//                         FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
+//                         res.json('done')
+//                     })
+//                   }, 1000);
+//             }
+//         })
     
-    }
+//     }
 
 
-})
+// })
 
 
 module.exports = app;

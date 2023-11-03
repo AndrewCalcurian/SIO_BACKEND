@@ -80,6 +80,7 @@ app.get('/api/estadisticas/maquinas', (req,res)=>{
 
 })
 
+
 app.post('/api/estadisticas/ordens', (req, res)=>{
 
     let body = req.body;
@@ -817,94 +818,175 @@ res.json(data)
 
 })
 
-
-app.post('/api/reporte-inventario', (req, res)=>{
-    let body = req.body
-
-    let desde = moment(body.desde)
-    let hasta = moment(body.hasta).add(1, 'days');
-    let grupo = body.grupo
-    let muestras = []
-
-    Almacenado.find({fecha:{$gte:desde, $lte:hasta}})
+app.post('/api/reporte-inventario', async (req, res) => {
+    try {
+      const body = req.body;
+      const desde = moment(body.desde);
+      const hasta = moment(body.hasta).add(1, 'days');
+      const grupo = body.grupo;
+  
+      const almacenDB = await Almacenado.find({ fecha: { $gte: desde, $lte: hasta } })
         .populate('material')
-        .sort('material.nombre')
-        .exec((err, almacenDB)=>{
-        if( err ){
-            return res.status(400).json({
-                ok:false,
-                err
-            });
-        }
-
-        for(let i=0; i<almacenDB.length;i++){
-            Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
-            .populate('material.material')
-            .exec((err, loteDB)=>{
-                if(loteDB.length>0){
-                    let coincidencias = false;
-                    for(let x=0;x<loteDB.length;x++){
-                        for(let y=0;y<loteDB[x].material.length;y++){
-                            
-                            if(loteDB[x].material[y].material.nombre == almacenDB[i].material.nombre && loteDB[x].material[y].codigo === almacenDB[i].codigo && loteDB[x].material[y].lote === almacenDB[i].lote){
-                                muestras.push({nombre:`${loteDB[x].material[y].material.nombre}`,gramaje:loteDB[x].material[y].material.gramaje, calibre:loteDB[x].material[y].material.calibre, ancho:loteDB[x].material[y].material.ancho, largo:loteDB[x].material[y].material.largo, marca:loteDB[x].material[y].material.marca,cantidad:loteDB[x].material[y].EA_Cantidad, grupo:almacenDB[i].material.grupo})
-                                coincidencias = true
-                            }
-                            
-                            if(x == loteDB.length-1){
-                                if(y == loteDB[x].material.length -1){
-                                    if(!coincidencias){
-                                        muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }else{
-                    muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
-                }
-            })
-            if(i === almacenDB.length -1 ){
-                setTimeout(() => {
-                    res.json(muestras)
-                  }, 2000);
+        .sort('material.nombre');
+  
+      const muestras = [];
+  
+      for (const almacenItem of almacenDB) {
+        const loteDB = await Lotes.find({
+          'material.material': almacenItem.material._id,
+          'material.lote': almacenItem.lote,
+          'material.codigo': almacenItem.codigo
+        }).populate('material.material');
+  
+        if (loteDB.length > 0) {
+          let coincidencias = false;
+  
+          for (const loteItem of loteDB) {
+            for (const materialItem of loteItem.material) {
+              if (
+                materialItem.material.nombre === almacenItem.material.nombre &&
+                materialItem.codigo === almacenItem.codigo &&
+                materialItem.lote === almacenItem.lote
+              ) {
+                muestras.push({
+                  nombre: materialItem.material.nombre,
+                  gramaje: materialItem.material.gramaje,
+                  calibre: materialItem.material.calibre,
+                  ancho: materialItem.material.ancho,
+                  largo: materialItem.material.largo,
+                  marca: materialItem.material.marca,
+                  cantidad: materialItem.EA_Cantidad,
+                  grupo: almacenItem.material.grupo
+                });
+                coincidencias = true;
+              }
             }
+          }
+  
+          if (!coincidencias) {
+            muestras.push({
+              nombre: almacenItem.material.nombre,
+              ancho: almacenItem.material.ancho,
+              largo: almacenItem.material.largo,
+              calibre: almacenItem.material.calibre,
+              gramaje: almacenItem.material.gramaje,
+              marca: almacenItem.material.marca,
+              cantidad: almacenItem.cantidad,
+              grupo: almacenItem.material.grupo
+            });
+          }
+        } else {
+          muestras.push({
+            nombre: almacenItem.material.nombre,
+            ancho: almacenItem.material.ancho,
+            largo: almacenItem.material.largo,
+            calibre: almacenItem.material.calibre,
+            gramaje: almacenItem.material.gramaje,
+            marca: almacenItem.material.marca,
+            cantidad: almacenItem.cantidad,
+            grupo: almacenItem.material.grupo
+          });
         }
-        // for(let i=0; i<almacenDB.length;i++){
-        //         Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
-        //         .populate('material.material')
-        //         .exec((err, loteDB)=>{
-        //                 if(loteDB[0]){
-        //                     for(let n=0;n<loteDB[0].material.length;n++){
-        //                         if(loteDB[0].material[n].lote === almacenDB[i].lote){
-        //                             // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
-        //                             if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
-        //                             // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
-        //                                 if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
-        //                                 // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
-        //                                 // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
-        //                                     muestras.push({nombre:`${loteDB[0].material[n].material.nombre}`,gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
+      }
+  
+      setTimeout(() => {
+        res.json(muestras);
+      }, 2000);
+    } catch (err) {
+      res.status(400).json({
+        ok: false,
+        err
+      });
+    }
+  });
+
+// app.post('/api/reporte-inventario', (req, res)=>{
+//     let body = req.body
+
+//     let desde = moment(body.desde)
+//     let hasta = moment(body.hasta).add(1, 'days');
+//     let grupo = body.grupo
+//     let muestras = []
+
+//     Almacenado.find({fecha:{$gte:desde, $lte:hasta}})
+//         .populate('material')
+//         .sort('material.nombre')
+//         .exec((err, almacenDB)=>{
+//         if( err ){
+//             return res.status(400).json({
+//                 ok:false,
+//                 err
+//             });
+//         }
+
+//         for(let i=0; i<almacenDB.length;i++){
+//             Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
+//             .populate('material.material')
+//             .exec((err, loteDB)=>{
+//                 if(loteDB.length>0){
+//                     let coincidencias = false;
+//                     for(let x=0;x<loteDB.length;x++){
+//                         for(let y=0;y<loteDB[x].material.length;y++){
+                            
+//                             if(loteDB[x].material[y].material.nombre == almacenDB[i].material.nombre && loteDB[x].material[y].codigo === almacenDB[i].codigo && loteDB[x].material[y].lote === almacenDB[i].lote){
+//                                 muestras.push({nombre:`${loteDB[x].material[y].material.nombre}`,gramaje:loteDB[x].material[y].material.gramaje, calibre:loteDB[x].material[y].material.calibre, ancho:loteDB[x].material[y].material.ancho, largo:loteDB[x].material[y].material.largo, marca:loteDB[x].material[y].material.marca,cantidad:loteDB[x].material[y].EA_Cantidad, grupo:almacenDB[i].material.grupo})
+//                                 coincidencias = true
+//                             }
+                            
+//                             if(x == loteDB.length-1){
+//                                 if(y == loteDB[x].material.length -1){
+//                                     if(!coincidencias){
+//                                         muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }else{
+//                     muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+//                 }
+//             })
+//             if(i === almacenDB.length -1 ){
+//                 setTimeout(() => {
+//                     res.json(muestras)
+//                   }, 2000);
+//             }
+//         }
+//         // for(let i=0; i<almacenDB.length;i++){
+//         //         Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
+//         //         .populate('material.material')
+//         //         .exec((err, loteDB)=>{
+//         //                 if(loteDB[0]){
+//         //                     for(let n=0;n<loteDB[0].material.length;n++){
+//         //                         if(loteDB[0].material[n].lote === almacenDB[i].lote){
+//         //                             // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
+//         //                             if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
+//         //                             // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
+//         //                                 if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
+//         //                                 // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
+//         //                                 // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
+//         //                                     muestras.push({nombre:`${loteDB[0].material[n].material.nombre}`,gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
                                             
-        //                                 }
-        //                             }
-        //                         }             
-        //                     }
-        //                 }else{
-        //                     muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
-        //                 }
-        //         })
+//         //                                 }
+//         //                             }
+//         //                         }             
+//         //                     }
+//         //                 }else{
+//         //                     muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+//         //                 }
+//         //         })
 
-        //     if(i === almacenDB.length -1 ){
-        //         setTimeout(() => {
-        //             res.json(muestras)
-        //           }, 2000);
-        //     }
+//         //     if(i === almacenDB.length -1 ){
+//         //         setTimeout(() => {
+//         //             res.json(muestras)
+//         //           }, 2000);
+//         //     }
         
-        // }
-    })
+//         // }
+//     })
 
 
-})
+// })
 
 app.post('/api/reporte-salidas', (req, res)=>{
     let body = req.body
@@ -950,90 +1032,166 @@ app.post('/api/reporte-devoluciones', (req, res)=>{
     })
 })
 
-app.post('/api/corte-de-fecha', (req, res)=>{
-    let body = req.body
-
-    let desde = moment(body.desde)
-    let hasta = moment(body.hasta).add(1, 'days');
-
-    let muestras = []
-
-    Almacenado.find({fecha:{$gte:desde}})
+app.post('/api/corte-de-fecha', async (req, res) => {
+    try {
+      const body = req.body;
+      const desde = moment(body.desde).add(1, 'days');
+      const hasta = moment(body.hasta).add(1, 'days');
+      const muestras = [];
+  
+      const almacenDB = await Almacenado.find({ fecha: { $gte: desde, $lte:hasta } })
         .populate('material')
-        .exec((err, almacenDB)=>{
-        if( err ){
-            return res.status(400).json({
-                ok:false,
-                err
-            });
-        }
-
-        for(let i=0; i<almacenDB.length;i++){
-            Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
-            .populate('material.material')
-            .exec((err, loteDB)=>{
-                if(loteDB.length>0){
-                    let coincidencias = false;
-                    for(let x=0;x<loteDB.length;x++){
-                        for(let y=0;y<loteDB[x].material.length;y++){
-                            
-                            if(loteDB[x].material[y].material.nombre == almacenDB[i].material.nombre && loteDB[x].material[y].codigo === almacenDB[i].codigo && loteDB[x].material[y].lote === almacenDB[i].lote){
-                                muestras.push({nombre:`${loteDB[x].material[y].material.nombre}`,gramaje:loteDB[x].material[y].material.gramaje, calibre:loteDB[x].material[y].material.calibre, ancho:loteDB[x].material[y].material.ancho, largo:loteDB[x].material[y].material.largo, marca:loteDB[x].material[y].material.marca,cantidad:loteDB[x].material[y].EA_Cantidad, grupo:almacenDB[i].material.grupo})
-                                coincidencias = true
-                            }
-                            
-                            if(x == loteDB.length-1){
-                                if(y == loteDB[x].material.length -1){
-                                    if(!coincidencias){
-                                        muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }else{
-                    muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
-                }
-            })
-            if(i === almacenDB.length -1 ){
-                setTimeout(() => {
-                    res.json(muestras)
-                  }, 4000);
+        .exec();
+  
+      for (const almacen of almacenDB) {
+        const loteDB = await Lotes.find({
+          'material.material': almacen.material._id,
+          'material.lote': almacen.lote,
+          'material.codigo': almacen.codigo
+        })
+          .populate('material.material')
+          .exec();
+  
+        if (loteDB.length > 0) {
+          let coincidencias = false;
+          for (const lote of loteDB) {
+            for (const material of lote.material) {
+              if (
+                material.material.nombre === almacen.material.nombre &&
+                material.codigo === almacen.codigo &&
+                material.lote === almacen.lote
+              ) {
+                muestras.push({
+                  nombre: material.material.nombre,
+                  gramaje: material.material.gramaje,
+                  calibre: material.material.calibre,
+                  ancho: material.material.ancho,
+                  largo: material.material.largo,
+                  marca: material.material.marca,
+                  cantidad: material.EA_Cantidad,
+                  grupo: almacen.material.grupo
+                });
+                coincidencias = true;
+              }
             }
+          }
+          if (!coincidencias) {
+            muestras.push({
+              nombre: almacen.material.nombre,
+              ancho: almacen.material.ancho,
+              largo: almacen.material.largo,
+              calibre: almacen.material.calibre,
+              gramaje: almacen.material.gramaje,
+              marca: almacen.material.marca,
+              cantidad: almacen.cantidad,
+              grupo: almacen.material.grupo
+            });
+          }
+        } else {
+          muestras.push({
+            nombre: almacen.material.nombre,
+            ancho: almacen.material.ancho,
+            largo: almacen.material.largo,
+            calibre: almacen.material.calibre,
+            gramaje: almacen.material.gramaje,
+            marca: almacen.material.marca,
+            cantidad: almacen.cantidad,
+            grupo: almacen.material.grupo
+          });
         }
-        // for(let i=0; i<almacenDB.length;i++){
-        //         Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
-        //         .populate('material.material')
-        //         .exec((err, loteDB)=>{
-        //                 if(loteDB[0]){
-        //                     for(let n=0;n<loteDB[0].material.length;n++){
-        //                         if(loteDB[0].material[n].lote === almacenDB[i].lote){
-        //                             // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
-        //                             if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
-        //                             // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
-        //                                 if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
-        //                                 // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
-        //                                 // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
-        //                                     muestras.push({nombre:loteDB[0].material[n].material.nombre, gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
-        //                                 }
-        //                             }
-        //                         }             
-        //                     }
-        //                 }else{
-        //                     muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
-        //                 }
-        //         })
+      }
+  
+      res.json(muestras);
+    } catch (err) {
+      console.error(err);
+      res.status(400).json({ ok: false, err });
+    }
+  });
 
-        //     if(i === almacenDB.length -1 ){
-        //         setTimeout(() => {
-        //             res.json(muestras)
-        //           }, 4000);
-        //     }
+// app.post('/api/corte-de-fecha', (req, res)=>{
+//     let body = req.body
+
+//     let desde = moment(body.desde)
+//     let hasta = moment(body.hasta).add(1, 'days');
+
+//     let muestras = []
+
+//     Almacenado.find({fecha:{$gte:desde}})
+//         .populate('material')
+//         .exec((err, almacenDB)=>{
+//         if( err ){
+//             return res.status(400).json({
+//                 ok:false,
+//                 err
+//             });
+//         }
+
+//         for(let i=0; i<almacenDB.length;i++){
+//             Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
+//             .populate('material.material')
+//             .exec((err, loteDB)=>{
+//                 if(loteDB.length>0){
+//                     let coincidencias = false;
+//                     for(let x=0;x<loteDB.length;x++){
+//                         for(let y=0;y<loteDB[x].material.length;y++){
+                            
+//                             if(loteDB[x].material[y].material.nombre == almacenDB[i].material.nombre && loteDB[x].material[y].codigo === almacenDB[i].codigo && loteDB[x].material[y].lote === almacenDB[i].lote){
+//                                 muestras.push({nombre:`${loteDB[x].material[y].material.nombre}`,gramaje:loteDB[x].material[y].material.gramaje, calibre:loteDB[x].material[y].material.calibre, ancho:loteDB[x].material[y].material.ancho, largo:loteDB[x].material[y].material.largo, marca:loteDB[x].material[y].material.marca,cantidad:loteDB[x].material[y].EA_Cantidad, grupo:almacenDB[i].material.grupo})
+//                                 coincidencias = true
+//                             }
+                            
+//                             if(x == loteDB.length-1){
+//                                 if(y == loteDB[x].material.length -1){
+//                                     if(!coincidencias){
+//                                         muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }else{
+//                     muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+//                 }
+//             })
+//             if(i === almacenDB.length -1 ){
+//                 setTimeout(() => {
+//                     res.json(muestras)
+//                   }, 4000);
+//             }
+//         }
+//         // for(let i=0; i<almacenDB.length;i++){
+//         //         Lotes.find({'material.material':almacenDB[i].material._id, 'material.lote':almacenDB[i].lote, 'material.codigo':almacenDB[i].codigo})
+//         //         .populate('material.material')
+//         //         .exec((err, loteDB)=>{
+//         //                 if(loteDB[0]){
+//         //                     for(let n=0;n<loteDB[0].material.length;n++){
+//         //                         if(loteDB[0].material[n].lote === almacenDB[i].lote){
+//         //                             // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
+//         //                             if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
+//         //                             // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
+//         //                                 if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
+//         //                                 // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
+//         //                                 // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
+//         //                                     muestras.push({nombre:loteDB[0].material[n].material.nombre, gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
+//         //                                 }
+//         //                             }
+//         //                         }             
+//         //                     }
+//         //                 }else{
+//         //                     muestras.push({nombre:almacenDB[i].material.nombre, ancho:almacenDB[i].material.ancho, largo:almacenDB[i].material.largo, calibre:almacenDB[i].material.calibre, gramaje:almacenDB[i].material.gramaje, marca:almacenDB[i].material.marca,cantidad:almacenDB[i].cantidad,grupo:almacenDB[i].material.grupo})
+//         //                 }
+//         //         })
+
+//         //     if(i === almacenDB.length -1 ){
+//         //         setTimeout(() => {
+//         //             res.json(muestras)
+//         //           }, 4000);
+//         //     }
         
-        // }
-    })
+//         // }
+//     })
     
-})
+// })
 
 app.post('/api/corte-salida', (req, res)=>{
     let body = req.body
@@ -1042,7 +1200,7 @@ app.post('/api/corte-salida', (req, res)=>{
     let hasta = moment(body.hasta).add(1, 'days');
     let muestras = []
 
-    Lotes.find({fecha:{$gte:desde}})
+    Lotes.find({fecha:{$gte:desde, $lte:hasta}})
         .populate('material.material')
         .exec((err, salidas)=>{
         if( err ){
@@ -1064,7 +1222,7 @@ app.post('/api/corte-devolucion', (req, res)=>{
     let hasta = moment(body.hasta).add(1, 'days');
     let muestras = []
 
-    Devolucion.find({fecha:{$gte:desde}})
+    Devolucion.find({fecha:{$gte:desde, $lte:hasta}})
         .populate('filtrado.material')
         .exec((err, devoluciones)=>{
         if( err ){
