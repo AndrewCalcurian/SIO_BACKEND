@@ -73,7 +73,7 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
     });
 
 
-    let titulo = `<h1>Hola Yraida!</h1>`
+    let titulo = `<h1>Hola Equipo!</h1>`
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,

@@ -89,20 +89,20 @@ app.delete('/api/requi/:id', (req, res)=>{
 app.put('/api/requi/:id', (req,res)=>{
     let id = req.params.id;
 
-    let num_solicitud;
+    let num_solicitud = 0;
     let tabla = '';
 
     isolicitud.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true})
-                .exec((err, solicitud)=>{
+                 .exec((err, solicitud)=>{
                     if( err ){
-                        return res.status(400).json({
+                         return res.status(400).json({
                             ok:false,
-                            err
-                        });
-                    }
+                             err
+                         });
+                     }
 
                     num_solicitud = solicitud.seq;
-                })
+                 })
 
     // iasignacion.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true})
     //             .exec((err, asignacion)=>{
@@ -139,15 +139,14 @@ app.put('/api/requi/:id', (req,res)=>{
                         }
                         material.push(nombre);
                         cantidad.push(cant)
-
                         if(nombre != undefined){
                             let data = `<tr><td>${nombre}</td><td>${cant}</td></tr>`;
                             tabla = tabla + data;
                         }
 
                         let final = producto_.length -1;
-                        if(i == final){ 
-                            FAL004(requi.producto.producto,requi.sort, num_solicitud,material,cantidad,requi.usuario,requi.motivo,tabla)
+                        if(i == final){
+                             FAL004(requi.producto.producto,requi.sort, num_solicitud,material,cantidad,requi.usuario,requi.motivo,tabla)
                         }
                     }
                     

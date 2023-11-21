@@ -5,6 +5,9 @@ const Requisicion = require('../../database/models/requisicion.model')
 const {FAL004} = require('../docs/FAL-004.pdf');
 const isolicitud = require('../../database/models/isolicitud.modal')
 
+
+let pads = 0;
+
 function SolicitarRequisicion(id_requi){
     Requisicion.findOne({_id:id_requi})
         .populate('cliente producto producto.grupo')
@@ -125,8 +128,15 @@ function SolicitudMateria(orden_){
                     let cantidad_ = ((orden.producto.materiales[orden.montaje][i].cantidad * orden.paginas)/1000).toFixed(2)
                     
                     cantidad.push(`${cantidad_} ${orden.producto.materiales[orden.montaje][i].producto.unidad}`)
+                }else if(orden.producto.materiales[orden.montaje][i].producto.grupo.nombre == 'Barniz Acuoso'){
+                    let cantidad_ = ((orden.producto.materiales[orden.montaje][i].cantidad * orden.paginas)/1000).toFixed(2)
+                    
+                    cantidad.push(`${cantidad_} ${orden.producto.materiales[orden.montaje][i].producto.unidad}`)
                 }else if(orden.producto.materiales[orden.montaje][i].producto.grupo.nombre == 'Cajas Corrugadas'){
                     let cantidad_ = Caja_((orden.cantidad / orden.producto.materiales[orden.montaje][i].cantidad), orden.producto.materiales[orden.montaje][i].producto.cinta)
+                    cantidad.push(`${cantidad_} ${orden.producto.materiales[orden.montaje][i].producto.unidad}`)
+                }else if(orden.producto.materiales[orden.montaje][i].producto.grupo.nombre == 'Soportes de Embalaje'){
+                    let cantidad_ = (orden.producto.materiales[orden.montaje][i].cantidad * this.pads).toFixed(2)
                     cantidad.push(`${cantidad_} ${orden.producto.materiales[orden.montaje][i].producto.unidad}`)
                 }else if(orden.producto.materiales[orden.montaje][i].producto.grupo.nombre == 'Cinta de Embalaje'){
                     let cantidad_ = orden.producto.materiales[orden.montaje][i].producto.cinta * (orden.cantidad / orden.producto.materiales[orden.montaje][i].cantidad)
@@ -134,23 +144,6 @@ function SolicitudMateria(orden_){
                 }else {
                     cantidad.push(`${orden.paginas} ${orden.producto.materiales[orden.montaje][i].producto.unidad}`)
                 }
-                
-                // <ng-container *ngIf="materiales.producto.grupo.nombre == 'Tinta'">
-                //                                 {{((materiales.cantidad * orden.paginas)/1000).toFixed(2)}}{{Unidad(materiales.producto.nombre)}}
-                //                             </ng-container>
-                //                             <ng-container *ngIf="materiales.producto.grupo.nombre == 'Barniz'">
-                //                                 {{((materiales.cantidad * orden.paginas)/1000).toFixed(2)}}{{Unidad(materiales.producto.nombre)}}
-                //                             </ng-container>
-                //                             <ng-container *ngIf="materiales.producto.grupo.nombre == 'Pega'">
-                //                                 {{((materiales.cantidad * orden.cantidad)/1000).toFixed(2)}}{{Unidad(materiales.producto.nombre)}}
-                //                             </ng-container>
-                //                             <ng-container *ngIf="materiales.producto.grupo.nombre == 'Cajas Corrugadas'">
-                //                                 {{Caja_((orden.cantidad / materiales.cantidad),materiales.producto.cinta)}}{{Unidad(materiales.producto.nombre)}}
-                                            
-                //                             </ng-container>
-                //                             <ng-container *ngIf="materiales.producto.grupo.nombre == 'Cinta de Embalaje'">
-                //                                 {{cintas_}}{{Unidad(materiales.producto.nombre)}}
-                //                             </ng-container>
                 
                 let final = orden.producto.materiales[orden.montaje].length - 1;
                 if(i === final){
@@ -208,6 +201,7 @@ function SolicitudMateria(orden_){
 
 function Caja_(caja, cinta){
     caja = Math.ceil(caja);
+    this.pads = caja;
     this.cintas_= Number(cinta * caja)
     return caja
   }

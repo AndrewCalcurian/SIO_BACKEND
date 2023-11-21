@@ -12,8 +12,6 @@ const nodemailer = require('nodemailer');
 
 async function FAL004(producto_,orden, num_solicitud,producto,cantidad,usuario, motivo,tabla){
 
-    // //console.log(num_solicitud.length)
-
 if(orden === "#"){
     orden = "N/A"
 }
@@ -185,6 +183,7 @@ if(orden === 'N/A'){
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 }else{
     NuevaSolicitud(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
+    // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
     // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 }
 

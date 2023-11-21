@@ -31,6 +31,7 @@ app.get('/api/devolucion', (req, res)=>{
 
 });
 
+
 app.delete('/api/devoluciones/:id', (req,res)=>{
      const id = req.params.id
 
@@ -46,13 +47,87 @@ app.delete('/api/devoluciones/:id', (req,res)=>{
      })
 })
 
+app.get('/api/reenvio-devolucion/:id', (req, res)=>{
+    const id = req.params.id
+    Devolucion.findOne({_id:id})
+    .exec((err, devolucionDB)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+        let lotes = []
+        let materiales = []
+        let cantidades = []
+        let tabla = '';
+        for(let i=0;i<devolucionDB.filtrado.length;i++){
+
+            lotes.push(devolucionDB.filtrado[i].lote)
+                Material.findById(devolucionDB.filtrado[i].material, (err, material)=>{
+                    if( err ){
+                        return res.status(400).json({
+                            ok:false,
+                            err
+                        });
+                    }
+        
+                    // //console.log(material.nombre)
+                let data = '';
+                cantidades.push(`${devolucionDB.filtrado[i].cantidad} ${material.unidad}`)
+                if(!material.ancho){
+                    if(material.grupo == '61fd54e2d9115415a4416f17' || material.grupo == '61fd6300d9115415a4416f60'){
+                        materiales.push(`${material.nombre} (${material.marca}) - Lata:${devolucionDB.filtrado[i].codigo}`)
+                        data = `<tr><td>${material.nombre} (${material.marca}) - Lata:${devolucionDB.filtrado[i].codigo}</td>
+                        <td>${devolucionDB.filtrado[i].cantidad} ${material.unidad}</td></tr>`;
+                    }else{
+                        materiales.push(`${material.nombre} (${material.marca})`)
+                        data = `<tr><td>${material.nombre} (${material.marca})</td>
+                        <td>${devolucionDB.filtrado[i].cantidad} ${material.unidad}</td></tr>`;
+                    }
+                }else{
+                    materiales.push(`${material.nombre} ${material.ancho}x${material.largo} (${material.marca}) - Paleta:${devolucionDB.filtrado[i].codigo}`)
+                    data = `<tr><td>${material.nombre} ${material.ancho}x${material.largo} (${material.marca}) - Paleta:${devolucionDB.filtrado[i].codigo}</td>
+                    <td>${devolucionDB.filtrado[i].cantidad} ${material.unidad}</td></tr>`;
+                }
+        
+                tabla = tabla + data;
+                let final = devolucionDB.filtrado.length -1
+                if(i === final){
+        
+                    idevolucion.findByIdAndUpdate({_id: 'test'}, {$inc: {seq: 1}}, {new: true, upset:true})
+                        .exec((err, devolucion)=>{
+                            if( err ){
+                                return res.status(400).json({
+                                    ok:false,
+                                    err
+                                });
+                            }
+        
+                            num_solicitud = devolucion.seq;
+                            // FAL006(Devolucion.filtrado.orden,num_solicitud,materiales,lotes, cantidades, body.motivo, body.usuario,tabla)
+                            // let newDEvolucion = new Devolucion({
+                            //     orden:body.orden,
+                            //     filtrado:body.filtrado,
+                            //     motivo:body.motivo
+                            // }).save();
+                            FAL006(devolucionDB.orden,num_solicitud,materiales,lotes, cantidades, devolucionDB.motivo, devolucionDB.usuario,tabla)
+                            res.json('done');
+                        })
+                }
+        
+                })
+        }
+    })
+})
+
 app.put('/api/devoluciones/:id', (req, res)=>{
 
     const body = req.body;
     const id = req.params.id;
 
     Devolucion.findByIdAndUpdate(id, {status:'Culminado'},(err, devolucionDB)=>{
-    // Devolucion.findByIdAndUpdate(id, {_id:id},(err, devolucion)=>{
+    //Devolucion.findByIdAndUpdate(id, {_id:id},(err, devolucion)=>{
         if( err ){
             return res.status(400).json({
                 ok:false,
@@ -200,5 +275,42 @@ app.get('/devolucion/:id', (req, res)=>{
 
     })
 })
+
+app.get('/api/devolucion/:lote', async (req, res) => {
+    try {
+      const id = req.params.lote;
+      const lotes = await Lote.find({ _id: id }).exec();
+  
+      if (lotes.length === 0) {
+        return res.status(400).json({
+          ok: false,
+          error: 'No se encontró ningún lote con el ID proporcionado'
+        });
+      }
+  
+      for (const material of lotes[0].material) {
+        const almacenDB = await Almacenado.findOne({ lote: material.lote, codigo: material.codigo }).exec();
+  
+        if (!almacenDB) {
+          return res.status(400).json({
+            ok: false,
+            error: 'No se encontró ningún registro en Almacenado para el material especificado'
+          });
+        }
+  
+        const nuevaCantidad = Number(almacenDB.cantidad) + Number(material.cantidad);
+        almacenDB.cantidad = nuevaCantidad;
+        await almacenDB.save();
+      }
+  
+      res.json({ ok: true });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        ok: false,
+        error: 'Ocurrió un error en el servidor'
+      });
+    }
+  });
 
 module.exports = app;

@@ -545,19 +545,21 @@ Lotes.find(orden__)
 
                 }
                 if(material_adicional.grupo == '63625feecd436f1a90a1ea7d'){
-                    let material_adicional = adcionalesDB[n].material[n_i].material
-                    let cantidad = Number((adcionalesDB[n].material[n_i].EA_Cantidad).toFixed(2))
-                    let Existencia = Barniz_acuoso.findIndex(x=> x.Nombre === material_adicional.nombre && x.Marca === material_adicional.marca)
-                        if(Existencia != -1){
-                            Barniz_acuoso[Existencia].Cantidad = Number(Barniz_acuoso[Existencia].Cantidad)+Number(cantidad * 217.72)
-                            Barniz_acuoso[Existencia].Cantidad = Barniz_acuoso[Existencia].Cantidad
-                        }else{
-                            Barniz_acuoso.push({Nombre:material_adicional.nombre,
-                                             Marca:material_adicional.marca,
-                                             Cantidad:Number(cantidad * 217.72)})
-                        }
-                    Total_barniz_acuoso = Number(Total_barniz_acuoso) + Number(cantidad * 217.72);
-                    Total_barniz_acuoso = (Total_barniz_acuoso)
+                    if(adcionalesDB[n].material[n_i].EA_Cantidad){
+                        let material_adicional = adcionalesDB[n].material[n_i].material
+                        let cantidad = Number((adcionalesDB[n].material[n_i].EA_Cantidad).toFixed(2))
+                        let Existencia = Barniz_acuoso.findIndex(x=> x.Nombre === material_adicional.nombre && x.Marca === material_adicional.marca)
+                            if(Existencia != -1){
+                                Barniz_acuoso[Existencia].Cantidad = Number(Barniz_acuoso[Existencia].Cantidad)+Number(cantidad * 217.72)
+                                Barniz_acuoso[Existencia].Cantidad = Barniz_acuoso[Existencia].Cantidad
+                            }else{
+                                Barniz_acuoso.push({Nombre:material_adicional.nombre,
+                                                 Marca:material_adicional.marca,
+                                                 Cantidad:Number(cantidad * 217.72)})
+                            }
+                        Total_barniz_acuoso = Number(Total_barniz_acuoso) + Number(cantidad * 217.72);
+                        Total_barniz_acuoso = (Total_barniz_acuoso)
+                    }
 
                 }
                 if(material_adicional.grupo == '61fd72ecd9115415a4416f68'){
