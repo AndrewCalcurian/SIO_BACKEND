@@ -663,7 +663,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
                             if(x == final){
 
-                                FAL005(LoteDB.orden,1459, Lotes_, materiales,lotes,solicitados,Requi)
+                                FAL005(LoteDB.orden,LoteDB.asignacion, Lotes_, materiales,lotes,solicitados,Requi)
                             
                                 console.log(materiales)
                                 // res.send(lotes_)

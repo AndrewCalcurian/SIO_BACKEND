@@ -6,7 +6,8 @@ const path = require('path');
 const Producto = require('../database/models/producto.model');
 const atinta = require('../database/models/analisis.tinta.model');
 const fabricante = require('../database/models/fabricante.model');
-const proveedor = require('../database/models/proveedores.model')
+const proveedor = require('../database/models/proveedores.model');
+const { compileFunction } = require('vm');
 
 
 
@@ -29,7 +30,7 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
     }
 
     //validad tipo
-    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo','analisis','fabricante','proveedor'];
+    let tipoValido = ['errors', 'usuarios','producto','despacho','distribucion','aereo','analisis','fabricante','proveedor','repuestos'];
     if( tipoValido.indexOf( tipo ) < 0 ){
         return res.status( 400 ).json({
             ok:false,
@@ -81,11 +82,18 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
             Fabricante(id, res, nombreArchivo)
         }else if(tipo === 'proveedor'){
             proveedor_(id, res, nombreArchivo)
+        }else if(tipo === 'repuestos'){
+            repuesto(id, res, nombreArchivo)
         }
 
     });
 
 });
+
+function repuesto(id, res, nombreArchivo){
+    console.log(nombreArchivo)
+    res.json({ok:true, img:nombreArchivo})
+}
 
 function proveedor_(id, res, nombreArchivo){
     proveedor.findById(id,(err,usuarioDB)=>{

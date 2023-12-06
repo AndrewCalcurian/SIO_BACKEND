@@ -29,6 +29,7 @@ app.use ( require('./compras.routes'));
 app.use ( require('./materiaprima.routes'));
 app.use ( require('./facturacion.routes'));
 app.use ( require('./asignacion.routes'));
+app.use ( require('./repuestos.routes'));
 
 
 
