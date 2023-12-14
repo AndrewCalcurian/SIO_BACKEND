@@ -98,6 +98,22 @@ app.post('/api/pieza', (req, res) =>{
     let body = req.body;
     let Pieza_ = new Pieza(body)
 
+    Pieza.findOne({ repuesto: body.repuesto, factura:body.factura }, (err, repuesto) => {
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err
+            });
+        } else if (repuesto) {
+            res.json({
+                error:{
+                    mensaje:'Este producto ya fué registrado con esta factura'
+                }
+            })
+            return 
+        }
+    });
+
     Pieza_.save((err, PiezaDB)=>{
         if( err ){
             return res.status(400).json({

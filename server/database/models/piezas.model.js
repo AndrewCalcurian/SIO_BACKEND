@@ -20,6 +20,7 @@ const piezaSchema = new mongoose.Schema({
   precio: { type: Number },
   ubicacion: { type: String },
   cantidad: { type: Number },
+  nota: {type: String}
 });
 
 module.exports = mongoose.model('Pieza', piezaSchema);
