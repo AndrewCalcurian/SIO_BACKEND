@@ -104,12 +104,6 @@ doc.add(
         new Cell(new Txt('GERENCIA DE OPERACIONES').end).end,
         new Cell(new Txt('ORDEN DE PRODUCCIÓN').end).fillColor('#dedede').fontSize(10).alignment('center').end,
         new Cell(new Txt(`${orden}`).end).alignment('center').end,
-      ],
-      [
-        new Cell(new Txt('PRODUCTO').end).colSpan(2).fillColor('#dedede').fontSize(10).alignment('center').end,
-        new Cell(new Txt('').end).end,
-        new Cell(new Txt('').end).end,
-        new Cell(new Txt(``).end).end,
       ]
     ]).widths(['25%','25%','25%','25%']).end
   )

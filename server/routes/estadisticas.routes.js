@@ -95,11 +95,11 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
 
     if(body.op){
         sort = {sort:body.op}
-        orden__ = {orden:body.op}
+        orden__ = {orden:body.op, status:{$ne:'Cancelado'}}
 
     }else{
         sort = {fecha:{$gte:desde,$lte:hasta}}
-        orden__ = {fecha:{$gte:desde,$lte:hasta}}
+        orden__ = {fecha:{$gte:desde,$lte:hasta}, status:{$ne:'Cancelado'}}
         // Orden.find({fecha:{
     //     $gte:desde,
     //     $lt: hasta
@@ -204,7 +204,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
         return
     }
     for(let i=0;i<orden.length;i++){
-        Devolucion.find({orden:orden[i].sort})
+        Devolucion.find({orden:orden[i].sort, status:'Culminado'})
         .populate('filtrado.material')
         .exec((err, DevolucionesDB)=>{
             if( err ){
@@ -267,7 +267,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
 
         if(body.cliente){
             orderss.push(orden[i].sort)
-            orden__ = {orden:{$in:orderss}}
+            orden__ = {orden:{$in:orderss}, status:'Culminado'}
         }
     }
 
@@ -1019,7 +1019,7 @@ app.post('/api/reporte-devoluciones', (req, res)=>{
     let hasta = moment(body.hasta).add(1, 'days');
     let muestras = []
 
-    Devolucion.find({fecha:{$gte:desde, $lte:hasta}})
+    Devolucion.find({fecha:{$gte:desde, $lte:hasta}, status:'Culminado'})
         .populate('filtrado.material')
         .exec((err, devoluciones)=>{
         if( err ){
@@ -1224,7 +1224,7 @@ app.post('/api/corte-devolucion', (req, res)=>{
     let hasta = moment(body.hasta).add(1, 'days');
     let muestras = []
 
-    Devolucion.find({fecha:{$gte:desde, $lte:hasta}})
+    Devolucion.find({fecha:{$gte:desde, $lte:hasta}, status:'Culminado'})
         .populate('filtrado.material')
         .exec((err, devoluciones)=>{
         if( err ){
