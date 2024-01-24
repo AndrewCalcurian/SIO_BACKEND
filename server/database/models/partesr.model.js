@@ -5,6 +5,8 @@ let Schema = mongoose.Schema;
 let SolicitudParteSchema = new Schema({
   orden: { type: String, default: 'test' },
   status: { type: String, default: 'espera' },
+  motivo:{type: String},
+  usuario:{type: String},
   repuestos: [{
     repuesto:{
       type:Schema.Types.ObjectId,

@@ -4,7 +4,9 @@ const Categoria = require('../database/models/categoria.model');
 const Repuesto = require('../database/models/repuesto.model');
 const Pieza = require('../database/models/piezas.model');
 const RepuestoSolicitud = require('../database/models/partesr.model')
+const irepuestos = require('../database/models/irepuestos.model')
 const {FAL007} = require('../middlewares/docs/FAL-007.pdf')
+const {FAL008} = require('../middlewares/docs/FAL-008.pdf')
 
 app.post('/api/categoria', (req, res) =>{
     let body = req.body;
@@ -36,7 +38,7 @@ app.post('/api/repuesto', (req, res) =>{
     let body = req.body;
     let Repuesto_ = new Repuesto(body)
 
-    Repuesto.findOne({ nombre: body.nombre, categoria: body.categoria, maquina:body.maquina }, (err, repuesto) => {
+    Repuesto.findOne({ parte: body.parte, categoria: body.categoria, maquina:body.maquina }, (err, repuesto) => {
         if (err) {
             return res.status(400).json({
                 ok: false,
@@ -97,34 +99,39 @@ app.get('/api/repuesto', (req, res)=>{
 
 app.post('/api/pieza', (req, res) =>{
     let body = req.body;
-    let Pieza_ = new Pieza(body)
+    console.log(body)
 
-    Pieza.findOne({ repuesto: body.repuesto, factura:body.factura }, (err, repuesto) => {
+    Pieza.findOne({repuesto:body.repuesto}, (err, repuesto)=>{
         if (err) {
             return res.status(400).json({
                 ok: false,
                 err
             });
-        } else if (repuesto) {
-            res.json({
-                error:{
-                    mensaje:'Este producto ya fué registrado con esta factura'
-                }
+        } 
+        if (repuesto) {
+            Pieza.findByIdAndUpdate(repuesto._id, {$inc: {cantidad: body.cantidad}}, (err, updated)=>{
+                if (err) {
+                    return res.status(400).json({
+                        ok: false,
+                        err
+                    });
+                } 
+                res.json(updated)
             })
-            return 
-        }
-    });
+        }else{
+            let Piece = new Pieza(body).save((err, NuevaPieza)=>{
+                if (err) {
+                    return res.status(400).json({
+                        ok: false,
+                        err
+                    });
+                }
 
-    Pieza_.save((err, PiezaDB)=>{
-        if( err ){
-            return res.status(400).json({
-                ok:false,
-                err
-            });
+                res.json({
+                    pieza:NuevaPieza
+                })
+            })
         }
-        res.json({
-            pieza:PiezaDB
-        })
     })
 })
 
@@ -208,7 +215,7 @@ app.put('/api/solicitudrepuesto/:id', (req, res)=>{
             });
         }
 
-        if(estado === 'espera'){
+        if(estado === 'Aprobado'){
             RepuestoSolicitud.findOne({_id:id})
                 .populate('repuestos.repuesto')
                 .populate({path:'repuestos.repuesto', populate:{path:'maquina'}})
@@ -220,7 +227,9 @@ app.put('/api/solicitudrepuesto/:id', (req, res)=>{
                             err
                         });
                     }
-                    let table = '';
+
+                    irepuestos.findByIdAndUpdate({_id: 'i'}, {$inc: {seq: 1}}, {new: true, upset:true}).then(function(count) {
+                        let table = '';
                     let nparte = [];
                     let repuesto = [];
                     let categoria = [];
@@ -242,10 +251,16 @@ app.put('/api/solicitudrepuesto/:id', (req, res)=>{
                         cantidad.push(NewRequisicion.repuestos[i].cantidad)
                     
                         if(i === NewRequisicion.repuestos.length -1){
-                            FAL007(table, nparte, repuesto, categoria, maquina, cantidad)
+                            FAL007(table, nparte, repuesto, categoria, maquina, cantidad, NewRequisicion.usuario, NewRequisicion.motivo,count.seq)
                             res.json(NewRequisicion)
                         }
                     }
+                    
+                    })
+                    .catch(function(error) {
+                        throw error;
+                    });
+                    
     })
         }else{
             res.json(solicitud)
@@ -257,9 +272,79 @@ app.put('/api/solicitudrepuesto/:id', (req, res)=>{
 
 })
 
-app.get('/prueba-formato', (req, res)=>{
-    FAL007()
-    res.json('send')
+app.get('/api/repuestos-aprobados', (req, res)=>{
+    
+    RepuestoSolicitud.find({status:'Aprobado'}) 
+                .populate('repuestos.repuesto')
+                .populate({path:'repuestos.repuesto', populate:{path:'maquina'}})
+                .populate({path:'repuestos.repuesto', populate:{path:'categoria'}})
+                .exec((err, Requisicion)=>{
+                    if( err ){
+                        return res.status(400).json({
+                            ok:false,
+                            err
+                        });
+                    }
+                    res.json(Requisicion)
+    })
+
+})
+
+app.put('/api/descuento-repuesto/:id', (req, res)=>{
+    let id = req.params.id;
+    let body = req.body;
+
+    RepuestoSolicitud.findByIdAndUpdate(id, {status:'Finalizada'}, (err, repuesto)=>{
+        if( err ){
+            return res.status(400).json({
+                ok:false,
+                err
+            });
+        }
+
+        let table = '';
+        let nparte = [];
+        let parte = [];
+        let categoria = [];
+        let maquina = [];
+        let Ubicacion = [];
+        let cantidad = []
+
+
+        for(let i=0;i<body.repuestos.length;i++){
+            Pieza.findOneAndUpdate({repuesto:body.repuestos[i].repuesto._id}, {$inc: {cantidad: -body.repuestos[i].cantidad}}, (err, updated)=>{
+                if (err) {
+                    return res.status(400).json({
+                        ok: false,
+                        err
+                    });
+                }
+
+                table = table + `<tr>
+                                <td>${body.repuestos[i].repuesto.parte}</td>
+                                <td>${body.repuestos[i].repuesto.nombre}</td>
+                                <td>${body.repuestos[i].repuesto.categoria.nombre}</td>
+                                <td>${body.repuestos[i].repuesto.maquina.nombre}</td>
+                                <td>${body.repuestos[i].ubicacion}</td>
+                                <td>${body.repuestos[i].cantidad}</td>
+                                </tr>`
+            })
+
+
+
+            if(i === body.repuestos.length -1){
+                FAL008(table)
+                console.log(table)
+                res.json('done')
+            }
+        }
+
+    })
+})
+
+app.get('/correo', (req, res)=>{
+    FAL008()
+    res.json('hecho')
 })
 
 module.exports = app;

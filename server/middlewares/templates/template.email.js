@@ -157,6 +157,32 @@ function header6(tituloCorreo){
                                     <td style="padding: 20px 0 30px 0;" style="color: #1c2831; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">`
                                 
 }
+function header7(tituloCorreo, header){
+    return head = `<body style="margin: 0; padding:0;" bgcolor="#e1e1e1">
+    <table border="0" cellpadding="0" width="100%" style="margin-top: 10;">
+        <tr>
+            <td>
+                <table align="center" border="0" cellpading="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                    <tr>
+                        <td align="center" bgcolor="#2E3646" style="padding: 5px 0 5px 0;">
+                        <a href="https://imgbb.com/"><img src="https://i.ibb.co/ZxScX13/Icon.png" alt="Icon" border="0" width="80px"></a>    
+                        <h2 style="color: #ffffff" font-family: Arial, sans-serif;>${header}</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 40px 30px 40px 30px;" bgcolor="#FFFFFF">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="color: #1c2831; font-family: Arial, sans-serif; font-size: 24px;">
+                                        <b>
+                                        ${tituloCorreo}
+                                        </b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 20px 0 30px 0;" style="color: #1c2831; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">`
+                                
+}
 const footer = `</td>
 </tr>
 <tr>
@@ -218,6 +244,7 @@ module.exports = {
     header4,
     header5,
     header6,
+    header7,
     header__,
     footer
 }

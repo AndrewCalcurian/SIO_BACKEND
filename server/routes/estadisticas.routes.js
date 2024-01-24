@@ -195,16 +195,17 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
             return res.status(400).json({
                 ok:false,
                 err
-                });
-            }
-
-            Ordenes= orden;
+            });
+        }
+        
+        Ordenes= orden;
+        console.log(Ordenes)
     if(orden.length < 1){
         res.json({mensaje:'No se encontró orden de producción'})
         return
     }
     for(let i=0;i<orden.length;i++){
-        Devolucion.find({orden:orden[i].sort, status:'Culminado'})
+        Devolucion.find({orden:orden[i].sort})
         .populate('filtrado.material')
         .exec((err, DevolucionesDB)=>{
             if( err ){
@@ -267,7 +268,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
 
         if(body.cliente){
             orderss.push(orden[i].sort)
-            orden__ = {orden:{$in:orderss}, status:'Culminado'}
+            orden__ = {orden:{$in:orderss}, status:{$ne:'Cancelado'}}
         }
     }
 
@@ -411,7 +412,7 @@ Lotes.find(orden__)
 // Lotes.find({fecha:{$gte: desde,$lt: hasta}})
     .populate('material.material')
     .exec((err, adcionalesDB)=>{
-
+        console.log(trabajos)
         if( err ){
             return res.status(400).json({
                 ok:false,
@@ -683,8 +684,10 @@ Lotes.find(orden__)
             }
         }
 }
-
-res.json(data)
+console.log(data)
+setTimeout(function(){
+    res.json(data)
+}, 2000);
 })
 })
 

@@ -1,8 +1,8 @@
 const nodemailer = require('nodemailer');
-const {header6,header2, footer} = require('../templates/template.email');
+const {header7,header2, footer} = require('../templates/template.email');
 let {tituloCorreo} = require('../templates/template.email')
 
-function NuevaSolicitud_(correo,adjunto,table){
+function NuevaSolicitud_(correo,adjunto,table,motivo,correlativo){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
         port: 25,
@@ -17,17 +17,16 @@ function NuevaSolicitud_(correo,adjunto,table){
     });
 
 
-    let titulo = `<h1>Hola Admin!</h1>`
-    let random = Math.floor(Math.random() * 100) + 1;
+    let titulo = `<h1>Hola Equipo!</h1>`
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
-        subject: `Solicitud de Material ${random}`,
+        subject: `Solicitud de repuesto - RP-SOL-${correlativo}`,
         attachments: [{
-            filename: `AL-SOL.pdf`,
+            filename: `RP-SOL-${correlativo}.pdf`,
             content:adjunto
         }],
-        html:`${header6(titulo)}
+        html:`${header7(titulo, 'Nueva Solicitud de Repuesto')}
         <br>
                Se ha realizado una nueva solicitud de repuesto 
                <br>
@@ -47,7 +46,7 @@ function NuevaSolicitud_(correo,adjunto,table){
                    </tr>
                    ${table}
                </table><br>
-    <b>Motivo:</b><br>
+    <b>Motivo:</b>${motivo}<br>
     Dirígete al sistema SIO para asignarlo(s).
 
             ${footer}`

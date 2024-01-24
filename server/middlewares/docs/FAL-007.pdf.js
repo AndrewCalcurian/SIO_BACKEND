@@ -11,7 +11,11 @@ const { stack } = require('../../routes/repuestos.routes');
 
 
 
-async function FAL007(table, nparte, repuesto, categoria, maquina, cantidad){
+async function FAL007(table, nparte, repuesto, categoria, maquina, cantidad, usuario, motivo, seq){
+
+    seq = seq.toString();
+    var firstTwoCharacters = seq.slice(0, 2);
+    var correlativo = firstTwoCharacters + '-' + seq.slice(2);
 
 const printer = new Pdfmake({
     Roboto: {
@@ -109,7 +113,7 @@ doc.add(
         new Cell(new Txt('Gerencia de Gestión de la Calidad').end).margin([0, 5]).alignment('center').end,
         new Cell(new Txt(``).end).alignment('center').border([false]).end,
         new Cell(new Txt('N° SOLICITUD').end).fillColor('#dedede').fontSize(10).alignment('center').end,
-        new Cell(new Txt(`RP-SOL-24-XXXX`).end).margin([0,4]).fontSize(15).alignment('center').end,
+        new Cell(new Txt(`RP-SOL-${correlativo}`).end).margin([0,4]).fontSize(15).alignment('center').end,
       ]
     ]).widths(['13%','11%','1%','17%','30%','1%','9%','18%']).end
   )
@@ -167,10 +171,10 @@ doc.add(
             new Cell(new Txt('RECIBIDO POR:').end).bold().fillColor('#000000').color('#FFFFFF').fontSize(9).alignment('center').end,
         ],
         [
-            new Cell(new Txt(`YHWH`).end).fontSize(9).end,
+            new Cell(new Txt(`${motivo}`).end).fontSize(9).end,
             new Cell(new Txt(``).end).alignment('center').border([false]).end,
             new Cell(new Txt(`
-            FIRMA: Andres Calcurian
+            FIRMA: ${usuario}
 
             FECHA:${hoy}
             `).end).fontSize(9).end,
@@ -198,7 +202,7 @@ const pdf = printer.createPdfKitDocument(doc.getDefinition());
 // pdf.pipe(fs.createWriteStream('document.pdf'));
 pdf.end();
 // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf)
-    NuevaSolicitud_('calcurian.andrew@gmail.com,zuleima.vela@poligraficaindustrial.com',pdf,table)
+    NuevaSolicitud_('calcurian.andrew@gmail.com, zuleima.vela@poligraficaindustrial.com',pdf,table,motivo,correlativo)
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 
 
