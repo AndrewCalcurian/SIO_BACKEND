@@ -45,7 +45,7 @@ app.get('/api/despachos-cliente/:cliente/:desde/:hasta', (req, res)=>{
             
             for(let x=0;x<Despachado[i].despacho.length;x++){
                 
-                Orden.find({sort:Despachado[i].despacho[x].op}, (err, OrdenDB)=>{
+                Orden.findOne({sort:Despachado[i].despacho[x].op}, (err, OrdenDB)=>{
                     if( err ){
                         return res.status(400).json({
                             ok:false,
@@ -55,15 +55,13 @@ app.get('/api/despachos-cliente/:cliente/:desde/:hasta', (req, res)=>{
                     
                     if(moment(date, "DD-MM-yyyy") > moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") < moment(hasta, "DD-MM-yyyy")){
                         
-                        if(OrdenDB[0].cliente == cliente){
-                            Despachos__.push(Despachado[i])
-                            console.log(Despachos__)
+                        if(OrdenDB.cliente == cliente){
+                            Despachos__.push(Despachado[i].despacho[x])
                         }
                         
                     }
 
                     if(i === Despachado.length -1 && x === Despachado[i].despacho.length -1){
-                        console.log(Despachos__)
                         res.json(Despachos__)
                     }
                     })

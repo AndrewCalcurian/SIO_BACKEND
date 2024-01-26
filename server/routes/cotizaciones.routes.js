@@ -151,7 +151,6 @@ app.post('/api/cotizacion/intervalo/producto/:producto', (req, res)=>{
 
 app.put('/api/facturado', (req, res)=>{
     let body = req.body
-
     Despacho.findOne({"despacho._id":body._id}, (err, DespachoDB)=>{
 
         for(let i=0;i<DespachoDB.despacho.length;i++){

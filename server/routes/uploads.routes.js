@@ -57,7 +57,7 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
     }
 
     //cambiar nombre de la imagen
-    let nombreArchivo = `${id}-${ new Date().getMilliseconds()}.${extension}`; 
+    let nombreArchivo = `${id}-${new Date().toLocaleDateString('es-ES').replace(/\//g, '_')}_${new Date().toLocaleTimeString('es-ES').replace(/:/g, '')}.${extension}`;
 
     archivo.mv(`server/uploads/${tipo}/${nombreArchivo}`, (err)=>{
         if(err){
