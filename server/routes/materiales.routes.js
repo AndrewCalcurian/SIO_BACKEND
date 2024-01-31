@@ -632,6 +632,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
                           lotes[i] = LoteDB.material[i].lote;
                         // LoteDB.materials.push(body.LoteDB.materials[i].LoteDB.material)
                         //  console.log(LoteDB.materials)
+                        solicitados[i] = `${material.unidad} - ${LoteDB.material[i].cantidad} ${material.unidad}`;
                         if(material.unidad == 'Und'){
                             LoteDB.material[i].cantidad = Math.ceil(LoteDB.material[i].cantidad);
                         }
@@ -641,7 +642,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
                             // material.unidad = 'Und'
                         }else{
                             if(material.grupo == "61fd54e2d9115415a4416f17" || material.grupo == "61fd6300d9115415a4416f60"  || material.grupo == "61fd72ecd9115415a4416f68"){
-                                solicitados[i]= `${material.unidad} - ${LoteDB.material[i].EA_Cantidad} ${material.unidad}`
+                                solicitados[i]= `${material.unidad} - ${LoteDB.material[i].cantidad} ${material.unidad}`
                                 LoteDB.material[i].solicitado = LoteDB.material[i].EA_Cantidad
                                 // console.log(body.LoteDBs[i].EA_Cantidad)
                             }else{
@@ -662,12 +663,11 @@ app.get('/api/reenvio/:lote', (req,res)=>{
                          if(materiales.length == LoteDB.material.length && LoteDB.material.length == LoteDB.material.length && solicitados.length == LoteDB.material.length){
 
                             if(x == final){
-
-                                FAL005(LoteDB.orden,LoteDB.asignacion, Lotes_, materiales,lotes,solicitados,Requi)
                             
-                                console.log(materiales)
-                                // res.send(lotes_)
+                                FAL005(LoteDB.orden,LoteDB.asignacion, Lotes_, materiales,lotes,solicitados,Requi)
                                 res.json('ok')
+                            
+                                // res.send(lotes_)
                             }
                             
                             // console.log(materiales,'_' ,lotes)

@@ -173,6 +173,8 @@ app.post('/api/incremento/pre', (req, res)=>{
     
     let body = req.body
 
+    console.log(body);
+
     Despacho.findOne({"despacho._id":body._id}, (err, DespachoDB)=>{
 
         for(let i=0;i<DespachoDB.despacho.length;i++){
@@ -180,19 +182,28 @@ app.post('/api/incremento/pre', (req, res)=>{
 
             if(DespachoDB.despacho[i]._id == body._id){
 
-                let itemIndex = i
-                DespachoDB.despacho[i].tasa = body.tasa
-                DespachoDB.despacho[i].precio = body.precio
-                DespachoDB.despacho[i].escala = body.escala
-                DespachoDB.despacho[i].cantidad = body.cantidad
+                if(DespachoDB.despacho[i].documento[0] === 'N'){
+                    DespachoDB.despacho[i].status = 'NE'
+                    body.status = 'fac';
+                    delete body._id
+                    DespachoDB.despacho.push(body)
+                    Despacho.findOneAndUpdate({_id:DespachoDB._id}, DespachoDB, (err, DespachoDBS)=>{
+                    })
+                }else{
+                    let itemIndex = i
+                    DespachoDB.despacho[i].tasa = body.tasa
+                    DespachoDB.despacho[i].precio = body.precio
+                    DespachoDB.despacho[i].escala = body.escala
+                    DespachoDB.despacho[i].cantidad = body.cantidad
+    
+                    Despacho.findOneAndUpdate({_id:DespachoDB._id}, DespachoDB, (err, DespachoDBS)=>{
+                        
+                    })
+                }
 
-                Despacho.findOneAndUpdate({_id:DespachoDB._id}, DespachoDB, (err, DespachoDBS)=>{
-                    console.log(DespachoDBS)
-                })
             }
         }
     })
-
     icotizacion.findByIdAndUpdate({_id: 'iterator'}, {$inc: {seq: 1}}, {new: true, upset:true})
                 .exec((err, devolucion)=>{
                     if( err ){

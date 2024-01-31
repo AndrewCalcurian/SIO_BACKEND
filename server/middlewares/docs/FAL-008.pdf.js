@@ -11,11 +11,11 @@ const { stack } = require('../../routes/repuestos.routes');
 
 
 
-async function FAL008(table){
+async function FAL008(table, nparte, parte, categoria, maquina, ubicacion, cantidad, motivo, usuario, seq){
 
-    // seq = seq.toString();
-    // var firstTwoCharacters = seq.slice(0, 2);
-    // var correlativo = firstTwoCharacters + '-' + seq.slice(2);
+     seq = seq.toString();
+     var firstTwoCharacters = seq.slice(0, 2);
+     var correlativo = firstTwoCharacters + '-' + seq.slice(2);
 
 const printer = new Pdfmake({
     Roboto: {
@@ -113,7 +113,7 @@ doc.add(
         new Cell(new Txt('Gerencia de Gestión de la Calidad').end).margin([0, 5]).alignment('center').end,
         new Cell(new Txt(``).end).alignment('center').border([false]).end,
         new Cell(new Txt('N° ASIGNACIÓN').end).fillColor('#dedede').fontSize(10).alignment('center').end,
-        new Cell(new Txt(`RP-ASG-24-XXXX`).end).margin([0,4]).fontSize(15).alignment('center').end,
+        new Cell(new Txt(`RP-ASG-${correlativo}`).end).margin([0,4]).fontSize(15).alignment('center').end,
       ]
     ]).widths(['13%','11%','1%','17%','30%','1%','9%','18%']).end
   )
@@ -148,12 +148,12 @@ doc.add(
             // new Cell(new Txt('').end).border([false,false]).end,
 
 
-            new Cell(new Txt('nparte').end).end,
-            new Cell(new Txt('repuesto').end).end,
-            new Cell(new Txt('categoria').end).end,
-            new Cell(new Txt('maquina').end).end,
-            new Cell(new Txt('Ubicacion').end).end,
-            new Cell(new Txt('cantidad').end).end,
+            new Cell(new Stack(nparte).end).end,
+            new Cell(new Stack(parte).end).end,
+            new Cell(new Stack(categoria).end).end,
+            new Cell(new Stack(maquina).end).end,
+            new Cell(new Stack(ubicacion).end).end,
+            new Cell(new Stack(cantidad).end).end,
             // // new Cell(new Stack(lotes).end).end,
         ]
     ]).widths(['8%','30%','12.5%','27.5%','14%','8%']).end
@@ -173,7 +173,7 @@ doc.add(
             new Cell(new Txt('RECIBIDO POR:').end).bold().fillColor('#000000').color('#FFFFFF').fontSize(9).alignment('center').end,
         ],
         [
-            new Cell(new Txt(`Motivo de prueba`).end).fontSize(9).end,
+            new Cell(new Txt(motivo).end).fontSize(9).end,
             new Cell(new Txt(``).end).alignment('center').border([false]).end,
             new Cell(new Txt(`
             FIRMA: YRAIDA BAPTISTA
@@ -182,7 +182,7 @@ doc.add(
             `).end).fontSize(9).end,
             new Cell(new Txt(``).end).alignment('center').border([false]).end,
             new Cell(new Txt(`
-            FIRMA: USUARIO
+            FIRMA: ${usuario}
 
             FECHA:${hoy}
             `).end).fontSize(9).end,
@@ -204,7 +204,7 @@ const pdf = printer.createPdfKitDocument(doc.getDefinition());
 // pdf.pipe(fs.createWriteStream('document.pdf'));
 pdf.end();
 // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf)
-    NuevaAsignacion('calcurian.andrew@gmail.com',pdf,'prueba','RP-ASG-24-XXXX',table)
+    NuevaAsignacion('calcurian.andrew@gmail.com',pdf,motivo,correlativo,table)
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 
 

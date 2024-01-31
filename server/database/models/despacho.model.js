@@ -52,6 +52,10 @@ let DespachoSchema = new Schema(
             },
             fecha_prefacturacion:{
                 type:String
+            },
+            status:{
+                type:String,
+                default:'despacho'
             }
         }]
     }

@@ -4,7 +4,6 @@ let {tituloCorreo} = require('../templates/template.email')
 
 function NuevaAsignacion(correo,adjunto,motivo,correlativo,table){
 
-    correlativo = Math.floor(Math.random() * 9000) + 1000;
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
         port: 25,
@@ -23,9 +22,9 @@ function NuevaAsignacion(correo,adjunto,motivo,correlativo,table){
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
-        subject: `Asignación de repuesto - RP-SOL-24-${correlativo}`,
+        subject: `Asignación de repuesto - RP-SOL-${correlativo}`,
         attachments: [{
-            filename: `RP-ASG-24-${correlativo}.pdf`,
+            filename: `RP-ASG-${correlativo}.pdf`,
             content:adjunto
         }],
         html:`${header7(titulo, 'Nueva Asignación de Repuesto')}

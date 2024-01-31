@@ -5,6 +5,7 @@ const Repuesto = require('../database/models/repuesto.model');
 const Pieza = require('../database/models/piezas.model');
 const RepuestoSolicitud = require('../database/models/partesr.model')
 const irepuestos = require('../database/models/irepuestos.model')
+const iasignacionr = require('../database/models/iasignacionrepuesto.model')
 const {FAL007} = require('../middlewares/docs/FAL-007.pdf')
 const {FAL008} = require('../middlewares/docs/FAL-008.pdf')
 
@@ -154,6 +155,7 @@ app.put('/api/pieza/:id', (req, res) =>{
 app.get('/api/pieza', (req, res)=>{
     Pieza.find()
         .populate('repuesto')
+        .sort({ 'repuesto.nombre': 1 })
         .exec((err, piezaDB)=>{
         if( err ){
             return res.status(400).json({
@@ -294,14 +296,19 @@ app.put('/api/descuento-repuesto/:id', (req, res)=>{
     let id = req.params.id;
     let body = req.body;
 
-    RepuestoSolicitud.findByIdAndUpdate(id, {status:'Finalizada'}, (err, repuesto)=>{
+
+    let asignacion = ''
+    iasignacionr.findByIdAndUpdate({_id: 'i'}, {$inc: {seq: 1}}, {new: true, upset:true}).then(function(count) {
+        asignacion = count.seq
+        RepuestoSolicitud.findByIdAndUpdate(id, {status:'Finalizada', asignacion}, (err, repuesto)=>{
+        // RepuestoSolicitud.findByIdAndUpdate(id, {status:'Aprobado'}, (err, repuesto)=>{
         if( err ){
             return res.status(400).json({
                 ok:false,
                 err
             });
         }
-
+    
         let table = '';
         let nparte = [];
         let parte = [];
@@ -309,17 +316,20 @@ app.put('/api/descuento-repuesto/:id', (req, res)=>{
         let maquina = [];
         let Ubicacion = [];
         let cantidad = []
-
-
+    
+    
+        
+    
         for(let i=0;i<body.repuestos.length;i++){
-            Pieza.findOneAndUpdate({repuesto:body.repuestos[i].repuesto._id}, {$inc: {cantidad: -body.repuestos[i].cantidad}}, (err, updated)=>{
+                // Pieza.findOneAndUpdate({repuesto:body.repuestos[i].repuesto._id}, {$inc: {cantidad: -body.repuestos[i].cantidad}}, (err, updated)=>{
+                Pieza.findOneAndUpdate({repuesto:body.repuestos[i].repuesto._id}, {}, (err, updated)=>{
                 if (err) {
                     return res.status(400).json({
                         ok: false,
                         err
                     });
                 }
-
+    
                 table = table + `<tr>
                                 <td>${body.repuestos[i].repuesto.parte}</td>
                                 <td>${body.repuestos[i].repuesto.nombre}</td>
@@ -327,23 +337,53 @@ app.put('/api/descuento-repuesto/:id', (req, res)=>{
                                 <td>${body.repuestos[i].repuesto.maquina.nombre}</td>
                                 <td>${body.repuestos[i].ubicacion}</td>
                                 <td>${body.repuestos[i].cantidad}</td>
-                                </tr>`
+                                </tr>`;
+                nparte.push(body.repuestos[i].repuesto.parte)
+                parte.push(body.repuestos[i].repuesto.nombre)
+                categoria.push(body.repuestos[i].repuesto.categoria.nombre)
+                maquina.push(body.repuestos[i].repuesto.maquina.nombre)
+                Ubicacion.push(body.repuestos[i].ubicacion)
+                cantidad.push(body.repuestos[i].cantidad)
+                        
+                                if(i === body.repuestos.length -1){
+                                    FAL008(table, nparte, parte, categoria, maquina, Ubicacion, cantidad, body.motivo, body.usuario, asignacion)
+                                    res.json('done')
+                                }
             })
-
-
-
-            if(i === body.repuestos.length -1){
-                FAL008(table)
-                console.log(table)
-                res.json('done')
-            }
+    
+    
+    
         }
+    
+        })
+    });
 
+})
+
+app.get('/api/solicitud-repuestos-asignadas/:asignacion', (req, res)=>{
+    let asignacion = req.params.asignacion
+    RepuestoSolicitud.findOne({asignacion}) 
+                .populate('repuestos.repuesto')
+                .populate({path:'repuestos.repuesto', populate:{path:'maquina'}})
+                .populate({path:'repuestos.repuesto', populate:{path:'categoria'}})
+                .exec((err, Requisicion)=>{
+                    if( err ){
+                        return res.status(400).json({
+                            ok:false,
+                            err
+                        });
+                    }
+                    res.json(Requisicion)
     })
 })
 
 app.get('/correo', (req, res)=>{
-    FAL008()
+    newCounter = iasignacionr({_id:'i',seq:'24000'}).save((err, frinchi)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log(frinchi)
+    })
     res.json('hecho')
 })
 

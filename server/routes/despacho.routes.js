@@ -53,16 +53,18 @@ app.get('/api/despachos-cliente/:cliente/:desde/:hasta', (req, res)=>{
                         });
                     }
                     
-                    if(moment(date, "DD-MM-yyyy") > moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") < moment(hasta, "DD-MM-yyyy")){
+                    if(moment(date, "DD-MM-yyyy") > moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") <= moment(hasta, "DD-MM-yyyy")){
                         
                         if(OrdenDB.cliente == cliente){
+                            Despachado[i].despacho[x].status = Despachado[i].fecha
                             Despachos__.push(Despachado[i].despacho[x])
                         }
                         
                     }
 
                     if(i === Despachado.length -1 && x === Despachado[i].despacho.length -1){
-                        res.json(Despachos__)
+                        const despachosOrdenados = Despachos__.sort((a, b) => a.documento.localeCompare(b.documento));
+                        res.json(despachosOrdenados)
                     }
                     })
             }
