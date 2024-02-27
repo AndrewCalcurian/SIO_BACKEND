@@ -51,9 +51,9 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           console.log(err);
+           // console.log(err);
         }else{
-            //console.log(info);
+            //// console.log(info);
         }
     });
 }
@@ -109,9 +109,9 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            console.log(err);
+            // console.log(err);
         }else{
-            //console.log(info);
+            //// console.log(info);
         }
     });
 
@@ -167,9 +167,9 @@ function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           console.log(err);
+           // console.log(err);
         }else{
-            //console.log(info);
+            //// console.log(info);
         }
     });
 }

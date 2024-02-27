@@ -110,7 +110,7 @@ doc.add(
         new Cell(new Txt(`${hoy}`).end).margin([0, 5]).alignment('center').end,
         new Cell(new Txt(``).end).alignment('center').border([false]).end,
         new Cell(new Txt('UNIDAD ADMINISTRATIVA').end).fillColor('#dedede').fontSize(10).alignment('center').end,
-        new Cell(new Txt('Gerencia de Gestión de la Calidad').end).margin([0, 5]).alignment('center').end,
+        new Cell(new Txt('GERENCIA DE OPERACIONES').end).margin([0, 5]).alignment('center').end,
         new Cell(new Txt(``).end).alignment('center').border([false]).end,
         new Cell(new Txt('N° SOLICITUD').end).fillColor('#dedede').fontSize(10).alignment('center').end,
         new Cell(new Txt(`RP-SOL-${correlativo}`).end).margin([0,4]).fontSize(15).alignment('center').end,
@@ -202,7 +202,7 @@ const pdf = printer.createPdfKitDocument(doc.getDefinition());
 // pdf.pipe(fs.createWriteStream('document.pdf'));
 pdf.end();
 // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf)
-    NuevaSolicitud_('calcurian.andrew@gmail.com, zuleima.vela@poligraficaindustrial.com',pdf,table,motivo,correlativo)
+    NuevaSolicitud_('calcurian.andrew@gmail.com, zuleima.vela@poligraficaindustrial.com, jaime.sanjuan@poligraficaindustrial.com, yraida.baptista@poligraficaindustrial.com, edgar.ramon@poligraficaindustrial.com',pdf,table,motivo,correlativo)
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 
 

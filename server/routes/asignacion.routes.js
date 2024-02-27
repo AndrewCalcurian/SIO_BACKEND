@@ -157,7 +157,7 @@ app.post('/api/descontar', async (req, res) => {
           material: body.producto[i],
           lote: body.lotes[i],
           codigo: body.codigos[i],
-          cantidad: body.cantidad[i],
+          cantidad: (body.cantidad[i]).toFixed(2),
           EA_cantidad: body.EA_cantidad[i]
         };
         lotes.push(lote);

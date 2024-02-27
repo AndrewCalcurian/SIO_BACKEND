@@ -54,9 +54,9 @@ function NuevaSolicitud_(correo,adjunto,table,motivo,correlativo){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           console.log(err);
+           // console.log(err);
         }else{
-            //console.log(info);
+            //// console.log(info);
         }
     });
 }

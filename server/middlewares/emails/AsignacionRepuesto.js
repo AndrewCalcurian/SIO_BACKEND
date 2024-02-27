@@ -22,7 +22,7 @@ function NuevaAsignacion(correo,adjunto,motivo,correlativo,table){
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
-        subject: `Asignación de repuesto - RP-SOL-${correlativo}`,
+        subject: `Asignación de repuesto - RP-ASG-${correlativo}`,
         attachments: [{
             filename: `RP-ASG-${correlativo}.pdf`,
             content:adjunto
@@ -55,9 +55,9 @@ function NuevaAsignacion(correo,adjunto,motivo,correlativo,table){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           console.log(err);
+           // console.log(err);
         }else{
-            //console.log(info);
+            //// console.log(info);
         }
     });
 }

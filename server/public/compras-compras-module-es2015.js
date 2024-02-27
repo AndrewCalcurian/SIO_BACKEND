@@ -702,11 +702,11 @@ class ProveedoresComponent {
             this.Proveedores = resp;
             this.filas = this.Proveedores.length / 4;
             this.filas = Math.ceil(this.filas);
-            console.log(this.filas);
+            // console.log(this.filas)
         });
     }
     origen_(n) {
-        console.log(n);
+        // console.log(n)
     }
     nuevoProveedor_() {
         if (!this.NuevoProveedor) {
@@ -720,14 +720,14 @@ class ProveedoresComponent {
         this.api.GetGrupoMp()
             .subscribe((resp) => {
             this.Grupos = resp;
-            console.log(this.Grupos);
+            // console.log(this.Grupos)
         });
     }
     addGrupo(e) {
         let existe = this.Grupos_.find(x => x === e);
         if (!existe) {
             this.Grupos_.push(e);
-            console.log(this.Grupos_);
+            // console.log(this.Grupos_)
         }
     }
     deleteGrupo(n) {
@@ -736,7 +736,7 @@ class ProveedoresComponent {
     CambiarImagen(event) {
         this.ImgSubir = (event.target).files[0];
         document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name;
-        console.log((event.target).files[0]);
+        // console.log((event.target).files[0])
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = e => this.imageSrc = reader.result;
@@ -747,7 +747,7 @@ class ProveedoresComponent {
         this.contacto_n = '';
         this.contacto_e = '';
         this.contacto_t = '';
-        console.log(this.contacto);
+        // console.log( this.contacto)
     }
     deleteContacto(i) {
         this.contacto.splice(i, 1);
@@ -776,7 +776,7 @@ class ProveedoresComponent {
             contactos: this.contacto,
             fabricantes: this.Fabricantes__,
         };
-        console.log(data);
+        // console.log(data)
         this.api.postProveedor(data)
             .subscribe((resp) => {
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -795,7 +795,7 @@ class ProveedoresComponent {
                 this.ImgSubir = null;
                 if (logo) {
                     document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                    console.log('img', logo);
+                    // console.log('img',logo)
                 }
             });
             this.nuevoProveedor_();
@@ -840,7 +840,7 @@ class ProveedoresComponent {
             contactos: this.contacto,
             fabricantes: this.Fabricantes__,
         };
-        console.log(this.ImgSubir);
+        // console.log(this.ImgSubir)
         this.api.putProveedores(this.id_proveedor, data)
             .subscribe((resp) => {
             this.AvailableEdition = false;
@@ -860,7 +860,7 @@ class ProveedoresComponent {
                     if (logo) {
                         document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
                         this.ImgSubir = null;
-                        console.log('img', logo);
+                        // console.log('img',logo)
                     }
                 });
             }
@@ -3687,7 +3687,7 @@ class FabricantesComponent {
         this.api.GetGrupoMp()
             .subscribe((resp) => {
             this.Grupos = resp;
-            console.log(this.Grupos);
+            // console.log(this.Grupos)
         });
     }
     AgregarContacto() {
@@ -3695,7 +3695,7 @@ class FabricantesComponent {
         this.contacto_n = '';
         this.contacto_e = '';
         this.contacto_t = '';
-        console.log(this.contacto);
+        // console.log( this.contacto)
     }
     NewFabricacion() {
         if (this.FabricacionForm.invalid) {
@@ -3732,7 +3732,7 @@ class FabricantesComponent {
                     this.ImgSubir = null;
                     if (logo) {
                         document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                        console.log('img', logo);
+                        // console.log('img',logo)
                     }
                 });
             });
@@ -3759,7 +3759,7 @@ class FabricantesComponent {
                 this.ImgSubir = null;
                 if (logo) {
                     document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                    console.log('img', logo);
+                    // console.log('img',logo)
                 }
             });
             this.FabricacionForm.get('nombre').setValue('');
@@ -3791,7 +3791,7 @@ class FabricantesComponent {
     CambiarImagen(event) {
         this.ImgSubir = (event.target).files[0];
         document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name;
-        console.log((event.target).files[0]);
+        // console.log((event.target).files[0])
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = e => this.imageSrc = reader.result;
@@ -3800,7 +3800,7 @@ class FabricantesComponent {
     CambiarImagenE(event) {
         this.ImgSubir = (event.target).files[0];
         document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name;
-        console.log((event.target).files[0]);
+        // console.log((event.target).files[0])
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = e => this.imageSrcEdition = reader.result;
@@ -3820,7 +3820,7 @@ class FabricantesComponent {
             this.proveedores = resp;
             this.filas = this.proveedores.length / 4;
             this.filas = Math.ceil(this.filas);
-            console.log(this.proveedores);
+            // console.log(this.proveedores)
         });
     }
     Editar(id) {
@@ -3845,7 +3845,7 @@ class FabricantesComponent {
             this.origen_('i');
         }
         else if (el_proveedor.origenes.length === 0) {
-            console.log(el_proveedor.origenes.length);
+            // console.log(el_proveedor.origenes.length)
             this.inter = false;
             this.origen_('n');
         }
@@ -3861,7 +3861,7 @@ class FabricantesComponent {
         let existe = this.Grupos_.find(x => x === e);
         if (!existe) {
             this.Grupos_.push(e);
-            console.log(this.Grupos_);
+            // console.log(this.Grupos_)
         }
     }
     deleteGrupo(n) {
@@ -3874,7 +3874,7 @@ class FabricantesComponent {
             this.FabricacionForm.get('ciudad').setValue('');
     }
     deleteOrigen(i) {
-        console.log(i);
+        // console.log(i)
         this.Origenes.splice(i, 1);
     }
     EdicionFabricacion() {
@@ -3902,7 +3902,7 @@ class FabricantesComponent {
                     if (logo) {
                         document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
                         this.ImgSubir = null;
-                        console.log('img', logo);
+                        // console.log('img',logo)
                     }
                 });
             }

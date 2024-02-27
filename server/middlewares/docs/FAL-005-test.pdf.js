@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 
 async function FAL005(orden,solicitud, Lote, materiales, lotes, cantidades,Requi){
 
-console.log(cantidades, 'ok')
+// console.log(cantidades, 'ok')
 
 
 const printer = new Pdfmake({

@@ -11,7 +11,7 @@ const nodemailer = require('nodemailer');
 async function FAL006(orden,solicitud, materiales, lotes, cantidades, motivo, usuario,tabla){
 
 
-//console.log(materiales,'materiales')
+//// console.log(materiales,'materiales')
 
 const printer = new Pdfmake({
     Roboto: {

@@ -67,7 +67,7 @@ doc.add(
                 await new Img(__dirname + '/images/poli_cintillo.png', true).width(85).margin([20, 5]).build()
             ).rowSpan(4).end,
             new Cell(new Txt(`
-            FORMATO SOLICITUD DE REPUESTOS`).bold().end).alignment('center').fontSize(13).rowSpan(4).end,
+            FORMATO ASIGNACIÓN DE REPUESTOS`).bold().end).alignment('center').fontSize(13).rowSpan(4).end,
             new Cell(new Txt('Código: FAL-008').end).fillColor('#dedede').fontSize(7).alignment('center').end,
         ],
         [
@@ -110,7 +110,7 @@ doc.add(
         new Cell(new Txt(`${hoy}`).end).margin([0, 5]).alignment('center').end,
         new Cell(new Txt(``).end).alignment('center').border([false]).end,
         new Cell(new Txt('UNIDAD ADMINISTRATIVA').end).fillColor('#dedede').fontSize(10).alignment('center').end,
-        new Cell(new Txt('Gerencia de Gestión de la Calidad').end).margin([0, 5]).alignment('center').end,
+        new Cell(new Txt('GERENCIA DE OPERACIONES').end).margin([0, 5]).alignment('center').end,
         new Cell(new Txt(``).end).alignment('center').border([false]).end,
         new Cell(new Txt('N° ASIGNACIÓN').end).fillColor('#dedede').fontSize(10).alignment('center').end,
         new Cell(new Txt(`RP-ASG-${correlativo}`).end).margin([0,4]).fontSize(15).alignment('center').end,
@@ -204,7 +204,7 @@ const pdf = printer.createPdfKitDocument(doc.getDefinition());
 // pdf.pipe(fs.createWriteStream('document.pdf'));
 pdf.end();
 // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf)
-    NuevaAsignacion('calcurian.andrew@gmail.com',pdf,motivo,correlativo,table)
+    NuevaAsignacion('calcurian.andrew@gmail.com, zuleima.vela@poligraficaindustrial.com, jaime.sanjuan@poligraficaindustrial.com, yraida.baptista@poligraficaindustrial.com, edgar.ramon@poligraficaindustrial.com',pdf,motivo,correlativo,table)
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 
 

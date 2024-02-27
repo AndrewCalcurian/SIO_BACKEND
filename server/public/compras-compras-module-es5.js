@@ -1576,14 +1576,12 @@
             this.api.GetProveedores().subscribe(function (resp) {
               _this.Proveedores = resp;
               _this.filas = _this.Proveedores.length / 4;
-              _this.filas = Math.ceil(_this.filas);
-              console.log(_this.filas);
+              _this.filas = Math.ceil(_this.filas); // console.log(this.filas)
             });
           }
         }, {
           key: "origen_",
-          value: function origen_(n) {
-            console.log(n);
+          value: function origen_(n) {// console.log(n)
           }
         }, {
           key: "nuevoProveedor_",
@@ -1600,8 +1598,7 @@
             var _this2 = this;
 
             this.api.GetGrupoMp().subscribe(function (resp) {
-              _this2.Grupos = resp;
-              console.log(_this2.Grupos);
+              _this2.Grupos = resp; // console.log(this.Grupos)
             });
           }
         }, {
@@ -1612,8 +1609,7 @@
             });
 
             if (!existe) {
-              this.Grupos_.push(e);
-              console.log(this.Grupos_);
+              this.Grupos_.push(e); // console.log(this.Grupos_)
             }
           }
         }, {
@@ -1627,8 +1623,8 @@
             var _this3 = this;
 
             this.ImgSubir = event.target.files[0];
-            document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name;
-            console.log(event.target.files[0]);
+            document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name; // console.log((event.target).files[0])
+
             var file = event.target.files[0];
             var reader = new FileReader();
 
@@ -1648,8 +1644,7 @@
             });
             this.contacto_n = '';
             this.contacto_e = '';
-            this.contacto_t = '';
-            console.log(this.contacto);
+            this.contacto_t = ''; // console.log( this.contacto)
           }
         }, {
           key: "deleteContacto",
@@ -1693,8 +1688,8 @@
               grupo: this.Grupos_,
               contactos: this.contacto,
               fabricantes: this.Fabricantes__
-            };
-            console.log(data);
+            }; // console.log(data)
+
             this.api.postProveedor(data).subscribe(function (resp) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
                 title: 'Nuevo proveedor',
@@ -1713,8 +1708,7 @@
                 _this5.ImgSubir = null;
 
                 if (logo) {
-                  document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                  console.log('img', logo);
+                  document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...'; // console.log('img',logo)
                 }
               });
 
@@ -1771,8 +1765,8 @@
               grupo: this.Grupos_,
               contactos: this.contacto,
               fabricantes: this.Fabricantes__
-            };
-            console.log(this.ImgSubir);
+            }; // console.log(this.ImgSubir)
+
             this.api.putProveedores(this.id_proveedor, data).subscribe(function (resp) {
               _this6.AvailableEdition = false;
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -1791,8 +1785,7 @@
 
                   if (logo) {
                     document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                    _this6.ImgSubir = null;
-                    console.log('img', logo);
+                    _this6.ImgSubir = null; // console.log('img',logo)
                   }
                 });
               }
@@ -7617,8 +7610,7 @@
             var _this7 = this;
 
             this.api.GetGrupoMp().subscribe(function (resp) {
-              _this7.Grupos = resp;
-              console.log(_this7.Grupos);
+              _this7.Grupos = resp; // console.log(this.Grupos)
             });
           }
         }, {
@@ -7631,8 +7623,7 @@
             });
             this.contacto_n = '';
             this.contacto_e = '';
-            this.contacto_t = '';
-            console.log(this.contacto);
+            this.contacto_t = ''; // console.log( this.contacto)
           }
         }, {
           key: "NewFabricacion",
@@ -7673,8 +7664,7 @@
                   _this8.ImgSubir = null;
 
                   if (logo) {
-                    document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                    console.log('img', logo);
+                    document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...'; // console.log('img',logo)
                   }
                 });
               });
@@ -7703,8 +7693,7 @@
                 _this8.ImgSubir = null;
 
                 if (logo) {
-                  document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                  console.log('img', logo);
+                  document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...'; // console.log('img',logo)
                 }
               });
 
@@ -7743,8 +7732,8 @@
             var _this9 = this;
 
             this.ImgSubir = event.target.files[0];
-            document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name;
-            console.log(event.target.files[0]);
+            document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name; // console.log((event.target).files[0])
+
             var file = event.target.files[0];
             var reader = new FileReader();
 
@@ -7760,8 +7749,8 @@
             var _this10 = this;
 
             this.ImgSubir = event.target.files[0];
-            document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name;
-            console.log(event.target.files[0]);
+            document.getElementsByClassName('file-name')[0].innerHTML = this.ImgSubir.name; // console.log((event.target).files[0])
+
             var file = event.target.files[0];
             var reader = new FileReader();
 
@@ -7788,8 +7777,7 @@
             this.api.getFabricantes().subscribe(function (resp) {
               _this11.proveedores = resp;
               _this11.filas = _this11.proveedores.length / 4;
-              _this11.filas = Math.ceil(_this11.filas);
-              console.log(_this11.proveedores);
+              _this11.filas = Math.ceil(_this11.filas); // console.log(this.proveedores)
             });
           }
         }, {
@@ -7819,7 +7807,7 @@
               this.inter = true;
               this.origen_('i');
             } else if (el_proveedor.origenes.length === 0) {
-              console.log(el_proveedor.origenes.length);
+              // console.log(el_proveedor.origenes.length)
               this.inter = false;
               this.origen_('n');
             }
@@ -7841,8 +7829,7 @@
             });
 
             if (!existe) {
-              this.Grupos_.push(e);
-              console.log(this.Grupos_);
+              this.Grupos_.push(e); // console.log(this.Grupos_)
             }
           }
         }, {
@@ -7860,7 +7847,7 @@
         }, {
           key: "deleteOrigen",
           value: function deleteOrigen(i) {
-            console.log(i);
+            // console.log(i)
             this.Origenes.splice(i, 1);
           }
         }, {
@@ -7891,8 +7878,7 @@
 
                   if (logo) {
                     document.getElementsByClassName('file-name')[0].innerHTML = 'Sin archivo...';
-                    _this12.ImgSubir = null;
-                    console.log('img', logo);
+                    _this12.ImgSubir = null; // console.log('img',logo)
                   }
                 });
               }

@@ -4,7 +4,7 @@ const {header__, footer} = require('../templates/template.email')
 
 function Nueva_recepcion(){
     
-    // //console.log(lotes, 'lotes')
+    // //// console.log(lotes, 'lotes')
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
@@ -52,17 +52,17 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            console.log(err);
+            // console.log(err);
         }else{
-            console.log(info);
-            console.log('ENVIO CORREO DE VERIFICACIÓN DE MATERIAL')
+            // console.log(info);
+            // console.log('ENVIO CORREO DE VERIFICACIÓN DE MATERIAL')
         }
     });
 }
 
 function Nueva_recepcion2(){
     
-    // //console.log(lotes, 'lotes')
+    // //// console.log(lotes, 'lotes')
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
@@ -110,10 +110,10 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            console.log(err);
+            // console.log(err);
         }else{
-            console.log(info);
-            console.log('ENVIO CORREO DE VERIFICACIÓN DE MATERIAL')
+            // console.log(info);
+            // console.log('ENVIO CORREO DE VERIFICACIÓN DE MATERIAL')
         }
     });
 }

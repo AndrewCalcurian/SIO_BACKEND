@@ -330,7 +330,7 @@ class ProductosComponent {
         this.buscar_producto(cliente_id);
     }
     post_impresion(e) {
-        //console.log(e);
+        //// console.log(e);
         let Included = this.POST.includes(e.target.value);
         if (!Included) {
             this.POST.push(e.target.value);
@@ -424,7 +424,7 @@ class ProductosComponent {
         this.api.getAlmacen()
             .subscribe((resp) => {
             this.MATERIALES = resp.materiales;
-            //console.log(this.MATERIALES);
+            //// console.log(this.MATERIALES);
         });
     }
     obtenerGrupos() {
@@ -466,19 +466,19 @@ class ProductosComponent {
         this.api.getById(e)
             .subscribe((resp) => {
             this.PRODUCTOS = resp.productos;
-            //console.log(this.PRODUCTOS);
+            //// console.log(this.PRODUCTOS);
         });
     }
     sustratos() {
         this.api.getBobina()
             .subscribe((resp) => {
-            //console.log(resp);
+            //// console.log(resp);
             for (let i = 0; i < resp.length; i++) {
                 let done = this.SUSTRATO.includes(resp[i].material);
                 if (!done) {
                     this.SUSTRATO.push(resp[i].material);
                 }
-                //console.log('.', this.SUSTRATO);
+                //// console.log('.', this.SUSTRATO);
             }
         });
     }
@@ -488,14 +488,14 @@ class ProductosComponent {
     }
     borrarPost2(post) {
         let i = this.OneProduct.post.indexOf(post);
-        //console.log(i);
+        //// console.log(i);
         this.POST.splice(i, 1);
     }
     verProducto(producto) {
         this.api.getOneById(producto)
             .subscribe((resp) => {
             this.OneProduct = resp.producto;
-            //console.log(this.OneProduct);
+            //// console.log(this.OneProduct);
             this.ver_Modal_Producto();
         });
     }
@@ -2226,7 +2226,7 @@ class GestionComponent {
         };
         this.api.postRestrasar(data)
             .subscribe((resp) => {
-            //console.log(resp);
+            //// console.log(resp);
             this.TRABAJOS = [];
             this.Tarea();
         });
@@ -2239,7 +2239,7 @@ class GestionComponent {
         };
         this.api.postAcelerar(data)
             .subscribe((resp) => {
-            //console.log(resp);
+            //// console.log(resp);
             this.TRABAJOS = [];
             this.Tarea();
         });
@@ -2258,9 +2258,9 @@ class GestionComponent {
         let _productos = 0;
         let _hojas = 0;
         if (long <= 0) {
-            //console.log(orden);
+            //// console.log(orden);
             let Actual = this.TRABAJOS.find(x => x._id == orden);
-            //console.log(Actual);
+            //// console.log(Actual);
             _productos = Actual.orden.cantidad - Number(productos);
             _hojas = Actual.orden.paginas - Number(hojas);
         }
@@ -2811,7 +2811,7 @@ class OrdenComponent {
         this.api.getOrdenById(this.id)
             .subscribe((resp) => {
             this.PRODUCTO = resp;
-            //console.log(this.PRODUCTO);
+            //// console.log(this.PRODUCTO);
         });
     }
     descargarPDF() {
@@ -3709,7 +3709,7 @@ class MainComponent {
         this.api.getById(e.target.value)
             .subscribe((resp) => {
             this.PRODUCTOS = resp.productos;
-            //console.log(this.PRODUCTOS);
+            //// console.log(this.PRODUCTOS);
         });
     }
     producto_selected(e) {
@@ -3722,7 +3722,7 @@ class MainComponent {
         this.api.getOneById(e.target.value)
             .subscribe((resp) => {
             this.PRODUCTO = resp.producto;
-            //console.log('this', this.PRODUCTO);
+            //// console.log('this', this.PRODUCTO);
             this.Ejemplares_montados = this.PRODUCTO.ejemplares;
             this.Ejemplares(this.Ejemplares_montados);
             this.MAQUINAS = resp.maquinas;
@@ -3731,11 +3731,11 @@ class MainComponent {
             this.CANTIDAD = [];
             for (let i = 0; i < x; i++) {
                 let respuesta = this.ALMACEN.find(x => x.nombre === this.PRODUCTO.materiales[i].material);
-                //console.log('producto:', this.PRODUCTO.materiales[i].material);
+                //// console.log('producto:', this.PRODUCTO.materiales[i].material);
                 this.CANTIDAD.push(respuesta);
-                //console.log(this.CANTIDAD);
+                //// console.log(this.CANTIDAD);
             }
-            //   //console.log(this.PRODUCTO)
+            //   //// console.log(this.PRODUCTO)
         });
     }
     orden_selected(e) {
@@ -3781,7 +3781,7 @@ class MainComponent {
     colocarFecha(e, fase) {
         this.api.getFechas(e.target.value)
             .subscribe((resp) => {
-            //console.log(resp);
+            //// console.log(resp);
             let cph = 0;
             let HorasAgregadas = 0;
             let fecha;
@@ -3844,7 +3844,7 @@ class MainComponent {
                 };
                 this.api.postOrden2(Data)
                     .subscribe((respuesta) => {
-                    //console.log(respuesta);
+                    //// console.log(respuesta);
                 });
             }
             this.router.navigate([`/orden-produccion/${resp}`]);
@@ -4254,15 +4254,15 @@ class PlanificacionComponent {
                 if (fecha >= nuevo[i].fechaI) {
                     if (fecha <= nuevo[i].fecha) {
                         final.push(nuevo[i]);
-                        //console.log(final);
+                        //// console.log(final);
                     }
                 }
             }
             return final;
         }
-        // //console.log(nuevo)
+        // //// console.log(nuevo)
     }
-    // //console.log(this.TRABAJOS.length )
+    // //// console.log(this.TRABAJOS.length )
     // fecha = '2021-08-20'
     // funcion = "IMPRESION"
     // let nuevo = this.TRABAJOS.find(x => x.maquina.tipo === funcion);
@@ -4270,11 +4270,11 @@ class PlanificacionComponent {
     //   let fecha_final = moment(nuevo.fecha).format('yyyy-MM-DD')
     //   let fecha_Inicial = moment(nuevo.fechaI).format('yyyy-MM-DD')
     //   let fecha_actual = moment(fecha).format('yyyy-MM-DD')
-    //   //console.log(nuevo)
+    //   //// console.log(nuevo)
     // let MI:boolean = fecha_actual >= fecha_Inicial;
     // if(MI){
     //   let MF:boolean = fecha_actual <= fecha_final;
-    //   //console.log(MF)
+    //   //// console.log(MF)
     // }
     // if(nuevo){
     //   let fecha_final = moment(nuevo.fecha).format('yyyy-MM-DD')
@@ -4284,7 +4284,7 @@ class PlanificacionComponent {
     //   if(MI){
     //     let MF:boolean = fecha_actual <= fecha_final;
     //     if(MF){
-    //       //console.log(nuevo,'_',funcion)
+    //       //// console.log(nuevo,'_',funcion)
     //       return `${nuevo._id.slice(3,6)}`
     //     }
     //   }
@@ -4297,7 +4297,7 @@ class PlanificacionComponent {
     //   if(MI){
     //     let MF:boolean = fecha_actual <= fecha_final;
     //     if(MF){
-    //       //console.log('aqui',nuevo)
+    //       //// console.log('aqui',nuevo)
     //        return `${nuevo._id.slice(3,6)}`
     //     }
     //   }
@@ -4305,7 +4305,7 @@ class PlanificacionComponent {
     // if(nuevo.fecha < fecha)
     // if(nuevo){
     //   let nuevo2 = nuevo.find(x => x.fecha <= fecha)
-    //   //console.log(nuevo2)
+    //   //// console.log(nuevo2)
     // }
     // return nuevo
     obtenerTrabajos() {
@@ -4313,7 +4313,7 @@ class PlanificacionComponent {
             .subscribe((resp) => {
             this.cargado = false;
             this.TRABAJOS = resp;
-            //console.log(this.TRABAJOS);
+            //// console.log(this.TRABAJOS);
             this.cargado = true;
         });
     }
@@ -5120,7 +5120,7 @@ class MainComponent {
         this.api.getAlmacen()
             .subscribe((resp) => {
             this.ALMACEN = resp.materiales;
-            //console.log(this.ALMACEN);
+            //// console.log(this.ALMACEN);
         });
     }
     Almacenar() {
@@ -5218,19 +5218,19 @@ class MainComponent {
             this.BobinaForm.reset();
             this.Modal_bobinas();
             this.getbobinas();
-            //console.log(resp);
+            //// console.log(resp);
         });
     }
     getbobinas() {
         this.api.getBobina()
             .subscribe((resp) => {
             this.BOBINAS_ = resp;
-            //console.log(this.BOBINAS_);
+            //// console.log(this.BOBINAS_);
         });
     }
     Buscar_Bobina(e) {
         let TheBobina = this.BOBINAS_.find(x => x._id == e.target.value);
-        //console.log(TheBobina.gramaje);
+        //// console.log(TheBobina.gramaje);
         if (TheBobina) {
             document.getElementById('_gramaje').value = TheBobina.gramaje;
             this.Gramaje(TheBobina.gramaje);
@@ -5239,7 +5239,7 @@ class MainComponent {
                 this.Ancho(TheBobina.ancho);
             }
             if (TheBobina) {
-                //console.log(TheBobina);
+                //// console.log(TheBobina);
                 this.Mat_Selected = TheBobina.material;
                 this.Num_Bobina = TheBobina.Nbobina;
             }
@@ -5265,7 +5265,7 @@ class MainComponent {
             this.getbobinas();
             this.BuscarAlmacen();
             this.getSustratos();
-            //console.log(resp);
+            //// console.log(resp);
             function recibo() {
                 return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                     const pdf = new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["PdfMakeWrapper"]();
@@ -5373,7 +5373,7 @@ class MainComponent {
     getSustratos() {
         this.api.getSustratos()
             .subscribe((resp) => {
-            //console.log(resp);
+            //// console.log(resp);
             if (resp.length > 0) {
                 this.boolean_sustrato = true;
                 this.Sustratos = resp;
@@ -5388,7 +5388,7 @@ class MainComponent {
         this.api.getMaterialesPorConfirmar()
             .subscribe((resp) => {
             this.MAT_NECESARIO = resp;
-            //console.log(this.MAT_NECESARIO);
+            //// console.log(this.MAT_NECESARIO);
         });
     }
     BuscarTotal(Material, cantidad_Mat, cantidad_orden) {
@@ -5461,13 +5461,13 @@ class MainComponent {
                 this.getbobinas();
                 this.getSustratos();
                 this.porConfirmar();
-                //console.log(resp);
+                //// console.log(resp);
             });
         }
         else {
             this.api.eliminarMaterial(this.id_p_e, motivo)
                 .subscribe((resp) => {
-                //console.log(resp);
+                //// console.log(resp);
                 this.BuscarAlmacen();
                 this.porConfirmar();
                 this.modal_eliminacion();
@@ -5523,7 +5523,7 @@ class MainComponent {
         };
         this.api.reporteInventario(data)
             .subscribe((resp) => {
-            //console.log('aqui es la broma:', resp);
+            //// console.log('aqui es la broma:', resp);
             const pdf = new pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["PdfMakeWrapper"]();
             pdfmake_wrapper__WEBPACK_IMPORTED_MODULE_3__["PdfMakeWrapper"].setFonts(pdfmake_build_vfs_fonts__WEBPACK_IMPORTED_MODULE_4__);
             function generarPDF() {
@@ -6865,10 +6865,10 @@ class LoginComponent {
             this.router.navigateByUrl('/');
         }, (err) => {
             this.cargando = false;
-            //console.log(err);
+            //// console.log(err);
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Error', err.error.err.message, 'error');
         });
-        // //console.log(this.loginForm.value)
+        // //// console.log(this.loginForm.value)
     }
 }
 LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_rest_api_service__WEBPACK_IMPORTED_MODULE_4__["RestApiService"])); };
