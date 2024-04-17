@@ -51,15 +51,15 @@ app.get('/api/estadisticas/maquinas', (req,res)=>{
 
                             // if(!trabajos_realizados[index].datos.[year])
                             // {
-                            //     console.log(ano)
-                            //     console.log(trabajos_realizados[index].push({[ano]:{[mes]:{}}}))
+                            //     //console.log(ano)
+                            //     //console.log(trabajos_realizados[index].push({[ano]:{[mes]:{}}}))
                                 
                             //     return
                             // }
                             //  if(!trabajos_realizados[index][year]){
                             //     trabajos_realizados[index].push({[ano]:{[mes]:{}}})
                             //  }
-                            // console.log(trabajos_realizados[index][anuel])
+                            // //console.log(trabajos_realizados[index][anuel])
 
                             // let find_mes = trabajos_realizados.findIndex(x=> x.maquina === trabajos[i].maquina.nombre && x.mes === mes)
                             //  if(find_mes < 0){
@@ -68,7 +68,7 @@ app.get('/api/estadisticas/maquinas', (req,res)=>{
                             //      dato
                             //     )
                             //  }else{
-                            //     console.log(trabajos_realizados[index].hojas)
+                            //     //console.log(trabajos_realizados[index].hojas)
                             //     trabajos_realizados[index].hojas === Number(trabajos_realizados[index].hojas) + Number(trabajos[i].hojas)
                             //     trabajos_realizados[index].productos === Number(trabajos_realizados[index].productos) + Number(trabajos[i].productos)
                             //  }
@@ -87,7 +87,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
     let sort;
     let orden__;
 
-    // console.log(body.desde,'/',body.hasta);
+    // //console.log(body.desde,'/',body.hasta);
 
     let desde = moment(body.desde)
     let hasta = moment(body.hasta)
@@ -199,7 +199,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
         }
         
         Ordenes= orden;
-        console.log(Ordenes)
+        //console.log(Ordenes)
     if(orden.length < 1){
         res.json({mensaje:'No se encontró orden de producción'})
         return
@@ -243,7 +243,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
             }
 
             for(let n = 0; n<Trabajos.length; n++){
-                // console.log(Trabajos[n])
+                // //console.log(Trabajos[n])
                 trabajos.push(Trabajos[n])
             }
 
@@ -260,7 +260,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
 
             for(let n = 0; n<resp.length; n++){
                 despachos.push(resp[n])
-                // console.log(despachos)
+                // //console.log(despachos)
             }
         })
 
@@ -402,7 +402,7 @@ app.post('/api/estadisticas/ordens', (req, res)=>{
                     }
                 }
                 // DEVOLUCIONES TOTALES
-                // console.log(devoluciones_totales)
+                // //console.log(devoluciones_totales)
                 // DEVOLUCIONES TOTALES
             }
         }
@@ -412,7 +412,7 @@ Lotes.find(orden__)
 // Lotes.find({fecha:{$gte: desde,$lt: hasta}})
     .populate('material.material')
     .exec((err, adcionalesDB)=>{
-        console.log(trabajos)
+        //console.log(trabajos)
         if( err ){
             return res.status(400).json({
                 ok:false,
@@ -566,8 +566,8 @@ Lotes.find(orden__)
                 if(material_adicional.grupo == '61fd72ecd9115415a4416f68'){
                     let material_adicional = adcionalesDB[n].material[n_i].material
                     let cantidad = (Number(adcionalesDB[n].material[n_i].cantidad)).toFixed(2)
-                    // console.log(adcionalesDB[n].material[n_i])
-                    // console.log(material_adicional.nombre,'-',material_adicional.neto)
+                    // //console.log(adcionalesDB[n].material[n_i])
+                    // //console.log(material_adicional.nombre,'-',material_adicional.neto)
                     let Existencia = Pega.findIndex(x=> x.Nombre === material_adicional.nombre && x.Marca === material_adicional.marca)
                         if(Existencia != -1){
                             Pega[Existencia].Cantidad = Number(Pega[Existencia].Cantidad)+Number(cantidad*20)
@@ -583,9 +583,9 @@ Lotes.find(orden__)
                 }
                 if(material_adicional.grupo == '61fd7a8ed9115415a4416f74'){
                     let material_adicional = adcionalesDB[n].material[n_i].material
-                    // console.log(adcionalesDB[n].material[n_i])
+                    // //console.log(adcionalesDB[n].material[n_i])
                     let cantidad = (Number(adcionalesDB[n].material[n_i].cantidad)).toFixed(2)
-                    // console.log(material_adicional.nombre,'-',material_adicional.neto)
+                    // //console.log(material_adicional.nombre,'-',material_adicional.neto)
                     let Existencia = Caja.findIndex(x=> x.Nombre === material_adicional.nombre)
                         if(Existencia != -1){
                             Caja[Existencia].Cantidad = Number(Caja[Existencia].Cantidad)+Number(cantidad)
@@ -598,7 +598,7 @@ Lotes.find(orden__)
                 }}
             }
         // if(adcionalesDB[n].material.material.grupo == '61fd54e2d9115415a4416f17'){
-        //         console.log('yes')
+        //         //console.log('yes')
         //     }
         Tintas = Tintas.sort(function(a, b) {
             if(a.Nombre.toLowerCase() < b.Nombre.toLowerCase()) return -1
@@ -684,7 +684,7 @@ Lotes.find(orden__)
             }
         }
 }
-console.log(data)
+//console.log(data)
 setTimeout(function(){
     res.json(data)
 }, 2000);
@@ -964,12 +964,12 @@ app.post('/api/reporte-inventario', async (req, res) => {
 //         //                 if(loteDB[0]){
 //         //                     for(let n=0;n<loteDB[0].material.length;n++){
 //         //                         if(loteDB[0].material[n].lote === almacenDB[i].lote){
-//         //                             // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
+//         //                             // //console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
 //         //                             if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
-//         //                             // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
+//         //                             // //console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
 //         //                                 if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
-//         //                                 // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
-//         //                                 // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
+//         //                                 // //console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
+//         //                                 // //console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
 //         //                                     muestras.push({nombre:`${loteDB[0].material[n].material.nombre}`,gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
                                             
 //         //                                 }
@@ -1010,7 +1010,7 @@ app.post('/api/reporte-salidas', (req, res)=>{
             });
         }
 
-        console.log(salidas)
+        //console.log(salidas)
         res.json(salidas)
     })
 })
@@ -1032,7 +1032,7 @@ app.post('/api/reporte-devoluciones', (req, res)=>{
             });
         }
 
-        // console.log(devoluciones)
+        // //console.log(devoluciones)
         res.json(devoluciones)
     })
 })
@@ -1171,12 +1171,12 @@ app.post('/api/corte-de-fecha', async (req, res) => {
 //         //                 if(loteDB[0]){
 //         //                     for(let n=0;n<loteDB[0].material.length;n++){
 //         //                         if(loteDB[0].material[n].lote === almacenDB[i].lote){
-//         //                             // console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
+//         //                             // //console.log('Lote:',loteDB[0].material[n].lote, '-', almacenDB[i].lote)
 //         //                             if(loteDB[0].material[n].codigo === almacenDB[i].codigo){
-//         //                             // console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
+//         //                             // //console.log('codigo:',loteDB[0].material[n].codigo, '-', almacenDB[i].codigo)
 //         //                                 if(loteDB[0].material[n].material.nombre == almacenDB[i].material.nombre){
-//         //                                 // console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
-//         //                                 // console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
+//         //                                 // //console.log('nombre:',loteDB[0].material[n].material.nombre,' ',loteDB[0].material[n].material.nombre )
+//         //                                 // //console.log('nombre:',loteDB[0].material[n].EA_Cantidad,' ',almacenDB[i].cantidad )
 //         //                                     muestras.push({nombre:loteDB[0].material[n].material.nombre, gramaje:loteDB[0].material[n].material.gramaje, calibre:loteDB[0].material[n].material.calibre, ancho:loteDB[0].material[n].material.ancho, largo:loteDB[0].material[n].material.largo, marca:loteDB[0].material[n].material.marca,cantidad:loteDB[0].material[n].EA_Cantidad, grupo:almacenDB[i].material.grupo})
 //         //                                 }
 //         //                             }
@@ -1215,7 +1215,7 @@ app.post('/api/corte-salida', (req, res)=>{
             });
         }
 
-        console.log(salidas)
+        //console.log(salidas)
         res.json(salidas)
     })
 })
@@ -1237,7 +1237,7 @@ app.post('/api/corte-devolucion', (req, res)=>{
             });
         }
 
-        console.log(devoluciones)
+        //console.log(devoluciones)
         res.json(devoluciones)
     })
 })

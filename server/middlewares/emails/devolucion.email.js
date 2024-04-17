@@ -5,7 +5,7 @@ function devolucion(orden, solicitud,adjunto,nombre,correo,tabla){
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -50,7 +50,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
             return
         }
@@ -61,7 +61,7 @@ function devolucion2(orden, solicitud,nombre,correo,tabla){
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -102,7 +102,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
             return
         }

@@ -9,7 +9,7 @@ app.post('/api/usuario', (req,res)=>{
 
     let body = req.body;
 
-    // //console.log(body)
+    // ////console.log(body)
 
     let usuario = new Usuario({
         Nombre: body.Nombre,

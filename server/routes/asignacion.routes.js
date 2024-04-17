@@ -49,7 +49,7 @@ app.get('/api/orden-especifica', (req, res)=>{
 app.post('/api/buscar-en-almacen', (req, res)=>{
     
     let parametros = req.body
-    console.log(parametros)
+    //console.log(parametros)
 
     Almacenado.find(parametros)
         .populate({
@@ -134,12 +134,15 @@ app.post('/api/descontar', async (req, res) => {
       let N_asignacion;
       const lotes = [];
       let Requi = false;
+      let email_limpieza = ''
   
       if (body.requi) {
         Requi = true;
-        await Requisicion.findOneAndUpdate({ _id: body.orden_id }, { estado: 'Finalizado' });
+        await Requisicion.findOneAndUpdate({ _id: body.orden_id }, { estado: 'Finalizado' }, (err, requisicion)=>{
+            email_limpieza = requisicion.producto.producto
+            return
+        });
       }
-  
       await Orden.findOneAndUpdate({ sort: body.orden }, { estado: 'activo' });
   
       const asig = await Iasignacion.findByIdAndUpdate(
@@ -166,15 +169,15 @@ app.post('/api/descontar', async (req, res) => {
       }
   
       setTimeout(async () => {
-        console.log('asignacion: ', N_asignacion);
+        //console.log('asignacion: ', N_asignacion);
         const NewLote = {
           asignacion: N_asignacion,
           orden: body.orden,
           material: lotes
         };
         const loteDB = await new Lotes(NewLote).save();
-        console.log(`se registro nuevo lote: ${loteDB}`);
-        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades, Requi);
+        //console.log(`se registro nuevo lote: ${loteDB}`);
+        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades, Requi, email_limpieza);
         res.json('done');
       }, 1000);
     } catch (err) {
@@ -249,11 +252,11 @@ app.post('/api/descontar', async (req, res) => {
 
 //             lotes.push(lote)
 
-//             console.log(`lote:${body.lotes[i]} codigo:${body.codigos[i]} - EA:${body.EA_cantidad[i]} updated to ${body.restantes[i]}`)
+//             //console.log(`lote:${body.lotes[i]} codigo:${body.codigos[i]} - EA:${body.EA_cantidad[i]} updated to ${body.restantes[i]}`)
             
 //             if(i == body.ids.length - 1){
 //                 setTimeout(() => {
-//                     console.log('asignacion: ',N_asignacion)
+//                     //console.log('asignacion: ',N_asignacion)
 //                     let NewLote = {
 //                         asignacion:N_asignacion,
 //                         orden:body.orden,
@@ -267,7 +270,7 @@ app.post('/api/descontar', async (req, res) => {
 //                             });
 //                         }
     
-//                         console.log(`se registro nuevo lote: ${loteDB}`)
+//                         //console.log(`se registro nuevo lote: ${loteDB}`)
 //                         FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades,Requi)
 //                         res.json('done')
 //                     })

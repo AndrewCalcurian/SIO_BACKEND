@@ -44,7 +44,7 @@ app.get('/api/gastos/:desde/:hasta', (req, res)=>{
 
 app.post('/api/lote-fecha', (req, res)=>{
     let body = req.body;
-    console.log(body)
+    //console.log(body)
 
     Lote.find({orden:{$in:body.ordenes}})
         .populate('material.material')
@@ -56,7 +56,7 @@ app.post('/api/lote-fecha', (req, res)=>{
             });
         }
 
-        // console.log(LotesDB)
+        // //console.log(LotesDB)
         let materiales_ = []
         for(let i=0;i<LotesDB.length;i++){
             for(let x=0;x<LotesDB[i].material.length;x++){
@@ -90,7 +90,7 @@ app.post('/api/devoluciones-fecha', (req, res)=>{
             });
         }
 
-        // console.log(LotesDB)
+        // //console.log(LotesDB)
         let _materiales_ = []
         for(let i=0;i<DevolucionDB.length;i++){
             for(let x=0;x<DevolucionDB[i].filtrado.length;x++){

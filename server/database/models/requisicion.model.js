@@ -12,6 +12,7 @@ var RequisicionSchema = new mongoose.Schema({
     motivo:{type:String},
     usuario:{type:String},
     producto:{
+        producto:{type:String},
         materiales:[
             [
                 {

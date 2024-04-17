@@ -7,7 +7,7 @@ const proveedor = require('../database/models/proveedores.model')
 app.post('/api/compras/proveedor', (req, res)=>{
     let body = req.body;
 
-    console.log(body)
+    //console.log(body)
     let proveedor_ = new proveedor(body).save((err, nuevoProveedor)=>{
         if( err ){
             return res.status(400).json({
@@ -56,7 +56,7 @@ app.post('/api/compras/fabricante', (req, res)=>{
 
     
     let body = req.body;
-    console.log(body)
+    //console.log(body)
 
     let fabricante_ = new fabricante(body).save((err, nuevoFabricante)=>{
         if( err ){
@@ -90,7 +90,7 @@ app.put('/api/compras/fabricante/:id', (req, res)=>{
     let id = req.params.id
     let body = req.body;
 
-    console.log(body)
+    //console.log(body)
     fabricante.findByIdAndUpdate(id, body)
                 .exec((err, FabricanteDB)=>{
                     if( err ){

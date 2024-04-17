@@ -84,7 +84,7 @@ app.get('/api/notificacion-recepcion/:id', (req, res)=>{
         reception('nada','calcurianandres@gmail.com,  zuleima.vela@poligraficaindustrial.com',data,facturacion.factura)
 
         // for(let i=0;i<1;i++){
-        //     console.log(i)
+        //     //console.log(i)
         //         let random = Math.floor(Math.random() * (9999 - 1000 + 1) ) + 1000;
         //         // reception('nada','calcurianandres@gmail.com','motivo de prueba',random)
         // }
@@ -148,7 +148,7 @@ app.get('/api/ifacturacion/', (req, res)=>{
      let id = 'factuacion'
 
     let iterator = new ifacturacion({_id:id}).save((err, ifacturacion)=>{
-        console.log(ifacturacion)
+        //console.log(ifacturacion)
     })
 })
 

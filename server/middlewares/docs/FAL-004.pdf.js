@@ -173,7 +173,11 @@ const pdf = printer.createPdfKitDocument(doc.getDefinition());
 pdf.end();
 // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf)
 if(orden === 'N/A'){
-    NuevaSolicitud_(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
+    if(producto_ != 'N/A'){
+        NuevaSolicitud_(orden,`yraida.baptista@poligraficaindustrial.com,${producto_}`,motivo,num_solicitud,pdf,tabla)
+    }else{
+        NuevaSolicitud_(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
+    }
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
 }else{
     NuevaSolicitud(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)

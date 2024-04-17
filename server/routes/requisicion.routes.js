@@ -18,6 +18,8 @@ app.post('/api/requi',(req, res)=>{
         producto:body.producto,
         usuario:body.usuario
     })
+
+    
     
     requi.save((err, resp)=>{
         if( err ){
@@ -28,11 +30,15 @@ app.post('/api/requi',(req, res)=>{
         }
 
         if(body.sort === "#"){
-            NuevaRequisicion_(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo)
+            if(body.categoria){
+                NuevaRequisicion_(body.sort,'yraida.baptista@poligraficaindustrial.com',body.motivo,'Yraida')
+            }else{
+                NuevaRequisicion_(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo,'Jaime')
+            }
         }else{
-            NuevaRequisicion(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo)
+            NuevaRequisicion(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo,'Jaime')
         }
-        //console.log(resp)
+        ////console.log(resp)
         res.json('ok')
     });
         
@@ -129,7 +135,7 @@ app.put('/api/requi/:id', (req,res)=>{
                     let cantidad = []
                     let producto_ = requi.producto.materiales[0];
 
-                    // //console.log(producto_, 'aja')
+                    // ////console.log(producto_, 'aja')
 
                     for(let i=0; i< producto_.length ; i++){
                         let nombre = `${producto_[i].producto.nombre} (${producto_[i].producto.marca})`;
@@ -150,7 +156,7 @@ app.put('/api/requi/:id', (req,res)=>{
                         }
                     }
                     
-                    // //console.log(requi.producto.materiales[0][0].producto)
+                    // ////console.log(requi.producto.materiales[0][0].producto)
 
                 
                         res.json(requi)

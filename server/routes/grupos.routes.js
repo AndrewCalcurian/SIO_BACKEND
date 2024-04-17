@@ -53,8 +53,8 @@ app.post('/api/grupos', (req, res)=>{
         tipos:body.tipos
     })
 
-    // //console.log('Esto llega:',body)
-    // //console.log('Esto se va:',NewGrupo)
+    // ////console.log('Esto llega:',body)
+    // ////console.log('Esto se va:',NewGrupo)
 
 // ----SE GUARDA LA INFORMACION EN LA BASE DE DATOS---
     NewGrupo.save((err, grupoDB)=>{

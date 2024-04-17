@@ -9,7 +9,7 @@ mongoose.connect(process.env.DB_URL, {
 }, (err, res)=>{
     if( err ) throw err;
 
-    // console.log('Base de datos ONLINE to ', process.env.DB_URL)
+    console.log('Base de datos ONLINE to ', process.env.DB_URL)
 });
 
 module.exports = mongoose;

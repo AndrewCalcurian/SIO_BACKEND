@@ -118,7 +118,7 @@ app.get('/api/despacho-fechas/:desde/:hasta', (req, res)=>{
         for(let i=0;i<Despachado.length;i++){
             let date = moment(Despachado[i].fecha, 'DD-MM-yyyy').format('DD-MM-yyyy')
             
-            if(moment(date, "DD-MM-yyyy") > moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") < moment(hasta, "DD-MM-yyyy")){
+            if(moment(date, "DD-MM-yyyy") >= moment(desde, "DD-MM-yyyy") && moment(date, "DD-MM-yyyy") <= moment(hasta, "DD-MM-yyyy")){
                 Despachos.push(Despachado[i])
             }
 
@@ -163,7 +163,7 @@ app.get('/api/despachos-pendientes/:orden',(req, res)=>{
 app.get('/api/despacho/:orden', (req, res)=>{
     let orden = req.params.orden
 
-    //console.log(orden)
+    ////console.log(orden)
 
     Despacho.find({"estado":"despachado", "despacho.op":orden}, (err, DespachoDB)=>{
         if( err ){
@@ -197,7 +197,7 @@ app.put('/api/despacho/:id', (req, res)=>{
     let hoy = moment().format('DD-MM-yyyy')
     let limite  = 0
 
-    // //console.log(body)
+    // ////console.log(body)
 
     let calculo = new Promise(function(menor, mayor){
         for(let i=0; i<body.despacho.length; i++)
@@ -219,7 +219,7 @@ app.put('/api/despacho/:id', (req, res)=>{
                                 let porcentaje = cantidad * 100 / ordenDB.cantidad
                                 // if(porcentaje > 110){
                                 //     limite  = body.despacho[i].op
-                                //     // //console.log(limite,'menor')
+                                //     // ////console.log(limite,'menor')
                                 // }
                                 if(i === body.despacho.length-1){
                                     if(limite > 0){
@@ -256,7 +256,7 @@ app.put('/api/despacho/:id', (req, res)=>{
 app.post('/api/despacho/almacen', (req, res)=>{
 
     let producto = req.body.producto
-    console.log(producto)
+    //console.log(producto)
 
      Producto.findOne({producto})
                  .populate('cliente')
@@ -276,7 +276,7 @@ app.post('/api/despacho/almacen', (req, res)=>{
 app.post('/api/despacho', (req, res)=>{
     let body = req.body;
 
-    //console.log(body)
+    ////console.log(body)
 
     const NuevoDespacho = new Despacho({
         fecha:body.fecha,
@@ -297,7 +297,7 @@ app.post('/api/despacho', (req, res)=>{
         despacho_ = despacho_ + data;
     }
 
-    _despacho_(despacho_, body.fecha, 'logistica@poligraficaindustrial.com,luis.malave@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,calcurianandres@gmail.com, jaime.sanjuan@poligraficaindustrial.com, zuleima.vela@poligraficaindustrial.com,calcurian.andrew@gmail.com,enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,attilio.granone@poligraficaindustrial.com,recepcion@poligraficaindustrial.com',body.observacion)
+    _despacho_(despacho_, body.fecha, 'logistica@poligraficaindustrial.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,calcurianandres@gmail.com, jaime.sanjuan@poligraficaindustrial.com, zuleima.vela@poligraficaindustrial.com,calcurian.andrew@gmail.com,enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,attilio.granone@poligraficaindustrial.com,recepcion@poligraficaindustrial.com',body.observacion)
 
     NuevoDespacho.save((err, DespachoDB)=>{
         if( err ){

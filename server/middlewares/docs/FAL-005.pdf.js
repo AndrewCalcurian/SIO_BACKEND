@@ -8,7 +8,7 @@ const fs = require('fs')
 
 const nodemailer = require('nodemailer');
 
-async function FAL005(orden,solicitud, Lote, materiales, lotes, cantidades,Requi){
+async function FAL005(orden,solicitud, Lote, materiales, lotes, cantidades,Requi, limpieza){
 
 
 const printer = new Pdfmake({
@@ -162,9 +162,13 @@ pdf.end();
 
      if(Requi){
         // asignacion_(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com')
-        asignacion_(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,luis.malave@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
+        if(limpieza.endsWith("@poligraficaindustrial.com")){
+            asignacion_(orden, solicitud, Lote, pdf,'Equipo', `yraida.baptista@poligraficaindustrial.com,${limpieza}`)
+        }else{
+            asignacion_(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
+        }
      }else{
-        asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,luis.malave@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
+        asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
       
         // asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com')
      }

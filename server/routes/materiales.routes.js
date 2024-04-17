@@ -20,6 +20,8 @@ const {FAL005} = require('../middlewares/docs/FAL-005.pdf');
 const {FAL006} = require('../middlewares/docs/FAL-006.pdf');
 
 const {SolicitarRequisicion} = require('../middlewares/emails/solicitudMaterial.email')
+const {FAL004} = require('../middlewares/docs/FAL-004.pdf');
+
 const app = express();
 
 app.get('/api/lotes/:orden', (req, res)=>{
@@ -28,7 +30,7 @@ app.get('/api/lotes/:orden', (req, res)=>{
     Lote.find({orden:orden})
         .populate('material.material')
         .exec((err, lotes)=>{
-            //console.log(lotes)
+            ////console.log(lotes)
             res.json(lotes)
         })
 })
@@ -77,7 +79,7 @@ app.post('/api/almacenado', (req, res)=>{
                 ok:false,
                 err
             });
-            console.log('si')
+            //console.log('si')
         }
     })
 
@@ -88,7 +90,7 @@ app.get('/api/almacenados/:id', (req, res)=>{
     const id = req.params.id;
     let almacenado = []
 
-    // console.log(id,'ooook')
+    // //console.log(id,'ooook')
 
     Material.findById(id, (err, materialDBB)=>{
         if(materialDBB.presentacion === 'Caja'){
@@ -100,7 +102,7 @@ app.get('/api/almacenados/:id', (req, res)=>{
                     });
                 }
         
-                console.log(cajas)
+                //console.log(cajas)
                 res.json(cajas)
             //     for(let i=0;i<cajas.length;i++){
             //         Almacenado.find({material:cajas[i]._id})
@@ -120,10 +122,10 @@ app.get('/api/almacenados/:id', (req, res)=>{
                 
             //     if(Almacen[0]){
             //         almacenado.push(Almacen[0])
-            //         console.log(almacenado)
+            //         //console.log(almacenado)
             //     }
             //     if(i == cajas.length -1){
-            //         console.log(almacenado)
+            //         //console.log(almacenado)
             //         res.json(almacenado)
             //     }
             // })
@@ -148,7 +150,7 @@ app.get('/api/almacenados/:id', (req, res)=>{
                     });
                 }
         
-                console.log(Almacen)
+                //console.log(Almacen)
                 res.json(Almacen)
                 
             })
@@ -163,7 +165,7 @@ app.get('/api/almacenado/:id', (req, res)=>{
 
     const id = req.params.id;
 
-    console.log(id)
+    //console.log(id)
 
     Almacenado.findOne({_id:id})
                 .populate({
@@ -180,7 +182,7 @@ app.get('/api/almacenado/:id', (req, res)=>{
             });
         }
 
-        // console.log(Almacen)
+        // //console.log(Almacen)
         res.json(Almacen)
     })
 
@@ -498,7 +500,7 @@ app.delete('/api/material/:id', (req, res)=>{
 app.post('/api/material/devolucion', (req, res)=>{
 
     let body = req.body;
-    // console.log(body)
+    // //console.log(body)
     let tabla = '';
 
 
@@ -516,7 +518,7 @@ app.post('/api/material/devolucion', (req, res)=>{
                 });
             }
 
-            // //console.log(material.nombre)
+            // ////console.log(material.nombre)
         let data = '';
         cantidades.push(`${body.filtrado[i].cantidad} ${material.unidad}`)
         if(!material.ancho){
@@ -558,8 +560,50 @@ app.post('/api/material/devolucion', (req, res)=>{
 app.get('/api/reenvio-requisicion/:id', (req, res)=>{
     let id = req.params.id
 
-    SolicitarRequisicion(id)
-    res.json('ok')
+    let tabla = '';
+
+    Requisicion.findByIdAndUpdate(id, {estado:'Finalizado'})
+                    .populate('producto.materiales.producto')
+                    .populate({path: 'producto', populate:{path:'materiales.producto', populate:{path:'grupo'}}})
+                    .exec((err, requi)=>{
+                        if( err ){
+                            return res.status(400).json({
+                                ok:false,
+                                err
+                            });
+                        }
+
+                    
+                    let material = []
+                    let cantidad = []
+                    let producto_ = requi.producto.materiales[0];
+
+                    // ////console.log(producto_, 'aja')
+
+                    for(let i=0; i< producto_.length ; i++){
+                        let nombre = `${producto_[i].producto.nombre} (${producto_[i].producto.marca})`;
+                        let cant = `${producto_[i].cantidad} ${producto_[i].producto.unidad}`;
+                        if(producto_[i].producto.ancho){
+                            nombre = `${producto_[i].producto.nombre} ${producto_[i].producto.ancho}x${producto_[i].producto.largo} (${producto_[i].producto.marca}) Calibre: ${producto_[i].producto.calibre}, Gramaje: ${producto_[i].producto.gramaje}`;
+                        }
+                        material.push(nombre);
+                        cantidad.push(cant)
+                        if(nombre != undefined){
+                            let data = `<tr><td>${nombre}</td><td>${cant}</td></tr>`;
+                            tabla = tabla + data;
+                        }
+
+                        let final = producto_.length -1;
+                        if(i == final){
+                             FAL004(requi.producto.producto,requi.sort, 1757,material,cantidad,requi.usuario,requi.motivo,tabla)
+                        }
+                    }
+                    
+                    // ////console.log(requi.producto.materiales[0][0].producto)
+
+                
+                        res.json(requi)
+                    })
 })
 
 
@@ -568,7 +612,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
 
     let Lotes_ = '';
     let names;
-    // console.log(body.lotes);
+    // //console.log(body.lotes);
     let x = 0;
 
     let materiales = [];
@@ -590,7 +634,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
             }
 
         for(let i= 0; i<LoteDB.material.length; i++){
-            // console.log('x')
+            // //console.log('x')
             Almacenado.findOne({material:LoteDB.material[i].material,LoteDB:LoteDB.material[i].LoteDB,codigo:LoteDB.material[i].codigo})
                 .populate({
                     path: 'material',
@@ -628,10 +672,10 @@ app.get('/api/reenvio/:lote', (req,res)=>{
                         
 
                          materiales[i] = names;
-                         //  console.log(materiales)
+                         //  //console.log(materiales)
                           lotes[i] = LoteDB.material[i].lote;
                         // LoteDB.materials.push(body.LoteDB.materials[i].LoteDB.material)
-                        //  console.log(LoteDB.materials)
+                        //  //console.log(LoteDB.materials)
                         solicitados[i] = `${material.unidad} - ${LoteDB.material[i].cantidad} ${material.unidad}`;
                         if(material.unidad == 'Und'){
                             LoteDB.material[i].cantidad = Math.ceil(LoteDB.material[i].cantidad);
@@ -644,7 +688,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
                             if(material.grupo == "61fd54e2d9115415a4416f17" || material.grupo == "61fd6300d9115415a4416f60"  || material.grupo == "61fd72ecd9115415a4416f68"){
                                 solicitados[i]= `${material.unidad} - ${LoteDB.material[i].cantidad} ${material.unidad}`
                                 LoteDB.material[i].solicitado = LoteDB.material[i].EA_Cantidad
-                                // console.log(body.LoteDBs[i].EA_Cantidad)
+                                // //console.log(body.LoteDBs[i].EA_Cantidad)
                             }else{
                                 solicitados[i] = `${material.unidad} - ${LoteDB.material[i].cantidad} ${material.unidad}`
                             }
@@ -670,7 +714,7 @@ app.get('/api/reenvio/:lote', (req,res)=>{
                                 // res.send(lotes_)
                             }
                             
-                            // console.log(materiales,'_' ,lotes)
+                            // //console.log(materiales,'_' ,lotes)
 
                         }
                      })
@@ -690,7 +734,7 @@ app.post('/api/material/descuento', (req, res)=>{
 
     let lotes_ = '';
     let names;
-    // console.log(body.lotes);
+    // //console.log(body.lotes);
 
     let set = new Set( body.lotes.map( JSON.stringify ) )
     body.lotes = Array.from( set ).map( JSON.parse );
@@ -709,7 +753,7 @@ app.post('/api/material/descuento', (req, res)=>{
 
     // let EA_Cantidad = body.EA_Cantidad
 
-    // console.log(body)
+    // //console.log(body)
 
     if(body.requi){
         Requi = true
@@ -739,7 +783,7 @@ app.post('/api/material/descuento', (req, res)=>{
 
         body.lotes[i].solicitado = (Number(body.lotes[i].solicitado)).toFixed(2)
 
-        // console.log(body.lotes[i].Mname,'-',body.lotes[i].lote,'-',body.lotes[i].codigo)
+        // //console.log(body.lotes[i].Mname,'-',body.lotes[i].lote,'-',body.lotes[i].codigo)
         Almacenado.findOne({material:body.lotes[i].Mname,lote:body.lotes[i].lote,codigo:body.lotes[i].codigo,cantidad:{$gt:0}})
                 .populate({
                     path: 'material',
@@ -788,10 +832,10 @@ app.post('/api/material/descuento', (req, res)=>{
 
                                 //  materiales.push(names);
                                  materiales[i] = names;
-                                //  console.log(materiales)
+                                //  //console.log(materiales)
                                  lotes[i] = body.lotes[i].lote;
                                 // lotes.push(body.lotes[i].lote)
-                                //  console.log(lotes)
+                                //  //console.log(lotes)
                                 if(material.unidad == 'Und'){
                                     body.lotes[i].solicitado = Math.ceil(body.lotes[i].solicitado);
                                 }
@@ -803,7 +847,7 @@ app.post('/api/material/descuento', (req, res)=>{
                                     if(material.grupo == "61fd54e2d9115415a4416f17" || material.grupo == "61fd6300d9115415a4416f60"  || material.grupo == "61fd72ecd9115415a4416f68"){
                                         solicitados[i]= `${body.lotes[i].unidad} - ${body.lotes[i].EA_Cantidad} ${material.unidad}`
                                         body.lotes[i].solicitado = body.lotes[i].EA_Cantidad
-                                        console.log(body.lotes[i].EA_Cantidad)
+                                        //console.log(body.lotes[i].EA_Cantidad)
                                     }else{
                                         solicitados[i] = `${body.lotes[i].unidad} - ${body.lotes[i].solicitado} ${material.unidad}`
                                     }
@@ -824,7 +868,7 @@ app.post('/api/material/descuento', (req, res)=>{
 
                                 
 
-                        //         // //console.log({
+                        //         // ////console.log({
                         //         //     material:material._id,
                         //         //     lote: body.lotes[i].lote,
                         //         //     codigo: body.lote[i].codigo,
@@ -840,17 +884,17 @@ app.post('/api/material/descuento', (req, res)=>{
                                    EA_Cantidad:body.lotes[i].EA_Cantidad
                                 })
 
-                        //         // //console.log(material__)
+                        //         // ////console.log(material__)
 
                                  let final = body.lotes.length;
                                  if(materiales.length == body.lotes.length && lotes.length == body.lotes.length && solicitados.length == body.lotes.length){
 
-                                    // console.log(lotes_)
-                                    // console.log(lotes_)
+                                    // //console.log(lotes_)
+                                    // //console.log(lotes_)
 
                                     // let nulos = materiales.find(null)
                                     if(x == final){
-                                        // console.log(solicitados)
+                                        // //console.log(solicitados)
                                         let solicitud__
                                         if(body.solicitud >= 10){
                                             solicitud__ = `00${body.solicitud}`
@@ -867,13 +911,13 @@ app.post('/api/material/descuento', (req, res)=>{
                                             material:material__
                                         }).save();
                                         // orden.push(data)
-                                        //console.log(orden)
+                                        ////console.log(orden)
                                         FAL005(body.orden,body.solicitud, lotes_, materiales,lotes,solicitados,Requi)
                                     
                                         res.json('ok')
                                     }
                                     
-                                    // console.log(materiales,'_' ,lotes)
+                                    // //console.log(materiales,'_' ,lotes)
 
                                 }
                              })
@@ -883,7 +927,7 @@ app.post('/api/material/descuento', (req, res)=>{
         })
 
 
-        // //console.log(i)
+        // ////console.log(i)
     }
 
 })

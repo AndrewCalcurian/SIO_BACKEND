@@ -47,9 +47,9 @@ app.post('/api/validation2steps', (req,res)=>{
             });
         }
 
-        console.log(usuarioDB.pin)
+        //console.log(usuarioDB.pin)
         if(!bcrypt.compareSync( body.pin, usuarioDB.pin )){
-            // console.log(usuarioDB.TSV,'/',body.pin)
+            // //console.log(usuarioDB.TSV,'/',body.pin)
             return res.status(400).json({
                 ok:false,
                 err:{
@@ -95,7 +95,7 @@ app.post('/api/crear-pin', (req,res)=>{
 app.post('/api/login', (req,res)=>{
 
     let body = req.body;
-    // //console.log(body)
+    // ////console.log(body)
 
     Usuario.findOne({Correo:body.Correo}, (err, usuarioDB)=>{
         if ( err ){
@@ -105,7 +105,7 @@ app.post('/api/login', (req,res)=>{
             });
         }
 
-        // //console.log(usuarioDB)
+        // ////console.log(usuarioDB)
 
         if(!usuarioDB){
             return res.status(400).json({

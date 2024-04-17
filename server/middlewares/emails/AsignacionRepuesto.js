@@ -6,7 +6,7 @@ function NuevaAsignacion(correo,adjunto,motivo,correlativo,table){
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -55,9 +55,9 @@ function NuevaAsignacion(correo,adjunto,motivo,correlativo,table){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           // console.log(err);
+           // //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }

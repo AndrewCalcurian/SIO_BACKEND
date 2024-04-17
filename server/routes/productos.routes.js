@@ -103,7 +103,7 @@ app.get('/api/producto/:id', (req, res)=>{
 
     let id = req.params.id;
 
-    // //console.log(id)
+    // ////console.log(id)
     Producto.findById(id)
             .populate('cliente grupo materiales.producto')
             .populate({path:'materiales.producto', populate:{path:'grupo'}})

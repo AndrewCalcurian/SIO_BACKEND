@@ -4,7 +4,7 @@ const {header__, footer} = require('../templates/template.email')
 function reception(orden,correo,motivo,random){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -50,9 +50,9 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            // console.log(info);
+            // //console.log(info);
         }
     });
 
@@ -62,7 +62,7 @@ table, th, td {
 function reception_(orden,correo,random,info){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -98,9 +98,9 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            // console.log(info);
+            // //console.log(info);
         }
     });
 
@@ -110,7 +110,7 @@ table, th, td {
 function reception__(orden,correo,motivo,random){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -156,9 +156,9 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            // console.log(info);
+            // //console.log(info);
         }
     });
 
@@ -169,7 +169,7 @@ table, th, td {
 function reception___(orden,correo,motivo,random,tabla){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -223,9 +223,9 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            // console.log(info);
+            // //console.log(info);
         }
     });
 

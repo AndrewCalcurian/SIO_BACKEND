@@ -100,7 +100,7 @@ app.get('/api/repuesto', (req, res)=>{
 
 app.post('/api/pieza', (req, res) =>{
     let body = req.body;
-    console.log(body)
+    //console.log(body)
 
     Pieza.findOne({repuesto:body.repuesto}, (err, repuesto)=>{
         if (err) {
@@ -172,7 +172,7 @@ app.get('/api/pieza', (req, res)=>{
 app.post('/api/solicitudrepuesto', (req, res)=>{
     const body = req.body;  
 
-    console.log(body)
+    //console.log(body)
 
     let requisicion = new RepuestoSolicitud(body).save((Requisicion, err)=>{
         if( err ){
@@ -380,9 +380,9 @@ app.get('/api/solicitud-repuestos-asignadas/:asignacion', (req, res)=>{
 app.get('/correo', (req, res)=>{
     newCounter = iasignacionr({_id:'i',seq:'24000'}).save((err, frinchi)=>{
         if(err){
-            console.log(err)
+            //console.log(err)
         }
-        console.log(frinchi)
+        //console.log(frinchi)
     })
     res.json('hecho')
 })

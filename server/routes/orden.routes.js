@@ -61,7 +61,7 @@ app.post('/api/orden-compra', (req, res)=>{
             });
         }
 
-        console.log(body)
+        //console.log(body)
         res.json(EscalaDB)
     })
 
@@ -152,7 +152,7 @@ app.post('/api/orden', (req, res)=>{
 
                                                 NewOrden.producto = resp;
 
-                                                // console.log(resp)
+                                                // //console.log(resp)
 
                                                 NewOrden.save((err, resp)=>{
                                                     if( err ){
@@ -177,7 +177,7 @@ app.post('/api/orden', (req, res)=>{
                                                         let cantidad___ = new Intl.NumberFormat('de-DE').format(resp.cantidad)
                                                         Ordendecomprasbd.productos[body.ProductodeProductos].status = Ordendecomprasbd.productos[body.ProductodeProductos].status + `${resp.sort} por ${cantidad___} Unds. \n`
 
-                                                        console.log(body.ProductodeProductos)
+                                                        //console.log(body.ProductodeProductos)
                                                         ordendecompra.findByIdAndUpdate(Ordendecomprasbd._id, Ordendecomprasbd, (err, done)=>{
                                                             if( err ){
                                                                 return res.status(400).json({
@@ -194,7 +194,7 @@ app.post('/api/orden', (req, res)=>{
                                                                 
                                                              NuevaOrden(resp.sort,'Andres','calcurianandres@gmail.com')
                                                              SolicitudMateria(resp.sort,'test')
-                                                             NuevaOrden(resp.sort,'Luis','luis.malave@poligraficaindustrial.com')
+                                                             NuevaOrden(resp.sort,'Enjimar','enjimar.fajardo@poligraficaindustrial.com')
                                                              NuevaOrden(resp.sort,'Raul', 'raul.diaz@poligraficaindustrial.com')
                                                              NuevaOrden(resp.sort,'Carlos','carlos.mejias@poligraficaindustrial.com')
                                                              NuevaOrden(resp.sort,'Enida', 'enida.aponte@poligraficaindustrial.com')
@@ -232,7 +232,7 @@ app.get('/api/orden-cliente/:cliente', (req, res)=>{
                 });
             }
     
-            // console.log(orden)
+            // //console.log(orden)
             res.json(ordenes)
         })
 })
@@ -246,9 +246,9 @@ app.get('/api/orden-todo', (req, res)=>{
     //         for(let n_i = 0; n_i<adcionalesDB[n].material.length; n_i++){
     //             if(!adcionalesDB[n].material[n_i].EA_Cantidad){
     //                 let add = adcionalesDB[n].material[n_i].push({EA_Cantidad:0})
-    //                 console.log(adcionalesDB[n].material[n_i])
+    //                 //console.log(adcionalesDB[n].material[n_i])
     //             }else{
-    //                 console.log('work')
+    //                 //console.log('work')
     //             }
     //         }
     //     }
@@ -270,7 +270,7 @@ app.get('/api/orden-todo', (req, res)=>{
             });
         }
 
-        // console.log(orden)
+        // //console.log(orden)
         res.json(orden)
     });
 })
@@ -326,7 +326,7 @@ app.get('/api/orden_material', (req, res)=>{
                 orden[x].producto.materiales[orden[x].montaje].splice(i,1)
                 i--
             }
-            // console.log(orden[x].producto.materiales[orden[x].montaje][i])
+            // //console.log(orden[x].producto.materiales[orden[x].montaje][i])
         
             // if(x === orden.length-1){
                 if(x === orden.length-1 && i === orden[x].producto.materiales[orden[x].montaje].length -1){
@@ -335,11 +335,11 @@ app.get('/api/orden_material', (req, res)=>{
                     //     for(let n=0;n<orden[z].producto.materiales[orden[z].montaje].length;n++){
                     //         let material = orden[z].producto.materiales[orden[z].montaje][n]
                     //         if(material.producto.grupo.nombre != 'Sustrato' && material.cantidad === '0'){
-                    //             // console.log(material,'/',i)
+                    //             // //console.log(material,'/',i)
                     //             orden[z].producto.materiales[orden[x].montaje].splice(i,1)
                                 
                     //         }
-                    //         // console.log(orden[x].producto.materiales[orden[x].montaje][n])
+                    //         // //console.log(orden[x].producto.materiales[orden[x].montaje][n])
                         
                     //         if(z === orden.length-1){
                     //             if(n === orden[z].producto.materiales[orden[z].montaje].length -1){    
@@ -367,6 +367,7 @@ app.get('/api/orden/cancelar/:orden/:motivo', (req, res)=>{
 
     Orden.findByIdAndUpdate(req.params.orden, {estado:'CANCELADA'}, (err, orden)=>{
          if( err ){
+             //console.log(err, 'primero')
              return res.status(400).json({
                  ok:false,
                 err
@@ -377,6 +378,7 @@ app.get('/api/orden/cancelar/:orden/:motivo', (req, res)=>{
              orden:req.params.orden,
              Motivo:req.params.motivo
          }).save((err, resp)=>{
+            //console.log(err, 'segundo')
              if( err ){
                  return res.status(400).json({
                      ok:false,
@@ -448,12 +450,12 @@ app.get('/api/etiquetar/:id', (req, res)=>{
                 if(gestiones.length > 0){
                     let splitted = gestiones[0].fecha.split('-')
                     fecha = `${splitted[1]}/${splitted[0]}`
-                    console.log(
-                        {
-                            ordenes:orden,
-                            trabajos:`${splitted[1]}/${splitted[0]}`
-                        }
-                    )
+                    // //console.log(
+                    //     {
+                    //         ordenes:orden,
+                    //         trabajos:`${splitted[1]}/${splitted[0]}`
+                    //     }
+                    // )
                 }else{
                     fecha = '0/0'
                 }

@@ -5,7 +5,7 @@ let {tituloCorreo} = require('../templates/template.email')
 function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -17,7 +17,7 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
     });
 
 
-    let titulo = `<h1>Hola Yraida!</h1>`
+    let titulo = `<h1>Hola Equipo!</h1>`
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
@@ -51,9 +51,9 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           // console.log(err);
+           // //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }
@@ -61,7 +61,7 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
 function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -109,9 +109,9 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 
@@ -121,7 +121,7 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
 function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -133,7 +133,7 @@ function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
     });
 
 
-    let titulo = `<h1>Hola Yraida!</h1>`
+    let titulo = `<h1>Hola Equipo!</h1>`
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
@@ -167,9 +167,9 @@ function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           // console.log(err);
+           // //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }

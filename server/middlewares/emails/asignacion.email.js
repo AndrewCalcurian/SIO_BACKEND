@@ -5,7 +5,7 @@ function asignacion_(orden, solicitud, lotes,adjunto,nombre,correo){
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -49,8 +49,10 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //console.log('error');
+            //console.log(err);
         }else{
+            //console.log(info);
             return
         }
     });
@@ -60,7 +62,7 @@ function asignacion(orden, solicitud, lotes,adjunto,nombre,correo){
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -106,9 +108,11 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            //console.log('error');
+
+            //console.log(err);
         }else{
-            // console.log(info);
+            //console.log(info);
         }
     });
 }
@@ -118,7 +122,7 @@ function asignacion___(orden, solicitud, lotes,adjunto,nombre,correo){
 
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -164,9 +168,10 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            //console.log('error');
+            //console.log(err);
         }else{
-            // console.log(info);
+            //console.log(info);
         }
     });
 }

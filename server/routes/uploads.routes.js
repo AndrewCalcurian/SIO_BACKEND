@@ -91,7 +91,7 @@ app.put('/api/upload/:tipo/:id', (req, res)=>{
 });
 
 function repuesto(id, res, nombreArchivo){
-    console.log(nombreArchivo)
+    //console.log(nombreArchivo)
     res.json({ok:true, img:nombreArchivo})
 }
 

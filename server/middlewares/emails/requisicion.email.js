@@ -2,10 +2,10 @@ const nodemailer = require('nodemailer');
 const {header2, footer} = require('../templates/template.email');
 let {tituloCorreo} = require('../templates/template.email')
 
-function NuevaRequisicion_(orden,correo,motivo){
+function NuevaRequisicion_(orden,correo,motivo,name){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -17,7 +17,7 @@ function NuevaRequisicion_(orden,correo,motivo){
     });
 
 
-    let titulo = `<h1>Hola Jaime!</h1>`
+    let titulo = `<h1>Hola ${name}!</h1>`
     var mailOptions = {
         from: '"SIO - Sistema Integral de Operacion" <sio.soporte@poligraficaindustrial.com>',
         to: correo,
@@ -41,9 +41,9 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            // console.log(info);
+            // //console.log(info);
         }
     });
 
@@ -53,7 +53,7 @@ table, th, td {
 function NuevaRequisicion(orden,correo,motivo){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -90,9 +90,9 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // console.log(err);
+            // //console.log(err);
         }else{
-            // console.log(info);
+            // //console.log(info);
         }
     });
 

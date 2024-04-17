@@ -89,7 +89,7 @@ app.put('/api/cotizacion/intervalos', (req, res)=>{
     let id = req.body._id
     let body = req.body
 
-    console.log(body)
+    //console.log(body)
 
     Escala.findOneAndUpdate({_id:id}, body,(err, Escala)=>{
         if( err ){
@@ -99,7 +99,7 @@ app.put('/api/cotizacion/intervalos', (req, res)=>{
                 });
         }
 
-        console.log(Escala)
+        //console.log(Escala)
         res.json(Escala)
 
     })
@@ -128,19 +128,19 @@ app.post('/api/cotizacion/intervalo/producto/:producto', (req, res)=>{
                 });
             }
 
-            console.log(Escala)
+            //console.log(Escala)
             
             
             consultaDolar.$monitor().then($=>{
 
                 if(!$){
-                    console.log('err')
+                    //console.log('err')
                 }
                 
                 MonitorBCV = $['$bcv']
                 res.json({Escala,MonitorBCV})
             }, error =>{
-                console.log('mensaje de prueba')
+                //console.log('mensaje de prueba')
                 // MonitorBCV = 0,00
                 res.json({Escala,MonitorBCV})
             })
@@ -162,7 +162,7 @@ app.put('/api/facturado', (req, res)=>{
                 DespachoDB.despacho[i].documento = body.documento
 
                 Despacho.findOneAndUpdate({_id:DespachoDB._id}, DespachoDB, (err, DespachoDBS)=>{
-                    console.log(DespachoDBS)
+                    //console.log(DespachoDBS)
                 })
             }
         }
@@ -173,7 +173,6 @@ app.post('/api/incremento/pre', (req, res)=>{
     
     let body = req.body
 
-    console.log(body);
 
     Despacho.findOne({"despacho._id":body._id}, (err, DespachoDB)=>{
 
@@ -231,13 +230,13 @@ app.get('/api/despachos/pre-facturacion', (req,res)=>{
             });
         }
 
-        console.log(despachos)
+        //console.log(despachos)
 
         for(let i=0;i<despachos.length;i++){
 
             for(let x=0;x<despachos[i].despacho.length;x++){
 
-                // console.log(despachos[i].despacho[x].op)
+                // //console.log(despachos[i].despacho[x].op)
                 Orden.findOne({sort:despachos[i].despacho[x].op})
                 .populate('cliente')
                 .populate('producto.grupo')

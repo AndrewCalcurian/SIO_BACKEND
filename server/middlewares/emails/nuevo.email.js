@@ -30,7 +30,7 @@ function emailNuevo(titulo, correo, nombre, apellido, any,sede,departamento){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
             if(departamento != 'profit'){
                 nuevoSoporte(titulo, nombre, apellido, any,sede)
             }else{
@@ -91,16 +91,16 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }
 
 function NuevaOrden2(orden, lotes, adjunto){
     
-    // //// console.log(lotes, 'lotes')
+    // //// //console.log(lotes, 'lotes')
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -146,10 +146,10 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
-            // //// console.log(info);
-            //// console.log('correo enviado')
+            // //// //console.log(info);
+            //// //console.log('correo enviado')
         }
     });
 }
@@ -157,7 +157,7 @@ table, th, td {
 function NuevaOrden(orden, nombre, correo){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -183,9 +183,9 @@ function NuevaOrden(orden, nombre, correo){
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }
@@ -193,7 +193,7 @@ function NuevaOrden(orden, nombre, correo){
 function SolicitudMateria(orden, producto){
     var transporter = nodemailer.createTransport({
         host: "mail.poligraficaindustrial.com",
-        port: 25,
+        port: 2525,
         secure: false,
         auth: {
             user: 'sio.soporte@poligraficaindustrial.com',
@@ -219,9 +219,9 @@ function SolicitudMateria(orden, producto){
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }
@@ -249,9 +249,9 @@ function nuevoProfit(titulo, nombre, apellido, any,sede){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }
@@ -279,9 +279,9 @@ function nuevoSoporte(titulo, nombre, apellido, any,sede){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// console.log(err);
+            //// //console.log(err);
         }else{
-            //// console.log(info);
+            //// //console.log(info);
         }
     });
 }

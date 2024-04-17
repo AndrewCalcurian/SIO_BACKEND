@@ -93,7 +93,7 @@ app.put('/api/maquinas/:id', (req, res)=>{
     const id = req.params.id;
     const body = req.body;
 
-    // //console.log(body)
+    // ////console.log(body)
 
     Maquina.findByIdAndUpdate(id, body, (err, maquinaDB)=>{
         if( err ){

@@ -72,7 +72,7 @@ app.get('/api/reenvio-devolucion/:id', (req, res)=>{
                         });
                     }
         
-                    // //console.log(material.nombre)
+                    // ////console.log(material.nombre)
                 let data = '';
                 cantidades.push(`${devolucionDB.filtrado[i].cantidad} ${material.unidad}`)
                 if(!material.ancho){
@@ -95,25 +95,25 @@ app.get('/api/reenvio-devolucion/:id', (req, res)=>{
                 let final = devolucionDB.filtrado.length -1
                 if(i === final){
         
-                    idevolucion.findByIdAndUpdate({_id: 'test'}, {$inc: {seq: 1}}, {new: true, upset:true})
-                        .exec((err, devolucion)=>{
-                            if( err ){
-                                return res.status(400).json({
-                                    ok:false,
-                                    err
-                                });
-                            }
+                    FAL006(devolucionDB.orden,964,materiales,lotes, cantidades, devolucionDB.motivo, devolucionDB.usuario,tabla)
+                    res.json('done');
+                    // idevolucion.findByIdAndUpdate({_id: 'test'}, {$inc: {seq: 1}}, {new: true, upset:true})
+                    //     .exec((err, devolucion)=>{
+                    //         if( err ){
+                    //             return res.status(400).json({
+                    //                 ok:false,
+                    //                 err
+                    //             });
+                    //         }
         
-                            num_solicitud = devolucion.seq;
-                            // FAL006(Devolucion.filtrado.orden,num_solicitud,materiales,lotes, cantidades, body.motivo, body.usuario,tabla)
-                            // let newDEvolucion = new Devolucion({
-                            //     orden:body.orden,
-                            //     filtrado:body.filtrado,
-                            //     motivo:body.motivo
-                            // }).save();
-                            FAL006(devolucionDB.orden,num_solicitud,materiales,lotes, cantidades, devolucionDB.motivo, devolucionDB.usuario,tabla)
-                            res.json('done');
-                        })
+                    //         num_solicitud = devolucion.seq;
+                    //         // FAL006(Devolucion.filtrado.orden,num_solicitud,materiales,lotes, cantidades, body.motivo, body.usuario,tabla)
+                    //         // let newDEvolucion = new Devolucion({
+                    //         //     orden:body.orden,
+                    //         //     filtrado:body.filtrado,
+                    //         //     motivo:body.motivo
+                    //         // }).save();
+                    //     })
                 }
         
                 })
@@ -151,7 +151,7 @@ app.put('/api/devoluciones/:id', (req, res)=>{
                                                 });
                                             }
 
-                                            // //console.log(almacenado[0].cantidad)
+                                            // ////console.log(almacenado[0].cantidad)
                                             let new_cantidad = 0;
                                             if(body[i].material.grupo === '61fd721fd9115415a4416f65'){
                                                 new_cantidad = Number(almacenado[0].cantidad) + body[i].cantidad
@@ -160,7 +160,7 @@ app.put('/api/devoluciones/:id', (req, res)=>{
                                             }
 
                                             new_cantidad = Number(new_cantidad).toFixed(2)
-                                            console.log(new_cantidad)
+                                            //console.log(new_cantidad)
 
 
                                               Almacenado.findByIdAndUpdate(almacenado[0]._id, {cantidad:new_cantidad}, (err, almacenado_)=>{
@@ -187,7 +187,7 @@ app.put('/api/devoluciones/:id', (req, res)=>{
                         });
                     }
         
-                    // //console.log(material.nombre)
+                    // ////console.log(material.nombre)
                 let data = '';
                 cantidades.push(`${body[i].cantidad} ${material.unidad}`)
                 if(!material.ancho){
@@ -265,10 +265,10 @@ app.get('/devolucion/:id', (req, res)=>{
                     });
                 }
 
-                console.log(almacenDB.cantidad, mat_.EA_Cantidad)
+                //console.log(almacenDB.cantidad, mat_.EA_Cantidad)
             })
 
-            // console.log(i+1, mat_.lote, mat_.codigo, mat_.EA_Cantidad)
+            // //console.log(i+1, mat_.lote, mat_.codigo, mat_.EA_Cantidad)
         }
 
         res.json({ok:true})
@@ -305,7 +305,7 @@ app.get('/api/devolucion/:lote', async (req, res) => {
   
       res.json({ ok: true });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.status(500).json({
         ok: false,
         error: 'Ocurrió un error en el servidor'

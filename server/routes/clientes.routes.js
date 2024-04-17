@@ -237,7 +237,7 @@ app.get('/api/createMark', (req, res)=>{
 
 
         print("C:/Users/Administrador/Desktop/SIO_BACKEND/PRUEBA.pdf", options).then(console.log).catch(console.log);
-        console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA....')
+        //console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA....')
     res.json('done')
 })
 
@@ -464,7 +464,7 @@ app.post('/api/prints', (req, res)=>{
         }
         ImprimirPDF();
     
-        // print("C:/Users/administrador.POLINDUSTRIAL/Downloads/Label.pdf").then(console.log);
+        // print("C:/Users/administrador.POLINDUSTRIAL/Downloads/Label.pdf").then(//console.log);
         const options = {
             printer: `${printer.getDefaultPrinterName()}`,
             scale: "fit",
@@ -475,11 +475,11 @@ app.post('/api/prints', (req, res)=>{
         };
     
         
-        // console.log(printer.getDefaultPrinterName())
-        // getDefaultPrinter().then(console.log)
+        // //console.log(printer.getDefaultPrinterName())
+        // getDefaultPrinter().then(//console.log)
         setTimeout(() => {
             print("C:/Users/Administrador/Desktop/SIO_BACKEND/documento_test.pdf", options).then(console.log).catch(console.log);
-            console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA...')
+            //console.log('SE REALIZÓ LA IMPRESION DE LA ETIQUETA...')
             res.json('ok')
         },2000);
     })
@@ -497,7 +497,7 @@ app.get('/api/copy/:orden/:cantidad', (req, res)=>{
     setTimeout(() => {
         fs.copyFile("C:/Users/Administrador/Desktop/SIO_BACKEND/documento_test.pdf", path, (err) => {
             if (err) throw err;
-            console.log('SE REALIZÓ LA COPIA DE ETIQUETA A LOS SERVIDORES');
+            //console.log('SE REALIZÓ LA COPIA DE ETIQUETA A LOS SERVIDORES');
         });
     }, 1000);
     res.json('ok')
@@ -532,7 +532,7 @@ app.put('/api/cliente/:id', (req, res)=>{
     let id = req.params.id
     let data = req.body
 
-    console.log(data)
+    //console.log(data)
 
     Cliente.findByIdAndUpdate(id, data, (err, ClienteDB)=>{
         if( err ){
@@ -553,7 +553,7 @@ app.get('/api/qr/:info', (req, res)=>{
     let info = req.params.info
 
     QRCode.toString(info,{type:'terminal'}, function (err, url) {
-        console.log(url)
+        //console.log(url)
         res.json('ok')
       })
 })

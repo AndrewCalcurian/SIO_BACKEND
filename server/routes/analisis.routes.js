@@ -74,7 +74,7 @@ app.post('/api/analisis-sustrato', (req, res)=>{
                 }
 
                 res.json({resultado:AnalisisDB.resultado})
-                console.log({resultado:AnalisisDB.resultado})
+                //console.log({resultado:AnalisisDB.resultado})
                 return
 
             })
@@ -108,15 +108,15 @@ app.post('/api/analisis-tinta', (req, res)=>{
     
     let body = req.body;
     let final;
-    // console.log(body.lote)
+    // //console.log(body.lote)
     atinta.findOne({lote:body.lote}, (err, atintaDB)=>{
         if(err){
-            console.log(err)
+            //console.log(err)
         }
         if(!atintaDB){
             let analisis = new atinta(body).save((err, nuevoAnalisisDB)=>{
                 if( err ){
-                    console.log(err)
+                    //console.log(err)
                     // return res.status(400).json({
                     //     ok:false,
                     //     err
