@@ -13,7 +13,11 @@ function devolucion(orden, solicitud,adjunto,nombre,correo,tabla){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -50,7 +54,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             return
         }
@@ -69,7 +73,11 @@ function devolucion2(orden, solicitud,nombre,correo,tabla){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -102,7 +110,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             return
         }

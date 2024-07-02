@@ -6,6 +6,7 @@ const Almacenado = require('../database/models/almacenado.model');
 const Iasignacion = require('../database/models/iasignacion.modal')
 const Lotes = require('../database/models/lotes.model')
 const Requisicion = require('../database/models/requisicion.model')
+const usuario = require('../database/models/usuarios.model');
 
 const {FAL005} = require('../middlewares/docs/FAL-005.pdf')
 
@@ -135,14 +136,27 @@ app.post('/api/descontar', async (req, res) => {
       const lotes = [];
       let Requi = false;
       let email_limpieza = ''
-  
-      if (body.requi) {
-        Requi = true;
-        await Requisicion.findOneAndUpdate({ _id: body.orden_id }, { estado: 'Finalizado' }, (err, requisicion)=>{
-            email_limpieza = requisicion.producto.producto
-            return
-        });
-      }
+      let email_requisicion = ''
+      let usuario_ = 'Enida Aponte'
+        if (body.requi) {
+            Requi = true;
+            try {
+                let requisicion = await Requisicion.findOneAndUpdate({ _id: body.orden_id }, { estado: 'Finalizado' });
+                email_limpieza = requisicion.producto.producto;
+                let name = requisicion.usuario.split(' ');
+                usuario_ = `${name[0]} ${name[1]}`;
+                let email = await usuario.findOne({ Nombre: name[0] }).exec();
+                email_requisicion = email.Correo;
+            } catch (err) {
+                console.log(err);
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+        }
+        
+        console.log('correo:', email_requisicion);
       await Orden.findOneAndUpdate({ sort: body.orden }, { estado: 'activo' });
   
       const asig = await Iasignacion.findByIdAndUpdate(
@@ -177,7 +191,7 @@ app.post('/api/descontar', async (req, res) => {
         };
         const loteDB = await new Lotes(NewLote).save();
         //console.log(`se registro nuevo lote: ${loteDB}`);
-        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades, Requi, email_limpieza);
+        FAL005(body.orden, N_asignacion, body.tabla, body.materiales, body.lotes, body.cantidades, Requi, email_limpieza, email_requisicion, usuario_);
         res.json('done');
       }, 1000);
     } catch (err) {

@@ -297,7 +297,7 @@ app.post('/api/despacho', (req, res)=>{
         despacho_ = despacho_ + data;
     }
 
-    _despacho_(despacho_, body.fecha, 'logistica@poligraficaindustrial.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,calcurianandres@gmail.com, jaime.sanjuan@poligraficaindustrial.com, zuleima.vela@poligraficaindustrial.com,calcurian.andrew@gmail.com,enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,attilio.granone@poligraficaindustrial.com,recepcion@poligraficaindustrial.com',body.observacion)
+    _despacho_(despacho_, body.fecha, 'logistica@poligraficaindustrial.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,calcurianandres@gmail.com, jaime.sanjuan@poligraficaindustrial.com, zuleima.vela@poligraficaindustrial.com,calcurian.andrew@gmail.com,enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,attilio.granone@poligraficaindustrial.com,recepcion@poligraficaindustrial.com,contabilidad@poligraficaindustrial.com',body.observacion)
 
     NuevoDespacho.save((err, DespachoDB)=>{
         if( err ){

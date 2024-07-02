@@ -380,7 +380,7 @@ app.get('/api/solicitud-repuestos-asignadas/:asignacion', (req, res)=>{
 app.get('/correo', (req, res)=>{
     newCounter = iasignacionr({_id:'i',seq:'24000'}).save((err, frinchi)=>{
         if(err){
-            //console.log(err)
+            console.log(err)
         }
         //console.log(frinchi)
     })

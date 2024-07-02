@@ -30,7 +30,7 @@ function emailNuevo(titulo, correo, nombre, apellido, any,sede,departamento){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
             if(departamento != 'profit'){
                 nuevoSoporte(titulo, nombre, apellido, any,sede)
             }else{
@@ -91,7 +91,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             //// //console.log(info);
         }
@@ -109,7 +109,11 @@ function NuevaOrden2(orden, lotes, adjunto){
         auth: {
             user: process.env.CORREO,
             pass: process.env.PASS_CORREO
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
     let titulo = `<h1>Hola Carlos,</h1>`
     var mailOptions = {
@@ -146,7 +150,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             // //// //console.log(info);
             //// //console.log('correo enviado')
@@ -165,7 +169,11 @@ function NuevaOrden(orden, nombre, correo){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
     let titulo = `<h1>Hola ${nombre},</h1>`
     var mailOptions = {
@@ -183,7 +191,7 @@ function NuevaOrden(orden, nombre, correo){
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             //// //console.log(info);
         }
@@ -201,7 +209,11 @@ function SolicitudMateria(orden, producto){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
     let titulo = `<h1>Hola Yraida,</h1>`
     var mailOptions = {
@@ -219,7 +231,7 @@ function SolicitudMateria(orden, producto){
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             //// //console.log(info);
         }
@@ -249,7 +261,7 @@ function nuevoProfit(titulo, nombre, apellido, any,sede){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+            console.log(err);
         }else{
             //// //console.log(info);
         }
@@ -279,7 +291,7 @@ function nuevoSoporte(titulo, nombre, apellido, any,sede){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+           console.log(err);
         }else{
             //// //console.log(info);
         }

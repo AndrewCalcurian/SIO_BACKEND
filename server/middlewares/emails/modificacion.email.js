@@ -26,7 +26,7 @@ function emailModificacion(Correo, Nombre, Apellido, tipo, titulo, causa){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            //// //console.log(err);
+           console.log(err);
         }else{
             //// //console.log(info);
         }

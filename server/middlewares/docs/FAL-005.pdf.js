@@ -7,8 +7,9 @@ const moment = require('moment')
 const fs = require('fs')
 
 const nodemailer = require('nodemailer');
+const path = require('path');
 
-async function FAL005(orden,solicitud, Lote, materiales, lotes, cantidades,Requi, limpieza){
+async function FAL005(orden,solicitud, Lote, materiales, lotes, cantidades,Requi, limpieza,email, usuario){
 
 
 const printer = new Pdfmake({
@@ -139,7 +140,7 @@ doc.add(
             FECHA:${hoy}
             `).end).fontSize(9).end,
             new Cell(new Txt(`
-            FIRMA: ENIDA APONTE
+            FIRMA: ${usuario}
 
             FECHA:${hoy}
             `).end).fontSize(9).end,
@@ -157,24 +158,68 @@ doc.add(
 
 
 const pdf = printer.createPdfKitDocument(doc.getDefinition());
-pdf.end();
-
-
-     if(Requi){
-        // asignacion_(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com')
-        if(limpieza.endsWith("@poligraficaindustrial.com")){
-            asignacion_(orden, solicitud, Lote, pdf,'Equipo', `yraida.baptista@poligraficaindustrial.com,${limpieza}`)
-        }else{
-            asignacion_(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
+const currentYear = new Date().getFullYear();
+const currentDateTime = new Date();
+const day = currentDateTime.getDate();
+const month = currentDateTime.getMonth() + 1; // Months are zero-based, so we add 1
+const year = currentDateTime.getFullYear();
+const hour = currentDateTime.getHours();
+const minute = currentDateTime.getMinutes();
+const second = currentDateTime.getSeconds();
+const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+const formattedDateTime = `${day}_${month}_${year}_${hour}_${minute}_${second}`;
+const directoryPath = `\\\\POLIGPCDC01\\Poligrafica_Archivos\\DEPARTAMENTO DE PRODUCCION\\ÓRDENES DE PRODUCCIÓN\\${currentYear}`;
+let pdfPath = '';
+if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath, { recursive: true });
+    console.log(`Directory ${directoryPath} created.`);
+}
+if(orden === 'N/A'){
+    orden = 'N_A'
+    const almacenado_ = pdf;
+    path_path = `${directoryPath}\\Solicitudes adicionales\\${day} de ${meses[month-1]}\\Asignaciones`
+    if(!fs.existsSync(path_path)){
+        fs.mkdirSync(path_path, { recursive: true });
+        almacenado_.pipe(fs.createWriteStream(`${path_path}\\AL-ASG-${solicitud}_${orden}_${formattedDateTime}.pdf`));
+        pdfPath = `${path_path}\\AL-ASG-${solicitud}_${orden}_${formattedDateTime}.pdf`
+    }else{
+        almacenado_.pipe(fs.createWriteStream(`${path_path}\\AL-ASG-${solicitud}_${orden}_${formattedDateTime}.pdf`));
+        pdfPath = `${path_path}\\AL-ASG-${solicitud}_${orden}_${formattedDateTime}.pdf`
+    }
+}else{
+    if (fs.existsSync(directoryPath)) {
+        const files = fs.readdirSync(directoryPath);
+        const matchingFolder = files.find(file => fs.statSync(path.join(directoryPath, file)).isDirectory() && file.startsWith(orden));
+    
+        if (matchingFolder) {
+            const almacenado = pdf;
+            almacenado.pipe(fs.createWriteStream(`${directoryPath}\\${matchingFolder}\\AL-ASG-${solicitud}_${orden}_${formattedDateTime}.pdf`));
+            pdfPath = `${directoryPath}\\${matchingFolder}\\AL-ASG-${solicitud}_${orden}_${formattedDateTime}.pdf`;
+            console.log(`Found folder starting with order number ${orden}: ${matchingFolder}`);
+        } else {
+            console.log(`No folder found starting with order number ${orden} in the directory.`);
         }
-     }else{
-        asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
-      
-        // asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com')
-     }
-//    asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com')
-//  asignacion(orden, Lote, pdf,'Carlos', 'carlos.mejias@poligraficaindustrial.com')
-    //  asignacion(orden, Lote, pdf,'Freddy', 'freddy.burgos@poligraficaindustrial.com')
+    } else {
+        console.log(`Directory ${directoryPath} does not exist.`);
+    }
+}
+pdf.end();
+const pdfStream = fs.createReadStream(pdfPath);
+if(Requi){
+    asignacion_(orden, solicitud, Lote, pdfStream,'Equipo', `yraida.baptista@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,jaime.sanjuan@poligraficaindustrial.com,${email}`)
+    // if(limpieza.endsWith("@poligraficaindustrial.com")){
+        //     asignacion_(orden, solicitud, Lote, pdf,'Equipo', `yraida.baptista@poligraficaindustrial.com,${limpieza}`)
+        // }else{
+            // // asignacion_(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
+            // }
+            // res.json('ok')
+        }else{
+            // // asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com,enjimar.fajardo@poligraficaindustrial.com,raul.diaz@poligraficaindustrial.com,enida.aponte@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com')
+        asignacion(orden, solicitud, Lote, pdfStream,'Equipo', `yraida.baptista@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,jaime.sanjuan@poligraficaindustrial.com,${email}`)
+        }
+        //    asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurianandres@gmail.com')
+        //  asignacion(orden, Lote, pdf,'Carlos', 'carlos.mejias@poligraficaindustrial.com')
+        //  asignacion(orden, Lote, pdf,'Freddy', 'freddy.burgos@poligraficaindustrial.com')
     return
 
 }

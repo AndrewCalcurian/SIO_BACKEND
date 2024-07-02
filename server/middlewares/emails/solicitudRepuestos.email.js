@@ -13,7 +13,11 @@ function NuevaSolicitud_(correo,adjunto,table,motivo,correlativo){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -54,7 +58,7 @@ function NuevaSolicitud_(correo,adjunto,table,motivo,correlativo){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           // //console.log(err);
+           console.log(err);
         }else{
             //// //console.log(info);
         }

@@ -16,7 +16,11 @@ function Nueva_recepcion(){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
     let titulo = `<h1>Hola NOMBRE</h1>`
@@ -52,7 +56,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+            console.log(err);
         }else{
             // //console.log(info);
             // //console.log('ENVIO CORREO DE VERIFICACIÓN DE MATERIAL')
@@ -74,7 +78,11 @@ function Nueva_recepcion2(){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
     let titulo = `<h1>Hola NOMBRE</h1>`
@@ -110,7 +118,7 @@ table, th, td {
     };
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+           console.log(err);
         }else{
             // //console.log(info);
             // //console.log('ENVIO CORREO DE VERIFICACIÓN DE MATERIAL')

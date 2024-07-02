@@ -12,7 +12,11 @@ function reception(orden,correo,motivo,random){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -50,7 +54,7 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+            console.log(err);
         }else{
             // //console.log(info);
         }
@@ -70,7 +74,11 @@ function reception_(orden,correo,random,info){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -98,7 +106,7 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+            console.log(err);
         }else{
             // //console.log(info);
         }
@@ -118,7 +126,11 @@ function reception__(orden,correo,motivo,random){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -156,7 +168,8 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+            
+            console.log(err);
         }else{
             // //console.log(info);
         }
@@ -177,7 +190,11 @@ function reception___(orden,correo,motivo,random,tabla){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -223,7 +240,7 @@ table, th, td {
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+            console.log(err);
         }else{
             // //console.log(info);
         }

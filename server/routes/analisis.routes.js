@@ -116,7 +116,7 @@ app.post('/api/analisis-tinta', (req, res)=>{
         if(!atintaDB){
             let analisis = new atinta(body).save((err, nuevoAnalisisDB)=>{
                 if( err ){
-                    //console.log(err)
+                    console.log(err)
                     // return res.status(400).json({
                     //     ok:false,
                     //     err

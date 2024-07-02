@@ -222,7 +222,12 @@ app.get('/api/despachos/pre-facturacion', (req,res)=>{
 
     let preFacuracion = [];
 
-    Despacho.find({ $or: [{ estado: 'pendiente' }, { 'despacho.documento': /^N/ }] }, (err, despachos)=>{
+    Despacho.find({
+        $and: [
+            { $or: [{ estado: 'pendiente' }, { 'despacho.documento': /^N/ }] },
+            { fecha: { $not: /2023/ } }
+          ]
+    }, (err, despachos)=>{
         if( err ){
             return res.status(400).json({
                 ok:false,

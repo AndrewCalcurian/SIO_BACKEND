@@ -13,7 +13,11 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -51,7 +55,7 @@ function NuevaSolicitud_(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           // //console.log(err);
+           console.log(err);
         }else{
             //// //console.log(info);
         }
@@ -69,7 +73,11 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -109,7 +117,7 @@ function NuevaSolicitud(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-            // //console.log(err);
+            console.log(err);
         }else{
             //// //console.log(info);
         }
@@ -129,7 +137,11 @@ function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -167,7 +179,7 @@ function NuevaSolicitud__(orden,correo,motivo,num_solicitud,adjunto,tabla){
 
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
-           // //console.log(err);
+           console.log(err);
         }else{
             //// //console.log(info);
         }

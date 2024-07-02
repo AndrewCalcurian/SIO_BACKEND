@@ -6,6 +6,7 @@ const Almacenado = require('../database/models/almacenado.model');
 const Lote = require('../database/models/lotes.model')
 const Material = require('../database/models/material.model')
 const idevolucion = require('../database/models/idevolucion.model')
+const usuario = require('../database/models/usuarios.model')
 
 const {FAL006} = require('../middlewares/docs/FAL-006.pdf');
 
@@ -225,7 +226,9 @@ app.put('/api/devoluciones/:id', (req, res)=>{
                             //     filtrado:body.filtrado,
                             //     motivo:body.motivo
                             // }).save();
-                            FAL006(devolucionDB.orden,num_solicitud,materiales,lotes, cantidades, devolucionDB.motivo, devolucionDB.usuario,tabla)
+                            let usuario_ = devolucionDB.usuario.split(' ')
+                            let correo = usuario.findOne({Nombre:usuario_[0]}).exec()
+                            FAL006(devolucionDB.orden,num_solicitud,materiales,lotes, cantidades, devolucionDB.motivo, devolucionDB.usuario,tabla,correo.Correo)
                             res.json('done');
                         })
                 }

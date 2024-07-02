@@ -3,6 +3,7 @@ const express = require('express');
 const Requisicion = require('../database/models/requisicion.model');
 const isolicitud = require('../database/models/isolicitud.modal');
 const iasignacion = require('../database/models/iasignacion.modal');
+const usuario = require('../database/models/usuarios.model')
 const {NuevaRequisicion, NuevaRequisicion_ } = require('../middlewares/emails/requisicion.email')
 const {FAL004} = require('../middlewares/docs/FAL-004.pdf');
 
@@ -29,15 +30,15 @@ app.post('/api/requi',(req, res)=>{
             });
         }
 
-        if(body.sort === "#"){
-            if(body.categoria){
-                NuevaRequisicion_(body.sort,'yraida.baptista@poligraficaindustrial.com',body.motivo,'Yraida')
-            }else{
-                NuevaRequisicion_(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo,'Jaime')
-            }
-        }else{
-            NuevaRequisicion(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo,'Jaime')
-        }
+        // if(body.sort === "#"){
+        //     if(body.categoria){
+        //         NuevaRequisicion_(body.sort,'yraida.baptista@poligraficaindustrial.com',body.motivo,'Yraida')
+        //     }else{
+        //         NuevaRequisicion_(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo,'Jaime')
+        //     }
+        // }else{
+        //     NuevaRequisicion(body.sort,'jaime.sanjuan@poligraficaindustrial.com',body.motivo,'Jaime')
+        // }
         ////console.log(resp)
         res.json('ok')
     });
@@ -152,7 +153,17 @@ app.put('/api/requi/:id', (req,res)=>{
 
                         let final = producto_.length -1;
                         if(i == final){
-                             FAL004(requi.producto.producto,requi.sort, num_solicitud,material,cantidad,requi.usuario,requi.motivo,tabla)
+                            let name = requi.usuario.split(' ')
+                            let email = usuario.findOne({Nombre:name}).exec((err, email)=>{
+                                if( err ){
+                                    return res.status(400).json({
+                                        ok:false,
+                                        err
+                                    });
+                                }
+
+                                FAL004(requi.producto.producto,requi.sort, num_solicitud,material,cantidad,requi.usuario,requi.motivo,tabla,email.Correo)
+                            })
                         }
                     }
                     

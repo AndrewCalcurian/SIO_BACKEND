@@ -7,10 +7,11 @@ const moment = require('moment')
 const fs = require('fs')
 
 const nodemailer = require('nodemailer');
+const path = require('path');
 
 
 
-async function FAL004(producto_,orden, num_solicitud,producto,cantidad,usuario, motivo,tabla){
+async function FAL004(producto_,orden, num_solicitud,producto,cantidad,usuario, motivo,tabla,correo){
 
 if(orden === "#"){
     orden = "N/A"
@@ -168,28 +169,79 @@ doc.add(
 
 
 const pdf = printer.createPdfKitDocument(doc.getDefinition());
-
-// pdf.pipe(fs.createWriteStream('document.pdf'));
+const currentYear = new Date().getFullYear();
+const currentDateTime = new Date();
+const day = currentDateTime.getDate();
+const month = currentDateTime.getMonth() + 1; // Months are zero-based, so we add 1
+const year = currentDateTime.getFullYear();
+const hour = currentDateTime.getHours();
+const minute = currentDateTime.getMinutes();
+const second = currentDateTime.getSeconds();
+const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+const formattedDateTime = `${day}_${month}_${year}_${hour}_${minute}_${second}`;
+const directoryPath = `\\\\POLIGPCDC01\\Poligrafica_Archivos\\DEPARTAMENTO DE PRODUCCION\\ÓRDENES DE PRODUCCIÓN\\${currentYear}`;
+let pdfPath = '';
+if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath, { recursive: true });
+    console.log(`Directory ${directoryPath} created.`);
+}
+if(orden === 'N/A'){
+    orden = 'N_A'
+    const almacenado_ = pdf;
+    path_path = `${directoryPath}\\Solicitudes adicionales\\${day} de ${meses[month-1]}\\Solicitudes`
+    if(!fs.existsSync(path_path)){
+        fs.mkdirSync(path_path, { recursive: true });
+        almacenado_.pipe(fs.createWriteStream(`${path_path}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`));
+        pdfPath = `${path_path}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`
+    }else{
+        almacenado_.pipe(fs.createWriteStream(`${path_path}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`));
+        pdfPath = `${path_path}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`
+    }
+}else{
+    if (fs.existsSync(directoryPath)) {
+        const files = fs.readdirSync(directoryPath);
+        const matchingFolder = files.find(file => fs.statSync(path.join(directoryPath, file)).isDirectory() && file.startsWith(orden));
+    
+        if (matchingFolder) {
+            const almacenado = pdf;
+            almacenado.pipe(fs.createWriteStream(`${directoryPath}\\${matchingFolder}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`));
+            pdfPath = `${directoryPath}\\${matchingFolder}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`
+            console.log(`Found folder starting with order number ${orden}: ${matchingFolder}`);
+        } else {
+            let path_new = `${directoryPath}\\${orden} ${producto_}`;
+            if (!fs.existsSync(path_new)) {
+                fs.mkdirSync(path_new, { recursive: true });
+                console.log(`Directory ${path_new} created.`);
+                const almacenado_ = pdf;
+                almacenado_.pipe(fs.createWriteStream(`${path_new}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`));
+                pdfPath = `${path_new}\\AL-SOL-${num_solicitud}_${orden}_${formattedDateTime}.pdf`
+            }
+            console.log(`No folder found starting with order number ${orden} in the directory.`);
+        }
+    } else {
+        console.log(`Directory ${directoryPath} does not exist.`);
+    }
+}
 pdf.end();
+const pdfStream = fs.createReadStream(pdfPath);
 // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf)
 if(orden === 'N/A'){
-    if(producto_ != 'N/A'){
-        NuevaSolicitud_(orden,`yraida.baptista@poligraficaindustrial.com,${producto_}`,motivo,num_solicitud,pdf,tabla)
-    }else{
-        NuevaSolicitud_(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
-    }
+    NuevaSolicitud_(orden,`yraida.baptista@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,jaime.sanjuan@poligraficaindustrial.com,${correo}`,motivo,num_solicitud,pdfStream,tabla)
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
+    // console.log('this one')
 }else{
-    NuevaSolicitud(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
+    NuevaSolicitud(orden,`yraida.baptista@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,jaime.sanjuan@poligraficaindustrial.com,${correo}`,motivo,num_solicitud,pdfStream,tabla)
+    // NuevaSolicitud(orden,'enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com,zuleima.vela@poligraficaindustrial.com,yraida.baptista@poligraficaindustrial.com,calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
     // NuevaSolicitud_(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
     // NuevaSolicitud(orden,'calcurianandres@gmail.com',motivo,num_solicitud,pdf,tabla)
+    // console.log('this other')
 }
 
 
 // asignacion(orden, solicitud, Lote, pdf,'Equipo', 'calcurian.andrew@gmail.com,enida.aponte@poligraficaindustrial.com,carlos.mejias@poligraficaindustrial.com,freddy.burgos@poligraficaindustrial.com')
 //   asignacion(orden, solicitud, Lote, pdf,'EQUIPO DE TRABAJO', 'calcurian.andrew@gmail.com')
 //  asignacion(orden, Lote, pdf,'Carlos', 'carlos.mejias@poligraficaindustrial.com')
-    //  asignacion(orden, Lote, pdf,'Freddy', 'freddy.burgos@poligraficaindustrial.com')
+//  asignacion(orden, Lote, pdf,'Freddy', 'freddy.burgos@poligraficaindustrial.com')
     return
 
 }

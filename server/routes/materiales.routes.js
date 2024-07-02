@@ -595,7 +595,8 @@ app.get('/api/reenvio-requisicion/:id', (req, res)=>{
 
                         let final = producto_.length -1;
                         if(i == final){
-                             FAL004(requi.producto.producto,requi.sort, 1757,material,cantidad,requi.usuario,requi.motivo,tabla)
+                            console.log(final)
+                             FAL004(requi.producto.producto,requi.sort, 2203,material,cantidad,requi.usuario,requi.motivo,tabla,'calcurianandres@gmail.com')
                         }
                     }
                     
@@ -605,8 +606,6 @@ app.get('/api/reenvio-requisicion/:id', (req, res)=>{
                         res.json(requi)
                     })
 })
-
-
 app.get('/api/reenvio/:lote', (req,res)=>{
 
 

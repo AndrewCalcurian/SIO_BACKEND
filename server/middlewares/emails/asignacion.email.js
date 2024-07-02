@@ -13,7 +13,11 @@ function asignacion_(orden, solicitud, lotes,adjunto,nombre,correo){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -50,7 +54,7 @@ table, th, td {
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
             //console.log('error');
-            //console.log(err);
+            console.log(err);
         }else{
             //console.log(info);
             return
@@ -70,7 +74,11 @@ function asignacion(orden, solicitud, lotes,adjunto,nombre,correo){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -110,7 +118,7 @@ table, th, td {
         if(err){
             //console.log('error');
 
-            //console.log(err);
+            console.log(err);
         }else{
             //console.log(info);
         }
@@ -130,7 +138,11 @@ function asignacion___(orden, solicitud, lotes,adjunto,nombre,correo){
         },
         tls: {
             rejectUnauthorized: false
-        }
+        },
+        maxConnections: 5,
+        maxMessages: 10,
+        rateDelta: 1000, // 1000 ms delay between sending emails
+        rateLimit: true
     });
 
 
@@ -169,7 +181,7 @@ table, th, td {
     transporter.sendMail(mailOptions, (err, info)=>{
         if(err){
             //console.log('error');
-            //console.log(err);
+            console.log(err);
         }else{
             //console.log(info);
         }
