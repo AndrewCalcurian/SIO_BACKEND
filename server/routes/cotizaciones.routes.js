@@ -3,6 +3,7 @@ const app = express();
 const Escala = require('../database/models/escala.model');
 const Producto = require('../database/models/producto.model')
 const consultaDolar = require('consulta-dolar-venezuela');
+const { pyDolarVenezuela } = require("consulta-dolar-venezuela");
 const Despacho = require('../database/models/despacho.model');
 const Orden = require('../database/models/orden.model');
 const icotizacion = require('../database/models/icotizacion.model')
@@ -277,10 +278,16 @@ app.get('/api/despachos/pre-facturacion', (req,res)=>{
                                     preFacuracion.push({fecha:despachos[i].fecha,despacho:despachos[i].despacho[x], orden:ordensDB, escala:EscalaDB})
                                     if(i === despachos.length-1 && x === despachos[i].despacho.length-1){
                                         
-                                        consultaDolar.getMonitor("BCV", "price").then($ =>{
-                                            res.json({preFacuracion,MonitorBCV:$})
+
+                                        const pyDolar = new pyDolarVenezuela('bcv');
                                         
+                                        pyDolar.getMonitor("USD").then($ =>{
+                                            console.log($)
+                                            res.json({preFacuracion,MonitorBCV:$.price})
                                         });
+                                        // consultaDolar.getMonitor("BCV", "price").then($ =>{
+                                        
+                                        // });
 
                                         // consultaDolar.$monitor().then($=>{
                 
