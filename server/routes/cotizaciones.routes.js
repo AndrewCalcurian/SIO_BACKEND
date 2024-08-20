@@ -284,6 +284,8 @@ app.get('/api/despachos/pre-facturacion', (req,res)=>{
                                         pyDolar.getMonitor("USD").then($ =>{
                                             console.log($)
                                             res.json({preFacuracion,MonitorBCV:$.price})
+                                        }).catch(error=> {
+                                            res.json({preFacuracion,MonitorBCV:0.00})
                                         });
                                         // consultaDolar.getMonitor("BCV", "price").then($ =>{
                                         
